@@ -1,0 +1,96 @@
+﻿<local:BasePage x:TypeArguments="local:SalesRecallViewModel" x:Class="EZDMS.App.SalesRecallPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EZDMS.App"
+      xmlns:core="clr-namespace:EZDMS.App.Core;assembly=EZDMS.App.Core"
+      mc:Ignorable="d" 
+      Height="700"
+      Width="1070"
+      d:DesignHeight="450" d:DesignWidth="800"
+      >
+
+    <Grid Background="Aquamarine">
+        <Grid.RowDefinitions>
+
+            <!-- Title bar -->
+            <RowDefinition Height="*" />
+
+            <!-- Chat List -->
+            <RowDefinition Height="Auto" />
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+
+            <!-- Title bar -->
+            <ColumnDefinition Width="*" />
+
+            <!-- Title bar -->
+            <ColumnDefinition Width="Auto" />
+
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Today" FontSize="50"/>
+
+        <!--<DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="Deal"
+                    MinWidth="120"
+                    Width="*"
+                    Binding="{Binding DealNumber}"/>
+
+                <DataGridTextColumn
+                    Header="Status"
+                    MinWidth="120"
+                    Width="*"
+                    Binding="{Binding Status}"/>
+
+                <DataGridTextColumn
+                    Header="Buyer Name"
+                    MinWidth="150"
+                    Width="*"
+                    Binding="{Binding BuyerFullName}"/>
+
+                <DataGridTextColumn
+                    Header="Vehicle Info"
+                    MinWidth="150"
+                    Width="*"
+                    Binding="{Binding VehicleInfo}"/>
+
+                <DataGridTextColumn
+                    Header="Type"
+                    MinWidth="100"
+                    Width="*"
+                    Binding="{Binding Type}"/>
+
+                <DataGridTextColumn
+                    Header="Deal Date"
+                    MinWidth="150"
+                    Width="*"
+                    Binding="{Binding DealDate}"/>
+
+                <DataGridTextColumn
+                    Header="Last Activity Date"
+                    MinWidth="150"
+                    Width="*"
+                    Binding="{Binding LastActivityDate}"/>
+
+                <DataGridTextColumn
+                    Header="SalesPerson"
+                    MinWidth="150"
+                    Width="*"
+                    Binding="{Binding SalesPerson}"/>
+
+            </DataGrid.Columns>-->
+
+
+
+
+
+
+
+
+    </Grid>
+</local:BasePage>
