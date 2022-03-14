@@ -15,7 +15,7 @@
         MinHeight="{Binding WindowMinimumHeight}"
         Deactivated="AppWindow_Deactivated"
         Activated="AppWindow_Activated"
-        Title="Welcome, friend!" Height="600" Width="900">
+        Title="Welcome, friend!" Height="800" Width="1400">
 
     <Window.Resources>
         <Style TargetType="{x:Type local:MainWindow}">
@@ -90,12 +90,14 @@
                                         <Viewbox Grid.Column="0" Grid.ColumnSpan="3" Margin="5">
                                             <StackPanel>
                                                 <TextBlock FontFamily="{StaticResource LatoBold}" FontSize="{StaticResource FontSizeLarge}" Margin="0,0,0,-5">
-                                                    <Run Text="W" Foreground="{StaticResource WordOrangeBrush}" /><!--
-                                                    --><Run Text="O" Foreground="{StaticResource WordBlueBrush}" /><!--
-                                                    --><Run Text="R" Foreground="{StaticResource WordRedBrush}" /><!--
-                                                    --><Run Text="D" Foreground="{StaticResource WordGreenBrush}" />
+                                                    <Run Text="E" Foreground="{StaticResource WordOrangeBrush}" /><!--
+                                                    --><Run Text="Z" Foreground="{StaticResource WordBlueBrush}" /><!--
+                                                    --><Run Text="D" Foreground="{StaticResource WordRedBrush}" /><!--
+                                                    --><Run Text="M" Foreground="{StaticResource WordGreenBrush}" /><!--
+                                                    --><Run Text="S" Foreground="{StaticResource WordOrangeBrush}" />
+                                                    
                                                 </TextBlock>
-                                                <TextBlock Text="by fasetto" Foreground="{StaticResource ForegroundDarkBrush}" TextAlignment="Center" />
+                                                <TextBlock Text="by ProQuotes" Foreground="{StaticResource ForegroundDarkBrush}" TextAlignment="Center" />
                                             </StackPanel>
                                         </Viewbox>
 

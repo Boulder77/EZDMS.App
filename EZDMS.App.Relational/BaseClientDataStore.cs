@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EZDMS.App.Core;
 
@@ -92,6 +94,18 @@ namespace EZDMS.App.Relational
 
             // Save changes
             await mDbContext.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Returns all records in SearchDeals table
+        /// </summary>
+
+        public Task<List<SalesDealRecallDataModel>> GetSalesDealRecallsAsync()
+        {
+            // Gets all the sales          
+            
+            return Task.FromResult(mDbContext.SearchDeals.ToList());
+            
         }
 
         #endregion

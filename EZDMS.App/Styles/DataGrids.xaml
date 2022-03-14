@@ -27,9 +27,9 @@
     </Style>
     <Style TargetType="{x:Type DataGrid}">
         <Setter Property="AlternatingRowBackground" 
-                Value="{DynamicResource DataGrid.AlternateRow.Background}"/>
+                Value="{StaticResource WordVeryLightBlueBrush}"/>
         <Setter Property="Background" 
-                Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                Value="{StaticResource BackgroundVeryLightBrush}"/>
         <Setter Property="BorderThickness" 
                 Value="0,0,0,1"/>
         <Setter Property="Foreground" 
@@ -116,11 +116,15 @@
     </Style>
     <Style TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="Background"
-                Value="{DynamicResource DataGrid.Column.Header.Background}"/>
+                Value="{StaticResource BackgroundLightBrush}"/>
         <Setter Property="Foreground"
-                Value="{DynamicResource DataGrid.Column.Header.Static.Foreground}"/>
+                Value="{StaticResource ForegroundVeryDarkBrush}"/>
         <Setter Property="FontWeight"
                 Value="SemiBold"/>
+        <Setter Property="FontSize"
+                Value="{StaticResource FontSizeXLarge}"/>
+        <Setter Property="FontFamily"
+                Value="{StaticResource LatoBold}"/>
         <Setter Property="MinHeight"
                 Value="25"/>
         <Setter Property="Height"
@@ -237,13 +241,13 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </SelectiveScrollingGrid.ColumnDefinitions>
-                            <SelectiveScrollingGrid.RowDefinitions>
+                            <!--<SelectiveScrollingGrid.RowDefinitions>
                                 <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                            </SelectiveScrollingGrid.RowDefinitions>
+                               
+                            </SelectiveScrollingGrid.RowDefinitions>-->
                             <DataGridCellsPresenter Grid.Column="1" ItemsPanel="{TemplateBinding ItemsPanel}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                            <DataGridDetailsPresenter Grid.Column="1" Grid.Row="1" SelectiveScrollingGrid.SelectiveScrollingOrientation="{Binding AreRowDetailsFrozen, ConverterParameter={x:Static SelectiveScrollingOrientation.Vertical}, Converter={x:Static DataGrid.RowDetailsScrollingConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" Visibility="{TemplateBinding DetailsVisibility}"/>
-                            <DataGridRowHeader Grid.RowSpan="2" SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Row}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                            <!--<DataGridDetailsPresenter Grid.Column="1" Grid.Row="1" SelectiveScrollingGrid.SelectiveScrollingOrientation="{Binding AreRowDetailsFrozen, ConverterParameter={x:Static SelectiveScrollingOrientation.Vertical}, Converter={x:Static DataGrid.RowDetailsScrollingConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" Visibility="{TemplateBinding DetailsVisibility}"/>-->
+                            <DataGridRowHeader Grid.RowSpan="1" SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Row}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
                         </SelectiveScrollingGrid>
                     </Border>
                 </ControlTemplate>

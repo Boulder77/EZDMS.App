@@ -20,7 +20,7 @@ namespace EZDMS.App.Relational
             construction.Services.AddDbContext<ClientDataStoreDbContext>(options =>
             {
                 // Setup connection string
-                options.UseSqlite(construction.Configuration.GetConnectionString("ClientDataStoreConnection"));
+                options.UseSqlServer(construction.Configuration.GetConnectionString("ClientDataStoreConnection"));
             }, contextLifetime: ServiceLifetime.Transient);
 
             // Add client data store for easy access/use of the backing data store

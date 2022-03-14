@@ -60,13 +60,14 @@ namespace EZDMS.App
                 .Build();
 
             // Ensure the client data store 
-            await ClientDataStore.EnsureDataStoreAsync();
+            //await ClientDataStore.EnsureDataStoreAsync();
+            await Task.Delay(100);
 
             // Monitor for server connection status
             MonitorServerStatus();
 
             // Load new settings
-            TaskManager.RunAndForget(ViewModelSettings.LoadAsync);
+            //TaskManager.RunAndForget(ViewModelSettings.LoadAsync);
         }
 
         /// <summary>

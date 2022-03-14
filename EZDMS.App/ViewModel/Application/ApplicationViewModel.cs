@@ -73,6 +73,8 @@ namespace EZDMS.App
         /// </summary>
         public bool ServerReachable { get; set; } = true;
 
+
+
         #endregion
 
         #region Public Commands
@@ -92,6 +94,12 @@ namespace EZDMS.App
         /// </summary>
         public ICommand OpenMediaCommand { get; set; }
 
+
+        /// <summary>
+        /// The command to change the page content to SalesRecallPage
+        /// </summary>
+        public ICommand OpenSalesRecallCommand { get; set; }
+
         #endregion
 
         #region Constructor
@@ -105,6 +113,7 @@ namespace EZDMS.App
             OpenChatCommand = new RelayCommand(OpenChat);
             OpenContactsCommand = new RelayCommand(OpenContacts);
             OpenMediaCommand = new RelayCommand(OpenMedia);
+            OpenSalesRecallCommand = new RelayCommand(OpenSalesRecall);
         }
 
         #endregion
@@ -137,6 +146,16 @@ namespace EZDMS.App
             // Set the current side menu to Chat
             CurrentSideMenuContent = SideMenuContent.Media;
         }
+
+        
+
+        public void OpenSalesRecall()
+        {
+
+            ViewModelApplication.GoToPage(ApplicationPage.SalesRecall);
+
+        }
+
 
         #endregion
 

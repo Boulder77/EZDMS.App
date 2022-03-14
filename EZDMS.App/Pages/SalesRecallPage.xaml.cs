@@ -23,6 +23,7 @@ namespace EZDMS.App
         public SalesRecallPage()
         {
             InitializeComponent();
+            
         }
 
         public SalesRecallPage(SalesRecallViewModel specificViewModel) : base(specificViewModel)

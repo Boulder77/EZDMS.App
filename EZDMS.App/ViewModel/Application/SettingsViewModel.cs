@@ -204,6 +204,8 @@ namespace EZDMS.App
             SaveUsernameCommand = new RelayCommand(async () => await SaveUsernameAsync());
             SaveEmailCommand = new RelayCommand(async () => await SaveEmailAsync());
 
+           
+
             // TODO: Get from localization
             LogoutButtonText = "Logout";
         }

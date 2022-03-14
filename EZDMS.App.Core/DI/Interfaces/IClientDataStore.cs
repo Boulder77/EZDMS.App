@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace EZDMS.App.Core
 {
@@ -37,5 +39,8 @@ namespace EZDMS.App.Core
         /// </summary>
         /// <returns></returns>
         Task ClearAllLoginCredentialsAsync();
+
+
+        Task<List<SalesDealRecallDataModel>> GetSalesDealRecallsAsync();
     }
 }

@@ -28,7 +28,8 @@
                         <Button
                             Width="70"
                             Style="{StaticResource IconButton}"
-                            Content="{StaticResource FontAwesomeSalesIcon}" />
+                            Content="{StaticResource FontAwesomeSalesIcon}"
+                            Command="{Binding OpenSalesRecallCommand}"/>
                         <Button 
                             Width="70"
                             Style="{StaticResource IconButton}" 

@@ -11,33 +11,94 @@
       d:DesignHeight="450" d:DesignWidth="800"
       >
 
-    <Grid Background="Aquamarine">
+    <Grid >
         <Grid.RowDefinitions>
 
             <!-- Title bar -->
-            <RowDefinition Height="*" />
+            <RowDefinition Height="100" />
 
             <!-- Chat List -->
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
 
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
 
             <!-- Title bar -->
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="50" />
 
             <!-- Title bar -->
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
 
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Today" FontSize="50"/>
+        <!-- Working spinner container -->
+        <StackPanel VerticalAlignment="Top"  Grid.Row="1" Grid.ColumnSpan="2"  Background="Transparent"                     
+                  Visibility="{Binding SalesDealRecallPageLoading, 
+                  Converter={local:BooleanToVisiblityGoneConverter}, 
+                   FallbackValue=Collapsed}"
+                  >
+            <TextBlock Text="Loading"
+                       Foreground="{StaticResource ForegroundLightBrush}"
+                       FontFamily="{StaticResource LatoBold}"
+                       FontSize="{StaticResource FontSizeXXLarge}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"/>
 
-        <!--<DataGrid.Columns>
+            <Border Padding="0 5 0 0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                
+                <TextBlock 
+                    Foreground="{StaticResource ForegroundLightBrush}"
+                    FontSize="180"                  
+                    Style="{StaticResource SpinningText}" />
+            </Border>
+
+        </StackPanel>
+
+        <DataGrid x:Name="dgridSales" 
+                  VerticalAlignment="Stretch" 
+                  HorizontalAlignment="Stretch"  
+                  SelectionMode="Extended"
+                  AlternatingRowBackground="{StaticResource WordVeryLightBlueBrush}"
+                  Grid.Column="1" Grid.Row="1" 
+                  ItemsSource="{Binding FilteredItems}"
+                  SelectedItem="{Binding SelectedDeal}"
+                 Visibility="{Binding SalesDealRecallPageLoading, Converter={local:BooleanToVisiblityConverter}}" >
+
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                    <Setter Property="VerticalAlignment" Value="Stretch" />
+                    <Setter Property="Background" Value="{StaticResource WordVeryVeryLightBlueBrush}" />
+                    <Setter Property="Foreground" Value="{StaticResource ForegroundVeryDarkBrush}" />
+                    <Setter Property="Visibility" Value="Visible" />
+                    <Setter Property="FontFamily" Value="{StaticResource LatoBold}" />
+                    <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
+                    <Setter Property="Height" Value="40" />
+                    <Setter Property="HorizontalAlignment" Value="Stretch" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="BorderThickness" Value="1,1,1,1" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                </Style>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="BorderThickness" Value="1,0,1,0" />
+                    <Setter Property="BorderBrush" Value="White" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="Height" Value="30" />
+                    <Setter Property="HorizontalContentAlignment" Value="Right" />
+                    <Setter Property="TextBlock.FontSize" Value="{StaticResource FontSizeRegular}" />
+                    <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
+                    <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+                
                 <DataGridTextColumn
-                    Header="Deal"
-                    MinWidth="120"
+                    Header="Deal #"
+                    MinWidth="50"
                     Width="*"
                     Binding="{Binding DealNumber}"/>
 
@@ -83,14 +144,9 @@
                     Width="*"
                     Binding="{Binding SalesPerson}"/>
 
-            </DataGrid.Columns>-->
+            </DataGrid.Columns>
 
-
-
-
-
-
-
-
+        </DataGrid>
+    
     </Grid>
 </local:BasePage>

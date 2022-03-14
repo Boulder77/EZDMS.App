@@ -15,6 +15,11 @@ namespace EZDMS.App.Relational
         /// </summary>
         public DbSet<LoginCredentialsDataModel> LoginCredentials { get; set; }
 
+        /// <summary>
+        /// The recall deals table
+        /// </summary>
+        public DbSet<SalesDealRecallDataModel> SearchDeals { get; set; }
+
         #endregion
 
         #region Constructor
@@ -43,7 +48,9 @@ namespace EZDMS.App.Relational
             //
             // Set Id as primary key
             modelBuilder.Entity<LoginCredentialsDataModel>().HasKey(a => a.Id);
-            
+
+            modelBuilder.Entity<SalesDealRecallDataModel>().HasKey(a => a.DealNumber);
+
             // TODO: Set up limits
             //modelBuilder.Entity<LoginCredentialsDataModel>().Property(a => a.FirstName).HasMaxLength(50);
         }
