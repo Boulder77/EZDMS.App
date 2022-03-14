@@ -60,14 +60,13 @@
         <DataGrid x:Name="dgridSales" 
                   VerticalAlignment="Stretch" 
                   HorizontalAlignment="Stretch"  
-                  SelectionMode="Extended"
-                  AlternatingRowBackground="{StaticResource WordVeryLightBlueBrush}"
+                  SelectionMode="Extended"                 
                   Grid.Column="1" Grid.Row="1" 
                   ItemsSource="{Binding FilteredItems}"
                   SelectedItem="{Binding SelectedDeal}"
-                 Visibility="{Binding SalesDealRecallPageLoading, Converter={local:BooleanToVisiblityConverter}}" >
+                  Visibility="{Binding SalesDealRecallPageLoading, Converter={local:BooleanToVisiblityConverter}}" >
 
-            <DataGrid.Resources>
+            <!--<DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="VerticalContentAlignment" Value="Center" />
                     <Setter Property="VerticalAlignment" Value="Stretch" />
@@ -92,7 +91,7 @@
                     <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
                     <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
                 </Style>
-            </DataGrid.Resources>
+            </DataGrid.Resources>-->
 
             <DataGrid.Columns>
                 
