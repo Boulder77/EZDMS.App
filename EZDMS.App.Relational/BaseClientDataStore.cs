@@ -108,6 +108,20 @@ namespace EZDMS.App.Relational
             
         }
 
+        public async Task AddNewSalesRecordAsync(DataModeltoAdd DbSet)
+        {
+            // Clear all entries
+            
+
+            // Add new one
+            mDbContext.LoginCredentials.Add(loginCredentials);
+
+            // Save changes
+            await mDbContext.SaveChangesAsync();
+        }
+
+
+
         #endregion
     }
 }

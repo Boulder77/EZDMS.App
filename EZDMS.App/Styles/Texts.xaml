@@ -38,7 +38,7 @@
                         <TextBlock IsHitTestVisible="False"
                                    Text="{TemplateBinding Tag}"
                                    x:Name="placeholder"
-                                   FontFamily="{StaticResource LatoThin}"
+                                   FontFamily="{StaticResource LatoRegular}"
                                    Padding="{TemplateBinding Padding}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
@@ -49,7 +49,7 @@
                                     <Setter Property="Visibility" Value="Collapsed" />
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" Value="">
-                                            <Setter Property="Visibility" Value="Visible" />
+                                            <Setter Property="Visibility" Value="Visible" />                                           
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
@@ -107,7 +107,7 @@
                         <TextBlock IsHitTestVisible="False"
                                    Text="{TemplateBinding Tag}"
                                    x:Name="placeholder"
-                                   FontFamily="{StaticResource LatoThin}"
+                                   FontFamily="{StaticResource LatoRegular}"
                                    FontSize="{TemplateBinding FontSize}"
                                    Padding="{TemplateBinding Padding}"
                                    Visibility="{TemplateBinding local:HasTextProperty.Value, Converter={local:BooleanToVisiblityConverter}}"
@@ -205,6 +205,10 @@
         </Style.Triggers>
 
     </Style>
+
+
+    
+
 
 
 

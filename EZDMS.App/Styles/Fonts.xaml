@@ -12,17 +12,26 @@
         <Setter Property="FontFamily" Value="{StaticResource LatoThin}" />
         <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
     </Style>
-    
+   
     <Style TargetType="{x:Type TextBlock}" x:Key="BaseTextBlockStyle">
-        <Setter Property="FontFamily" Value="{StaticResource LatoThin}" />
+        <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
         <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
     </Style>
+
+    <Style x:Key="HeaderStyle" TargetType="{x:Type DataGridColumnHeader}">    
+        <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
+        <Setter Property="TextBlock.FontFamily" Value="{StaticResource LatoBold}" />
+        <Setter Property="TextBlock.FontSize" Value="{StaticResource FontSizeRegular}" />
+    </Style>
+
 
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}" />
     <Style TargetType="{x:Type Label}" BasedOn="{StaticResource BaseStyle}" />
     <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource BaseStyle}" />
     <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseTextBlockStyle}" />
     <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource BaseStyle}" />
+    <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource HeaderStyle}" />
 
     <system:Double x:Key="FontSizeSmaller">10</system:Double>
     <system:Double x:Key="FontSizeSmall">12</system:Double>
@@ -30,6 +39,7 @@
     <system:Double x:Key="FontSizeLarge">20</system:Double>
     <system:Double x:Key="FontSizeXLarge">24</system:Double>
     <system:Double x:Key="FontSizeXXLarge">30</system:Double>
+    <system:Double x:Key="FontSizeXXXLarge">50</system:Double>
 
     <system:String x:Key="FontAwesomeChatIcon">&#xf086;</system:String>
     <system:String x:Key="FontAwesomeUserIcon">&#xf007;</system:String>
