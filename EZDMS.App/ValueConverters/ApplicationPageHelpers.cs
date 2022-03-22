@@ -33,6 +33,8 @@ namespace EZDMS.App
                 case ApplicationPage.SalesRecall:
                     return new SalesRecallPage(viewModel as SalesRecallViewModel);
 
+                case ApplicationPage.SalesFinance:
+                    return new SalesFinancePage(viewModel as SalesFinanceInfoViewModel);
 
                 default:
                     Debugger.Break();
@@ -59,6 +61,9 @@ namespace EZDMS.App
 
             if (page is SalesRecallPage)
                 return ApplicationPage.SalesRecall;
+
+            if (page is SalesFinancePage)
+                return ApplicationPage.SalesFinance;
 
             // Alert developer of issue
             Debugger.Break();

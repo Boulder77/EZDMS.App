@@ -40,7 +40,18 @@ namespace EZDMS.App.Core
         /// <returns></returns>
         Task ClearAllLoginCredentialsAsync();
 
-
+        /// <summary>
+        /// gets the stored deals list for this client
+        /// </summary>
+        /// <returns></returns>
         Task<List<SalesDealRecallDataModel>> GetSalesDealRecallsAsync();
+
+        /// <summary>
+        /// add new record to a data store table
+        /// </summary>
+        /// <param name="mDataModel">the datamodel to add</param>
+        /// <param name="type">the type of DbTable</param>
+        /// <returns></returns>
+        Task AddNewSalesRecordAsync(object mDataModel, DbTableType type);
     }
 }

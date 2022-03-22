@@ -104,23 +104,41 @@ namespace EZDMS.App.Relational
         {
             // Gets all the sales          
             
-            return Task.FromResult(mDbContext.SearchDeals.ToList());
+            return Task.FromResult(mDbContext.SalesDealsList.ToList());
             
         }
 
-        public async Task AddNewSalesRecordAsync(DataModeltoAdd DbSet)
+        public async Task AddNewSalesRecordAsync(object mDataModel, DbTableType type)
         {
-            // Clear all entries
+            // return if no data model
+            if (mDataModel == null)
+                    return;
+                       
+            switch (type)
+            {
+                // Add new login entry
+                case DbTableType.LoginCredentials:
+                    mDbContext.LoginCredentials.Add(mDataModel as LoginCredentialsDataModel);
+                    break;
+                                    
+                case DbTableType.SalesDealsList:
+                    // Add new sales deals list entry
+                    mDbContext.SalesDealsList.Add(mDataModel as SalesDealRecallDataModel);
+                    break;
+
+                case DbTableType.SalesFinanceInfo:
+                    //Add new sales finance entry
+                    mDbContext.SalesFinanceInfo.Add(mDataModel as SalesFinanceDataModel);
+                    break;
+
+                default:
+                    throw new Exception();
+                    break;
+            }
             
-
-            // Add new one
-            mDbContext.LoginCredentials.Add(loginCredentials);
-
             // Save changes
             await mDbContext.SaveChangesAsync();
         }
-
-
 
         #endregion
     }

@@ -24,5 +24,10 @@
         /// The sales recall page
         /// </summary>
         SalesRecall = 3,
+
+        /// <summary>
+        /// The sales finance details page
+        /// </summary>
+        SalesFinance = 4,
     }
 }

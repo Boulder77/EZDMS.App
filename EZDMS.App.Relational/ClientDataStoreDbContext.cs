@@ -18,7 +18,7 @@ namespace EZDMS.App.Relational
         /// <summary>
         /// The recall deals table
         /// </summary>
-        public DbSet<SalesDealRecallDataModel> SearchDeals { get; set; }
+        public DbSet<SalesDealRecallDataModel> SalesDealsList { get; set; }
 
         /// <summary>
         /// The sales finance info table
