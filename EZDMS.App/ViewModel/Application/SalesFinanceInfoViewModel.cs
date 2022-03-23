@@ -45,6 +45,46 @@ namespace EZDMS.App
         public int WorkingDealNumber { get; set; }
 
         /// <summary>
+        /// The current buyer name
+        /// </summary>
+        public TextDisplayViewModel BuyerName { get; set; }
+
+        /// <summary>
+        /// The current Co-Buyer name
+        /// </summary>
+        public TextDisplayViewModel CoBuyerName { get; set; }
+
+        /// <summary>
+        /// The current vehicle info
+        /// </summary>
+        public TextDisplayViewModel Vehicle { get; set; }
+
+        /// <summary>
+        /// The current status of the sales deal
+        /// </summary>
+        public TextDisplayViewModel Status { get; set; }
+
+        /// <summary>
+        /// The current type of the sales deal
+        /// </summary>
+        public TextDisplayViewModel DealType { get; set; }
+
+        /// <summary>
+        /// The current salesperson name
+        /// </summary>
+        public TextDisplayViewModel Salesperson { get; set; }
+
+        /// <summary>
+        /// The current trade vehicle(s) info
+        /// </summary>
+        public TextDisplayViewModel Trades { get; set; }
+
+        /// <summary>
+        /// The current created Date
+        /// </summary>
+        public TextDisplayViewModel CreatedDate { get; set; }
+
+        /// <summary>
         /// Indicates if the sales finance deal details are currently being loaded
         /// </summary>
         public bool SalesFinanceInfoPageLoading { get; set; } 

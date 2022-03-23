@@ -23,7 +23,7 @@ namespace EZDMS.App
         /// </summary>
         public SettingsDesignModel()
         {
-            FirstName = new TextEntryViewModel { Label = "Fist Name", OriginalText = "Luke" };
+            FirstName = new TextEntryViewModel { Label = "First Name", OriginalText = "Luke" };
             LastName = new TextEntryViewModel { Label = "Last Name", OriginalText = "Malpass" };
             Username = new TextEntryViewModel { Label = "Username", OriginalText = "luke" };
             Password = new PasswordEntryViewModel { Label = "Password", FakePassword = "********" };

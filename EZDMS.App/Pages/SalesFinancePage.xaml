@@ -7,10 +7,52 @@
       xmlns:core="clr-namespace:EZDMS.App.Core;assembly=EZDMS.App.Core"
       mc:Ignorable="d" 
       x:Name="Page"
-      d:DesignHeight="700" d:DesignWidth="700"      
+      d:DataContext="{x:Static local:SalesFinanceInfoDesignModel.Instance}"
+      d:DesignHeight="800" d:DesignWidth="1200"      
       >
-    <Grid>
-        
-    </Grid>
+
+    <Border Background="{StaticResource BackgroundVeryLightBrush}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Border Margin="10"  Background="AntiqueWhite"
+                    
+                    Grid.Row="1"
+                    CornerRadius="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="250"/>
+                    </Grid.ColumnDefinitions>
+                    <local:TextDisplayControl DataContext="{Binding BuyerName}" />
+                    <local:TextDisplayControl Grid.Column="1" DataContext="{Binding CoBuyerName}" />
+                    <local:TextDisplayControl Grid.Column="2" DataContext="{Binding Vehicle}" />
+                    <local:TextDisplayControl Grid.Column="3" DataContext="{Binding Status}" />
+                    <local:TextDisplayControl Grid.Row="1" DataContext="{Binding DealType}" />
+                    <local:TextDisplayControl Grid.Row="1" Grid.Column="1" DataContext="{Binding Salesperson}" />
+                    <local:TextDisplayControl Grid.Row="1" Grid.Column="2" DataContext="{Binding Trades}" />
+                    <local:TextDisplayControl Grid.Row="1" Grid.Column="3" DataContext="{Binding CreatedDate}" />
+                    
+                    
+
+                </Grid>
+            </Border>
+            <TabControl Grid.Row="2">
+                
+            </TabControl>
+
+        </Grid>
+    </Border>
+    
 
 </local:BasePage>

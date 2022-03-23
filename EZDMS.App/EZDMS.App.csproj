@@ -97,6 +97,9 @@
     <Compile Include="Controls\Chat\ChatMessage\ChatMessageListItemControl.xaml.cs">
       <DependentUpon>ChatMessageListItemControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Display\TextDisplayControl.xaml.cs">
+      <DependentUpon>TextDisplayControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Input\PasswordEntryControl.xaml.cs">
       <DependentUpon>PasswordEntryControl.xaml</DependentUpon>
     </Compile>
@@ -161,8 +164,11 @@
     <Compile Include="ValueConverters\TimeToDisplayTimeConverter.cs" />
     <Compile Include="ValueConverters\HorizontalAlignmentConverter.cs" />
     <Compile Include="ValueConverters\TimeToReadTimeConverter.cs" />
+    <Compile Include="ViewModel\Application\Design\SalesFinanceInfoDesignModel.cs" />
     <Compile Include="ViewModel\Application\SalesFinanceInfoViewModel.cs" />
     <Compile Include="ViewModel\Application\SalesRecallViewModel.cs" />
+    <Compile Include="ViewModel\Input\Design\TextDisplayDesignModel.cs" />
+    <Compile Include="ViewModel\Input\TextDisplayViewModel.cs" />
     <Compile Include="WebRequests\WebRequestResultExtensions.cs" />
     <Compile Include="WPFViewModels\DialogWindowViewModel.cs" />
     <Compile Include="WPFViewModels\ViewModelLocator.cs" />
@@ -219,6 +225,10 @@
     <Page Include="Controls\Chat\ChatMessage\ChatMessageListItemControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Display\TextDisplayControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Input\PasswordEntryControl.xaml">
       <Generator>MSBuild:Compile</Generator>
