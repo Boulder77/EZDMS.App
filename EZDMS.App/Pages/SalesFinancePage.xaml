@@ -22,7 +22,7 @@
             <Border Margin="10"  Background="AntiqueWhite"
                     
                     Grid.Row="1"
-                    CornerRadius="10">
+                    CornerRadius="4">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -34,21 +34,69 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="250"/>
                     </Grid.ColumnDefinitions>
-                    <local:TextDisplayControl DataContext="{Binding BuyerName}" />
-                    <local:TextDisplayControl Grid.Column="1" DataContext="{Binding CoBuyerName}" />
-                    <local:TextDisplayControl Grid.Column="2" DataContext="{Binding Vehicle}" />
-                    <local:TextDisplayControl Grid.Column="3" DataContext="{Binding Status}" />
-                    <local:TextDisplayControl Grid.Row="1" DataContext="{Binding DealType}" />
-                    <local:TextDisplayControl Grid.Row="1" Grid.Column="1" DataContext="{Binding Salesperson}" />
-                    <local:TextDisplayControl Grid.Row="1" Grid.Column="2" DataContext="{Binding Trades}" />
-                    <local:TextDisplayControl Grid.Row="1" Grid.Column="3" DataContext="{Binding CreatedDate}" />
+                    <local:TextDisplayVertControl DataContext="{Binding BuyerName}" />
+                    <local:TextDisplayVertControl Grid.Column="1" DataContext="{Binding CoBuyerName}" />
+                    <local:TextDisplayVertControl Grid.Column="2" DataContext="{Binding Vehicle}" />
+                    <local:TextDisplayVertControl Grid.Column="3" DataContext="{Binding Status}" />
+                    <local:TextDisplayVertControl Grid.Row="1" DataContext="{Binding DealType}" />
+                    <local:TextDisplayVertControl Grid.Row="1" Grid.Column="1" DataContext="{Binding Salesperson}" />
+                    <local:TextDisplayVertControl Grid.Row="1" Grid.Column="2" DataContext="{Binding Trades}" />
+                    <local:TextDisplayVertControl Grid.Row="1" Grid.Column="3" DataContext="{Binding CreatedDate}" />
                     
                     
 
                 </Grid>
             </Border>
-            <TabControl Grid.Row="2">
-                
+            <TabControl Grid.Row="2" Margin="10" BorderThickness="0" Background="{StaticResource ForegroundLightBrush}">
+                <TabControl.Resources>
+                    <Style TargetType="TabItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="TabItem">
+                                    <Grid Name="Panel">
+                                        <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="Gainsboro" CornerRadius="4,4,0,0" Margin="2,0">
+                                            <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                        </Border>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="LightSkyBlue" />
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="False">
+                                            <Setter TargetName="Border" Property="Background" Value="White" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
+                        <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
+                    </Style>
+                </TabControl.Resources>
+                <TabItem  Header="Desking">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>                            
+                        </Grid.RowDefinitions>
+                        
+                        
+                        
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Security" />
+                <TabItem Header="Details" />
             </TabControl>
 
         </Grid>

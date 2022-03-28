@@ -487,16 +487,20 @@ namespace EZDMS.App
             var storedCredentials = await clientDataStore.GetLoginCredentialsAsync();
 
             // Set first name
-            FirstName.OriginalText = storedCredentials?.FirstName;
+            //FirstName.OriginalText = storedCredentials?.FirstName;
+            FirstName.OriginalText = "Matt";
 
             // Set last name
-            LastName.OriginalText = storedCredentials?.LastName;
+            //LastName.OriginalText = storedCredentials?.LastName;
+            LastName.OriginalText = "Islas";
 
             // Set username
-            Username.OriginalText = storedCredentials?.Username;
+            //Username.OriginalText = storedCredentials?.Username;
+            Username.OriginalText = "Islasm";
 
             // Set email
-            Email.OriginalText = storedCredentials?.Email;
+            //Email.OriginalText = storedCredentials?.Email;
+            Email.OriginalText = "ezdmssupport@proquotes.net";
         }
 
         /// <summary>

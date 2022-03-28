@@ -8,7 +8,7 @@ namespace EZDMS.App
     /// <summary>
     /// Interaction logic for TextEntryControl.xaml
     /// </summary>
-    public partial class TextDisplayControl : UserControl
+    public partial class TextDisplayVertControl : UserControl
     {
         #region Dependency Properties
 
@@ -23,7 +23,7 @@ namespace EZDMS.App
 
         // Using a DependencyProperty as the backing store for LabelWidth.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LabelWidthProperty =
-            DependencyProperty.Register("LabelWidth", typeof(GridLength), typeof(TextDisplayControl), new PropertyMetadata(GridLength.Auto, LabelWidthChangedCallback));
+            DependencyProperty.Register("LabelWidth", typeof(GridLength), typeof(TextDisplayVertControl), new PropertyMetadata(GridLength.Auto, LabelWidthChangedCallback));
 
         #endregion
 
@@ -32,7 +32,7 @@ namespace EZDMS.App
         /// <summary>
         /// Default constructor
         /// </summary>
-        public TextDisplayControl()
+        public TextDisplayVertControl()
         {
             InitializeComponent();
         }
@@ -51,7 +51,7 @@ namespace EZDMS.App
             try
             {
                 // Set the column definition width to the new value
-                (d as TextDisplayControl).LabelColumnDefinition.Width = (GridLength)e.NewValue;
+                (d as TextDisplayVertControl).LabelColumnDefinition.Width = (GridLength)e.NewValue;
             }
 
 // Making ex available for developer on break
@@ -62,7 +62,7 @@ namespace EZDMS.App
                 // Make developer aware of potential issue
                 Debugger.Break();
 
-                (d as TextDisplayControl).LabelColumnDefinition.Width = GridLength.Auto;
+                (d as TextDisplayVertControl).LabelColumnDefinition.Width = GridLength.Auto;
             }
         }
 

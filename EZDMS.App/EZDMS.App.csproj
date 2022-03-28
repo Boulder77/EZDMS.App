@@ -47,6 +47,7 @@
     <Reference Include="Microsoft.Windows.Shell, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Windows.Shell.3.0.1.0\lib\net40\Microsoft.Windows.Shell.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -97,8 +98,14 @@
     <Compile Include="Controls\Chat\ChatMessage\ChatMessageListItemControl.xaml.cs">
       <DependentUpon>ChatMessageListItemControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Display\TextDisplayControl.xaml.cs">
-      <DependentUpon>TextDisplayControl.xaml</DependentUpon>
+    <Compile Include="Controls\Display\TextDisplayHorizControl.xaml.cs">
+      <DependentUpon>TextDisplayHorizControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Display\TextDisplayVertControl.xaml.cs">
+      <DependentUpon>TextDisplayVertControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Input\ComboBoxSelectionControl.xaml.cs">
+      <DependentUpon>ComboBoxSelectionControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Input\PasswordEntryControl.xaml.cs">
       <DependentUpon>PasswordEntryControl.xaml</DependentUpon>
@@ -226,9 +233,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Display\TextDisplayControl.xaml">
+    <Page Include="Controls\Display\TextDisplayHorizControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Display\TextDisplayVertControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Input\ComboBoxSelectionControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Input\PasswordEntryControl.xaml">
       <Generator>MSBuild:Compile</Generator>
