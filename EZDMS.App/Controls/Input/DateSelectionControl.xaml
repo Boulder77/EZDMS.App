@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="EZDMS.App.ComboBoxSelectionControl"
+﻿<UserControl x:Class="EZDMS.App.DateSelectionControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:EZDMS.App"
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"     
              mc:Ignorable="d"
-             d:DataContext="{x:Static local:ComboBoxDisplayDesignModel.Instance}">
+             >
 
     <StackPanel>
 
@@ -19,11 +19,12 @@
                        FontFamily="{StaticResource LatoRegular}"
                        />
 
-         <!---->         
-        <ComboBox  ItemsSource="{Binding Items}"
-                   HorizontalContentAlignment="Center"
-                   FontFamily="{StaticResource LatoRegular}"
-                   />
-        
+         <!-- Date -->
+        <DatePicker SelectedDate="{Binding Date}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontFamily="{StaticResource LatoRegular}"
+                    />
+
     </StackPanel>
 </UserControl>

@@ -78,7 +78,9 @@
                     </Style>
                 </TabControl.Resources>
                 <TabItem  Header="Desking">
+                    
                     <Grid>
+                        
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
@@ -91,9 +93,8 @@
                             <RowDefinition Height="*"/>                            
                         </Grid.RowDefinitions>
                         
-                        
-                        
                     </Grid>
+                    
                 </TabItem>
                 <TabItem Header="Security" />
                 <TabItem Header="Details" />

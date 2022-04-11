@@ -104,14 +104,20 @@
     <Compile Include="Controls\Display\TextDisplayVertControl.xaml.cs">
       <DependentUpon>TextDisplayVertControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Input\DateSelectionControl.cs">
+      <DependentUpon>DateSelectionControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Input\ComboBoxSelectionControl.xaml.cs">
       <DependentUpon>ComboBoxSelectionControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Input\PasswordEntryControl.xaml.cs">
       <DependentUpon>PasswordEntryControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Input\TextEntryControl.xaml.cs">
-      <DependentUpon>TextEntryControl.xaml</DependentUpon>
+    <Compile Include="Controls\Input\TextEntryVertControl.cs">
+      <DependentUpon>TextEntryVertControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Input\TextEntryHorizControl.xaml.cs">
+      <DependentUpon>TextEntryHorizControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Menu\VerticalMenu.xaml.cs">
       <DependentUpon>VerticalMenu.xaml</DependentUpon>
@@ -172,9 +178,13 @@
     <Compile Include="ValueConverters\HorizontalAlignmentConverter.cs" />
     <Compile Include="ValueConverters\TimeToReadTimeConverter.cs" />
     <Compile Include="ViewModel\Application\Design\SalesFinanceInfoDesignModel.cs" />
+    <Compile Include="ViewModel\Application\SalesSummaryDetailsViewModel.cs" />
     <Compile Include="ViewModel\Application\SalesFinanceInfoViewModel.cs" />
     <Compile Include="ViewModel\Application\SalesRecallViewModel.cs" />
+    <Compile Include="ViewModel\Input\DateSelectionViewModel.cs" />
+    <Compile Include="ViewModel\Input\Design\ComboBoxDisplayDesignModel.cs" />
     <Compile Include="ViewModel\Input\Design\TextDisplayDesignModel.cs" />
+    <Compile Include="ViewModel\Input\ComboBoxSelectionViewModel.cs" />
     <Compile Include="ViewModel\Input\TextDisplayViewModel.cs" />
     <Compile Include="WebRequests\WebRequestResultExtensions.cs" />
     <Compile Include="WPFViewModels\DialogWindowViewModel.cs" />
@@ -241,6 +251,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\Input\DateSelectionControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\Input\ComboBoxSelectionControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -249,7 +263,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Input\TextEntryControl.xaml">
+    <Page Include="Controls\Input\TextEntryVertControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Input\TextEntryHorizControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

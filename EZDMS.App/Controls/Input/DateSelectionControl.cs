@@ -8,7 +8,7 @@ namespace EZDMS.App
     /// <summary>
     /// Interaction logic for ComboBoxSelectionControl.xaml
     /// </summary>
-    public partial class ComboBoxSelectionControl : UserControl
+    public partial class DateSelectionControl : UserControl
     {
         #region Dependency Properties
 
@@ -23,7 +23,7 @@ namespace EZDMS.App
 
         // Using a DependencyProperty as the backing store for LabelWidth.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LabelWidthProperty =
-            DependencyProperty.Register("LabelWidth", typeof(GridLength), typeof(ComboBoxSelectionControl), new PropertyMetadata(GridLength.Auto, LabelWidthChangedCallback));
+            DependencyProperty.Register("LabelWidth", typeof(GridLength), typeof(DateSelectionControl), new PropertyMetadata(GridLength.Auto, LabelWidthChangedCallback));
 
         #endregion
 
@@ -32,7 +32,7 @@ namespace EZDMS.App
         /// <summary>
         /// Default constructor
         /// </summary>
-        public ComboBoxSelectionControl()
+        public DateSelectionControl()
         {
             InitializeComponent();
         }
@@ -51,7 +51,7 @@ namespace EZDMS.App
             try
             {
                 // Set the column definition width to the new value
-                (d as ComboBoxSelectionControl).LabelWidth = (GridLength)e.NewValue;
+                (d as DateSelectionControl).LabelWidth = (GridLength)e.NewValue;
             }
 
             // Making ex available for developer on break
@@ -62,7 +62,7 @@ namespace EZDMS.App
                 // Make developer aware of potential issue
                 Debugger.Break();
 
-                (d as ComboBoxSelectionControl).LabelWidth = GridLength.Auto;
+                (d as DateSelectionControl).LabelWidth = GridLength.Auto;
             }
         }
 

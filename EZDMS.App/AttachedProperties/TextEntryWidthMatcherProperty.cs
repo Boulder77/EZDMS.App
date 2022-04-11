@@ -33,11 +33,11 @@ namespace EZDMS.App
                     // Set it's margin to the given value
 
                     // Ignore any non-text entry controls
-                    if (!(child is TextEntryControl) && !(child is PasswordEntryControl))
+                    if (!(child is TextEntryHorizControl) && !(child is PasswordEntryControl))
                         continue;
 
                     // Get the label from the text entry or password entry
-                    var label = child is TextEntryControl ? (child as TextEntryControl).Label : (child as PasswordEntryControl).Label;
+                    var label = child is TextEntryHorizControl ? (child as TextEntryHorizControl).Label : (child as PasswordEntryControl).Label;
 
                     label.SizeChanged += (ss, eee) =>
                     {
@@ -64,11 +64,11 @@ namespace EZDMS.App
             foreach (var child in panel.Children)
             {
                 // Ignore any non-text entry controls
-                if (!(child is TextEntryControl) && !(child is PasswordEntryControl))
+                if (!(child is TextEntryHorizControl) && !(child is PasswordEntryControl))
                     continue;
 
                 // Get the label from the text entry or password entry
-                var label = child is TextEntryControl ? (child as TextEntryControl).Label : (child as PasswordEntryControl).Label;
+                var label = child is TextEntryHorizControl ? (child as TextEntryHorizControl).Label : (child as PasswordEntryControl).Label;
 
                 // Find if this value is larger than the other controls
                 maxSize = Math.Max(maxSize, label.RenderSize.Width + label.Margin.Left + label.Margin.Right);
@@ -80,7 +80,7 @@ namespace EZDMS.App
             // For each child...
             foreach (var child in panel.Children)
             {
-                if (child is TextEntryControl text)
+                if (child is TextEntryHorizControl text)
                     // Set each controls LabelWidth value to the max size
                     text.LabelWidth = gridLength;
                 else if (child is PasswordEntryControl pass)

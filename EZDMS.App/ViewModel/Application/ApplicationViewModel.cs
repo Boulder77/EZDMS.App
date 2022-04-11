@@ -94,7 +94,6 @@ namespace EZDMS.App
         /// </summary>
         public ICommand OpenMediaCommand { get; set; }
 
-
         /// <summary>
         /// The command to change the page content to SalesRecallPage
         /// </summary>

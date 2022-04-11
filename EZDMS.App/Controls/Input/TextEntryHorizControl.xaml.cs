@@ -6,9 +6,9 @@ using System.Windows.Controls;
 namespace EZDMS.App
 {
     /// <summary>
-    /// Interaction logic for ComboBoxSelectionControl.xaml
+    /// Interaction logic for TextEntryControl.xaml
     /// </summary>
-    public partial class ComboBoxSelectionControl : UserControl
+    public partial class TextEntryHorizControl : UserControl
     {
         #region Dependency Properties
 
@@ -23,7 +23,7 @@ namespace EZDMS.App
 
         // Using a DependencyProperty as the backing store for LabelWidth.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LabelWidthProperty =
-            DependencyProperty.Register("LabelWidth", typeof(GridLength), typeof(ComboBoxSelectionControl), new PropertyMetadata(GridLength.Auto, LabelWidthChangedCallback));
+            DependencyProperty.Register("LabelWidth", typeof(GridLength), typeof(TextEntryHorizControl), new PropertyMetadata(GridLength.Auto, LabelWidthChangedCallback));
 
         #endregion
 
@@ -32,7 +32,7 @@ namespace EZDMS.App
         /// <summary>
         /// Default constructor
         /// </summary>
-        public ComboBoxSelectionControl()
+        public TextEntryHorizControl()
         {
             InitializeComponent();
         }
@@ -51,10 +51,10 @@ namespace EZDMS.App
             try
             {
                 // Set the column definition width to the new value
-                (d as ComboBoxSelectionControl).LabelWidth = (GridLength)e.NewValue;
+                (d as TextEntryHorizControl).LabelColumnDefinition.Width = (GridLength)e.NewValue;
             }
 
-            // Making ex available for developer on break
+// Making ex available for developer on break
 #pragma warning disable CS0168
             catch (Exception ex)
 #pragma warning restore CS0168
@@ -62,7 +62,7 @@ namespace EZDMS.App
                 // Make developer aware of potential issue
                 Debugger.Break();
 
-                (d as ComboBoxSelectionControl).LabelWidth = GridLength.Auto;
+                (d as TextEntryHorizControl).LabelColumnDefinition.Width = GridLength.Auto;
             }
         }
 

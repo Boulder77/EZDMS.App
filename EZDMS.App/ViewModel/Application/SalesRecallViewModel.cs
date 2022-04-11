@@ -25,15 +25,7 @@ namespace EZDMS.App
         /// </summary>
         private SalesDealRecallDataModel mSelectedDeal;
 
-
-
-
         #endregion
-
-
-
-
-
 
         public List<SalesDealRecallDataModel> Items { 
             
@@ -102,28 +94,12 @@ namespace EZDMS.App
         public async Task GetSalesRecallDealsAsync()
         {
 
-
-
-
             // Store single transcient instance of client data store
-
             await RunCommandAsync(() => SalesDealRecallPageLoading, async () =>
             {
                 Items = await ClientDataStore.GetSalesDealRecallsAsync();
             });
 
-
-
-            
-
-            
-
-
-
-
         }
-
-
     }
-
 }
