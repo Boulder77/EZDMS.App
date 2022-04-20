@@ -1,27 +1,27 @@
 ﻿namespace EZDMS.App.Core
 {
     /// <summary>
-    /// The types of icons to use within the application
+    /// The types of sales to use within the application
     /// </summary>
     public enum SaleType
     {
         /// <summary>
-        /// No icon
+        /// A retail sale
         /// </summary>
         Retail = 0,
 
         /// <summary>
-        /// A picture frame
+        /// A lease sale
         /// </summary>
         Lease = 1,
 
         /// <summary>
-        /// A file icon
+        /// A cash sale
         /// </summary>
         Cash = 2,
 
         /// <summary>
-        /// A file icon
+        /// A wholesale sale
         /// </summary>
         Wholesale = 3,
     }

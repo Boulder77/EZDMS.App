@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:EZDMS.App"
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"     
              mc:Ignorable="d"
-             d:DataContext="{x:Static local:ComboBoxDisplayDesignModel.Instance}">
+             >
 
     <StackPanel>
 

@@ -1,5 +1,6 @@
 ﻿using Dna;
 using EZDMS.App.Core;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -16,21 +17,26 @@ namespace EZDMS.App
         
         #region Public Properties
        
+        /// <summary>
+        /// The sale type of the sale deal
+        /// </summary>
+        public SaleType SelectedSaleType { get; set; }
+
+        public IEnumerable<SaleType> SaleTypes => (IEnumerable<SaleType>)Enum.GetValues(typeof(SaleType));
+
 
         /// <summary>
-        /// The current deal type
+        /// The US State/Territory of the deal
         /// </summary>
-        public ComboBoxSelectionViewModel DealType { get; set; }
+        public States SelectedState { get; set; }
 
-        /// <summary>
-        /// The current state of the sale
-        /// </summary>
-        public ComboBoxSelectionViewModel State { get; set; }
+
+        public IEnumerable<States> AllStates => (IEnumerable<States>)Enum.GetValues(typeof(States));
 
         /// <summary>
         /// The current lender of the sale
         /// </summary>
-        public ComboBoxSelectionViewModel Lender { get; set; }
+        public string Lender { get; set; }
 
         /// <summary>
         /// The APR of the sale
@@ -55,7 +61,9 @@ namespace EZDMS.App
         /// <summary>
         /// The payment schedule type of the sale
         /// </summary>
-        public ComboBoxSelectionViewModel PaymentType { get; set; }
+        public PaymentType SelectedPaymentType { get; set; }
+
+        public IEnumerable<PaymentType> PaymentTypes => (IEnumerable<PaymentType>)Enum.GetValues(typeof(PaymentType));
 
         /// <summary>
         /// The purchase date of the sale
@@ -82,15 +90,67 @@ namespace EZDMS.App
         /// </summary>
         public SalesSummaryDetailsViewModel()
         {
-            // Create Deal Type
-            DealType = new ComboBoxSelectionViewModel
+            // Create the APR
+            APR = new TextEntryViewModel
             {
-                
-                Label = "Deal Type",
-                
+                Label="APR",
+                OriginalText="0.00"
+
             };
-            DealType.Items.Add("Retail");
-            DealType.Items.Add("Lease");
+
+            // Create the APR
+            EffectiveAPR = new TextEntryViewModel
+            {
+                Label = "Effective APR",
+                OriginalText = "0.00"
+
+            };
+
+            // Create the trade difference
+            TradeDifference = new TextDisplayViewModel
+            {
+                Label = "Trade Difference",
+                DisplayText = "0.00"
+
+            };
+
+            // Create the term
+            Term = new TextEntryViewModel
+            {
+                Label = "Term",
+                OriginalText="48"
+
+            };
+
+            // Create the purchase date
+            PurchaseDate = new DateSelectionViewModel
+            {
+                Label = "Purchase Date",
+                Date = DateTime.Today
+            };
+
+            // Create the days to first payment
+            DaysToFirstPayment = new TextEntryViewModel
+            {
+                Label = "Days To First Payment",
+                OriginalText = "30"
+            };
+
+            // Create the payment date
+            PaymentDate = new DateSelectionViewModel
+            {
+                Label = "Payment Date",
+                Date = DateTime.Today.AddMonths(30)
+            };
+
+
+
+
+
+
+
+
+
 
 
 
