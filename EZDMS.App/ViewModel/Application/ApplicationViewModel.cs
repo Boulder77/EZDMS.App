@@ -60,6 +60,7 @@ namespace EZDMS.App
                 if (value)
                     // Reload settings
                     TaskManager.RunAndForget(ViewModelSettings.LoadAsync);
+        
             }
         }
 

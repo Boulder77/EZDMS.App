@@ -102,8 +102,7 @@ namespace EZDMS.App.Relational
 
         public Task<List<SalesDealRecallDataModel>> GetSalesDealRecallsAsync()
         {
-            // Gets all the sales          
-            
+            // Gets all the sales                      
             return Task.FromResult(mDbContext.SalesDealsList.ToList());
             
         }

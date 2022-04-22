@@ -51,6 +51,8 @@
     <system:String x:Key="FontAwesomePaperclipIcon">&#xf0c6;</system:String>
     <system:String x:Key="FontAwesomeEmojiIcon">&#xf118;</system:String>
     <system:String x:Key="FontAwesomeArrowLeftIcon">&#xf060;</system:String>
+    <system:String x:Key="FontAwesomeArrowUpIcon">&#xf062;</system:String>
+    <system:String x:Key="FontAwesomeArrowRightIcon">&#xf061;</system:String>
     <system:String x:Key="FontAwesomeTickIcon">&#xf00c;</system:String>
     <system:String x:Key="FontAwesomeCloseIcon">&#xf00d;</system:String>
     <system:String x:Key="FontAwesomeCustomersIcon">&#xf0c0;</system:String>
@@ -59,5 +61,6 @@
     <system:String x:Key="FontAwesomeSalesIcon">&#xf155;</system:String>
     <system:String x:Key="FontAwesomeSortDownIcon">&#xf107;</system:String>
     <system:String x:Key="FontAwesomeSortUpIcon">&#xf106;</system:String>
+    
     
 </ResourceDictionary>

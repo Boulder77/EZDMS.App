@@ -113,6 +113,15 @@
     <Compile Include="Controls\Input\PasswordEntryControl.xaml.cs">
       <DependentUpon>PasswordEntryControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Input\NumericalInputHorizControl.cs">
+      <DependentUpon>NumericalInputHorizControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Input\TextInputVertControl.cs">
+      <DependentUpon>TextInputVertControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Input\TextInputHorizControl.xaml.cs">
+      <DependentUpon>TextInputHorizControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Input\TextEntryVertControl.cs">
       <DependentUpon>TextEntryVertControl.xaml</DependentUpon>
     </Compile>
@@ -125,7 +134,10 @@
     <Compile Include="Controls\PageHost.xaml.cs">
       <DependentUpon>PageHost.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SalesSummaryDetails.xaml.cs">
+    <Compile Include="Controls\Sales\SalesDeskingControl.xaml.cs">
+      <DependentUpon>SalesDeskingControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Sales\SalesSummaryDetails.xaml.cs">
       <DependentUpon>SalesSummaryDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SettingsControl.xaml.cs">
@@ -149,7 +161,7 @@
       <DependentUpon>DialogWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\BasePage.cs" />
-    <Compile Include="Pages\SalesFinancePage.xaml.cs">
+    <Compile Include="Pages\Finance\SalesFinancePage.xaml.cs">
       <DependentUpon>SalesFinancePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ChatPage.xaml.cs">
@@ -180,15 +192,19 @@
     <Compile Include="ValueConverters\TimeToDisplayTimeConverter.cs" />
     <Compile Include="ValueConverters\HorizontalAlignmentConverter.cs" />
     <Compile Include="ValueConverters\TimeToReadTimeConverter.cs" />
+    <Compile Include="ViewModel\Application\Design\SalesDeskingInfoDesignModel.cs" />
     <Compile Include="ViewModel\Application\Design\SalesFinanceInfoDesignModel.cs" />
-    <Compile Include="ViewModel\Application\SalesSummaryDetailsViewModel.cs" />
-    <Compile Include="ViewModel\Application\SalesFinanceInfoViewModel.cs" />
-    <Compile Include="ViewModel\Application\SalesRecallViewModel.cs" />
+    <Compile Include="ViewModel\Application\Sales\SalesDeskingInfoViewModel.cs" />
+    <Compile Include="ViewModel\Application\Sales\SalesSummaryDetailsViewModel.cs" />
+    <Compile Include="ViewModel\Application\Sales\SalesFinanceInfoViewModel.cs" />
+    <Compile Include="ViewModel\Application\Sales\SalesRecallViewModel.cs" />
     <Compile Include="ViewModel\Input\DateSelectionViewModel.cs" />
     <Compile Include="ViewModel\Input\Design\ComboBoxDisplayDesignModel.cs" />
     <Compile Include="ViewModel\Input\Design\TextDisplayDesignModel.cs" />
     <Compile Include="ViewModel\Input\ComboBoxSelectionViewModel.cs" />
+    <Compile Include="ViewModel\Input\Design\NumericalEntryDesignModel.cs" />
     <Compile Include="ViewModel\Input\TextDisplayViewModel.cs" />
+    <Compile Include="ViewModel\Input\NumericalEntryViewModel.cs" />
     <Compile Include="WebRequests\WebRequestResultExtensions.cs" />
     <Compile Include="WPFViewModels\DialogWindowViewModel.cs" />
     <Compile Include="WPFViewModels\ViewModelLocator.cs" />
@@ -266,6 +282,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\Input\NumericalInputHorizControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Input\TextInputVertControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Input\TextInputHorizControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\Input\TextEntryVertControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -282,7 +310,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\SalesSummaryDetails.xaml">
+    <Page Include="Controls\Sales\SalesDeskingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Sales\SalesSummaryDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -306,7 +338,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\SalesFinancePage.xaml">
+    <Page Include="Pages\Finance\SalesFinancePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
