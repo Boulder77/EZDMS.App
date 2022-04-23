@@ -37,6 +37,15 @@ namespace EZDMS.App
         public bool Editing { get; set; }
 
         /// <summary>
+        /// Indicates if the current amount can be edited
+        /// </summary>
+        public bool Editable { get; set; } = false;
+
+        /// <summary>
+        /// Indicates if the current control is pending an update (in progress)
+        /// </summary>
+
+        /// <summary>
         /// Indicates if the current control is pending an update (in progress)
         /// </summary>
         public bool Working { get; set; }

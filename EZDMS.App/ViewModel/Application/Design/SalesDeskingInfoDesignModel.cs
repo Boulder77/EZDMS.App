@@ -23,22 +23,22 @@ namespace EZDMS.App
         /// </summary>
         public SalesDeskingInfoDesignModel()
         {
-            SellingPrice = new TextEntryViewModel { Label = "Selling Price", OriginalText = "56875.00" };
-            FrontOptions = new TextEntryViewModel { Label = "Front Options", OriginalText = "3197.00" };
-            Taxes = new TextEntryViewModel { Label = "Taxes", OriginalText = "4019.25" };
-            Fees = new TextEntryViewModel { Label = "Fees", OriginalText = "392.65" };
-            BackOptions = new TextEntryViewModel { Label = "Back Options", OriginalText = "2484.00" };
-            Service = new TextEntryViewModel { Label = "Service", OriginalText = "3740.00" };
-            Gap = new TextEntryViewModel { Label = "Gap", OriginalText = "895.00" };
-            CreditInsurance = new TextEntryViewModel { Label = "Credit Insurance", OriginalText = "7128.40" };
-            SubTotal = new TextEntryViewModel { Label = "SUBTOTAL", OriginalText = "78731.30" };
-            Cash = new TextEntryViewModel { Label = "Cash", OriginalText = "1800.00" };
-            Rebates = new TextEntryViewModel { Label = "Rebates", OriginalText = "1700.00" };
-            TradeAllowance = new TextEntryViewModel { Label = "Trade Allowance", OriginalText = "2400.00" };
-            TradePayoff = new TextEntryViewModel { Label = "Trade Payoff", OriginalText = "10500.00" };
-            Total = new TextEntryViewModel { Label = "TOTAL", OriginalText = "7873130" };
-            CashFromCustomer = new TextEntryViewModel { Label = "Cash From Customer", OriginalText = "1800.00" };
-            Payment = new TextEntryViewModel { Label = "Payment", OriginalText = "2034.36" };
+            SellingPrice = new NumericalEntryViewModel { Label = "Selling Price", OriginalAmount = 5687500 };
+            FrontOptions = new NumericalEntryViewModel { Label = "Front Options", OriginalAmount = 319700, Editable = true };
+            Taxes = new NumericalEntryViewModel { Label = "Taxes", OriginalAmount = 401925, Editable = true };
+            Fees = new NumericalEntryViewModel { Label = "Fees", OriginalAmount = 39265, Editable = true };
+            BackOptions = new NumericalEntryViewModel { Label = "Back Options", OriginalAmount = 248400, Editable = true };
+            Service = new NumericalEntryViewModel { Label = "Service", OriginalAmount = 374000, Editable = true };
+            Gap = new NumericalEntryViewModel { Label = "Gap", OriginalAmount = 89500, Editable = true };
+            CreditInsurance = new NumericalEntryViewModel { Label = "Credit Insurance", OriginalAmount = 712840, Editable = true };
+            SubTotal = new NumericalEntryViewModel { Label = "SUBTOTAL", OriginalAmount = 7873130 };
+            Cash = new NumericalEntryViewModel { Label = "Cash", OriginalAmount = 180000, Editable = true };
+            Rebates = new NumericalEntryViewModel { Label = "Rebates", OriginalAmount = 170000, Editable = true };
+            TradeAllowance = new NumericalEntryViewModel { Label = "Trade Allowance", OriginalAmount = 240000, Editable = true };
+            TradePayoff = new NumericalEntryViewModel { Label = "Trade Payoff", OriginalAmount = 1050000, Editable = true };
+            Total = new NumericalEntryViewModel { Label = "TOTAL", OriginalAmount = 7873130 };
+            CashFromCustomer = new NumericalEntryViewModel { Label = "Cash From Customer", OriginalAmount = 180000 };
+            Payment = new NumericalEntryViewModel { Label = "Payment", OriginalAmount = 203436 };
 
         }
 

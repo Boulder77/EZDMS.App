@@ -22,8 +22,9 @@
         public NumericalEntryDesignModel()
         {
             Label = "Selling Price";
-            OriginalAmount = 56875.00;            
+            OriginalAmount = 15687522;            
             EditedText = "Editing...";
+            Editable = true;
         }
 
         #endregion

@@ -47,82 +47,82 @@ namespace EZDMS.App
         /// <summary>
         /// The current selling price
         /// </summary>
-        public TextEntryViewModel SellingPrice { get; set; }
+        public NumericalEntryViewModel SellingPrice { get; set; }
 
         /// <summary>
         /// The current front options total amount
         /// </summary>
-        public TextEntryViewModel FrontOptions { get; set; }
+        public NumericalEntryViewModel FrontOptions { get; set; }
 
         /// <summary>
         /// The current taxes amount
         /// </summary>
-        public TextEntryViewModel Taxes { get; set; }
+        public NumericalEntryViewModel Taxes { get; set; }
 
         /// <summary>
         /// The current fees total amount
         /// </summary>
-        public TextEntryViewModel Fees { get; set; }
+        public NumericalEntryViewModel Fees { get; set; }
 
         /// <summary>
         /// The current back options total amount
         /// </summary>
-        public TextEntryViewModel BackOptions { get; set; }
+        public NumericalEntryViewModel BackOptions { get; set; }
 
         /// <summary>
         /// The current service/warranty/maintenance total amount
         /// </summary>
-        public TextEntryViewModel Service { get; set; }
+        public NumericalEntryViewModel Service { get; set; }
 
         /// <summary>
         /// The current gap amount
         /// </summary>
-        public TextEntryViewModel Gap { get; set; }
+        public NumericalEntryViewModel Gap { get; set; }
 
         /// <summary>
         /// The current credit insurance total amount
         /// </summary>
-        public TextEntryViewModel CreditInsurance { get; set; }
+        public NumericalEntryViewModel CreditInsurance { get; set; }
 
         /// <summary>
         /// The current subtotal amount
         /// </summary>
-        public TextEntryViewModel SubTotal { get; set; }
+        public NumericalEntryViewModel SubTotal { get; set; }
 
         /// <summary>
         /// The current cash total amount
         /// </summary>
-        public TextEntryViewModel Cash { get; set; }
+        public NumericalEntryViewModel Cash { get; set; }
 
         /// <summary>
         /// The current rebates total amount
         /// </summary>
-        public TextEntryViewModel Rebates { get; set; }
+        public NumericalEntryViewModel Rebates { get; set; }
 
         /// <summary>
         /// The current trade allowance amount
         /// </summary>
-        public TextEntryViewModel TradeAllowance { get; set; }
+        public NumericalEntryViewModel TradeAllowance { get; set; }
 
         /// <summary>
         /// The current trade payoff amount
         /// </summary>
-        public TextEntryViewModel TradePayoff { get; set; }
+        public NumericalEntryViewModel TradePayoff { get; set; }
 
         /// <summary>
         /// The cash due from customer amount
         /// </summary>
-        public TextEntryViewModel CashFromCustomer { get; set; }
+        public NumericalEntryViewModel CashFromCustomer { get; set; }
 
         /// <summary>
         /// The total sale amount
         /// </summary>
-        public TextEntryViewModel Total { get; set; }
+        public NumericalEntryViewModel Total { get; set; }
 
         /// <summary>
         /// The payment amount
         /// </summary>
-        public TextEntryViewModel Payment { get; set; }
+        public NumericalEntryViewModel Payment { get; set; }
 
         /// <summary>
         /// Indicates if the sales finance deal details are currently being loaded

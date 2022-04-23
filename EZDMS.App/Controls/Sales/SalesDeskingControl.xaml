@@ -10,11 +10,11 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="30" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="30" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -41,10 +41,62 @@
 
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <local:TextInputHorizControl DataContext="{Binding SellingPrice}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right"/>
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1"
+                    Orientation="Vertical"
+                    HorizontalAlignment="Stretch"
+                    Background="{StaticResource BackgroundLightBrush}"
+                    >
+            
+            <local:NumericalInputHorizControl DataContext="{Binding SellingPrice}"/>
+            <local:NumericalInputHorizControl DataContext="{Binding FrontOptions}"/>
+            <local:NumericalInputHorizControl DataContext="{Binding Taxes}"/>
+            <local:NumericalInputHorizControl DataContext="{Binding Fees}"/>
+            <local:NumericalInputHorizControl DataContext="{Binding BackOptions}"/>
+            <local:NumericalInputHorizControl DataContext="{Binding Service}"/>
+            <local:NumericalInputHorizControl DataContext="{Binding Gap}"/>
+            <local:NumericalInputHorizControl DataContext="{Binding CreditInsurance}"/>          
+            
+        </StackPanel>
+
+        <local:NumericalInputHorizControl
+               Grid.Row="2"
+               Grid.Column="1"
+               Grid.ColumnSpan="2"
+               DataContext="{Binding SubTotal}"/>
+
+        <StackPanel Grid.Row="3"
+                    Grid.Column="1"
+                    Orientation="Vertical"
+                    HorizontalAlignment="Stretch"
+                    Background="{StaticResource BackgroundLightBrush}"
+                    >
+
+            <local:NumericalInputHorizControl DataContext="{Binding Cash}"/>
+            <local:NumericalInputHorizControl DataContext="{Binding Rebates}"/>
+            <local:NumericalInputHorizControl DataContext="{Binding TradeAllowance}"/>
+            <local:NumericalInputHorizControl DataContext="{Binding TradePayoff}"/>            
 
         </StackPanel>
+
+        <local:NumericalInputHorizControl
+               Grid.Row="4"
+               Grid.Column="1"
+               Grid.ColumnSpan="2"
+               DataContext="{Binding Total}"/>
+
+        <local:NumericalInputHorizControl
+               Grid.Row="5"
+               Background="{StaticResource WordGreenBrush}"
+               Foreground="{StaticResource BackgroundVeryLightBrush}"
+               DataContext="{Binding CashFromCustomer}"/>
+
+        <local:NumericalInputHorizControl
+               Grid.Row="5"
+               Grid.Column="2"
+               Background="{StaticResource WordGreenBrush}"
+               Foreground="{StaticResource BackgroundVeryLightBrush}"
+               DataContext="{Binding Payment}"/>
 
     </Grid>
 </UserControl>
