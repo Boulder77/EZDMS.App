@@ -6,8 +6,9 @@
              xmlns:local="clr-namespace:EZDMS.App"
              d:DataContext="{x:Static local:SalesDeskingInfoDesignModel.Instance}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+             d:DesignHeight="470" d:DesignWidth="800">
+    <Grid Background="{StaticResource BackgroundLightBrush}">
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
             <RowDefinition Height="Auto" />
@@ -19,33 +20,27 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="400" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-                
-        <Label Content="Inception" HorizontalContentAlignment="Right" Background="{StaticResource ForegroundDarkBrush}"/>
-        
-        <Label Content="Financed" Grid.Column="2" Background="{StaticResource ForegroundDarkBrush}"/>
 
-        <StackPanel Grid.Row="1" 
-                    
-                    Background="{StaticResource BackgroundLightBrush}"
+
+        <Label Background="{StaticResource ForegroundDarkBrush}" Grid.ColumnSpan="3"/>
+        <Label Content="Inception" HorizontalContentAlignment="Right"/>
+        
+        <Label Content="Financed" Grid.Column="2"/>
+
+        <StackPanel Grid.Row="1"                                         
                     Orientation="Vertical"
                     >
-            <Label Content="$0.00" HorizontalContentAlignment="Right"/>
-            <Label Content="$0.00" HorizontalContentAlignment="Right"/>
-            <Label Content="$0.00" HorizontalContentAlignment="Right"/>
-            <Label Content="$0.00" HorizontalContentAlignment="Right"/>
-            <Label Content="$0.00" HorizontalContentAlignment="Right"/>
-            <Label Content="$0.00" HorizontalContentAlignment="Right"/>
-
+            
         </StackPanel>
 
         <StackPanel Grid.Row="1"
                     Grid.Column="1"
                     Orientation="Vertical"
                     HorizontalAlignment="Stretch"
-                    Background="{StaticResource BackgroundLightBrush}"
+                    Background="{StaticResource BackgroundVeryLightBrush}"
                     >
             
             <local:NumericalInputHorizControl DataContext="{Binding SellingPrice}"/>
@@ -59,17 +54,23 @@
             
         </StackPanel>
 
-        <local:NumericalInputHorizControl
+        <Label Grid.Row="2"
+               Grid.ColumnSpan="3"
+               Background="{StaticResource ForegroundDarkBrush}"/>
+        
+        <local:NumericalDisplayHorizControl
                Grid.Row="2"
                Grid.Column="1"
                Grid.ColumnSpan="2"
+               HorizontalAlignment="Stretch"               
+               Padding="130,0,5,0"              
                DataContext="{Binding SubTotal}"/>
 
         <StackPanel Grid.Row="3"
                     Grid.Column="1"
                     Orientation="Vertical"
                     HorizontalAlignment="Stretch"
-                    Background="{StaticResource BackgroundLightBrush}"
+                    Background="{StaticResource BackgroundVeryLightBrush}"
                     >
 
             <local:NumericalInputHorizControl DataContext="{Binding Cash}"/>
@@ -79,21 +80,26 @@
 
         </StackPanel>
 
-        <local:NumericalInputHorizControl
+        <Label Grid.Row="4"
+               Grid.ColumnSpan="3"
+               Background="{StaticResource ForegroundDarkBrush}"/>
+
+        <local:NumericalDisplayHorizControl
                Grid.Row="4"
                Grid.Column="1"
                Grid.ColumnSpan="2"
+               Padding="130,0,5,0" 
                DataContext="{Binding Total}"/>
 
-        <local:NumericalInputHorizControl
-               Grid.Row="5"
+        <local:NumericalDisplayVertControl
+               Grid.Row="5"            
                Background="{StaticResource WordGreenBrush}"
                Foreground="{StaticResource BackgroundVeryLightBrush}"
                DataContext="{Binding CashFromCustomer}"/>
 
-        <local:NumericalInputHorizControl
+        <local:NumericalDisplayVertControl
                Grid.Row="5"
-               Grid.Column="2"
+               Grid.Column="2"               
                Background="{StaticResource WordGreenBrush}"
                Foreground="{StaticResource BackgroundVeryLightBrush}"
                DataContext="{Binding Payment}"/>

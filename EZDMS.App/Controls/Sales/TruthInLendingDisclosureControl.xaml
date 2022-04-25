@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="EZDMS.App.TruthInLendingDisclosureControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EZDMS.App"
+             mc:Ignorable="d" 
+             d:DataContext="{x:Static local:TruthInLendingDisclosureDesignModel.Instance}"
+             d:DesignHeight="230" d:DesignWidth="400">
+    <Border Background="{StaticResource BackgroundVeryLightBrush}"
+            Padding="5"
+            CornerRadius="10">
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="0.5" Opacity="0.2" />
+        </Border.Effect>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />                
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />                
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Truth in Lending"
+                            Background="{StaticResource WordBlueBrush}"
+                            Foreground="{StaticResource ForegroundLightBrush}"
+                   />
+
+            <StackPanel Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Stretch"
+                        Margin="0,20,0,0">
+
+                <local:NumericalDisplayHorizControl Background="{StaticResource WordVeryVeryLightBlueBrush}" DataContext="{Binding Payments}" />
+                <local:NumericalDisplayHorizControl DataContext="{Binding FinalPayment}" />
+                <local:NumericalDisplayHorizControl Background="{StaticResource WordVeryVeryLightBlueBrush}" DataContext="{Binding FinanceCharge}" />
+                <local:NumericalDisplayHorizControl DataContext="{Binding TotalOfPayments}" />
+                <local:NumericalDisplayHorizControl Background="{StaticResource WordVeryVeryLightBlueBrush}" DataContext="{Binding TotalDown}" />
+                <local:NumericalDisplayHorizControl DataContext="{Binding TotalSalePrice}" />               
+
+            </StackPanel>
+
+
+        </Grid>
+        
+    </Border>
+</UserControl>

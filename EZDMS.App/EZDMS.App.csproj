@@ -98,6 +98,12 @@
     <Compile Include="Controls\Chat\ChatMessage\ChatMessageListItemControl.xaml.cs">
       <DependentUpon>ChatMessageListItemControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Display\NumericalDisplayVertControl.cs">
+      <DependentUpon>NumericalDisplayVertControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Display\NumericalDisplayHorizControl.cs">
+      <DependentUpon>NumericalDisplayHorizControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Display\TextDisplayHorizControl.xaml.cs">
       <DependentUpon>TextDisplayHorizControl.xaml</DependentUpon>
     </Compile>
@@ -137,8 +143,11 @@
     <Compile Include="Controls\Sales\SalesDeskingControl.xaml.cs">
       <DependentUpon>SalesDeskingControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Sales\SalesSummaryDetails.xaml.cs">
-      <DependentUpon>SalesSummaryDetails.xaml</DependentUpon>
+    <Compile Include="Controls\Sales\SalesSummaryDetailsControl.xaml.cs">
+      <DependentUpon>SalesSummaryDetailsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Sales\TruthInLendingDisclosureControl.xaml.cs">
+      <DependentUpon>TruthInLendingDisclosureControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SettingsControl.xaml.cs">
       <DependentUpon>SettingsControl.xaml</DependentUpon>
@@ -193,8 +202,11 @@
     <Compile Include="ValueConverters\TimeToDisplayTimeConverter.cs" />
     <Compile Include="ValueConverters\HorizontalAlignmentConverter.cs" />
     <Compile Include="ValueConverters\TimeToReadTimeConverter.cs" />
+    <Compile Include="ViewModel\Application\Design\TruthInLendingDisclosureDesignModel.cs" />
+    <Compile Include="ViewModel\Application\Design\SalesSummaryDetailsDesignModel.cs" />
     <Compile Include="ViewModel\Application\Design\SalesDeskingInfoDesignModel.cs" />
     <Compile Include="ViewModel\Application\Design\SalesFinanceInfoDesignModel.cs" />
+    <Compile Include="ViewModel\Application\Sales\TruthinLendingDisclosureViewModel.cs" />
     <Compile Include="ViewModel\Application\Sales\SalesDeskingInfoViewModel.cs" />
     <Compile Include="ViewModel\Application\Sales\SalesSummaryDetailsViewModel.cs" />
     <Compile Include="ViewModel\Application\Sales\SalesFinanceInfoViewModel.cs" />
@@ -263,6 +275,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Display\NumericalDisplayVertControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Display\NumericalDisplayHorizControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\Display\TextDisplayHorizControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -315,7 +335,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Sales\SalesSummaryDetails.xaml">
+    <Page Include="Controls\Sales\SalesSummaryDetailsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Sales\TruthInLendingDisclosureControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

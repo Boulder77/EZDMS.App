@@ -36,7 +36,7 @@ namespace EZDMS.App
             Rebates = new NumericalEntryViewModel { Label = "Rebates", OriginalAmount = 170000, Editable = true };
             TradeAllowance = new NumericalEntryViewModel { Label = "Trade Allowance", OriginalAmount = 240000, Editable = true };
             TradePayoff = new NumericalEntryViewModel { Label = "Trade Payoff", OriginalAmount = 1050000, Editable = true };
-            Total = new NumericalEntryViewModel { Label = "TOTAL", OriginalAmount = 7873130 };
+            Total = new NumericalEntryViewModel { Label = "TOTAL", OriginalAmount = 8333130 };
             CashFromCustomer = new NumericalEntryViewModel { Label = "Cash From Customer", OriginalAmount = 180000 };
             Payment = new NumericalEntryViewModel { Label = "Payment", OriginalAmount = 203436 };
 
