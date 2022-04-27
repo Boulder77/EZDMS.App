@@ -78,22 +78,10 @@
                     </Style>
                 </TabControl.Resources>
                 <TabItem  Header="Desking">
-                    
-                    <Grid>
-                        
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>                            
-                        </Grid.RowDefinitions>
-                        
-                    </Grid>
+                    <Page>
+                        <local:DeskingPage/>
+                    </Page> 
+                   
                     
                 </TabItem>
                 <TabItem Header="Security" />

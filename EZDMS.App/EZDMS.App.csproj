@@ -170,6 +170,9 @@
       <DependentUpon>DialogWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Pages\Finance\DeskingPage.xaml.cs">
+      <DependentUpon>DeskingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Finance\SalesFinancePage.xaml.cs">
       <DependentUpon>SalesFinancePage.xaml</DependentUpon>
     </Compile>
@@ -362,6 +365,10 @@
     <Page Include="DialogWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Finance\DeskingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Finance\SalesFinancePage.xaml">
       <Generator>MSBuild:Compile</Generator>

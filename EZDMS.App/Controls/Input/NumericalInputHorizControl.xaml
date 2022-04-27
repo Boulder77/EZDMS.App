@@ -15,12 +15,12 @@
 
         <Grid Background="Transparent">
 
-            <!-- Double click to edit -->
+            <!-- Double click to edit --><!--
             <Grid.InputBindings>
                 <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding EditCommand}" />
             </Grid.InputBindings>
 
-            <!-- Hover over to show edit button -->
+            --><!-- Hover over to show edit button --><!--
             <Grid.Triggers>
                 <EventTrigger RoutedEvent="MouseEnter">
                     <BeginStoryboard>
@@ -42,7 +42,7 @@
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
-            </Grid.Triggers>
+            </Grid.Triggers>-->
 
             <!-- Label -> Name* -> Buttons -->
             <Grid.ColumnDefinitions>
@@ -81,10 +81,11 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="$" HorizontalAlignment="Left" />                
                     <TextBlock Grid.Column="1" Text="{Binding OriginalAmount, Converter={local:DoubleToDisplayMoneyConverter}}"                       
-                       local:AnimateFadeInProperty.Value="{Binding Editing, Converter={local:BooleanInvertConverter}}"
-                       HorizontalAlignment="Right"                                                                   
-                       ToolTip="{Binding OriginalAmount}"
-                       />
+                               local:AnimateFadeInProperty.Value="{Binding Editing, Converter={local:BooleanInvertConverter}}"
+                               HorizontalAlignment="Right"
+                               IsEnabled="{Binding Editable, Converter={local:BooleanToVisiblityGoneConverter}}"
+                               ToolTip="{Binding OriginalAmount}"
+                                />
             </Grid>
             
 
