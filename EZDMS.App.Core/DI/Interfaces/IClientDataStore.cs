@@ -47,11 +47,17 @@ namespace EZDMS.App.Core
         Task<List<SalesDealRecallDataModel>> GetSalesDealRecallsAsync();
 
         /// <summary>
+        /// Gets a single sales record
+        /// </summary>
+        /// <returns></returns>
+        Task<SalesFinanceDataModel> GetSalesFinanceDealAsync(int dealNumber);
+
+        /// <summary>
         /// add new record to a data store table
         /// </summary>
         /// <param name="mDataModel">the datamodel to add</param>
         /// <param name="type">the type of DbTable</param>
         /// <returns></returns>
-        Task AddNewSalesRecordAsync(object mDataModel, DbTableType type);
+        Task AddNewSalesRecordAsync(object mDataModel, DbTableNames type);
     }
 }

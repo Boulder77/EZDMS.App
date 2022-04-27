@@ -19,12 +19,12 @@ namespace EZDMS.App
         /// <summary>
         /// The current saved amount
         /// </summary>
-        public double OriginalAmount { get; set; }
+        public decimal OriginalAmount { get; set; }
 
         /// <summary>
         /// The current non-commit edited amount
         /// </summary>
-        public double EditedAmount { get; set; }
+        public decimal EditedAmount { get; set; }
 
         /// <summary>
         /// The current non-commit edited amount to text

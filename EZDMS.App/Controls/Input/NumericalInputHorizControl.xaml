@@ -80,7 +80,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="$" HorizontalAlignment="Left" />                
-                    <TextBlock Grid.Column="1" Text="{Binding OriginalAmount, Converter={local:DoubleToDisplayMoneyConverter}}"                       
+                    <TextBlock Grid.Column="1" Text="{Binding OriginalAmount, Converter={local:DecimalToDisplayMoneyConverter}}"                       
                                local:AnimateFadeInProperty.Value="{Binding Editing, Converter={local:BooleanInvertConverter}}"
                                HorizontalAlignment="Right"
                                IsEnabled="{Binding Editable, Converter={local:BooleanToVisiblityGoneConverter}}"

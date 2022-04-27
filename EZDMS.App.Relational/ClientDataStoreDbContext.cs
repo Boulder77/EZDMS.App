@@ -23,7 +23,7 @@ namespace EZDMS.App.Relational
         /// <summary>
         /// The sales finance info table
         /// </summary>
-        public DbSet<SalesFinanceDataModel> SalesFinanceInfo { get; set; }
+        public DbSet<SalesFinanceDataModel> SalesFinance { get; set; }
 
         #endregion
 

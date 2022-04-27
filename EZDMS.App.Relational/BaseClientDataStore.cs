@@ -96,6 +96,14 @@ namespace EZDMS.App.Relational
             await mDbContext.SaveChangesAsync();
         }
 
+        public Task<SalesFinanceDataModel> GetSalesFinanceDealAsync(int dealNumber)
+        {
+            // Gets a single sales record
+            return Task.FromResult(mDbContext.SalesFinance.SingleOrDefault(u=> u.DealNumber==dealNumber));
+
+        }
+
+
         /// <summary>
         /// Returns all records in SearchDeals table
         /// </summary>
@@ -107,7 +115,7 @@ namespace EZDMS.App.Relational
             
         }
 
-        public async Task AddNewSalesRecordAsync(object mDataModel, DbTableType type)
+        public async Task AddNewSalesRecordAsync(object mDataModel, DbTableNames type)
         {
             // return if no data model
             if (mDataModel == null)
@@ -116,18 +124,18 @@ namespace EZDMS.App.Relational
             switch (type)
             {
                 // Add new login entry
-                case DbTableType.LoginCredentials:
+                case DbTableNames.LoginCredentials:
                     mDbContext.LoginCredentials.Add(mDataModel as LoginCredentialsDataModel);
                     break;
                                     
-                case DbTableType.SalesDealsList:
+                case DbTableNames.SalesDealsList:
                     // Add new sales deals list entry
                     mDbContext.SalesDealsList.Add(mDataModel as SalesDealRecallDataModel);
                     break;
 
-                case DbTableType.SalesFinanceInfo:
+                case DbTableNames.SalesFinance:
                     //Add new sales finance entry
-                    mDbContext.SalesFinanceInfo.Add(mDataModel as SalesFinanceDataModel);
+                    mDbContext.SalesFinance.Add(mDataModel as SalesFinanceDataModel);
                     break;
 
                 default:

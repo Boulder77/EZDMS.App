@@ -67,7 +67,7 @@ namespace EZDMS.App
             MonitorServerStatus();
 
             // Load new settings
-            //TaskManager.RunAndForget(ViewModelSettings.LoadAsync);
+            TaskManager.RunAndForget(ViewModelSettings.LoadAsync);
         }
 
         /// <summary>

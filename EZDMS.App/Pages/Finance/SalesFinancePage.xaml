@@ -84,8 +84,8 @@
                    
                     
                 </TabItem>
-                <TabItem Header="Security" />
-                <TabItem Header="Details" />
+                <TabItem Header="Buyer" />
+                <TabItem Header="Vehicle" />
             </TabControl>
 
         </Grid>

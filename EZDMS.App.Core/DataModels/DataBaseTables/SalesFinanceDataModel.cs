@@ -38,9 +38,9 @@ namespace EZDMS.App.Core
         public decimal APR { get; set; }
 
         /// <summary>
-        /// The full APR for this sales record
+        /// The effective APR for this sales record
         /// </summary>
-        public decimal FullAPR { get; set; }
+        public decimal EffectiveAPR { get; set; }
 
         /// <summary>
         /// The term in months for this sales record
@@ -58,12 +58,12 @@ namespace EZDMS.App.Core
         public decimal TotalOfPayments { get; set; }
 
         /// <summary>
-        /// The monthly payment for this sales record
+        /// The payment amount for this sales record
         /// </summary>
-        public decimal MonthlyPayment { get; set; }
+        public decimal Payment { get; set; }
 
         /// <summary>
-        /// The last payment for this sales record
+        /// The last payment amount for this sales record
         /// </summary>
         public decimal LastPayment { get; set; }
 
@@ -208,9 +208,9 @@ namespace EZDMS.App.Core
         public string ROSNumber { get; set; }
 
         /// <summary>
-        /// The finalized flag for this sales record
+        /// The finalized boolean for this sales record
         /// </summary>
-        public bool FinalizedYN { get; set; }
+        public bool IsFinalized { get; set; }
 
         /// <summary>
         /// The finalized date for this sales record

@@ -1,23 +1,23 @@
 ﻿namespace EZDMS.App.Core
 {
     /// <summary>
-    /// The types of icons to use within the application
+    /// The table names for the ezdms database
     /// </summary>
-    public enum DbTableType
+    public enum DbTableNames
     {
         /// <summary>
-        /// No icon
+        /// The login credentials table
         /// </summary>
         LoginCredentials = 0,
 
         /// <summary>
-        /// A picture frame
+        /// The SalesDealList
         /// </summary>
         SalesDealsList = 1,
 
         /// <summary>
-        /// A file icon
+        /// The SalesFinance table
         /// </summary>
-        SalesFinanceInfo = 2,
+        SalesFinance = 2,
     }
 }

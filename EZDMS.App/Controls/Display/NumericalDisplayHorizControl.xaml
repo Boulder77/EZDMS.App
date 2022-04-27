@@ -37,7 +37,7 @@
                         HorizontalAlignment="Right"
                         >
                 <TextBlock Text="$" HorizontalAlignment="Left" />                
-                    <TextBlock Grid.Column="1" Text="{Binding OriginalAmount, Converter={local:DoubleToDisplayMoneyConverter}}"                                             
+                    <TextBlock Grid.Column="1" Text="{Binding OriginalAmount, Converter={local:DecimalToDisplayMoneyConverter}}"                                             
                        HorizontalAlignment="Right"                                                                   
                        ToolTip="{Binding OriginalAmount}"
                        />
