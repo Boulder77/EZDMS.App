@@ -28,6 +28,12 @@ namespace EZDMS.App
         /// </summary>
         public static SalesSummaryDetailsViewModel ViewModelSalesSummary => Framework.Service<SalesSummaryDetailsViewModel>();
 
+
+        /// <summary>
+        /// A shortcut to access the <see cref="SalesSummaryDetailsViewModel"/>
+        /// </summary>
+        public static SalesDeskingInfoViewModel ViewModelSalesDesking => Framework.Service<SalesDeskingInfoViewModel>();
+
         /// <summary>
         /// A shortcut to access toe <see cref="IClientDataStore"/> service
         /// </summary>

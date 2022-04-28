@@ -48,7 +48,7 @@ namespace EZDMS.App
         /// <summary>
         /// The current working sales deal number
         /// </summary>
-        public int WorkingDealNumber { get; set; }
+        public int DealNumber { get; set; }
 
         /// <summary>
         /// The current selling price
@@ -186,7 +186,7 @@ namespace EZDMS.App
                                     
 
 
-            WorkingDealNumber = WorkingDeal.DealNumber;
+            DealNumber = WorkingDeal.DealNumber;
             SellingPrice = new NumericalEntryViewModel { Label = "Selling Price", OriginalAmount = WorkingDeal.SellingPrice };
             FrontOptions = new NumericalEntryViewModel { Label = "Front Options", OriginalAmount = WorkingDeal.TotalFrontAdds, Editable = true };
             Taxes = new NumericalEntryViewModel { Label = "Taxes", OriginalAmount = WorkingDeal.TotalTaxes, Editable = true };
