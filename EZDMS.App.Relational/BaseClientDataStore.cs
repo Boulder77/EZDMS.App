@@ -99,10 +99,22 @@ namespace EZDMS.App.Relational
         public Task<SalesFinanceDataModel> GetSalesFinanceDealAsync(int dealNumber)
         {
             // Gets a single sales record
-            return Task.FromResult(mDbContext.SalesFinance.SingleOrDefault(u=> u.DealNumber==dealNumber));
+            return Task.FromResult(mDbContext.SalesFinance.FirstOrDefault(u=> u.DealNumber==dealNumber));
 
         }
 
+
+        public Task<SalesFinanceDataModel> CreateSalesFinanceDeal()
+        {
+            var mDataModel = new SalesFinanceDataModel();
+            // Gets a single sales record
+            mDbContext.SalesFinance.Add(mDataModel);
+            mDbContext.SaveChanges();
+
+            return Task.FromResult(mDataModel);
+
+
+        }
 
         /// <summary>
         /// Returns all records in SearchDeals table
@@ -145,6 +157,7 @@ namespace EZDMS.App.Relational
             
             // Save changes
             await mDbContext.SaveChangesAsync();
+
         }
 
         #endregion

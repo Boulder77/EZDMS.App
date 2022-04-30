@@ -110,7 +110,7 @@ namespace EZDMS.App.Core
         /// <summary>
         /// The days to first payment for this sales record
         /// </summary>
-        public int DaysToFirstPayment { get; set; }
+        public int DaysTo1stPayment { get; set; }
 
         /// <summary>
         /// The gap amount for this sales record

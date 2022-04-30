@@ -59,5 +59,13 @@ namespace EZDMS.App.Core
         /// <param name="type">the type of DbTable</param>
         /// <returns></returns>
         Task AddNewSalesRecordAsync(object mDataModel, DbTableNames type);
+
+        /// <summary>
+        /// add new record to sales finance table and returns record
+        /// </summary>
+        /// <param name="mDataModel">the datamodel to add</param>
+        /// <param name="type">the type of DbTable</param>
+        /// <returns>new SalesFinanceDataModel</returns>
+        Task<SalesFinanceDataModel> CreateSalesFinanceDeal();
     }
 }

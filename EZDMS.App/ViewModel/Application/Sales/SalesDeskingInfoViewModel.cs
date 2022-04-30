@@ -182,9 +182,7 @@ namespace EZDMS.App
             mTotal = mSubtotal
                     - WorkingDeal.TotalRebates
                     - WorkingDeal.TotalNetAllowance
-                    - WorkingDeal.TotalCashDown;
-                                    
-
+                    - WorkingDeal.TotalCashDown;            
 
             DealNumber = WorkingDeal.DealNumber;
             SellingPrice = new NumericalEntryViewModel { Label = "Selling Price", OriginalAmount = WorkingDeal.SellingPrice };
@@ -204,11 +202,7 @@ namespace EZDMS.App
             CashFromCustomer = new NumericalEntryViewModel { Label = "Cash From Customer", OriginalAmount = WorkingDeal.TotalCashDown };
             Payment = new NumericalEntryViewModel { Label = "Payment", OriginalAmount = WorkingDeal.Payment };
 
-
-
         }
-
-
 
     }
 

@@ -11,7 +11,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       >
 
-    <Grid >
+    <Grid Background="{StaticResource BackgroundLightBrush}" >
         <Grid.RowDefinitions>
 
             <!-- Title bar -->
@@ -32,6 +32,31 @@
 
         </Grid.ColumnDefinitions>
 
+        <Border Grid.Column="1"
+                CornerRadius="10"
+                Margin="5"
+                
+                Background="{StaticResource ForegroundLightBrush}">
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="5,0,5,0"
+                        HorizontalAlignment="Right">
+
+                <Button Content="New Deal"
+                        Padding="5"                                                
+                        Command="{Binding NewDealCommand}"
+                        CommandParameter="{Binding ElementName=Page}" 
+                        Background="{StaticResource ForegroundLightBrush}"
+                        Foreground="{StaticResource WordDarkBlueBrush}"
+                        BorderBrush="{StaticResource WordDarkBlueBrush}"
+                        BorderThickness="1.5"
+                        FontSize="{StaticResource FontSizeRegular}"
+                        />
+                
+            </StackPanel>
+            
+        </Border>
+        
         <!-- Working spinner container -->
         <StackPanel VerticalAlignment="Top"  Grid.Row="1" Grid.ColumnSpan="2"  Background="Transparent"                     
                   Visibility="{Binding SalesDealRecallPageLoading, 
@@ -56,11 +81,14 @@
             </Border>
 
         </StackPanel>
+        
+        
 
         <!-- Login main content white box -->
         <Border Background="{StaticResource ForegroundLightBrush}" 
                             CornerRadius="10"
-                            Padding="15 30 15 15"                           
+                            Margin="5"
+                            Padding="10 30 15 10"                           
                             Visibility="{Binding SalesDealRecallPageLoading, 
                                         Converter={local:BooleanToVisiblityConverter}}"
                             Grid.Column="1" Grid.Row="1" 

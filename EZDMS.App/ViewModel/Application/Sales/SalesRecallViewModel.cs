@@ -26,9 +26,12 @@ namespace EZDMS.App
         private SalesDealRecallDataModel mSelectedDeal;
 
         #endregion
+        
+        #region Public Properties
 
-        public List<SalesDealRecallDataModel> Items { 
-            
+        public List<SalesDealRecallDataModel> Items
+        {
+
             get => mItems;
             set
             {
@@ -54,23 +57,43 @@ namespace EZDMS.App
         /// <summary>
         /// The deal number selected from the list
         /// </summary>
-        public SalesDealRecallDataModel SelectedDeal 
-        { get => mSelectedDeal;
+        public SalesDealRecallDataModel SelectedDeal
+        {
+            get => mSelectedDeal;
             set
             {
                 if (mSelectedDeal == value)
                     return;
-                
-                mSelectedDeal = value;                
+
+                mSelectedDeal = value;
             }
         }
 
 
+        public SalesFinanceDataModel SalesDeal { get; set; }
 
         /// <summary>
         /// Indicates if the settings details are currently being loaded
         /// </summary>
         public bool SalesDealRecallPageLoading { get; set; }
+
+        #endregion
+
+        #region Public Commands
+
+        /// <summary>
+        /// The command to create a new deal
+        /// </summary>
+        public ICommand NewDealCommand { get; set; }
+
+        /// <summary>
+        /// The command to recall a saved deal
+        /// </summary>
+        public ICommand RecallDealCommand { get; set; }
+              
+        #endregion
+
+        
 
 
 
@@ -82,6 +105,7 @@ namespace EZDMS.App
         public SalesRecallViewModel()
         {
             // Create commands
+            NewDealCommand = new RelayCommand(async () => await CreateNewSalesDealAsync());
 
             Task.Run(GetSalesRecallDealsAsync);
 
@@ -101,5 +125,31 @@ namespace EZDMS.App
             });
 
         }
+
+        public async Task CreateNewSalesDealAsync()
+        {
+
+            SalesDeal = await ClientDataStore.CreateSalesFinanceDeal();
+            
+            // Add a new record to the SalesFinance table
+       
+            await ClientDataStore.AddNewSalesRecordAsync(SalesDeal,DbTableNames.SalesFinance);
+       
+
+            // Get the new deal number
+
+
+            // Create new instance of sales desking view model
+
+
+            // Go to sales desking page
+
+
+
+        }
+
     }
+
+
+
 }
