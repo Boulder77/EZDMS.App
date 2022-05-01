@@ -13,7 +13,7 @@
         /// <summary>
         /// The SalesDealList
         /// </summary>
-        SalesDealsList = 1,
+        SalesDealsInfo = 1,
 
         /// <summary>
         /// The SalesFinance table

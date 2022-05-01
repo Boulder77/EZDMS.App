@@ -18,18 +18,18 @@ namespace EZDMS.App
         /// <summary>
         /// The sales search deals items for the list
         /// </summary>
-        protected List<SalesDealRecallDataModel> mItems;
+        protected List<SalesDealsItemDataModel> mItems;
 
         /// <summary>
         /// The deal number selected from the list
         /// </summary>
-        private SalesDealRecallDataModel mSelectedDeal;
+        private SalesDealsItemDataModel mSelectedDeal;
 
         #endregion
         
         #region Public Properties
 
-        public List<SalesDealRecallDataModel> Items
+        public List<SalesDealsItemDataModel> Items
         {
 
             get => mItems;
@@ -43,8 +43,7 @@ namespace EZDMS.App
                 mItems = value;
 
                 // Update filtered list to match
-                FilteredItems = new ObservableCollection<SalesDealRecallDataModel>(mItems);
-
+                FilteredItems = new ObservableCollection<SalesDealsItemDataModel>(mItems);
 
             }
         }
@@ -52,12 +51,12 @@ namespace EZDMS.App
         /// <summary>
         /// The chat thread items for the list that include any search filtering
         /// </summary>
-        public ObservableCollection<SalesDealRecallDataModel> FilteredItems { get; set; }
+        public ObservableCollection<SalesDealsItemDataModel> FilteredItems { get; set; }
 
         /// <summary>
         /// The deal number selected from the list
         /// </summary>
-        public SalesDealRecallDataModel SelectedDeal
+        public SalesDealsItemDataModel SelectedDeal
         {
             get => mSelectedDeal;
             set
@@ -129,17 +128,12 @@ namespace EZDMS.App
         public async Task CreateNewSalesDealAsync()
         {
 
-            SalesDeal = await ClientDataStore.CreateSalesFinanceDeal();
-            
             // Add a new record to the SalesFinance table
-       
-            await ClientDataStore.AddNewSalesRecordAsync(SalesDeal,DbTableNames.SalesFinance);
-       
-
-            // Get the new deal number
-
-
+            SalesDeal = await ClientDataStore.CreateSalesFinanceDeal();
+     
             // Create new instance of sales desking view model
+
+
 
 
             // Go to sales desking page

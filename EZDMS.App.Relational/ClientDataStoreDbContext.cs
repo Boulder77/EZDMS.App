@@ -18,7 +18,7 @@ namespace EZDMS.App.Relational
         /// <summary>
         /// The recall deals table
         /// </summary>
-        public DbSet<SalesDealRecallDataModel> SalesDealsList { get; set; }
+        public DbSet<SalesDealsItemDataModel> SalesDealsInfo { get; set; }
 
         /// <summary>
         /// The sales finance info table
@@ -54,7 +54,7 @@ namespace EZDMS.App.Relational
             // Set Id as primary key
             modelBuilder.Entity<LoginCredentialsDataModel>().HasKey(a => a.Id);
 
-            modelBuilder.Entity<SalesDealRecallDataModel>().HasKey(a => a.DealNumber);
+            modelBuilder.Entity<SalesDealsItemDataModel>().HasKey(a => a.DealNumber);
 
             modelBuilder.Entity<SalesFinanceDataModel>().HasKey(a => a.DealNumber);
 

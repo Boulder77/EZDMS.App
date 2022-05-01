@@ -12,7 +12,7 @@ namespace EZDMS.App
     /// <summary>
     /// The View Model for a Sales Recall screen
     /// </summary>
-    public class SalesSummaryDetailsViewModel : BaseViewModel
+    public class SalesSummaryViewModel : BaseViewModel
     {
         
         #region Public Properties
@@ -88,7 +88,7 @@ namespace EZDMS.App
         /// <summary>
         /// Default constructor
         /// </summary>
-        public SalesSummaryDetailsViewModel()
+        public SalesSummaryViewModel()
         {
             //// Create the APR
             //APR = new TextEntryViewModel

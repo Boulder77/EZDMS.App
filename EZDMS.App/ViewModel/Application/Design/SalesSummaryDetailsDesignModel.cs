@@ -5,9 +5,9 @@ using EZDMS.App.Core;
 namespace EZDMS.App
 {
     /// <summary>
-    /// The design-time data for a <see cref="SalesSummaryDetailsViewModel"/>
+    /// The design-time data for a <see cref="SalesSummaryViewModel"/>
     /// </summary>
-    public class SalesSummaryDetailsDesignModel : SalesSummaryDetailsViewModel
+    public class SalesSummaryDetailsDesignModel : SalesSummaryViewModel
     {
         #region Singleton
 

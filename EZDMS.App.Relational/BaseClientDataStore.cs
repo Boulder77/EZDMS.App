@@ -120,10 +120,10 @@ namespace EZDMS.App.Relational
         /// Returns all records in SearchDeals table
         /// </summary>
 
-        public Task<List<SalesDealRecallDataModel>> GetSalesDealRecallsAsync()
+        public Task<List<SalesDealsItemDataModel>> GetSalesDealRecallsAsync()
         {
             // Gets all the sales                      
-            return Task.FromResult(mDbContext.SalesDealsList.ToList());
+            return Task.FromResult(mDbContext.SalesDealsInfo.ToList());
             
         }
 
@@ -140,9 +140,9 @@ namespace EZDMS.App.Relational
                     mDbContext.LoginCredentials.Add(mDataModel as LoginCredentialsDataModel);
                     break;
                                     
-                case DbTableNames.SalesDealsList:
+                case DbTableNames.SalesDealsInfo:
                     // Add new sales deals list entry
-                    mDbContext.SalesDealsList.Add(mDataModel as SalesDealRecallDataModel);
+                    mDbContext.SalesDealsInfo.Add(mDataModel as SalesDealsItemDataModel);
                     break;
 
                 case DbTableNames.SalesFinance:

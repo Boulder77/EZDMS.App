@@ -44,7 +44,7 @@ namespace EZDMS.App.Core
         /// gets the stored deals list for this client
         /// </summary>
         /// <returns></returns>
-        Task<List<SalesDealRecallDataModel>> GetSalesDealRecallsAsync();
+        Task<List<SalesDealsItemDataModel>> GetSalesDealRecallsAsync();
 
         /// <summary>
         /// Gets a single sales record

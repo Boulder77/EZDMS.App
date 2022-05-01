@@ -23,12 +23,7 @@ namespace EZDMS.App
         /// <summary>
         /// The settings view model
         /// </summary>
-        public SettingsViewModel SettingsViewModel => ViewModelSettings;
-
-        /// <summary>
-        /// The sales summary details view model
-        /// </summary>
-        public SalesSummaryDetailsViewModel SalesSummaryDetailsViewModel => ViewModelSalesSummary;
+        public SettingsViewModel SettingsViewModel => ViewModelSettings;       
 
         /// <summary>
         /// The sales desking info view model

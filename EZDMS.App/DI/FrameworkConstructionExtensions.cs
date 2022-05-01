@@ -10,7 +10,7 @@ namespace EZDMS.App
     public static class FrameworkConstructionExtensions
     {
         /// <summary>
-        /// Injects the view models needed for Fasetto Word application
+        /// Injects the view models needed for EZDMS application
         /// </summary>
         /// <param name="construction"></param>
         /// <returns></returns>

@@ -3,16 +3,16 @@
 namespace EZDMS.App
 {
     /// <summary>
-    /// The design-time data for a <see cref="SalesFinanceInfoDesignModel"/>
+    /// The design-time data for a <see cref="SalesDealHeaderViewModel"/>
     /// </summary>
-    public class SalesFinanceInfoDesignModel : SalesFinanceInfoViewModel
+    public class SalesDealHeaderDesignModel : SalesDealHeaderViewModel
     {
         #region Singleton
 
         /// <summary>
         /// A single instance of the design model
         /// </summary>
-        public static SalesFinanceInfoDesignModel Instance => new SalesFinanceInfoDesignModel();
+        public static SalesDealHeaderDesignModel Instance => new SalesDealHeaderDesignModel();
 
         #endregion
 
@@ -21,7 +21,7 @@ namespace EZDMS.App
         /// <summary>
         /// Default constructor
         /// </summary>
-        public SalesFinanceInfoDesignModel()
+        public SalesDealHeaderDesignModel()
         {
             BuyerName = new TextDisplayViewModel { Label = "Buyer", DisplayText = "Gomez, Donald" };
             CoBuyerName = new TextDisplayViewModel { Label = "Co-Buyer", DisplayText = "Bell, Betrix" };
@@ -29,8 +29,12 @@ namespace EZDMS.App
             Status = new TextDisplayViewModel { Label = "Status", DisplayText = "Working" };
             DealType = new TextDisplayViewModel { Label = "Deal Type", DisplayText = "Retail" };
             Salesperson = new TextDisplayViewModel { Label = "Salesperson", DisplayText = "Matt Islas" };
+            SalesManager = new TextDisplayViewModel { Label = "Sales Manager", DisplayText = "Chris Dixon" };
+            FinanceManager = new TextDisplayViewModel { Label = "Finance Manager", DisplayText = "Gary Zimmerman" };
             Trades = new TextDisplayViewModel { Label = "Trades", DisplayText = "1900 Toyota Corolla black" };
             CreatedDate = new TextDisplayViewModel { Label = "Created Date", DisplayText = "8/27/2021" };
+            DealDate = new TextDisplayViewModel { Label = "Purchase Date", DisplayText = "8/27/2021" };
+            LastActivityDate = new TextDisplayViewModel { Label = "Last Activity", DisplayText = "3/18/2022" };
 
         }
 

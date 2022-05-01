@@ -11,7 +11,7 @@ namespace EZDMS.App
     /// <summary>
     /// The View Model for a Sales Recall screen
     /// </summary>
-    public class SalesFinanceInfoViewModel : BaseViewModel
+    public class SalesDealHeaderViewModel : BaseViewModel
     {
         #region Private Members
 
@@ -42,7 +42,7 @@ namespace EZDMS.App
         /// <summary>
         /// The current working sales deal number
         /// </summary>
-        public int WorkingDealNumber { get; set; }
+        public int DealNumber { get; set; }
 
         /// <summary>
         /// The current buyer name
@@ -70,9 +70,19 @@ namespace EZDMS.App
         public TextDisplayViewModel DealType { get; set; }
 
         /// <summary>
-        /// The current salesperson name
+        /// The salesperson name on the deal
         /// </summary>
         public TextDisplayViewModel Salesperson { get; set; }
+                
+        /// <summary>
+        /// The sales manager name on the deal
+        /// </summary>
+        public TextDisplayViewModel SalesManager { get; set; }
+
+        /// <summary>
+        /// The finance manager name on the deal
+        /// </summary>
+        public TextDisplayViewModel FinanceManager { get; set; }
 
         /// <summary>
         /// The current trade vehicle(s) info
@@ -83,6 +93,16 @@ namespace EZDMS.App
         /// The current created Date
         /// </summary>
         public TextDisplayViewModel CreatedDate { get; set; }
+
+        /// <summary>
+        /// The last activity date on the deal
+        /// </summary>
+        public TextDisplayViewModel LastActivityDate { get; set; }
+
+        /// <summary>
+        /// The date of the deal
+        /// </summary>
+        public TextDisplayViewModel DealDate { get; set; }
 
         /// <summary>
         /// Indicates if the sales finance deal details are currently being loaded
@@ -98,7 +118,7 @@ namespace EZDMS.App
         /// <summary>
         /// Default constructor
         /// </summary>
-        public SalesFinanceInfoViewModel()
+        public SalesDealHeaderViewModel()
         {
             // Create commands
 

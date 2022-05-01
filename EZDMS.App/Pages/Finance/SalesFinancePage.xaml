@@ -1,4 +1,4 @@
-﻿<local:BasePage x:TypeArguments="local:SalesFinanceInfoViewModel" x:Class="EZDMS.App.SalesFinancePage"
+﻿<local:BasePage x:TypeArguments="local:SalesDealHeaderViewModel" x:Class="EZDMS.App.SalesFinancePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
       xmlns:core="clr-namespace:EZDMS.App.Core;assembly=EZDMS.App.Core"
       mc:Ignorable="d" 
       x:Name="Page"
-      d:DataContext="{x:Static local:SalesFinanceInfoDesignModel.Instance}"
+      d:DataContext="{x:Static local:SalesDealHeaderDesignModel.Instance}"
       d:DesignHeight="800" d:DesignWidth="1200"      
       >
 
