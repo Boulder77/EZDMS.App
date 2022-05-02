@@ -91,11 +91,7 @@ namespace EZDMS.App
         public ICommand RecallDealCommand { get; set; }
               
         #endregion
-
-        
-
-
-
+                
         #region Constructor
 
         /// <summary>
@@ -107,8 +103,6 @@ namespace EZDMS.App
             NewDealCommand = new RelayCommand(async () => await CreateNewSalesDealAsync());
 
             Task.Run(GetSalesRecallDealsAsync);
-
-
 
         }
 

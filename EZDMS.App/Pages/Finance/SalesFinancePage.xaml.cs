@@ -21,7 +21,7 @@ namespace EZDMS.App
     /// <summary>
     /// Interaction logic for SalesFinancePage.xaml
     /// </summary>
-    public partial class SalesFinancePage : BasePage<SalesDealHeaderViewModel>
+    public partial class SalesFinancePage : BasePage<SalesDealCardViewModel>
     {
         #region Constructor
 
@@ -37,7 +37,7 @@ namespace EZDMS.App
         /// Constructor with specific view model
         /// </summary>
         /// <param name="specificViewModel">The specific view model to use for this page</param>
-        public SalesFinancePage(SalesDealHeaderViewModel specificViewModel) : base(specificViewModel)
+        public SalesFinancePage(SalesDealCardViewModel specificViewModel) : base(specificViewModel)
         {
             InitializeComponent();
         }

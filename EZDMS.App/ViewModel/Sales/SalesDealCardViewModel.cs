@@ -9,36 +9,13 @@ using static EZDMS.App.DI;
 namespace EZDMS.App
 {
     /// <summary>
-    /// The View Model for a Sales Recall screen
+    /// The view model for a sales deal card control
     /// </summary>
-    public class SalesDealHeaderViewModel : BaseViewModel
+    public class SalesDealCardViewModel : BaseViewModel
     {
-        #region Private Members
-
-
-        /// <summary>
-        /// The current working sales deal 
-        /// </summary>
-        private SalesFinanceDataModel mWorkingDeal;
-
-        #endregion
 
         #region Public Properties
-        /// <summary>
-        /// The current working sales deal 
-        /// </summary>
-        public SalesFinanceDataModel WorkingDeal
-        {
-            get => mWorkingDeal;
-            set
-            {
-                if (mWorkingDeal == value)
-                    return;
-
-                mWorkingDeal = value;
-            }
-        }
-
+       
         /// <summary>
         /// The current working sales deal number
         /// </summary>
@@ -118,7 +95,7 @@ namespace EZDMS.App
         /// <summary>
         /// Default constructor
         /// </summary>
-        public SalesDealHeaderViewModel()
+        public SalesDealCardViewModel()
         {
            
 

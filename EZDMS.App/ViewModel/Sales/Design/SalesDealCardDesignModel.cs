@@ -3,16 +3,16 @@
 namespace EZDMS.App
 {
     /// <summary>
-    /// The design-time data for a <see cref="SalesDealHeaderViewModel"/>
+    /// The design-time data for a <see cref="SalesDealCardViewModel"/>
     /// </summary>
-    public class SalesDealHeaderDesignModel : SalesDealHeaderViewModel
+    public class SalesDealCardDesignModel : SalesDealCardViewModel
     {
         #region Singleton
 
         /// <summary>
         /// A single instance of the design model
         /// </summary>
-        public static SalesDealHeaderDesignModel Instance => new SalesDealHeaderDesignModel();
+        public static SalesDealCardDesignModel Instance => new SalesDealCardDesignModel();
 
         #endregion
 
@@ -21,7 +21,7 @@ namespace EZDMS.App
         /// <summary>
         /// Default constructor
         /// </summary>
-        public SalesDealHeaderDesignModel()
+        public SalesDealCardDesignModel()
         {
             BuyerName = new TextDisplayViewModel { Label = "Buyer", DisplayText = "Gomez, Donald" };
             CoBuyerName = new TextDisplayViewModel { Label = "Co-Buyer", DisplayText = "Bell, Betrix" };

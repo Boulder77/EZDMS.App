@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace EZDMS.App
 {
     /// <summary>
-    /// Interaction logic for SalesDealHeaderControl.xaml
+    /// Interaction logic for SalesDealCardControl.xaml
     /// </summary>
-    public partial class SalesDealHeaderControl : UserControl
+    public partial class SalesDealCardControl : UserControl
     {
-        public SalesDealHeaderControl()
+        public SalesDealCardControl()
         {
             InitializeComponent();
         }
