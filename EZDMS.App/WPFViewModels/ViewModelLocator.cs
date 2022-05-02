@@ -28,7 +28,7 @@ namespace EZDMS.App
         /// <summary>
         /// The sales desking info view model
         /// </summary>
-        public SalesDeskingInfoViewModel SalesDeskingInfoViewModel => ViewModelSalesDesking;
+        public SalesDeskingTotalsViewModel SalesDeskingInfoViewModel => ViewModelSalesDesking;
 
         #endregion
     }

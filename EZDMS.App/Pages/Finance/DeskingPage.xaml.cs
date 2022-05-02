@@ -19,7 +19,7 @@ namespace EZDMS.App
     /// <summary>
     /// Interaction logic for DeskingPage.xaml
     /// </summary>
-    public partial class DeskingPage : BasePage<SalesDeskingInfoViewModel>
+    public partial class DeskingPage : BasePage<SalesDeskingTotalsViewModel>
     {
         public DeskingPage() : base()
         {
@@ -30,7 +30,7 @@ namespace EZDMS.App
         /// Constructor with specific view model
         /// </summary>
         /// <param name="specificViewModel">The specific view model to use for this page</param>
-        public DeskingPage(SalesDeskingInfoViewModel specificViewModel) : base(specificViewModel)
+        public DeskingPage(SalesDeskingTotalsViewModel specificViewModel) : base(specificViewModel)
         {
             InitializeComponent();
         }

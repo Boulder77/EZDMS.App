@@ -143,8 +143,8 @@
     <Compile Include="Controls\Sales\SalesDealHeaderControl.xaml.cs">
       <DependentUpon>SalesDealHeaderControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Sales\SalesDeskingControl.xaml.cs">
-      <DependentUpon>SalesDeskingControl.xaml</DependentUpon>
+    <Compile Include="Controls\Sales\SalesDeskingTotalsControl.xaml.cs">
+      <DependentUpon>SalesDeskingTotalsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Sales\SalesSummaryDetailsControl.xaml.cs">
       <DependentUpon>SalesSummaryDetailsControl.xaml</DependentUpon>
@@ -210,10 +210,10 @@
     <Compile Include="ValueConverters\TimeToReadTimeConverter.cs" />
     <Compile Include="ViewModel\Application\Design\TruthInLendingDisclosureDesignModel.cs" />
     <Compile Include="ViewModel\Application\Design\SalesSummaryDetailsDesignModel.cs" />
-    <Compile Include="ViewModel\Application\Design\SalesDeskingInfoDesignModel.cs" />
+    <Compile Include="ViewModel\Application\Design\SalesDeskingTotalsDesignModel.cs" />
     <Compile Include="ViewModel\Application\Design\SalesDealHeaderDesignModel.cs" />
     <Compile Include="ViewModel\Application\Sales\TruthinLendingDisclosureViewModel.cs" />
-    <Compile Include="ViewModel\Application\Sales\SalesDeskingInfoViewModel.cs" />
+    <Compile Include="ViewModel\Application\Sales\SalesDeskingTotalsViewModel.cs" />
     <Compile Include="ViewModel\Application\Sales\SalesSummaryViewModel.cs" />
     <Compile Include="ViewModel\Application\Sales\SalesDealHeaderViewModel.cs" />
     <Compile Include="ViewModel\Application\Sales\SalesRecallViewModel.cs" />
@@ -341,7 +341,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Sales\SalesDeskingControl.xaml">
+    <Page Include="Controls\Sales\SalesDeskingTotalsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

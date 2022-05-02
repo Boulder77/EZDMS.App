@@ -24,9 +24,9 @@ namespace EZDMS.App
         public static SettingsViewModel ViewModelSettings => Framework.Service<SettingsViewModel>();
                 
         /// <summary>
-        /// A shortcut to access the <see cref="SalesDeskingInfoViewModel"/>
+        /// A shortcut to access the <see cref="SalesDeskingTotalsViewModel"/>
         /// </summary>
-        public static SalesDeskingInfoViewModel ViewModelSalesDesking => Framework.Service<SalesDeskingInfoViewModel>();
+        public static SalesDeskingTotalsViewModel ViewModelSalesDesking => Framework.Service<SalesDeskingTotalsViewModel>();
 
         /// <summary>
         /// A shortcut to access toe <see cref="IClientDataStore"/> service

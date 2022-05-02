@@ -18,9 +18,9 @@ namespace EZDMS.App
     /// <summary>
     /// Interaction logic for SalesDeskingControl.xaml
     /// </summary>
-    public partial class SalesDeskingControl : UserControl
+    public partial class SalesDeskingTotalsControl : UserControl
     {
-        public SalesDeskingControl()
+        public SalesDeskingTotalsControl()
         {
             InitializeComponent();
         }

@@ -120,18 +120,13 @@ namespace EZDMS.App
         /// </summary>
         public SalesDealHeaderViewModel()
         {
-            // Create commands
-
-            // Task.Run(GetSalesRecallDealsAsync);
+           
 
         }
 
         #endregion
 
-        public async Task CreateNewSalesFinanceDealAsync()
-        {
-            await Task.Delay(1);
-        }
+
 
 
     }

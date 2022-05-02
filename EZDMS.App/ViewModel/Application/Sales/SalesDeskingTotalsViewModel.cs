@@ -11,7 +11,7 @@ namespace EZDMS.App
     /// <summary>
     /// The View Model for a Sales Recall screen
     /// </summary>
-    public class SalesDeskingInfoViewModel : BaseViewModel
+    public class SalesDeskingTotalsViewModel : BaseViewModel
     {
         #region Private Members
 
@@ -143,7 +143,7 @@ namespace EZDMS.App
         /// <summary>
         /// Default constructor
         /// </summary>
-        public SalesDeskingInfoViewModel()
+        public SalesDeskingTotalsViewModel()
         {
             // Create commands
 
@@ -152,11 +152,7 @@ namespace EZDMS.App
         }
 
         #endregion
-
-        public async Task CreateNewSalesFinanceDealAsync()
-        {
-            await Task.Delay(1);
-        }
+               
 
         public async Task UpdateValuesFromCurrentDealAsync(int dealNumber)
         {
