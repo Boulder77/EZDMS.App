@@ -26,9 +26,9 @@ namespace EZDMS.App
         public SettingsViewModel SettingsViewModel => ViewModelSettings;       
 
         /// <summary>
-        /// The sales desking info view model
+        /// The sales finance info view model
         /// </summary>
-        public SalesDeskingTotalsViewModel SalesDeskingInfoViewModel => ViewModelSalesDesking;
+        public SalesFinanceViewModel SalesFinanceViewModel => ViewModelSalesFinance;
 
         #endregion
     }

@@ -1,0 +1,42 @@
+﻿<local:BasePage x:TypeArguments="local:SalesFinanceViewModel" x:Class="EZDMS.App.DeskingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EZDMS.App"
+      mc:Ignorable="d"
+      d:DataContext="{x:Static local:SalesDeskingTotalsDesignModel.Instance}"
+      d:DesignHeight="600" d:DesignWidth="1000"
+      >
+   
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="500"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="350" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <local:SalesSummaryDetails                   
+                    Margin="5"
+                    DataContext="{Binding SalesSummary}"
+                    />
+
+            <local:TruthInLendingDisclosureControl
+                    Grid.Row="1"
+                    Margin="5"
+                    DataContext="{Binding TruthinLending}"/>
+
+            <local:SalesDeskingTotalsControl 
+                   Grid.Column="1"
+                   Grid.RowSpan="2"
+                   Margin="5"
+                   DataContext="{Binding DeskingTotals}"/>
+
+        </Grid>   
+    
+</local:BasePage>

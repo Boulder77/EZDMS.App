@@ -23,7 +23,7 @@ namespace EZDMS.App
             construction.Services.AddSingleton<SettingsViewModel>();
 
             // Bind to a single instance of SalesDesking view model
-            construction.Services.AddSingleton<SalesDeskingTotalsViewModel>();
+            construction.Services.AddSingleton<SalesFinanceViewModel>();
 
 
             // Return the construction for chaining

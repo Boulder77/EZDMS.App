@@ -22,11 +22,11 @@ namespace EZDMS.App
         /// A shortcut to access the <see cref="SettingsViewModel"/>
         /// </summary>
         public static SettingsViewModel ViewModelSettings => Framework.Service<SettingsViewModel>();
-                
+
         /// <summary>
-        /// A shortcut to access the <see cref="SalesDeskingTotalsViewModel"/>
+        /// A shortcut to access the <see cref="SalesFinanceViewModel"/>
         /// </summary>
-        public static SalesDeskingTotalsViewModel ViewModelSalesDesking => Framework.Service<SalesDeskingTotalsViewModel>();
+        public static SalesFinanceViewModel ViewModelSalesFinance => Framework.Service<SalesFinanceViewModel>();
 
         /// <summary>
         /// A shortcut to access toe <see cref="IClientDataStore"/> service

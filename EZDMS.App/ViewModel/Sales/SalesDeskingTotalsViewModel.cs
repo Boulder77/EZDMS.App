@@ -13,37 +13,18 @@ namespace EZDMS.App
     /// </summary>
     public class SalesDeskingTotalsViewModel : BaseViewModel
     {
-        #region Private Members
 
+        #region Public Properties        
 
         /// <summary>
-        /// The current working sales deal 
+        /// The subtotal amount for NumericalEntryViewModel Subtotal
         /// </summary>
-        private SalesFinanceDataModel mWorkingDeal;
+        public decimal SubtotalAmount { get; set; }
 
-        // The subtotal amount of the deal
-        private decimal mSubtotal;
-
-        // The total amount of the deal
-        private decimal mTotal;
-
-        #endregion
-
-        #region Public Properties
         /// <summary>
-        /// The current working sales deal 
+        /// The total amount for NumericalEntryViewModel Total
         /// </summary>
-        public SalesFinanceDataModel WorkingDeal
-        {
-            get => mWorkingDeal;
-            set
-            {
-                if (mWorkingDeal == value)
-                    return;
-
-                mWorkingDeal = value;
-            }
-        }
+        public decimal TotalAmount { get; set; }
 
         /// <summary>
         /// The current working sales deal number
@@ -130,13 +111,7 @@ namespace EZDMS.App
         /// </summary>
         public NumericalEntryViewModel Payment { get; set; }
 
-        /// <summary>
-        /// Indicates if the sales finance deal details are currently being loaded
-        /// </summary>
-        public bool SalesFinanceInfoPageLoading { get; set; } 
-
         #endregion
-
 
         #region Constructor
 
@@ -145,60 +120,11 @@ namespace EZDMS.App
         /// </summary>
         public SalesDeskingTotalsViewModel()
         {
-            // Create commands
 
-            // Task.Run(GetSalesRecallDealsAsync);
 
         }
 
-        #endregion
-               
-
-        public async Task UpdateValuesFromCurrentDealAsync(int dealNumber)
-        {
-            // Get the current sales finance deal info from client data store
-            await RunCommandAsync(() => SalesFinanceInfoPageLoading, async () =>
-            {
-                WorkingDeal = await ClientDataStore.GetSalesFinanceDealAsync(dealNumber);
-            });
-
-            // Subtotal amount
-            mSubtotal = WorkingDeal.SellingPrice
-                        + WorkingDeal.TotalFrontAdds
-                        + WorkingDeal.TotalTaxes
-                        + WorkingDeal.TotalOfficialFees
-                        + WorkingDeal.TotalBackAdds
-                        + WorkingDeal.ServiceContract
-                        + WorkingDeal.Maintenance
-                        + WorkingDeal.Warranty
-                        + WorkingDeal.Gap
-                        + WorkingDeal.LAHInsurance;
-
-            //Total amount
-            mTotal = mSubtotal
-                    - WorkingDeal.TotalRebates
-                    - WorkingDeal.TotalNetAllowance
-                    - WorkingDeal.TotalCashDown;            
-
-            DealNumber = WorkingDeal.DealNumber;
-            SellingPrice = new NumericalEntryViewModel { Label = "Selling Price", OriginalAmount = WorkingDeal.SellingPrice };
-            FrontOptions = new NumericalEntryViewModel { Label = "Front Options", OriginalAmount = WorkingDeal.TotalFrontAdds, Editable = true };
-            Taxes = new NumericalEntryViewModel { Label = "Taxes", OriginalAmount = WorkingDeal.TotalTaxes, Editable = true };
-            Fees = new NumericalEntryViewModel { Label = "Fees", OriginalAmount = (WorkingDeal.TotalOfficialFees+WorkingDeal.TotalDealerFees), Editable = true };
-            BackOptions = new NumericalEntryViewModel { Label = "Back Options", OriginalAmount = WorkingDeal.TotalBackAdds, Editable = true };
-            Service = new NumericalEntryViewModel { Label = "Service", OriginalAmount = (WorkingDeal.ServiceContract+ WorkingDeal.Maintenance+ WorkingDeal.Warranty), Editable = true };
-            Gap = new NumericalEntryViewModel { Label = "Gap", OriginalAmount = WorkingDeal.Gap, Editable = true };
-            CreditInsurance = new NumericalEntryViewModel { Label = "Credit Insurance", OriginalAmount = WorkingDeal.LAHInsurance, Editable = true };
-            SubTotal = new NumericalEntryViewModel { Label = "SUBTOTAL", OriginalAmount = mSubtotal };
-            Cash = new NumericalEntryViewModel { Label = "Cash", OriginalAmount = WorkingDeal.TotalCashDown, Editable = true };
-            Rebates = new NumericalEntryViewModel { Label = "Rebates", OriginalAmount = WorkingDeal.TotalRebates, Editable = true };
-            TradeAllowance = new NumericalEntryViewModel { Label = "Trade Allowance", OriginalAmount = WorkingDeal.TotalAllowance, Editable = true };
-            TradePayoff = new NumericalEntryViewModel { Label = "Trade Payoff", OriginalAmount = WorkingDeal.TotalPayoff, Editable = true };
-            Total = new NumericalEntryViewModel { Label = "TOTAL", OriginalAmount = mTotal };
-            CashFromCustomer = new NumericalEntryViewModel { Label = "Cash From Customer", OriginalAmount = WorkingDeal.TotalCashDown };
-            Payment = new NumericalEntryViewModel { Label = "Payment", OriginalAmount = WorkingDeal.Payment };
-
-        }
+        #endregion              
 
     }
 

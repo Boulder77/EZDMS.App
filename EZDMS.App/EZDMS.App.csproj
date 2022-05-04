@@ -173,10 +173,10 @@
       <DependentUpon>DialogWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\BasePage.cs" />
-    <Compile Include="Pages\Finance\DeskingPage.xaml.cs">
+    <Compile Include="Pages\Sales\DeskingPage.xaml.cs">
       <DependentUpon>DeskingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Finance\SalesFinancePage.xaml.cs">
+    <Compile Include="Pages\Sales\SalesFinancePage.xaml.cs">
       <DependentUpon>SalesFinancePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ChatPage.xaml.cs">
@@ -212,7 +212,7 @@
     <Compile Include="ViewModel\Sales\Design\SalesSummaryDetailsDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\SalesDeskingTotalsDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\SalesDealCardDesignModel.cs" />
-    <Compile Include="ViewModel\Sales\DeskingInfoViewModel.cs" />
+    <Compile Include="ViewModel\Sales\SalesFinanceViewModel.cs" />
     <Compile Include="ViewModel\Sales\TruthinLendingDisclosureViewModel.cs" />
     <Compile Include="ViewModel\Sales\SalesDeskingTotalsViewModel.cs" />
     <Compile Include="ViewModel\Sales\SalesSummaryViewModel.cs" />
@@ -374,11 +374,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Finance\DeskingPage.xaml">
+    <Page Include="Pages\Sales\DeskingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Finance\SalesFinancePage.xaml">
+    <Page Include="Pages\Sales\SalesFinancePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -511,7 +511,7 @@
       <Version>1.0.7.19</Version>
     </PackageReference>
     <PackageReference Include="Fody">
-      <Version>6.6.0</Version>
+      <Version>6.6.1</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

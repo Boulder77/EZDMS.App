@@ -18,9 +18,9 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition MinWidth="200" Width="Auto"/>
-                <ColumnDefinition MinWidth="200" Width="Auto"/>
-                <ColumnDefinition MinWidth="200" Width="Auto"/>
+                <ColumnDefinition MinWidth="200" Width="*"/>
+                <ColumnDefinition MinWidth="200" Width="*"/>
+                <ColumnDefinition MinWidth="200" Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <local:TextDisplayVertControl DataContext="{Binding BuyerName}" />
