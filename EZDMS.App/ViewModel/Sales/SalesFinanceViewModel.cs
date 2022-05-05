@@ -82,11 +82,10 @@ namespace EZDMS.App
         {
             // Create commands
 
-
-
             UpdateValuesOfDeskingTotals(SalesFinanceDeal);
-
-
+            UpdateValuesOfSalesSummary(SalesFinanceDeal);
+            UpdateValuesOfTruthinLending(SalesFinanceDeal);
+            UpdateValuesOfSalesDealCard(SalesDealsItem);
 
         }
 
