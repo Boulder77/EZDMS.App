@@ -24,7 +24,7 @@ namespace EZDMS.App
         /// <summary>
         /// The payment amount
         /// </summary>
-        public NumericalEntryViewModel Payments { get; set; }
+        public NumericalEntryViewModel Payment { get; set; }
 
         /// <summary>
         /// The final payment amount

@@ -17,21 +17,6 @@ namespace EZDMS.App
         #region Public Properties        
 
         /// <summary>
-        /// The subtotal amount for NumericalEntryViewModel Subtotal
-        /// </summary>
-        public decimal SubtotalAmount { get; set; }
-
-        /// <summary>
-        /// The total amount for NumericalEntryViewModel Total
-        /// </summary>
-        public decimal TotalAmount { get; set; }
-
-        /// <summary>
-        /// The current working sales deal number
-        /// </summary>
-        public int DealNumber { get; set; }
-
-        /// <summary>
         /// The current selling price
         /// </summary>
         public NumericalEntryViewModel SellingPrice { get; set; }

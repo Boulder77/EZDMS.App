@@ -57,6 +57,12 @@ namespace EZDMS.App.Core
         /// </summary>
         public decimal TotalOfPayments { get; set; }
 
+
+        /// <summary>
+        /// The total sale price for this sales record
+        /// </summary>
+        public decimal TotalSalePrice { get; set; }
+
         /// <summary>
         /// The payment amount for this sales record
         /// </summary>
@@ -226,6 +232,11 @@ namespace EZDMS.App.Core
         /// The bank id associated with this sales record
         /// </summary>
         public string BankID { get; set; }
+
+        /// <summary>
+        /// The bank name associated with this sales record
+        /// </summary>
+        public string BankName { get; set;}
 
     }
 }
