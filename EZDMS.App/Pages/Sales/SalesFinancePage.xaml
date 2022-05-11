@@ -50,13 +50,11 @@
                         <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
                     </Style>
                 </TabControl.Resources>
+                
                 <TabItem  Header="Desking">
-                    <Page>
-                        <local:DeskingPage/>
-                    </Page> 
-                   
-                    
+                    <local:SalesDeskingControl/>
                 </TabItem>
+                
                 <TabItem Header="Buyer" />
                 <TabItem Header="Vehicle" />
             </TabControl>

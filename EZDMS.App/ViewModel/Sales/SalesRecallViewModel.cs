@@ -124,14 +124,12 @@ namespace EZDMS.App
 
             // Add a new record to the SalesFinance table
             SalesDeal = await ClientDataStore.CreateSalesFinanceDeal();
-     
+
             // Create new instance of sales desking view model
-
-
-
+            ViewModelSalesFinance.SalesFinanceDeal = SalesDeal;
 
             // Go to sales desking page
-
+            ViewModelApplication.GoToPage(ApplicationPage.SalesFinance, ViewModelSalesFinance);
 
 
         }

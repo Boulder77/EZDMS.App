@@ -152,7 +152,7 @@ namespace EZDMS.App
         public void OpenSalesRecall()
         {
 
-            ViewModelApplication.GoToPage(ApplicationPage.SalesRecall);
+            ViewModelApplication.GoToPage(ApplicationPage.SalesFinance);
 
         }
 

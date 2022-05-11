@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using static EZDMS.App.DI;
+using static EZDMS.App.Core.CoreDI;
 
 namespace EZDMS.App
 {
@@ -14,18 +15,42 @@ namespace EZDMS.App
     /// </summary>
     public class SalesFinanceViewModel : BaseViewModel
     {
+        #region Private Members
+
+        protected SalesFinanceDataModel mSalesFinanceDeal;
+
+        #endregion
+
 
         #region Public Properties
-        
+
         /// <summary>
         /// The data model for the sales finance deal
         /// </summary>
-        public SalesFinanceDataModel SalesFinanceDeal { get; set; }
+        public SalesFinanceDataModel SalesFinanceDeal { 
+            get => mSalesFinanceDeal;
+            set
+            {
+                // If datamodel has not changed...
+                if (mSalesFinanceDeal == value)
+                    // Ignore
+                    return;
+
+                // Set the backing datamodel
+                mSalesFinanceDeal = value;
+
+                if (value != null)
+                    // Reload sales deal view model
+                    TaskManager.RunAndForget(LoadAsync);
+
+            }
+        
+        }
 
         /// <summary>
         /// The data model for the sales deal item
         /// </summary>
-        public SalesDealsItemDataModel SalesDealsItem { get; set; } 
+        public SalesDealsItemDataModel SalesDealsItem { get; set; }
 
         /// <summary>
         /// The view model for the sales summary control
@@ -50,7 +75,7 @@ namespace EZDMS.App
         /// <summary>
         /// Indicates if the sales finance deal details are currently being loaded
         /// </summary>
-        public bool SalesFinanceInfoPageLoading { get; set; }
+        public bool SalesFinancePageLoading { get; set; }
 
         #endregion
 
@@ -81,19 +106,35 @@ namespace EZDMS.App
         public SalesFinanceViewModel()
         {
             // Create commands
-
-            UpdateValuesOfDeskingTotals(SalesFinanceDeal);
-            UpdateValuesOfSalesSummary(SalesFinanceDeal);
-            UpdateValuesOfTruthinLending(SalesFinanceDeal);
-            UpdateValuesOfSalesDealCard(SalesDealsItem);
+            LoadDealCommand = new RelayCommand(async () => await LoadAsync());
+           
 
         }
 
-        #endregion   
+        #endregion
+
+        #region Command Methods
+
+        public async Task LoadAsync()
+        {
+            // Lock this command to ignore any other requests while processing
+            await RunCommandAsync(() => SalesFinancePageLoading, () => {
+                UpdateValuesOfDeskingTotals(SalesFinanceDeal);
+                UpdateValuesOfSalesSummary(SalesFinanceDeal);
+                UpdateValuesOfTruthinLending(SalesFinanceDeal);
+                UpdateValuesOfSalesDealCard(SalesDealsItem);
+                return Task.CompletedTask;
+            });
+
+        }
+
+        #endregion
+
+
 
         #region Private Helper Methods
 
-                        
+
         private void UpdateValuesOfDeskingTotals(SalesFinanceDataModel salesFinance)
         {
             if (salesFinance == null)
@@ -361,55 +402,55 @@ namespace EZDMS.App
                 BuyerName = new TextDisplayViewModel
                 {
                     Label = "Buyer Name",
-                    DisplayText = salesDeal.BuyerName
+                    DisplayText = salesDeal?.BuyerName
                 },
 
                 CoBuyerName = new TextDisplayViewModel
                 {
                     Label = "CoBuyer Name",
-                    DisplayText = salesDeal.CoBuyerName
+                    DisplayText = salesDeal?.CoBuyerName
                 },
 
                 Vehicle = new TextDisplayViewModel
                 {
                     Label = "Vehicle",
-                    DisplayText = salesDeal.VehicleInfo
+                    DisplayText = salesDeal?.VehicleInfo
                 },
 
                 Status = new TextDisplayViewModel
                 {
                     Label = "Status",
-                    DisplayText = salesDeal.Status
+                    DisplayText = salesDeal?.Status
                 },
 
                 DealType = new TextDisplayViewModel
                 {
                     Label = "Deal Type",
-                    DisplayText = salesDeal.Type
+                    DisplayText = salesDeal?.Type
                 },
 
                 Salesperson = new TextDisplayViewModel
                 {
                     Label = "Sales Person",
-                    DisplayText = $"{salesDeal.SalesPerson} +\r\n+ {salesDeal.SalesPerson2}"
+                    DisplayText = $"{salesDeal?.SalesPerson} +\r\n+ {salesDeal?.SalesPerson2}"
                 },
 
                 SalesManager = new TextDisplayViewModel
                 {
                     Label = "Sales Manager",
-                    DisplayText = salesDeal.SalesManager
+                    DisplayText = salesDeal?.SalesManager
                 },
 
                 FinanceManager = new TextDisplayViewModel
                 {
                     Label = "Finance Manager",
-                    DisplayText = salesDeal.FinanceManager
+                    DisplayText = salesDeal?.FinanceManager
                 },
 
                 Trades = new TextDisplayViewModel
                 {
                     Label = "Trades",
-                    DisplayText = $"{salesDeal.Trade1Info} +\r\n+ {salesDeal.Trade2Info}+\r\n+ {salesDeal.Trade3Info}"
+                    DisplayText = $"{salesDeal?.Trade1Info} +\r\n+ {salesDeal?.Trade2Info}+\r\n+ {salesDeal?.Trade3Info}"
                 },
 
                 CreatedDate = new TextDisplayViewModel
