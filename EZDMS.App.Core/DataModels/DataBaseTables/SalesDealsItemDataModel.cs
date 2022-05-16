@@ -19,29 +19,19 @@ namespace EZDMS.App.Core
         public string Status { get; set; }
 
         /// <summary>
-        /// The type of sales record
-        /// </summary>
-        public string Type { get; set; }
-
-        /// <summary>
         /// The full name of the buyer for the sales record
         /// </summary>
         public string BuyerName { get; set; }
 
         /// <summary>
-        /// The full name of the cobuyer for the sales record
+        /// The type of sales record
         /// </summary>
-        public string CoBuyerName { get; set; }
+        public string Type { get; set; }
 
         /// <summary>
         /// The vehicle information for the sales record
         /// </summary>
         public string VehicleInfo { get; set; }
-
-        /// <summary>
-        /// The created date for the sales record
-        /// </summary>
-        public DateTime CreatedDate { get; set; }
 
         /// <summary>
         /// The deal date for the sales record
@@ -59,9 +49,9 @@ namespace EZDMS.App.Core
         public string SalesPerson { get; set; }
 
         /// <summary>
-        /// The 2nd sales person for the sales record
+        /// The full name of the cobuyer for the sales record
         /// </summary>
-        public string SalesPerson2 { get; set; }
+        public string CoBuyerName { get; set; }
 
         /// <summary>
         /// The trade 1 vehicle information
@@ -79,14 +69,24 @@ namespace EZDMS.App.Core
         public string Trade3Info { get; set; }
 
         /// <summary>
+        /// The 2nd sales person for the sales record
+        /// </summary>
+        public string SalesPerson2 { get; set; }
+
+        /// <summary>
+        /// The created date for the sales record
+        /// </summary>
+        public DateTime CreatedDate { get; set; }
+                
+        /// <summary>
         /// The boolean for active status of the deal
         /// </summary>
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
 
         /// <summary>
         /// The boolean for the finalized status of the deal
         /// </summary>
-        public bool IsFinalized { get; set; }
+        public bool? IsFinalized { get; set; }
 
         /// <summary>
         /// The sales manager for the deal

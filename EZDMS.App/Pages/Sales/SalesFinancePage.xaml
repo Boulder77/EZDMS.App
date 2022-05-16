@@ -19,7 +19,8 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <local:SalesDealCardControl Grid.Row="1"/>
+            <local:SalesDealCardControl Grid.Row="1"
+                                        DataContext="{Binding SalesDealCard}"/>
             <TabControl Grid.Row="2" Margin="10" BorderThickness="0" Background="{StaticResource ForegroundLightBrush}">
                 <TabControl.Resources>
                     <Style TargetType="TabItem">
@@ -50,11 +51,11 @@
                         <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
                     </Style>
                 </TabControl.Resources>
-                
+
                 <TabItem  Header="Desking">
                     <local:SalesDeskingControl/>
                 </TabItem>
-                
+
                 <TabItem Header="Buyer" />
                 <TabItem Header="Vehicle" />
             </TabControl>

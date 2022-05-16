@@ -13,6 +13,7 @@ namespace EZDMS.App.Relational
     /// </summary>
     public class BaseClientDataStore : IClientDataStore
     {
+        
         #region Protected Members
 
         /// <summary>
@@ -103,7 +104,6 @@ namespace EZDMS.App.Relational
 
         }
 
-
         public Task<SalesFinanceDataModel> CreateSalesFinanceDeal()
         {
             var mDataModel = new SalesFinanceDataModel();
@@ -112,7 +112,6 @@ namespace EZDMS.App.Relational
             mDbContext.SaveChanges();
 
             return Task.FromResult(mDataModel);
-
 
         }
 

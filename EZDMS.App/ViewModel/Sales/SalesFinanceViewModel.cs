@@ -19,6 +19,8 @@ namespace EZDMS.App
 
         protected SalesFinanceDataModel mSalesFinanceDeal;
 
+        protected SalesDealsItemDataModel mSalesDealItem;
+
         #endregion
 
 
@@ -50,7 +52,24 @@ namespace EZDMS.App
         /// <summary>
         /// The data model for the sales deal item
         /// </summary>
-        public SalesDealsItemDataModel SalesDealsItem { get; set; }
+        public SalesDealsItemDataModel SalesDealsItem { 
+            get => mSalesDealItem;
+            set
+            {
+                // If datamodel has not changed...
+                if (mSalesDealItem == value)
+                    // Ignore
+                    return;
+
+                // Set the backing datamodel
+                mSalesDealItem = value;
+
+                if (value != null)
+                    // Reload sales deal view model
+                    UpdateValuesOfSalesDealCard(SalesDealsItem);
+            }
+        
+        }
 
         /// <summary>
         /// The view model for the sales summary control
@@ -122,7 +141,7 @@ namespace EZDMS.App
                 UpdateValuesOfDeskingTotals(SalesFinanceDeal);
                 UpdateValuesOfSalesSummary(SalesFinanceDeal);
                 UpdateValuesOfTruthinLending(SalesFinanceDeal);
-                UpdateValuesOfSalesDealCard(SalesDealsItem);
+                //UpdateValuesOfSalesDealCard(SalesDealsItem);
                 return Task.CompletedTask;
             });
 
@@ -432,7 +451,7 @@ namespace EZDMS.App
                 Salesperson = new TextDisplayViewModel
                 {
                     Label = "Sales Person",
-                    DisplayText = $"{salesDeal?.SalesPerson} +\r\n+ {salesDeal?.SalesPerson2}"
+                    DisplayText = $"{salesDeal?.SalesPerson} \r\n {salesDeal?.SalesPerson2}"
                 },
 
                 SalesManager = new TextDisplayViewModel
@@ -450,7 +469,7 @@ namespace EZDMS.App
                 Trades = new TextDisplayViewModel
                 {
                     Label = "Trades",
-                    DisplayText = $"{salesDeal?.Trade1Info} +\r\n+ {salesDeal?.Trade2Info}+\r\n+ {salesDeal?.Trade3Info}"
+                    DisplayText = $"{salesDeal?.Trade1Info} \r\n {salesDeal?.Trade2Info} \r\n {salesDeal?.Trade3Info}"
                 },
 
                 CreatedDate = new TextDisplayViewModel

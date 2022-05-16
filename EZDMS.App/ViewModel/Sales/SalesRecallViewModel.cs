@@ -8,6 +8,7 @@ using static EZDMS.App.DI;
 
 namespace EZDMS.App
 {
+
     /// <summary>
     /// The View Model for a Sales Recall screen
     /// </summary>
@@ -21,9 +22,15 @@ namespace EZDMS.App
         protected List<SalesDealsItemDataModel> mItems;
 
         /// <summary>
-        /// The deal number selected from the list
+        /// The deal item selected from the list
         /// </summary>
         private SalesDealsItemDataModel mSelectedDeal;
+
+        /// <summary>
+        /// The deal number selected from the list
+        /// </summary>
+        private int mDealNumber;
+
 
         #endregion
         
@@ -65,6 +72,7 @@ namespace EZDMS.App
                     return;
 
                 mSelectedDeal = value;
+                mDealNumber = mSelectedDeal.DealNumber;
             }
         }
 
@@ -101,12 +109,15 @@ namespace EZDMS.App
         {
             // Create commands
             NewDealCommand = new RelayCommand(async () => await CreateNewSalesDealAsync());
+            RecallDealCommand = new RelayCommand(async () => await RecallSalesDealAsync(SelectedDeal));
 
             Task.Run(GetSalesRecallDealsAsync);
-
+           
         }
 
         #endregion
+
+        #region Command Methods
 
         public async Task GetSalesRecallDealsAsync()
         {
@@ -131,11 +142,27 @@ namespace EZDMS.App
             // Go to sales desking page
             ViewModelApplication.GoToPage(ApplicationPage.SalesFinance, ViewModelSalesFinance);
 
+        }
+
+        private async Task RecallSalesDealAsync(object salesDeal)
+        {
+            if (!(salesDeal is SalesDealsItemDataModel))
+                return;
+
+            ViewModelSalesFinance.SalesDealsItem = (SalesDealsItemDataModel)salesDeal;
+            ViewModelSalesFinance.SalesFinanceDeal = await ClientDataStore.GetSalesFinanceDealAsync(mDealNumber);
+
+            // Go to sales desking page
+            ViewModelApplication.GoToPage(ApplicationPage.SalesFinance, ViewModelSalesFinance);
 
         }
 
+        #endregion
+
+        #region Private Helpers
+
+        #endregion
+
     }
-
-
 
 }
