@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="EZDMS.App.CustomerAddress"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EZDMS.App"
+             d:DataContext="{x:Static local:CustomerAddressDesignModel.Instance}"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="1000">
+    <Border Margin="10"  Background="{StaticResource BackgroundVeryLightBrush}"                    
+                    Grid.Row="1"
+                    CornerRadius="4">
+        <Grid>
+                        
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="{Binding AddressDescription}" />
+
+            <Border Grid.Row="1"
+                    Background="{StaticResource WordOrangeBrush}"
+                    CornerRadius="5"
+                    />
+            
+            <Border Grid.Row="2"
+                    Background="{StaticResource ForegroundLightBrush}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <local:TextInputVertControl DataContext="{Binding StreetAddress}"/>
+                    <local:TextInputVertControl Grid.Column="1" DataContext="{Binding City}"/>
+                    <StackPanel Grid.Column="2"
+                                Orientation="Vertical"
+                                Margin="5"
+                                >
+                        
+                        <Label Content="State"/>
+                        <ComboBox ItemsSource="{Binding AllStates}"
+                                  SelectedItem="{Binding State}"
+                                  Margin="5,10,5,0"
+                                  />
+
+                    </StackPanel>
+                    <local:TextInputVertControl Grid.Column="3" DataContext="{Binding Zip}"/>
+
+                    <StackPanel Grid.Row="1"
+                                Orientation="Vertical"
+                                Margin="5"
+                                >
+
+                        <Label Content="Type"/>
+                        <ComboBox ItemsSource="{Binding AddressTypes}"
+                                  SelectedItem="{Binding AddressType}"
+                                  Margin="5,10,5,0"
+                                  />
+
+                    </StackPanel>
+
+                    <local:TextInputVertControl Grid.Row="1" Grid.Column="1" DataContext="{Binding County}"/>
+                    <local:TextInputVertControl Grid.Row="1" Grid.Column="2" DataContext="{Binding CountyCode}"/>
+
+                </Grid>
+                
+            </Border>
+
+        </Grid>
+        
+    </Border>
+    
+</UserControl>

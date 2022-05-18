@@ -98,6 +98,12 @@
     <Compile Include="Controls\Chat\ChatMessage\ChatMessageListItemControl.xaml.cs">
       <DependentUpon>ChatMessageListItemControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Customer\CustomerAddress.cs">
+      <DependentUpon>CustomerAddress.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Customer\CustomerCardControl.xaml.cs">
+      <DependentUpon>CustomerCardControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Display\NumericalDisplayVertControl.cs">
       <DependentUpon>NumericalDisplayVertControl.xaml</DependentUpon>
     </Compile>
@@ -176,7 +182,7 @@
       <DependentUpon>DialogWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\BasePage.cs" />
-    <Compile Include="Pages\CustomerDetailsPage.xaml.cs">
+    <Compile Include="Pages\Customer\CustomerDetailsPage.xaml.cs">
       <DependentUpon>CustomerDetailsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Sales\SalesFinancePage.xaml.cs">
@@ -211,7 +217,12 @@
     <Compile Include="ValueConverters\TimeToDisplayTimeConverter.cs" />
     <Compile Include="ValueConverters\HorizontalAlignmentConverter.cs" />
     <Compile Include="ValueConverters\TimeToReadTimeConverter.cs" />
+    <Compile Include="ViewModel\Customer\CustomerCardViewModel.cs" />
+    <Compile Include="ViewModel\Customer\CustomerAddressViewModel.cs" />
     <Compile Include="ViewModel\Customer\CustomerViewModel.cs" />
+    <Compile Include="ViewModel\Customer\Design\CustomerCardDesignModel.cs" />
+    <Compile Include="ViewModel\Customer\Design\CustomerDesignModel - Copy.cs" />
+    <Compile Include="ViewModel\Customer\Design\CustomerDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\TruthInLendingDisclosureDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\SalesSummaryDetailsDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\SalesDeskingTotalsDesignModel.cs" />
@@ -283,6 +294,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Chat\ChatMessage\ChatMessageListItemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Customer\CustomerAddress.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Customer\CustomerCardControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -382,7 +401,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\CustomerDetailsPage.xaml">
+    <Page Include="Pages\Customer\CustomerDetailsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -532,6 +551,9 @@
     <PackageReference Include="PropertyChanged.Fody">
       <Version>3.4.0</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Samples\AnayProfile.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

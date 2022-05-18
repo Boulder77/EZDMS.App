@@ -14,96 +14,78 @@ namespace EZDMS.App
     public class CustomerViewModel : BaseViewModel
     {
 
-        #region Public Properties
-       
-        /// <summary>
-        /// The customer full name
-        /// </summary>
-        public string FullName { get; set; }
-
-        /// <summary>
-        /// The customer number
-        /// </summary>
-        public TextEntryVertControl CustomerNumber { get; set; }
+        #region Public Properties             
 
         /// <summary>
         /// The customer first name
         /// </summary>
-        public TextEntryVertControl FirstName { get; set; }
+        public TextEntryViewModel FirstName { get; set; }
 
         /// <summary>
         /// The customer middle name
         /// </summary>
-        public TextEntryVertControl MiddleName { get; set; }
+        public TextEntryViewModel MiddleName { get; set; }
 
         /// <summary>
         /// The customer last name
         /// </summary>
-        public TextEntryVertControl LastName { get; set; }
+        public TextEntryViewModel LastName { get; set; }
 
         /// <summary>
         /// The customer street address
         /// </summary>
-        public TextEntryVertControl StreetAddress { get; set; }
+        public TextEntryViewModel StreetAddress { get; set; }
 
         /// <summary>
         /// The customer city
         /// </summary>
-        public TextEntryVertControl City { get; set; }
+        public TextEntryViewModel City { get; set; }
 
         /// <summary>
         /// The customer county
         /// </summary>
-        public TextEntryVertControl County { get; set; }
+        public TextEntryViewModel County { get; set; }
 
         /// <summary>
         /// The customer state
         /// </summary>
-        public TextEntryVertControl State { get; set; }
+        public States State { get; set; }
 
         /// <summary>
         /// The customer zip code
-        public TextEntryVertControl Zip { get; set; }
+        public TextEntryViewModel Zip { get; set; }      
 
         /// <summary>
-        /// The customer home phone
+        /// The customer home phone number
         /// </summary>
-        public TextEntryVertControl HomePhone { get; set; }
+        public TextEntryViewModel HomePhone { get; set; }
 
         /// <summary>
-        /// The customer work phone
+        /// The customer work phone number
         /// </summary>
-        public TextEntryVertControl WorkPhone { get; set; }
+        public TextEntryViewModel WorkPhone { get; set; }
 
         /// <summary>
-        /// The customer cell phone
+        /// The customer cell phone number
         /// </summary>
-        public TextEntryVertControl CellPhone { get; set; }
+        public TextEntryViewModel CellPhone { get; set; }
 
         /// <summary>
         /// The customer date of birth
         /// </summary>
-        public DateSelectionControl DateOfBirth { get; set; }
+        public DateSelectionViewModel DateOfBirth { get; set; }
 
         /// <summary>
-        /// The customer created date
+        /// The customer email
         /// </summary>
-        public DateSelectionControl CreateDate { get; set; }
+        public TextEntryViewModel Email { get; set; }
 
         /// <summary>
-        /// The customer last activity date
+        /// The type of email
         /// </summary>
-        public DateSelectionControl LastActivityDate { get; set; }
-
-
-
-
-
-
+        public EmailType EmailType { get; set; }
 
         #endregion
-
-
 
         #region Constructor
 
@@ -117,9 +99,6 @@ namespace EZDMS.App
         }
 
         #endregion
-
-
-
 
     }
 
