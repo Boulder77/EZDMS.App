@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace EZDMS.App
 {
     /// <summary>
-    /// Interaction logic for CustomerAddress.xaml
+    /// Interaction logic for CustomerAddressControl.xaml
     /// </summary>
-    public partial class CustomerAddress : UserControl
+    public partial class CustomerAddressControl : UserControl
     {
-        public CustomerAddress()
+        public CustomerAddressControl()
         {
             InitializeComponent();
         }

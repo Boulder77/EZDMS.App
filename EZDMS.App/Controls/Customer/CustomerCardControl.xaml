@@ -28,7 +28,7 @@
             <Label Content="{Binding FullName}"/>
 
             <!-- Profile Picture -->
-            <Grid Grid.Row="1" Margin="20,15,20,15"
+            <Grid Grid.Row="1" Margin="10,15,20,15"
                       VerticalAlignment="Top">
                 <!--Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"-->
                   
@@ -82,11 +82,7 @@
 
             </StackPanel>
 
-            <Grid
-                        
-                        Grid.Column="4"
-                        
-                        >
+            <Grid Grid.Column="4" >
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -123,7 +119,8 @@
 
             </Grid>
 
-
         </Grid>
+        
     </Border>
+    
 </UserControl>

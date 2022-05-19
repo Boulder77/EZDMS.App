@@ -98,8 +98,11 @@
     <Compile Include="Controls\Chat\ChatMessage\ChatMessageListItemControl.xaml.cs">
       <DependentUpon>ChatMessageListItemControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Customer\CustomerAddress.cs">
-      <DependentUpon>CustomerAddress.xaml</DependentUpon>
+    <Compile Include="Controls\Customer\CustomerBasicInfoControl.cs">
+      <DependentUpon>CustomerBasicInfoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Customer\CustomerAddressControl.cs">
+      <DependentUpon>CustomerAddressControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Customer\CustomerCardControl.xaml.cs">
       <DependentUpon>CustomerCardControl.xaml</DependentUpon>
@@ -219,9 +222,10 @@
     <Compile Include="ValueConverters\TimeToReadTimeConverter.cs" />
     <Compile Include="ViewModel\Customer\CustomerCardViewModel.cs" />
     <Compile Include="ViewModel\Customer\CustomerAddressViewModel.cs" />
+    <Compile Include="ViewModel\Customer\CustomerBasicInfoViewModel.cs" />
     <Compile Include="ViewModel\Customer\CustomerViewModel.cs" />
     <Compile Include="ViewModel\Customer\Design\CustomerCardDesignModel.cs" />
-    <Compile Include="ViewModel\Customer\Design\CustomerDesignModel - Copy.cs" />
+    <Compile Include="ViewModel\Customer\Design\CustomerAddressDesignModel.cs" />
     <Compile Include="ViewModel\Customer\Design\CustomerDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\TruthInLendingDisclosureDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\SalesSummaryDetailsDesignModel.cs" />
@@ -297,7 +301,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Customer\CustomerAddress.xaml">
+    <Page Include="Controls\Customer\CustomerBasicInfoControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Customer\CustomerAddressControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -541,6 +549,9 @@
       <Version>6.6.1</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="FontAwesome.WPF">
+      <Version>4.7.0.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
       <Version>2.2.6</Version>
