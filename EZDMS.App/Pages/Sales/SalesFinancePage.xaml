@@ -57,6 +57,7 @@
                 </TabItem>
 
                 <TabItem Header="Buyer" />
+                    <local:CustomerSalesControl/>
                 <TabItem Header="Vehicle" />
             </TabControl>
 

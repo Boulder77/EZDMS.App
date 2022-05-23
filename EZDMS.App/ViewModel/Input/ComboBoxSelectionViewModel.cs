@@ -21,7 +21,12 @@ namespace EZDMS.App
         /// <summary>
         /// The current items displayed in the combo box selections
         /// </summary>
-        public List<string> Items { get; set; }
+        public IEnumerable<object> Items { get; set; }
+
+        /// <summary>
+        /// The combo box selected item
+        /// </summary>
+        public string SelectedItem { get; set; } 
 
         #endregion
 

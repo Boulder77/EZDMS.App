@@ -4,16 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EZDMS.App"
-             xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"     
+             
              mc:Ignorable="d"
              >
 
-    <StackPanel>
+    <StackPanel Orientation="Vertical">
 
         <!-- Label -->
         <TextBlock Text="{Binding Label}"
                        x:Name="Label"
-                       Margin="15 4"
+                       Margin="5,10,5,0"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        FontFamily="{StaticResource LatoRegular}"
@@ -21,6 +21,7 @@
 
          <!---->         
         <ComboBox  ItemsSource="{Binding Items}"
+                   SelectedItem="{Binding SelectedItem}"
                    HorizontalContentAlignment="Center"
                    FontFamily="{StaticResource LatoRegular}"
                    />

@@ -34,9 +34,24 @@ namespace EZDMS.App
         public IEnumerable<GenderType> Genders => Enum.GetValues(typeof(GenderType)).Cast<GenderType>();
 
         /// <summary>
+        /// The list of customer contact types
+        /// </summary>
+        public IEnumerable<CustomerContactType> ContactTypes => Enum.GetValues(typeof(CustomerContactType)).Cast<CustomerContactType>();
+
+        /// <summary>
+        /// The list of customer contact types
+        /// </summary>
+        public IEnumerable<CustomerPrivacyType> PrivacyTypes => Enum.GetValues(typeof(CustomerPrivacyType)).Cast<CustomerPrivacyType>();
+
+        /// <summary>
+        /// The list of customer email types
+        /// </summary>
+        public IEnumerable<EmailType> EmailTypes => Enum.GetValues(typeof(EmailType)).Cast<EmailType>();
+
+        /// <summary>
         /// The customer prefix
         /// </summary>
-        public PrefixType Prefix { get; set; }
+        public ComboBoxSelectionViewModel Prefix { get; set; }
 
         /// <summary>
         /// The customer first name
@@ -78,9 +93,20 @@ namespace EZDMS.App
         /// </summary>
         public MaritalStatusType MaritalStatus { get; set; }
 
+        /// <summary>
+        /// The customer social security number
+        /// </summary>
+        public TextEntryViewModel SocialSecurityNumber { get; set; }
 
+        /// <summary>
+        /// The customer contact type
+        /// </summary>
+        public CustomerContactType ContactType { get; set; }
 
-
+        /// <summary>
+        /// The customer privacy type
+        /// </summary>
+        public CustomerPrivacyType PrivacyType { get; set; }
 
         /// <summary>
         /// The customer email
@@ -92,6 +118,21 @@ namespace EZDMS.App
         /// </summary>
         public EmailType EmailType { get; set; }
 
+        /// <summary>
+        /// The customer home phone number
+        /// </summary>
+        public TextEntryViewModel HomePhone { get; set; }
+
+        /// <summary>
+        /// The customer cell phone number
+        /// </summary>
+        public TextEntryViewModel CellPhone { get; set; }
+
+        /// <summary>
+        /// The customer work phone number
+        /// </summary>
+        public TextEntryViewModel WorkPhone { get; set; }
+
         #endregion
 
         #region Constructor
@@ -101,6 +142,8 @@ namespace EZDMS.App
         /// </summary>
         public CustomerBasicInfoViewModel()
         {
+
+    
            
 
         }

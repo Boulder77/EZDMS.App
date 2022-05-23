@@ -107,6 +107,9 @@
     <Compile Include="Controls\Customer\CustomerCardControl.xaml.cs">
       <DependentUpon>CustomerCardControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Customer\Sales\CustomerSalesControl.xaml.cs">
+      <DependentUpon>CustomerSalesControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Display\NumericalDisplayVertControl.cs">
       <DependentUpon>NumericalDisplayVertControl.xaml</DependentUpon>
     </Compile>
@@ -224,6 +227,7 @@
     <Compile Include="ViewModel\Customer\CustomerAddressViewModel.cs" />
     <Compile Include="ViewModel\Customer\CustomerBasicInfoViewModel.cs" />
     <Compile Include="ViewModel\Customer\CustomerViewModel.cs" />
+    <Compile Include="ViewModel\Customer\Design\CustomerBasicInfoDesignModel.cs" />
     <Compile Include="ViewModel\Customer\Design\CustomerCardDesignModel.cs" />
     <Compile Include="ViewModel\Customer\Design\CustomerAddressDesignModel.cs" />
     <Compile Include="ViewModel\Customer\Design\CustomerDesignModel.cs" />
@@ -310,6 +314,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Customer\CustomerCardControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Customer\Sales\CustomerSalesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

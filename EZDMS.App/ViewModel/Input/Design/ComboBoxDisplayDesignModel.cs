@@ -22,15 +22,15 @@ namespace EZDMS.App
         /// </summary>
         public ComboBoxDisplayDesignModel()
         {
-            // Label 
-            Label = "Deal Type";
+            //// Label 
+            //Label = "Deal Type";
 
-            // Items to add
-            Items.Add("Retail");
-            Items.Add("Lease");
-            Items.Add("Cash");
-            Items.Add("Wholesale");
-            Items.Add("Fleet");
+            //// Items to add
+            //Items.Add("Retail");
+            //Items.Add("Lease");
+            //Items.Add("Cash");
+            //Items.Add("Wholesale");
+            //Items.Add("Fleet");
         }
 
         #endregion

@@ -4,13 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EZDMS.App"
-             d:DataContext="{x:Static local:CustomerAddressDesignModel.Instance}"
+             d:DataContext="{x:Static local:CustomerBasicInfoDesignModel.Instance}"
              mc:Ignorable="d" 
              d:DesignHeight="250" d:DesignWidth="1200">
+    
+    
     <Border Margin="10"  Background="{StaticResource BackgroundVeryLightBrush}"                    
                     Grid.Row="1"
                     CornerRadius="4">
-        <Grid>
+        
+        <Grid >
                         
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -23,25 +26,18 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <Label Content="{Binding AddressDescription}" />
-
-            <Button Grid.Column="1"
-                    
-                    Style="{StaticResource SystemIconButton}" 
-                    Content="{StaticResource FontAwesomeTrashCanIcon}" HorizontalAlignment="Center"                                
-                    />
-
             <Border Grid.Row="1"
                     Grid.ColumnSpan="2"
-                    Background="{StaticResource WordOrangeBrush}"
+                    Background="{StaticResource WordDarkBlueBrush}"
                     CornerRadius="5"
                     />
             
             <Border Grid.Row="2"
                     Grid.ColumnSpan="2"
-                    Background="{StaticResource ForegroundLightBrush}">
+                    Background="{StaticResource WordVeryVeryLightBlueBrush}">
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
@@ -51,39 +47,102 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-
-                    <local:TextInputVertControl DataContext="{Binding StreetAddress}"/>
-                    <local:TextInputVertControl Grid.Column="1" DataContext="{Binding City}"/>
-                    <StackPanel Grid.Column="2"
-                                Orientation="Vertical"
+                    
+                    <StackPanel Orientation="Vertical"
                                 Margin="5"
                                 >
                         
-                        <Label Content="State"/>
-                        <ComboBox ItemsSource="{Binding AllStates}"
-                                  SelectedItem="{Binding State}"
+                        <Label Content="Prefix"/>
+                        <ComboBox ItemsSource="{Binding Prefixes}"
+                                  SelectedItem="{Binding Prefix}"
                                   Margin="5,10,5,0"
                                   />
 
                     </StackPanel>
-                    <local:TextInputVertControl Grid.Column="3" DataContext="{Binding Zip}"/>
+                    
+                    <local:TextInputVertControl Grid.Column="1" DataContext="{Binding FirstName}"/>
+                    <local:TextInputVertControl Grid.Column="2" DataContext="{Binding MiddleName}"/>
+                    <local:TextInputVertControl Grid.Column="3" DataContext="{Binding LastName}"/>
+                    <local:TextInputVertControl Grid.Column="4" DataContext="{Binding Suffix}"/>
 
-                    <StackPanel Grid.Row="1"
-                                Orientation="Vertical"
+                    <StackPanel Grid.Column="5" Orientation="Vertical"
                                 Margin="5"
                                 >
 
-                        <Label Content="Type"/>
-                        <ComboBox ItemsSource="{Binding AddressTypes}"
-                                  SelectedItem="{Binding AddressType}"
+                        <Label Content="Gender"/>
+                        <ComboBox ItemsSource="{Binding Genders}"
+                                  SelectedItem="{Binding Gender}"
                                   Margin="5,10,5,0"
                                   />
 
                     </StackPanel>
 
-                    <local:TextInputVertControl Grid.Row="1" Grid.Column="1" DataContext="{Binding County}"/>
-                    <local:TextInputVertControl Grid.Row="1" Grid.Column="2" DataContext="{Binding CountyCode}"/>
+                    <local:TextInputVertControl Grid.Row="1" DataContext="{Binding Nickname}"/>
+                    <local:DateSelectionControl Grid.Row="1" Grid.Column="1" DataContext="{Binding DateOfBirth}"/>
+
+                    <StackPanel Grid.Row="1"
+                                Grid.Column="2"
+                                Orientation="Vertical"                                
+                                >
+
+                        <Label Content="Marital Status"/>
+                        <ComboBox ItemsSource="{Binding MaritalStatuses}"
+                                  SelectedItem="{Binding ContactType}"
+                                  Margin="5,10,5,0"
+                                  />
+
+                    </StackPanel>
+
+                    <local:TextInputVertControl Grid.Row="1" Grid.Column="4" DataContext="{Binding SocialSecurityNumber}"/>
+                    
+                    <StackPanel Grid.Row="1"
+                                Grid.Column="3"
+                                Orientation="Vertical"                                
+                                >
+
+                        <Label Content="Contact Type"/>
+                        <ComboBox ItemsSource="{Binding ContactTypes}"
+                                  SelectedItem="{Binding ContactType}"
+                                  Margin="5,10,5,0"
+                                  />
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1"
+                                Grid.Column="5"
+                                Orientation="Vertical"                                
+                                >
+
+                        <Label Content="Privacy Type"/>
+                        <ComboBox ItemsSource="{Binding PrivacyTypes}"
+                                  SelectedItem="{Binding PrivacyType}"
+                                  Margin="5,10,5,0"
+                                  />
+
+                    </StackPanel>
+
+                    <local:TextInputVertControl Grid.Row="2" DataContext="{Binding HomePhone}"/>
+                    <local:TextInputVertControl Grid.Row="2" Grid.Column="1" DataContext="{Binding CellPhone}"/>
+                    <local:TextInputVertControl Grid.Row="2" Grid.Column="2" DataContext="{Binding WorkPhone}"/>
+
+                    <StackPanel Grid.Row="2"
+                                Grid.Column="3"                                
+                                Orientation="Vertical"                                
+                                >
+
+                        <Label Content="Type"/>
+                        <ComboBox ItemsSource="{Binding EmailTypes}"
+                                  SelectedItem="{Binding EmailType}"                                  
+                                  />
+
+                    </StackPanel>
+
+                    <local:TextInputVertControl Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" DataContext="{Binding Email}"/>
+
+
 
                 </Grid>
                 
