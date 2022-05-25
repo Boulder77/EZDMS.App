@@ -9,9 +9,9 @@
              d:DesignHeight="250" d:DesignWidth="1200">
     
     
-    <Border Margin="10"  Background="{StaticResource BackgroundVeryLightBrush}"                    
+    <Border Margin="10"  Background="{StaticResource ForegroundLightBrush}"                    
                     Grid.Row="1"
-                    CornerRadius="4">
+                    CornerRadius="6">
         
         <Grid >
                         
@@ -26,6 +26,8 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
+            <Label Content="Basic Information"/>
+            
             <Border Grid.Row="1"
                     Grid.ColumnSpan="2"
                     Background="{StaticResource WordDarkBlueBrush}"

@@ -56,8 +56,11 @@
                     <local:SalesDeskingControl/>
                 </TabItem>
 
-                <TabItem Header="Buyer" />
+                <TabItem Header="Buyer" >
                     <local:CustomerSalesControl/>
+                </TabItem>
+                         
+                    
                 <TabItem Header="Vehicle" />
             </TabControl>
 
