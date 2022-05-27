@@ -97,6 +97,11 @@ namespace EZDMS.App.Relational
             await mDbContext.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Gets a single sales finance deal
+        /// </summary>
+        /// <param name="dealNumber"></param>
+        /// <returns>SalesFinanceDataModel</returns>
         public Task<SalesFinanceDataModel> GetSalesFinanceDealAsync(int dealNumber)
         {
             // Gets a single sales record
@@ -104,6 +109,10 @@ namespace EZDMS.App.Relational
 
         }
 
+        /// <summary>
+        /// Creates a new sales finance record
+        /// </summary>
+        /// <returns>SalesFinanceDataModel</returns>
         public Task<SalesFinanceDataModel> CreateSalesFinanceDeal()
         {
             var mDataModel = new SalesFinanceDataModel();
@@ -116,14 +125,57 @@ namespace EZDMS.App.Relational
         }
 
         /// <summary>
+        /// Gets a single vehicle record from the inventory table
+        /// </summary>
+        /// <param name="stockNumber"></param>
+        /// <returns>VehicleInventoryDataModel</returns>
+        public Task<VehicleInventoryDataModel> GetVehicleInventoryAsync(string stockNumber)
+        {
+            // Gets a single sales record
+            return Task.FromResult(mDbContext.VehicleInventory.FirstOrDefault(u => u.StockNumber == stockNumber));
+
+        }
+
+        /// <summary>
+        /// Gets a single customer record from the customer table
+        /// </summary>
+        /// <param name="customerNumber"></param>
+        /// <returns>CustomerDataModel</returns>
+        public Task<CustomerDataModel> GetCustomerAsync(string customerNumber)
+        {
+            // Gets a single sales record
+            return Task.FromResult(mDbContext.Customer.FirstOrDefault(u => u.Number == customerNumber));
+
+        }
+
+
+        /// <summary>
         /// Returns all records in SearchDeals table
         /// </summary>
-
         public Task<List<SalesDealsItemDataModel>> GetSalesDealRecallsAsync()
         {
             // Gets all the sales                      
             return Task.FromResult(mDbContext.SalesDealsInfo.ToList());
             
+        }
+
+        /// <summary>
+        /// Returns all records in vehicle inventory table
+        /// </summary>
+        public Task<List<VehicleInventoryDataModel>> GetVehicleInventoryAsync()
+        {
+            // Gets all the sales                      
+            return Task.FromResult(mDbContext.VehicleInventory.ToList());
+
+        }
+
+        /// <summary>
+        /// Returns all records in customer table
+        /// </summary>
+        public Task<List<CustomerDataModel>> GetCustomersAsync()
+        {
+            // Gets all the sales                      
+            return Task.FromResult(mDbContext.Customer.ToList());
         }
 
         public async Task AddNewSalesRecordAsync(object mDataModel, DbTableNames type)
@@ -147,6 +199,16 @@ namespace EZDMS.App.Relational
                 case DbTableNames.SalesFinance:
                     //Add new sales finance entry
                     mDbContext.SalesFinance.Add(mDataModel as SalesFinanceDataModel);
+                    break;
+
+                case DbTableNames.VehicleInventory:
+                    //Add new sales finance entry
+                    mDbContext.VehicleInventory.Add(mDataModel as VehicleInventoryDataModel);
+                    break;
+
+                case DbTableNames.Customer:
+                    //Add new sales finance entry
+                    mDbContext.Customer.Add(mDataModel as CustomerDataModel);
                     break;
 
                 default:

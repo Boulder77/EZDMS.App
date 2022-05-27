@@ -67,5 +67,30 @@ namespace EZDMS.App.Core
         /// <param name="type">the type of DbTable</param>
         /// <returns>new SalesFinanceDataModel</returns>
         Task<SalesFinanceDataModel> CreateSalesFinanceDeal();
+
+        /// <summary>
+        /// Gets a single customer record from the customer table
+        /// </summary>
+        /// <param name="customerNumber"></param>
+        /// <returns>CustomerDataModel</returns>
+        Task<CustomerDataModel> GetCustomerAsync(string customerNumber);
+
+        /// <summary>
+        /// Gets a single vehicle record from the inventory table
+        /// </summary>
+        /// <param name="stockNumber"></param>
+        /// <returns>VehicleInventoryDataModel</returns>
+        Task<VehicleInventoryDataModel> GetVehicleInventoryAsync(string stockNumber);
+
+        /// <summary>
+        /// Returns all records in vehicle inventory table
+        /// </summary>
+        Task<List<VehicleInventoryDataModel>> GetVehicleInventoryAsync();
+
+        /// <summary>
+        /// Returns all records in customer table
+        /// </summary>
+        Task<List<CustomerDataModel>> GetCustomersAsync();
+
     }
 }

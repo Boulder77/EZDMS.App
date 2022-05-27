@@ -25,6 +25,16 @@ namespace EZDMS.App.Relational
         /// </summary>
         public DbSet<SalesFinanceDataModel> SalesFinance { get; set; }
 
+        /// <summary>
+        /// The vehicle inventory table
+        /// </summary>
+        public DbSet<VehicleInventoryDataModel> VehicleInventory { get; set; }
+
+        /// <summary>
+        /// The customer table
+        /// </summary>
+        public DbSet<CustomerDataModel> Customer { get; set; }
+
         #endregion
 
         #region Constructor
@@ -57,6 +67,10 @@ namespace EZDMS.App.Relational
             modelBuilder.Entity<SalesDealsItemDataModel>().HasKey(a => a.DealNumber);
 
             modelBuilder.Entity<SalesFinanceDataModel>().HasKey(a => a.DealNumber);
+
+            modelBuilder.Entity<VehicleInventoryDataModel>().HasKey(a => a.ID);
+
+            modelBuilder.Entity<CustomerDataModel>().HasKey(a => a.ID);
 
             // TODO: Set up limits
             //modelBuilder.Entity<LoginCredentialsDataModel>().Property(a => a.FirstName).HasMaxLength(50);

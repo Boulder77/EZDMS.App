@@ -19,5 +19,15 @@
         /// The SalesFinance table
         /// </summary>
         SalesFinance = 2,
+
+        /// <summary>
+        /// The vehicle inventory table
+        /// </summary>
+        VehicleInventory = 3,
+
+        /// <summary>
+        /// The Customer table
+        /// </summary>
+        Customer = 4,
     }
 }
