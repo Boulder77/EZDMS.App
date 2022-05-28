@@ -176,10 +176,13 @@
     <Compile Include="Controls\SideMenuControl.xaml.cs">
       <DependentUpon>SideMenuControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Vehicle\VehicleBasicInfoControl.xaml.cs">
+      <DependentUpon>VehicleBasicInfoControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Vehicle\VehicleCardControl.xaml.cs">
       <DependentUpon>VehicleCardControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Vehicle\VehicleSalesControl.xaml.cs">
+    <Compile Include="Controls\Vehicle\Sales\VehicleSalesControl.xaml.cs">
       <DependentUpon>VehicleSalesControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\BaseDialogUserControl.cs" />
@@ -254,7 +257,9 @@
     <Compile Include="ViewModel\Input\Design\NumericalEntryDesignModel.cs" />
     <Compile Include="ViewModel\Input\TextDisplayViewModel.cs" />
     <Compile Include="ViewModel\Input\NumericalEntryViewModel.cs" />
+    <Compile Include="ViewModel\Vehicle\Design\VehicleBasicInfoDesignModel.cs" />
     <Compile Include="ViewModel\Vehicle\Design\VehicleCardDesignModel.cs" />
+    <Compile Include="ViewModel\Vehicle\VehicleBasicInfoViewModel.cs" />
     <Compile Include="ViewModel\Vehicle\VehicleCardViewModel.cs" />
     <Compile Include="WebRequests\WebRequestResultExtensions.cs" />
     <Compile Include="WPFViewModels\DialogWindowViewModel.cs" />
@@ -417,11 +422,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Vehicle\VehicleBasicInfoControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\Vehicle\VehicleCardControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Vehicle\VehicleSalesControl.xaml">
+    <Page Include="Controls\Vehicle\Sales\VehicleSalesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

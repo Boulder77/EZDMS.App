@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="EZDMS.App.VehicleBasicInfoControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EZDMS.App"
+             d:DataContext="{x:Static local:VehicleBasicInfoDesignModel.Instance}"
+             mc:Ignorable="d" 
+             d:DesignHeight="320" d:DesignWidth="1000">
+    <Border Margin="10"  Background="{StaticResource BackgroundVeryLightBrush}"
+                    
+                    Grid.Row="1"
+                    CornerRadius="4">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                
+            </Grid.ColumnDefinitions>
+
+            <StackPanel
+                        Orientation="Vertical"                        
+                        >
+                
+                <local:TextEntryVertControl DataContext="{Binding StockNumber}"/>
+                <local:TextEntryVertControl DataContext="{Binding Year}"/>
+                <local:TextEntryVertControl DataContext="{Binding Body}"/>
+                <local:TextEntryVertControl DataContext="{Binding Odometer}"/>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical"
+                        Grid.Column="1"                        
+                        >
+
+                <local:TextEntryVertControl DataContext="{Binding VIN}"/>
+                <local:TextEntryVertControl DataContext="{Binding Make}"/>
+                <local:TextEntryVertControl DataContext="{Binding ExteriorColor}"/>
+                <local:TextEntryVertControl DataContext="{Binding OdometerStatus}"/>
+
+            </StackPanel>
+
+            <StackPanel
+                        Orientation="Vertical"
+                        Grid.Column="2"                      
+                        >
+
+                <local:TextEntryVertControl DataContext="{Binding Type}"/>
+                <local:TextEntryVertControl DataContext="{Binding Model}"/>
+                <local:TextEntryVertControl DataContext="{Binding InteriorColor}"/>
+                
+            </StackPanel>
+
+            <StackPanel
+                        Orientation="Vertical"
+                        Grid.Column="3"                      
+                        >
+
+                <local:TextEntryVertControl DataContext="{Binding Status}"/>
+                <local:TextEntryVertControl DataContext="{Binding Trim}"/>
+                <local:TextEntryVertControl DataContext="{Binding Class}"/>
+
+            </StackPanel>
+
+        </Grid>
+        
+    </Border>
+    
+</UserControl>

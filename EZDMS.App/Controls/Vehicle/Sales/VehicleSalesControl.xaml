@@ -17,5 +17,10 @@
         <local:VehicleCardControl 
             d:DataContext="{x:Static local:VehicleCardDesignModel.Instance}"/>
 
+        <local:VehicleBasicInfoControl
+            Grid.Row="1"
+            d:DataContext="{x:Static local:VehicleBasicInfoDesignModel.Instance}"
+            />
+
     </Grid>
 </UserControl>
