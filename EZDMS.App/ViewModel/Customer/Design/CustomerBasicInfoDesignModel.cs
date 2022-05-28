@@ -40,6 +40,7 @@ namespace EZDMS.App
             HomePhone = new TextEntryViewModel { Label = "Home Phone", OriginalText = "(619) 445-2212" };
             WorkPhone = new TextEntryViewModel { Label = "Work Phone", OriginalText = "(800) 456-2222" };
             CellPhone = new TextEntryViewModel { Label = "Cell Phone", OriginalText = "(619) 112-3332" };
+
         }
 
         #endregion

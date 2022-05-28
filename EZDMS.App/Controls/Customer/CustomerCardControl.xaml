@@ -28,10 +28,11 @@
             <Label Content="{Binding FullName}"/>
 
             <!-- Profile Picture -->
-            <Grid Grid.Row="1" Margin="10,15,20,15"
-                      VerticalAlignment="Top">
-                <!--Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"-->
-                  
+            <Grid Grid.Row="1" Margin="0 0 30 0"
+                      VerticalAlignment="Top"
+                      Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
+                  >
+
 
                 <!-- Mask for rounded corners-->
                 <Border CornerRadius="8"

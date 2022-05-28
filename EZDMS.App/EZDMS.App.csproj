@@ -176,6 +176,12 @@
     <Compile Include="Controls\SideMenuControl.xaml.cs">
       <DependentUpon>SideMenuControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Vehicle\VehicleCardControl.xaml.cs">
+      <DependentUpon>VehicleCardControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Vehicle\VehicleSalesControl.xaml.cs">
+      <DependentUpon>VehicleSalesControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\BaseDialogUserControl.cs" />
     <Compile Include="Dialogs\DialogMessageBox.xaml.cs">
       <DependentUpon>DialogMessageBox.xaml</DependentUpon>
@@ -248,6 +254,8 @@
     <Compile Include="ViewModel\Input\Design\NumericalEntryDesignModel.cs" />
     <Compile Include="ViewModel\Input\TextDisplayViewModel.cs" />
     <Compile Include="ViewModel\Input\NumericalEntryViewModel.cs" />
+    <Compile Include="ViewModel\Vehicle\Design\VehicleCardDesignModel.cs" />
+    <Compile Include="ViewModel\Vehicle\VehicleCardViewModel.cs" />
     <Compile Include="WebRequests\WebRequestResultExtensions.cs" />
     <Compile Include="WPFViewModels\DialogWindowViewModel.cs" />
     <Compile Include="WPFViewModels\ViewModelLocator.cs" />
@@ -406,6 +414,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\SideMenuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Vehicle\VehicleCardControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Vehicle\VehicleSalesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -574,5 +590,6 @@
   <ItemGroup>
     <Resource Include="Images\Samples\AnayProfile.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

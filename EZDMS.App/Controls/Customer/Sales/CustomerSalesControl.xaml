@@ -25,16 +25,18 @@
 
             <Border Grid.Row="1" Background="{StaticResource WordLightBlueBrush}" />
 
-            <local:CustomerBasicInfoControl
-                Grid.Row="2"
-                d:DataContext="{x:Static local:CustomerBasicInfoDesignModel.Instance}"
+            
+            <local:CustomerBasicInfoControl 
+                    Grid.Row="2"               
+                    d:DataContext="{x:Static local:CustomerBasicInfoDesignModel.Instance}"
                 />
 
-            <local:CustomerAddressControl
+             <local:CustomerAddressControl                        
                 Grid.Row="3"
                 d:DataContext="{x:Static local:CustomerAddressDesignModel.Instance}"
                 />
-            <Button Grid.Row="4"
+                    
+             <Button Grid.Row="4"
                     Margin="15"
                     Padding="20,10,20,10"
                     Content="Save" 
@@ -42,7 +44,7 @@
                     HorizontalAlignment="Right"
                     FontSize="{StaticResource FontSizeRegular}"
                     />
-
+            
         </Grid>
 
     </Border>

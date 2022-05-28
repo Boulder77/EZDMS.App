@@ -1,0 +1,103 @@
+﻿<UserControl x:Class="EZDMS.App.VehicleCardControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EZDMS.App"
+             d:DataContext="{x:Static local:VehicleCardDesignModel.Instance}"
+             mc:Ignorable="d" 
+             d:DesignHeight="320" d:DesignWidth="1000">
+    <Border Margin="10"  Background="{StaticResource BackgroundVeryLightBrush}"
+                    
+                    Grid.Row="1"
+                    CornerRadius="4">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label Content="{Binding Description}"
+                   FontSize="{StaticResource FontSizeLarge}"
+                   FontFamily="{StaticResource LatoBold}"/>
+
+            <!-- Vehicle Pictures -->
+            <Grid Grid.Row="1" Margin="0 0 30 0"
+                      VerticalAlignment="Top"
+                      Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
+                  >
+
+                <!-- Mask for rounded corners-->
+                <Border CornerRadius="8"
+                            Name="Mask"
+                            Background="White"
+                            />
+
+                <!-- Image -->
+                <Grid>
+                    <Grid.OpacityMask>
+                        <VisualBrush Visual="{Binding ElementName=Mask}" />
+                    </Grid.OpacityMask>
+
+                    <Image Source="/Images/Samples/AnayProfile.jpg" Stretch="UniformToFill" />
+                </Grid>
+
+            </Grid>
+
+            <StackPanel
+                        Orientation="Vertical"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Grid.RowSpan="2"
+                        >
+                
+                <local:TextDisplayVertControl DataContext="{Binding StockNumber}"/>
+                <local:TextDisplayVertControl DataContext="{Binding Type}"/>
+                <local:TextDisplayVertControl DataContext="{Binding Status}"/>
+                <local:TextDisplayVertControl DataContext="{Binding DaysInStock}"/>
+
+            </StackPanel>
+
+            <StackPanel
+                        Orientation="Vertical"
+                        Grid.Column="2"
+                        Grid.Row="1"
+                        Grid.RowSpan="2"
+                        >
+                
+                <local:TextDisplayVertControl DataContext="{Binding Color}"/>
+                <local:TextDisplayVertControl DataContext="{Binding InteriorColor}"/>
+                <local:TextDisplayVertControl DataContext="{Binding LotLocation}"/>
+                <local:TextDisplayVertControl DataContext="{Binding Category}"/>
+
+            </StackPanel>
+
+            <StackPanel
+                        Orientation="Vertical"
+                        Grid.Column="3"
+                        Grid.Row="1"
+                        Grid.RowSpan="2"
+                        >
+
+                <local:TextDisplayVertControl DataContext="{Binding VIN}"/>
+                <local:TextDisplayVertControl DataContext="{Binding Odometer}"/>
+                <local:TextDisplayVertControl DataContext="{Binding MSRP}"/>
+                <local:TextDisplayVertControl DataContext="{Binding ListPrice}"/>
+                <local:TextDisplayVertControl DataContext="{Binding InternetPrice}"/>
+
+            </StackPanel>
+
+        </Grid>
+        
+    </Border>
+    
+</UserControl>

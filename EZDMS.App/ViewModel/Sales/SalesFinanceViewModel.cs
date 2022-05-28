@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using static EZDMS.App.DI;
 using static EZDMS.App.Core.CoreDI;
+using System.Text;
 
 namespace EZDMS.App
 {
@@ -21,8 +22,13 @@ namespace EZDMS.App
 
         protected SalesDealsItemDataModel mSalesDealItem;
 
-        #endregion
+        protected CustomerDataModel mBuyer;
 
+        protected CustomerDataModel mCoBuyer;
+
+        protected VehicleInventoryDataModel mSaleVehicle;
+
+        #endregion
 
         #region Public Properties
 
@@ -72,6 +78,77 @@ namespace EZDMS.App
         }
 
         /// <summary>
+        /// The data model for the buyer
+        /// </summary>
+        public CustomerDataModel Buyer
+        {
+            get => mBuyer;
+            set
+            {
+                // If datamodel has not changed...
+                if (mBuyer == value)
+                    // Ignore
+                    return;
+
+                // Set the backing datamodel
+                mBuyer = value;
+
+                if (value != null)
+                    // Reload customer card view model
+                    UpdateValuesOfCustomerCard(Buyer);
+                    UpdateValuesOfCustomerBasicInfo(Buyer);
+                    UpdateValuesOfCustomerAddress(Buyer);
+            }
+
+        }
+
+        /// <summary>
+        /// The data model for the cobuyer
+        /// </summary>
+        public CustomerDataModel CoBuyer
+        {
+            get => mCoBuyer;
+            set
+            {
+                // If datamodel has not changed...
+                if (mCoBuyer == value)
+                    // Ignore
+                    return;
+
+                // Set the backing datamodel
+                mCoBuyer = value;
+
+                //if (value != null)
+                //    // Reload sales deal view model
+                //    UpdateValuesOfSalesDealCard(SalesDealsItem);
+            }
+
+        }
+
+        /// <summary>
+        /// The data model for the vehicle on the sale
+        /// </summary>
+        public VehicleInventoryDataModel SaleVehicle
+        {
+            get => mSaleVehicle;
+            set
+            {
+                // If datamodel has not changed...
+                if (mSaleVehicle == value)
+                    // Ignore
+                    return;
+
+                // Set the backing datamodel
+                mSaleVehicle = value;
+
+                //if (value != null)
+                //    // Reload sales deal view model
+                //    UpdateValuesOfSalesDealCard(SalesDealsItem);
+            }
+
+        }
+
+        /// <summary>
         /// The view model for the sales summary control
         /// </summary>
         public SalesSummaryViewModel SalesSummary { get; set; }
@@ -90,6 +167,21 @@ namespace EZDMS.App
         /// The view model for the sales deal card control
         /// </summary>
         public SalesDealCardViewModel SalesDealCard {get; set; }
+
+        /// <summary>
+        /// The view model for the customer card control
+        /// </summary>
+        public CustomerCardViewModel CustomerCard { get; set; }
+
+        /// <summary>
+        /// The view model for the customer basic info control
+        /// </summary>
+        public CustomerBasicInfoViewModel CustomerBasicInfo { get; set; }
+
+        /// <summary>
+        /// The view model for the customer address control
+        /// </summary>
+        public CustomerAddressViewModel CustomerAddress { get; set; }
 
         /// <summary>
         /// Indicates if the sales finance deal details are currently being loaded
@@ -114,6 +206,12 @@ namespace EZDMS.App
         /// The command to clear the users data from the view model
         /// </summary>
         public ICommand ClearUserDataCommand { get; set; }
+
+
+        /// <summary>
+        /// Saves the current buyer info to the server
+        /// </summary>
+        public ICommand SaveBuyerCommand { get; set; }
 
         #endregion
 
@@ -492,6 +590,111 @@ namespace EZDMS.App
 
             };
 
+
+        }
+
+        private void UpdateValuesOfCustomerCard(CustomerDataModel Buyer)
+        {
+            var phoneCount=0;
+            var phoneLabel = new StringBuilder();
+            var mainPhone="";
+
+            // count the number of phone numbers
+            if(Buyer.HomePhone!=null)
+            {
+                phoneCount += 1;
+            }
+
+            if (Buyer.WorkPhone!=null)
+            {
+                phoneCount += 1;
+            }
+            if (Buyer.CellPhone!=null)
+            {
+                phoneCount += 1;
+            }
+            
+            // Update label with phone count info
+            phoneLabel.Append($"{phoneCount.ToString()} Phone");
+            phoneLabel.Append((phoneCount > 1) ? "s":null);
+
+            Enum.TryParse(Buyer?.MainPhoneType,out PhoneType phoneType);
+
+            // Main phone type
+            switch(phoneType)
+            {
+                case PhoneType.Home:
+                    mainPhone = Buyer?.HomePhone;
+                    break;
+
+                case PhoneType.Work:
+                    mainPhone = Buyer?.WorkPhone;
+                    break;
+
+                case PhoneType.Cell:
+                    mainPhone = Buyer?.CellPhone;
+                    break;
+
+            }
+
+            // Update customer card VM with values
+            CustomerCard = new CustomerCardViewModel
+
+            {
+
+                CustomerNumber = new TextDisplayViewModel { Label = "Customer Number", DisplayText = Buyer?.Number },
+                FullName = $"{Buyer?.FirstName} {Buyer?.MiddleName} {Buyer?.LastName}",
+                CreateDate = new TextDisplayViewModel { Label = "Created", DisplayText = Buyer.CreateDate.ToString("MM/dd/yyyy") },
+                LastModifiedDate = new TextDisplayViewModel { Label = "Last Modified", DisplayText = Buyer.LastModifiedDate.ToString("MM/dd/yyyy") },
+                MainPhone = new TextDisplayViewModel { Label = phoneLabel.ToString(), DisplayText = $"{mainPhone} {Buyer?.MainPhoneType}" },
+                MainEmail = new TextDisplayViewModel { Label = "1 Email", DisplayText = $"{Buyer?.Email} {Buyer?.EmailType}" },
+                FullAddress = new TextDisplayViewModel { Label = "1 Address", DisplayText = $"{Buyer?.StreetAddress} \r\n {Buyer?.City} , {Buyer?.State} {Buyer?.Zip}"},
+
+            };
+
+        }
+
+        private void UpdateValuesOfCustomerBasicInfo(CustomerDataModel Buyer)
+        {
+
+            // Update Customer basic info VM with values
+            CustomerBasicInfo = new CustomerBasicInfoViewModel
+
+            {
+                FirstName = new TextEntryViewModel { Label = "First Name", OriginalText = Buyer?.FirstName },
+                MiddleName = new TextEntryViewModel { Label = "Middle Name", OriginalText = Buyer?.MiddleName },
+                LastName = new TextEntryViewModel { Label = "Last Name", OriginalText = Buyer?.LastName },
+                Suffix = new TextEntryViewModel { Label = "Suffix", OriginalText = Buyer?.Suffix },
+                Nickname = new TextEntryViewModel { Label = "Nickname", OriginalText = Buyer?.Nickname },
+                DateOfBirth = new DateSelectionViewModel { Label = "Date of Birth", Date = Buyer.DateOfBirth },
+                MaritalStatus=(MaritalStatusType)Enum.Parse(typeof(MaritalStatusType),Buyer?.MaritalStatus),
+                SocialSecurityNumber = new TextEntryViewModel { Label = "SSN", OriginalText = Buyer?.SSN },
+                Email = new TextEntryViewModel { Label = "Email", OriginalText = Buyer?.Email },
+                EmailType = (EmailType)Enum.Parse(typeof(EmailType), Buyer?.EmailType),
+                HomePhone = new TextEntryViewModel { Label = "Home Phone", OriginalText = Buyer?.HomePhone },
+                WorkPhone = new TextEntryViewModel { Label = "Work Phone", OriginalText = Buyer?.WorkPhone },
+                CellPhone = new TextEntryViewModel { Label = "Cell Phone", OriginalText = Buyer?.CellPhone },
+
+        };
+
+        }
+
+        private void UpdateValuesOfCustomerAddress(CustomerDataModel Buyer)
+        {
+            // Update Customer address VM with values
+            CustomerAddress = new CustomerAddressViewModel
+
+            {
+                AddressDescription = "Physical Address (Primary)",
+                StreetAddress = new TextEntryViewModel { Label = "Address", OriginalText = Buyer?.StreetAddress },
+                City = new TextEntryViewModel { Label = "City", OriginalText = Buyer?.City },
+                State = States.OH,
+                Zip = new TextEntryViewModel { Label = "Zip", OriginalText = Buyer?.Zip },
+                AddressType = AddressType.Physical,
+                County = new TextEntryViewModel { Label = "County", OriginalText = Buyer?.County },
+                CountyCode = new TextEntryViewModel { Label = "County Code", OriginalText = Buyer.CountyCode },
+
+            };
 
         }
 

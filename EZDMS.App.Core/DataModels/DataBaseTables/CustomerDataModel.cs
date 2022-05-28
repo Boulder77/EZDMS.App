@@ -187,5 +187,15 @@ namespace EZDMS.App.Core
         /// <summary>
         public string Status { get; set; }
 
+        /// <summary>
+        /// The nickname of this customer record
+        /// <summary>
+        public string Nickname { get; set; }
+
+        /// <summary>
+        /// The marital status of this customer record
+        /// <summary>
+        public string MaritalStatus { get; set; }
+
     }
 }

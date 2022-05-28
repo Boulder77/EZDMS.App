@@ -6,8 +6,7 @@
       xmlns:local="clr-namespace:EZDMS.App"
       xmlns:core="clr-namespace:EZDMS.App.Core;assembly=EZDMS.App.Core"
       mc:Ignorable="d" 
-      x:Name="Page"
-      d:DataContext="{x:Static local:SalesDealCardDesignModel.Instance}"
+      x:Name="Page"      
       d:DesignHeight="900" d:DesignWidth="1300"      
       >
 
@@ -20,7 +19,8 @@
             </Grid.RowDefinitions>
 
             <local:SalesDealCardControl Grid.Row="1"
-                                        DataContext="{Binding SalesDealCard}"/>
+                                        DataContext="{Binding SalesDealCard}"
+                                        d:DataContext="{x:Static local:SalesDealCardDesignModel.Instance}"/>
             <TabControl Grid.Row="2" Margin="10" BorderThickness="0" Background="{StaticResource ForegroundLightBrush}">
                 <TabControl.Resources>
                     <Style TargetType="TabItem">
@@ -57,11 +57,18 @@
                 </TabItem>
 
                 <TabItem Header="Buyer" >
-                    <local:CustomerSalesControl/>
-                </TabItem>
-                         
+                    <ScrollViewer>
+                        <local:CustomerSalesControl/>
+                    </ScrollViewer>
                     
-                <TabItem Header="Vehicle" />
+                </TabItem>
+
+
+                <TabItem Header="Vehicle">
+                    <ScrollViewer>
+                        <local:VehicleSalesControl/>
+                    </ScrollViewer>
+                </TabItem>
             </TabControl>
 
         </Grid>
