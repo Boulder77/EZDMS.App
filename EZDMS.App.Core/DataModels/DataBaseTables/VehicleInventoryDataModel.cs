@@ -173,7 +173,7 @@ namespace EZDMS.App.Core
         public int Weight { get; set; }
 
         /// <summary>
-        /// The m s r p of this vehicle inventory record
+        /// The MSRP of this vehicle inventory record
         /// <summary>
         public decimal MSRP { get; set; }
 
@@ -356,6 +356,22 @@ namespace EZDMS.App.Core
         /// The lot location of this vehicle inventory record
         /// <summary>
         public string LotLocation { get; set; }
+
+        /// <summary>
+        /// The boolean if vehicle is covered under factory warranty
+        /// </summary>
+        public bool IsFactoryWarranty { get; set; }
+
+        /// <summary>
+        /// The dealer pack percentage of this vehicle inventory record
+        /// <summary>
+        public decimal DealerPackPercentage { get; set; }
+
+        /// <summary>
+        /// The invoice price of this vehicle inventory record
+        /// <summary>
+        public decimal InvoicePrice { get; set; }
+
 
     }
 }

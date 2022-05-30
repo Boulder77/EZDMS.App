@@ -83,6 +83,11 @@
         /// </summary>
         public TextEntryViewModel OdometerStatus { get; set; }
 
+        /// <summary>
+        /// The boolean if vehicle is covered under factory warranty
+        /// </summary>
+        public bool IsFactoryWarranty { get; set; }
+
         #endregion
 
         #region Constructor

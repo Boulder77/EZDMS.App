@@ -5,22 +5,31 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EZDMS.App"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="800">
-    <Grid>
+             d:DesignHeight="1000" d:DesignWidth="800">
+    <Border Padding="5">
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <local:VehicleCardControl 
+            <local:VehicleCardControl 
             d:DataContext="{x:Static local:VehicleCardDesignModel.Instance}"/>
 
-        <local:VehicleBasicInfoControl
+            <local:VehicleBasicInfoControl
             Grid.Row="1"
             d:DataContext="{x:Static local:VehicleBasicInfoDesignModel.Instance}"
             />
 
-    </Grid>
+            <local:VehiclePricingControl
+            Grid.Row="2"
+            d:DataContext="{x:Static local:VehiclePricingDesignModel.Instance}"
+            />
+
+        </Grid>
+
+    </Border>
+    
 </UserControl>

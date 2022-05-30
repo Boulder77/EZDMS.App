@@ -128,6 +128,9 @@
     <Compile Include="Controls\Input\ComboBoxSelectionControl.xaml.cs">
       <DependentUpon>ComboBoxSelectionControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Input\NumericalInputVertControl.cs">
+      <DependentUpon>NumericalInputVertControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Input\PasswordEntryControl.xaml.cs">
       <DependentUpon>PasswordEntryControl.xaml</DependentUpon>
     </Compile>
@@ -184,6 +187,9 @@
     </Compile>
     <Compile Include="Controls\Vehicle\Sales\VehicleSalesControl.xaml.cs">
       <DependentUpon>VehicleSalesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Vehicle\VehiclePricingControl.xaml.cs">
+      <DependentUpon>VehiclePricingControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\BaseDialogUserControl.cs" />
     <Compile Include="Dialogs\DialogMessageBox.xaml.cs">
@@ -257,10 +263,12 @@
     <Compile Include="ViewModel\Input\Design\NumericalEntryDesignModel.cs" />
     <Compile Include="ViewModel\Input\TextDisplayViewModel.cs" />
     <Compile Include="ViewModel\Input\NumericalEntryViewModel.cs" />
+    <Compile Include="ViewModel\Vehicle\Design\VehiclePricingDesignModel.cs" />
     <Compile Include="ViewModel\Vehicle\Design\VehicleBasicInfoDesignModel.cs" />
     <Compile Include="ViewModel\Vehicle\Design\VehicleCardDesignModel.cs" />
     <Compile Include="ViewModel\Vehicle\VehicleBasicInfoViewModel.cs" />
     <Compile Include="ViewModel\Vehicle\VehicleCardViewModel.cs" />
+    <Compile Include="ViewModel\Vehicle\VehiclePricingViewModel.cs" />
     <Compile Include="WebRequests\WebRequestResultExtensions.cs" />
     <Compile Include="WPFViewModels\DialogWindowViewModel.cs" />
     <Compile Include="WPFViewModels\ViewModelLocator.cs" />
@@ -358,6 +366,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Input\NumericalInputVertControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\Input\PasswordEntryControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -431,6 +443,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Vehicle\Sales\VehicleSalesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Vehicle\VehiclePricingControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

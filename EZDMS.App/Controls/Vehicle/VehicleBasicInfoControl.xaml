@@ -7,7 +7,7 @@
              d:DataContext="{x:Static local:VehicleBasicInfoDesignModel.Instance}"
              mc:Ignorable="d" 
              d:DesignHeight="320" d:DesignWidth="1000">
-    <Border Margin="10"  Background="{StaticResource BackgroundVeryLightBrush}"
+    <Border  Background="{StaticResource BackgroundVeryLightBrush}"
                     
                     Grid.Row="1"
                     CornerRadius="4">
@@ -23,11 +23,11 @@
             <StackPanel
                         Orientation="Vertical"                        
                         >
-                
-                <local:TextEntryVertControl DataContext="{Binding StockNumber}"/>
-                <local:TextEntryVertControl DataContext="{Binding Year}"/>
-                <local:TextEntryVertControl DataContext="{Binding Body}"/>
-                <local:TextEntryVertControl DataContext="{Binding Odometer}"/>
+
+                <local:TextInputVertControl DataContext="{Binding StockNumber}"/>
+                <local:TextInputVertControl DataContext="{Binding Year}"/>
+                <local:TextInputVertControl DataContext="{Binding Body}"/>
+                <local:TextInputVertControl DataContext="{Binding Odometer}"/>
 
             </StackPanel>
 
@@ -35,10 +35,10 @@
                         Grid.Column="1"                        
                         >
 
-                <local:TextEntryVertControl DataContext="{Binding VIN}"/>
-                <local:TextEntryVertControl DataContext="{Binding Make}"/>
-                <local:TextEntryVertControl DataContext="{Binding ExteriorColor}"/>
-                <local:TextEntryVertControl DataContext="{Binding OdometerStatus}"/>
+                <local:TextInputVertControl DataContext="{Binding VIN}"/>
+                <local:TextInputVertControl DataContext="{Binding Make}"/>
+                <local:TextInputVertControl DataContext="{Binding ExteriorColor}"/>
+                <local:TextInputVertControl DataContext="{Binding OdometerStatus}"/>
 
             </StackPanel>
 
@@ -47,10 +47,15 @@
                         Grid.Column="2"                      
                         >
 
-                <local:TextEntryVertControl DataContext="{Binding Type}"/>
-                <local:TextEntryVertControl DataContext="{Binding Model}"/>
-                <local:TextEntryVertControl DataContext="{Binding InteriorColor}"/>
-                
+                <local:TextInputVertControl DataContext="{Binding Type}"/>
+                <local:TextInputVertControl DataContext="{Binding Model}"/>
+                <local:TextInputVertControl DataContext="{Binding InteriorColor}"/>
+                <CheckBox  Margin="10"
+                           Content="Under Factory Warranty"
+                           HorizontalContentAlignment="Center"
+                           IsChecked="{Binding Path=IsFactoryWarranty, Mode=TwoWay}"
+                           />
+
             </StackPanel>
 
             <StackPanel
@@ -58,9 +63,9 @@
                         Grid.Column="3"                      
                         >
 
-                <local:TextEntryVertControl DataContext="{Binding Status}"/>
-                <local:TextEntryVertControl DataContext="{Binding Trim}"/>
-                <local:TextEntryVertControl DataContext="{Binding Class}"/>
+                <local:TextInputVertControl DataContext="{Binding Status}"/>
+                <local:TextInputVertControl DataContext="{Binding Trim}"/>
+                <local:TextInputVertControl DataContext="{Binding Class}"/>
 
             </StackPanel>
 

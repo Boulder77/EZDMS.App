@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="EZDMS.App.VehiclePricingControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EZDMS.App"
+             mc:Ignorable="d" 
+             d:DataContext="{x:Static local:VehiclePricingDesignModel.Instance}"
+             d:DesignHeight="210" d:DesignWidth="800">
+
+    <Border 
+            Background="{StaticResource BackgroundVeryLightBrush}"                    
+            CornerRadius="5"
+            >
+        
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <!-- Label-->
+                <RowDefinition Height="Auto"/>
+                <!-- Content -->
+                <RowDefinition Height="*"/>                
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Pricing"/>
+
+            <StackPanel  Grid.Row="1" >
+
+                <local:NumericalInputVertControl DataContext="{Binding MSRP}" />
+                <local:NumericalInputVertControl DataContext="{Binding DealerPack}" />
+                <local:NumericalInputVertControl DataContext="{Binding ACV}" />
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" >
+
+                <local:NumericalInputVertControl DataContext="{Binding ListPrice}" />
+                <local:NumericalInputVertControl DataContext="{Binding DealerPackPercentage}" />
+                <local:NumericalInputVertControl DataContext="{Binding BuyerFee}" />
+                
+
+            </StackPanel>
+
+            <StackPanel  Grid.Row="1" Grid.Column="2" >
+
+                <local:NumericalInputVertControl DataContext="{Binding InternetPrice}" />
+                <local:NumericalInputVertControl DataContext="{Binding Reconditioning}" />
+                <local:NumericalInputVertControl DataContext="{Binding Advertising}" />
+
+            </StackPanel>
+            <StackPanel  Grid.Row="1" Grid.Column="3" >
+
+                <local:NumericalInputVertControl DataContext="{Binding InvoicePrice}" />
+                <local:NumericalInputVertControl DataContext="{Binding Holdback}" />
+                <local:NumericalInputVertControl DataContext="{Binding AccountingCost}" />
+
+            </StackPanel>
+
+
+
+        </Grid>
+
+    </Border>
+    
+</UserControl>
