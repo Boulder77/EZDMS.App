@@ -179,6 +179,9 @@
     <Compile Include="Controls\SideMenuControl.xaml.cs">
       <DependentUpon>SideMenuControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Vehicle\VehicleBasicInfoControl - Copy.xaml.cs">
+      <DependentUpon>VehicleBasicInfoControl - Copy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Vehicle\VehicleBasicInfoControl.xaml.cs">
       <DependentUpon>VehicleBasicInfoControl.xaml</DependentUpon>
     </Compile>
@@ -266,6 +269,7 @@
     <Compile Include="ViewModel\Vehicle\Design\VehiclePricingDesignModel.cs" />
     <Compile Include="ViewModel\Vehicle\Design\VehicleBasicInfoDesignModel.cs" />
     <Compile Include="ViewModel\Vehicle\Design\VehicleCardDesignModel.cs" />
+    <Compile Include="ViewModel\Vehicle\VehicleDetailsViewModel.cs" />
     <Compile Include="ViewModel\Vehicle\VehicleBasicInfoViewModel.cs" />
     <Compile Include="ViewModel\Vehicle\VehicleCardViewModel.cs" />
     <Compile Include="ViewModel\Vehicle\VehiclePricingViewModel.cs" />
@@ -433,6 +437,10 @@
     <Page Include="Controls\SideMenuControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Vehicle\VehicleBasicInfoControl - Copy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Vehicle\VehicleBasicInfoControl.xaml">
       <Generator>MSBuild:Compile</Generator>

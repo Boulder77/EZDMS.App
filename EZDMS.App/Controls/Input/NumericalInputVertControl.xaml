@@ -61,7 +61,8 @@
             <!-- Label -->
             <TextBlock Text="{Binding Label}"
                        Name="Label"
-                       Margin="5"                                                                 
+                       Margin="10 12"
+                       HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        FontFamily="{StaticResource LatoRegular}"
                        />
@@ -79,6 +80,7 @@
 
             <!-- Content -->
             <Grid Grid.Row="1"
+                  Margin="5,5,10,5"
                   VerticalAlignment="Center"                  
                         >
                 <Grid.ColumnDefinitions>

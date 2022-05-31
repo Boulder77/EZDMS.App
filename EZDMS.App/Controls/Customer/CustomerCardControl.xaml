@@ -7,10 +7,9 @@
              d:DataContext="{x:Static local:CustomerCardDesignModel.Instance}"
              mc:Ignorable="d" 
              d:DesignHeight="250" d:DesignWidth="1000">
-    <Border Margin="10"  Background="{StaticResource BackgroundVeryLightBrush}"
-                    
-                    Grid.Row="1"
-                    CornerRadius="4">
+    <Border Background="{StaticResource BackgroundVeryLightBrush}"
+                    CornerRadius="5">
+        
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
