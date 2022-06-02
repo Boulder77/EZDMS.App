@@ -28,6 +28,11 @@
             d:DataContext="{x:Static local:VehiclePricingDesignModel.Instance}"
             />
 
+            <local:VehicleDetailsControl
+                Grid.Row="3"
+                d:DataContext="{x:Static local:VehicleDetailsDesignModel.Instance}"
+                />
+
         </Grid>
 
     </Border>

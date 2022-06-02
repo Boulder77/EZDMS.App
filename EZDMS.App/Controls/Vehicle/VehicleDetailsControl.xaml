@@ -4,9 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EZDMS.App"
-             d:DataContext="{x:Static local:VehicleBasicInfoDesignModel.Instance}"
+             d:DataContext="{x:Static local:VehicleDetailsDesignModel.Instance}"
              mc:Ignorable="d" 
              d:DesignHeight="320" d:DesignWidth="1000">
+    
     <Border  Background="{StaticResource BackgroundVeryLightBrush}"                    
              CornerRadius="4"
              Margin="5"
@@ -22,55 +23,76 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
                 
             </Grid.ColumnDefinitions>
 
-            <StackPanel
-                        Orientation="Vertical"                        
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Details"
+                   FontSize="{StaticResource FontSizeLarge}"
+                   Margin="5,0"/>
+
+            <StackPanel Orientation="Vertical"
+                        Grid.Row="1"
                         >
 
-                <local:TextInputVertControl DataContext="{Binding StockNumber}"/>
-                <local:TextInputVertControl DataContext="{Binding Year}"/>
-                <local:TextInputVertControl DataContext="{Binding Body}"/>
-                <local:TextInputVertControl DataContext="{Binding Odometer}"/>
+                <local:TextInputVertControl DataContext="{Binding NumberOfDoors}"/>
+                <local:TextInputVertControl DataContext="{Binding Cylinders}"/>
+                <local:TextInputVertControl DataContext="{Binding FuelType}"/>
+                <local:TextInputVertControl DataContext="{Binding FuelSystem}"/>
 
             </StackPanel>
 
             <StackPanel Orientation="Vertical"
-                        Grid.Column="1"                        
+                        Grid.Column="1"
+                        Grid.Row="1"
                         >
 
-                <local:TextInputVertControl DataContext="{Binding VIN}"/>
-                <local:TextInputVertControl DataContext="{Binding Make}"/>
-                <local:TextInputVertControl DataContext="{Binding ExteriorColor}"/>
-                <local:TextInputVertControl DataContext="{Binding OdometerStatus}"/>
+                <local:TextInputVertControl DataContext="{Binding FuelEconomy}"/>
+                <local:TextInputVertControl DataContext="{Binding TransmissionType}"/>
+                <local:TextInputVertControl DataContext="{Binding TransmissionSpeed}"/>
+                <local:TextInputVertControl DataContext="{Binding Drivetrain}"/>
 
             </StackPanel>
 
-            <StackPanel
-                        Orientation="Vertical"
-                        Grid.Column="2"                      
+            <StackPanel Orientation="Vertical"
+                        Grid.Column="2" 
+                        Grid.Row="1"
                         >
 
-                <local:TextInputVertControl DataContext="{Binding Type}"/>
-                <local:TextInputVertControl DataContext="{Binding Model}"/>
-                <local:TextInputVertControl DataContext="{Binding InteriorColor}"/>
-                <CheckBox  Margin="10"
-                           Content="Under Factory Warranty"
-                           HorizontalContentAlignment="Center"
-                           IsChecked="{Binding Path=IsFactoryWarranty, Mode=TwoWay}"
-                           />
+                <local:TextInputVertControl DataContext="{Binding Engine}"/>
+                <local:TextInputVertControl DataContext="{Binding EngineType}"/>
+                <local:TextInputVertControl DataContext="{Binding EngineSerialNumber}"/>
+                <local:TextInputVertControl DataContext="{Binding IgnitionKeyCode}"/>
+                
+                
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical"
+                        Grid.Column="3"
+                        Grid.Row="1"
+                        >
+
+                <local:TextInputVertControl DataContext="{Binding TrunkKeyCode}"/>
+                <local:TextInputVertControl DataContext="{Binding Weight}"/>
+                <local:TextInputVertControl DataContext="{Binding LicensePlate}"/>
+                <local:TextInputVertControl DataContext="{Binding LicenseState}"/>
 
             </StackPanel>
 
-            <StackPanel
-                        Orientation="Vertical"
-                        Grid.Column="3"                      
+            <StackPanel Orientation="Vertical"
+                        Grid.Column="4"
+                        Grid.Row="1"
                         >
-
-                <local:TextInputVertControl DataContext="{Binding Status}"/>
-                <local:TextInputVertControl DataContext="{Binding Trim}"/>
-                <local:TextInputVertControl DataContext="{Binding Class}"/>
+                
+                <local:DateSelectionControl DataContext="{Binding LicenseExpirationDate}"/>
+                <local:TextInputVertControl DataContext="{Binding LotLocation}"/>
+                <local:TextInputVertControl DataContext="{Binding Style}"/>
+                <local:TextInputVertControl DataContext="{Binding ModelCode}"/>
 
             </StackPanel>
 
