@@ -179,9 +179,6 @@
     <Compile Include="Controls\SideMenuControl.xaml.cs">
       <DependentUpon>SideMenuControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Vehicle\VehicleBasicInfoControl - Copy.xaml.cs">
-      <DependentUpon>VehicleBasicInfoControl - Copy.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\Vehicle\VehicleBasicInfoControl.xaml.cs">
       <DependentUpon>VehicleBasicInfoControl.xaml</DependentUpon>
     </Compile>
@@ -190,6 +187,9 @@
     </Compile>
     <Compile Include="Controls\Vehicle\Sales\VehicleSalesControl.xaml.cs">
       <DependentUpon>VehicleSalesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Vehicle\VehicleDetailsControl.xaml.cs">
+      <DependentUpon>VehicleDetailsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Vehicle\VehiclePricingControl.xaml.cs">
       <DependentUpon>VehiclePricingControl.xaml</DependentUpon>
@@ -266,6 +266,7 @@
     <Compile Include="ViewModel\Input\Design\NumericalEntryDesignModel.cs" />
     <Compile Include="ViewModel\Input\TextDisplayViewModel.cs" />
     <Compile Include="ViewModel\Input\NumericalEntryViewModel.cs" />
+    <Compile Include="ViewModel\Vehicle\Design\VehicleDetailsDesignModel.cs" />
     <Compile Include="ViewModel\Vehicle\Design\VehiclePricingDesignModel.cs" />
     <Compile Include="ViewModel\Vehicle\Design\VehicleBasicInfoDesignModel.cs" />
     <Compile Include="ViewModel\Vehicle\Design\VehicleCardDesignModel.cs" />
@@ -438,10 +439,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Vehicle\VehicleBasicInfoControl - Copy.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Controls\Vehicle\VehicleBasicInfoControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -453,6 +450,10 @@
     <Page Include="Controls\Vehicle\Sales\VehicleSalesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Vehicle\VehicleDetailsControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Vehicle\VehiclePricingControl.xaml">
       <SubType>Designer</SubType>

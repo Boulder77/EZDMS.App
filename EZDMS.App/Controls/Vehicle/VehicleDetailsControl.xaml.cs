@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace EZDMS.App
 {
     /// <summary>
-    /// Interaction logic for VehicleBasicInfoControl.xaml
+    /// Interaction logic for VehicleDetailsControl.xaml
     /// </summary>
-    public partial class VehicleBasicInfoControl : UserControl
+    public partial class VehicleDetailsControl : UserControl
     {
-        public VehicleBasicInfoControl()
+        public VehicleDetailsControl()
         {
             InitializeComponent();
         }
