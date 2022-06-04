@@ -14,30 +14,22 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace EZDMS.App
-
 {
     /// <summary>
-    /// Interaction logic for BuyerDetailsPage.xaml
+    /// Interaction logic for CustomersListPage.xaml
     /// </summary>
-    public partial class CustomerDetailsPage : BasePage<CustomerViewModel>
-
+    public partial class CustomersListPage : BasePage<CustomersListViewModel>
     {
+        public CustomersListPage()
+        {
+            InitializeComponent();
+            
+        }
 
-        public CustomerDetailsPage() : base()
+        public CustomersListPage(CustomersListViewModel specificViewModel) : base(specificViewModel)
         {
             InitializeComponent();
         }
-
-        /// <summary>
-        /// Constructor with specific view model
-        /// </summary>
-        /// <param name="specificViewModel">The specific view model to use for this page</param>
-        public CustomerDetailsPage(CustomerViewModel specificViewModel) : base(specificViewModel)
-        {
-            InitializeComponent();
-        }
-
 
     }
-
 }

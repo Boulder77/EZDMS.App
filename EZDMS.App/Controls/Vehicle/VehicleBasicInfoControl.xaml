@@ -25,8 +25,7 @@
                 
             </Grid.ColumnDefinitions>
 
-            <StackPanel
-                        Orientation="Vertical"                        
+            <StackPanel Orientation="Vertical"                        
                         >
 
                 <local:TextInputVertControl DataContext="{Binding StockNumber}"/>
@@ -58,13 +57,12 @@
                 <CheckBox  Margin="10"
                            Content="Under Factory Warranty"
                            HorizontalContentAlignment="Center"
-                           IsChecked="{Binding Path=IsFactoryWarranty, Mode=TwoWay}"
+                           IsChecked="{Binding Path=HasFactoryWarranty, Mode=TwoWay}"
                            />
 
             </StackPanel>
 
-            <StackPanel
-                        Orientation="Vertical"
+            <StackPanel Orientation="Vertical"
                         Grid.Column="3"                      
                         >
 

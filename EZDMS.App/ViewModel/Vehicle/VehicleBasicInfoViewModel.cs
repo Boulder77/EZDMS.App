@@ -86,7 +86,7 @@
         /// <summary>
         /// The boolean if vehicle is covered under factory warranty
         /// </summary>
-        public bool IsFactoryWarranty { get; set; }
+        public bool HasFactoryWarranty { get; set; }
 
         #endregion
 

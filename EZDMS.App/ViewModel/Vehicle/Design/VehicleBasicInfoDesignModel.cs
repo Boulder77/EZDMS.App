@@ -41,7 +41,7 @@ namespace EZDMS.App
             Class = new TextEntryViewModel { Label = "Class", OriginalText = "Passenger" };
             Odometer = new TextEntryViewModel { Label = "Odometer", OriginalText = "34,555" };
             OdometerStatus = new TextEntryViewModel { Label = "Odometer Status", OriginalText = "Actual Miles" };
-            IsFactoryWarranty = true;
+            HasFactoryWarranty = true;
         }
 
         #endregion
