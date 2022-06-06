@@ -29,15 +29,17 @@
                             Width="70"
                             Style="{StaticResource IconButton}"
                             Content="{StaticResource FontAwesomeSalesIcon}"
-                            Command="{Binding OpenSalesRecallCommand}"/>
+                            Command="{Binding OpenSalesRecallCommand}" />
                         <Button 
                             Width="70"
                             Style="{StaticResource IconButton}" 
-                            Content="{StaticResource FontAwesomeCustomersIcon}" />                        
+                            Content="{StaticResource FontAwesomeCustomersIcon}"
+                            Command="{Binding OpenCustomersListCommand}" />                        
                         <Button 
                             Width="70"
                             Style="{StaticResource IconButton}" 
-                            Content="{StaticResource FontAwesomeVehiclesIcon}" />
+                            Content="{StaticResource FontAwesomeVehiclesIcon}"
+                            Command="{Binding OpenVehiclesListCommand}" />
                         <Button
                             Width="70"
                             Style="{StaticResource IconButton}" 

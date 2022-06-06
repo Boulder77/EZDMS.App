@@ -245,7 +245,7 @@ namespace EZDMS.App.Core
         /// <summary>
         /// The registration due date of this VehicleInventory record
         /// <summary>
-        public DateTime RegistrationDueDate { get; set; }
+        public string RegistrationDueDate { get; set; }
 
         /// <summary>
         /// The registration amount of this VehicleInventory record
@@ -295,7 +295,7 @@ namespace EZDMS.App.Core
         /// <summary>
         /// The license expiration date of this VehicleInventory record
         /// <summary>
-        public DateTime LicenseExpirationDate { get; set; }
+        public string LicenseExpirationDate { get; set; }
 
         /// <summary>
         /// The purchase source of this VehicleInventory record

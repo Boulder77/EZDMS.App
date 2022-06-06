@@ -100,6 +100,17 @@ namespace EZDMS.App
         /// </summary>
         public ICommand OpenSalesRecallCommand { get; set; }
 
+        /// <summary>
+        /// The command to change the page content to CustomersListPage
+        /// </summary>
+        public ICommand OpenCustomersListCommand { get; set; }
+
+        /// <summary>
+        /// The command to change the page content to VehiclesListPage
+        /// </summary>
+        public ICommand OpenVehiclesListCommand { get; set; }
+
+
         #endregion
 
         #region Constructor
@@ -114,6 +125,8 @@ namespace EZDMS.App
             OpenContactsCommand = new RelayCommand(OpenContacts);
             OpenMediaCommand = new RelayCommand(OpenMedia);
             OpenSalesRecallCommand = new RelayCommand(OpenSalesRecall);
+            OpenCustomersListCommand = new RelayCommand(OpenCustomersList);
+            OpenVehiclesListCommand = new RelayCommand(OpenVehiclesList);
         }
 
         #endregion
@@ -156,6 +169,21 @@ namespace EZDMS.App
 
         }
 
+        public void OpenCustomersList()
+        {
+
+            ViewModelApplication.GoToPage(ApplicationPage.CustomersList);
+
+        }
+
+        public void OpenVehiclesList()
+        {
+
+            ViewModelApplication.GoToPage(ApplicationPage.VehiclesList);
+
+        }
+
+
 
         #endregion
 
@@ -186,7 +214,7 @@ namespace EZDMS.App
                 OnPropertyChanged(nameof(CurrentPage));
 
             // Show side menu or not?
-            SideMenuVisible = page == ApplicationPage.Chat;
+           SideMenuVisible = page == ApplicationPage.Chat;
 
         }
 

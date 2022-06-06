@@ -202,12 +202,12 @@ namespace EZDMS.App.Relational
                     break;
 
                 case DbTableNames.VehicleInventory:
-                    //Add new sales finance entry
+                    //Add new vehicle inventory entry
                     mDbContext.VehicleInventory.Add(mDataModel as VehicleInventoryDataModel);
                     break;
 
                 case DbTableNames.Customer:
-                    //Add new sales finance entry
+                    //Add new customer entry
                     mDbContext.Customer.Add(mDataModel as CustomerDataModel);
                     break;
 

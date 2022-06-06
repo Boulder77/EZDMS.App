@@ -224,6 +224,9 @@
     <Compile Include="Pages\Sales\SalesRecallPage.xaml.cs">
       <DependentUpon>SalesRecallPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Vehicle\VehiclesListPage.cs">
+      <DependentUpon>VehiclesListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValueConverters\ApplicationPageHelpers.cs" />
     <Compile Include="ValueConverters\BaseValueConverter.cs" />
     <Compile Include="ValueConverters\SideMenuContentConverter.cs" />
@@ -267,6 +270,7 @@
     <Compile Include="ViewModel\Input\Design\NumericalEntryDesignModel.cs" />
     <Compile Include="ViewModel\Input\TextDisplayViewModel.cs" />
     <Compile Include="ViewModel\Input\NumericalEntryViewModel.cs" />
+    <Compile Include="ViewModel\Vehicle\VehiclesListViewModel.cs" />
     <Compile Include="ViewModel\Vehicle\Design\VehicleDetailsDesignModel.cs" />
     <Compile Include="ViewModel\Vehicle\Design\VehiclePricingDesignModel.cs" />
     <Compile Include="ViewModel\Vehicle\Design\VehicleBasicInfoDesignModel.cs" />
@@ -503,6 +507,10 @@
     <Page Include="Pages\Sales\SalesRecallPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Vehicle\VehiclesListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\Scroll.xaml">
       <Generator>MSBuild:Compile</Generator>

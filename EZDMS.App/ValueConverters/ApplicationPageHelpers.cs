@@ -36,6 +36,12 @@ namespace EZDMS.App
                 case ApplicationPage.SalesFinance:
                     return new SalesFinancePage(viewModel as SalesFinanceViewModel);
 
+                case ApplicationPage.CustomersList:
+                    return new CustomersListPage(viewModel as CustomersListViewModel);
+
+                case ApplicationPage.VehiclesList:
+                    return new VehiclesListPage(viewModel as VehiclesListViewModel);
+
                 default:
                     Debugger.Break();
                     return null;
@@ -64,6 +70,12 @@ namespace EZDMS.App
 
             if (page is SalesFinancePage)
                 return ApplicationPage.SalesFinance;
+            
+            if (page is CustomersListPage)
+                return ApplicationPage.CustomersList;
+
+            if (page is CustomersListPage)
+                return ApplicationPage.VehiclesList;
 
             // Alert developer of issue
             Debugger.Break();

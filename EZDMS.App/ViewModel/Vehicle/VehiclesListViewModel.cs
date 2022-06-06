@@ -10,33 +10,33 @@ namespace EZDMS.App
 {
 
     /// <summary>
-    /// The view model for a customers list page
+    /// The view model for a vehicles list page
     /// </summary>
-    public class CustomersListViewModel : BaseViewModel
+    public class VehiclesListViewModel : BaseViewModel
     {
         #region Private Members
 
         /// <summary>
         /// The sales search deals items for the list
         /// </summary>
-        protected List<CustomerDataModel> mItems;
+        protected List<VehicleInventoryDataModel> mItems;
 
         /// <summary>
         /// The deal item selected from the list
         /// </summary>
-        private CustomerDataModel mSelectedCustomer;
+        private VehicleInventoryDataModel mSelectedVehicle;
 
         /// <summary>
-        /// The customer ID selected from the list
+        /// The vehicle ID selected from the list
         /// </summary>
-        private int mCustomerID;
+        private int mVehicleID;
 
 
         #endregion
         
         #region Public Properties
 
-        public List<CustomerDataModel> Items
+        public List<VehicleInventoryDataModel> Items
         {
 
             get => mItems;
@@ -50,7 +50,7 @@ namespace EZDMS.App
                 mItems = value;
 
                 // Update filtered list to match
-                FilteredItems = new ObservableCollection<CustomerDataModel>(mItems);
+                FilteredItems = new ObservableCollection<VehicleInventoryDataModel>(mItems);
 
             }
         }
@@ -58,45 +58,42 @@ namespace EZDMS.App
         /// <summary>
         /// The chat thread items for the list that include any search filtering
         /// </summary>
-        public ObservableCollection<CustomerDataModel> FilteredItems { get; set; }
+        public ObservableCollection<VehicleInventoryDataModel> FilteredItems { get; set; }
 
         /// <summary>
-        /// The customer record selected from the list
+        /// The vehicle record selected from the list
         /// </summary>
-        public CustomerDataModel SelectedCustomer
+        public VehicleInventoryDataModel SelectedVehicle
         {
-            get => mSelectedCustomer;
+            get => mSelectedVehicle;
             set
             {
-                if (mSelectedCustomer == value)
+                if (mSelectedVehicle == value)
                     return;
 
-                mSelectedCustomer = value;
-                mCustomerID = mSelectedCustomer.ID;
+                mSelectedVehicle = value;
+                mVehicleID = mSelectedVehicle.ID;
             }
         }
 
-
-
-
         /// <summary>
-        /// Indicates if the customers list are currently being loaded
+        /// Indicates if the vehicles list is currently being loaded
         /// </summary>
-        public bool CustomersListPageLoading { get; set; }
+        public bool VehiclesListPageLoading { get; set; }
 
         #endregion
 
         #region Public Commands
 
         /// <summary>
-        /// The command to create a new customer
+        /// The command to create a new vehicle
         /// </summary>
-        public ICommand NewCustomerCommand { get; set; }
+        public ICommand NewVehicleCommand { get; set; }
 
         /// <summary>
-        /// The command to get a saved customer
+        /// The command to get a saved vehicle
         /// </summary>
-        public ICommand GetCustomerCommand { get; set; }
+        public ICommand GetVehicleCommand { get; set; }
               
         #endregion
                 
@@ -105,13 +102,13 @@ namespace EZDMS.App
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CustomersListViewModel()
+        public VehiclesListViewModel()
         {
             // Create commands
             //NewDealCommand = new RelayCommand(async () => await CreateNewSalesDealAsync());
             //RecallDealCommand = new RelayCommand(async () => await RecallSalesDealAsync(SelectedDeal));
 
-            Task.Run(GetCustomersListAsync);
+            Task.Run(GetVehiclesListAsync);
            
         }
 
@@ -119,13 +116,13 @@ namespace EZDMS.App
 
         #region Command Methods
 
-        public async Task GetCustomersListAsync()
+        public async Task GetVehiclesListAsync()
         {
 
             // Store single transcient instance of client data store
-            await RunCommandAsync(() => CustomersListPageLoading, async () =>
+            await RunCommandAsync(() => VehiclesListPageLoading, async () =>
             {
-                Items = await ClientDataStore.GetCustomersAsync();
+                Items = await ClientDataStore.GetVehicleInventoryAsync();
             });
 
         }

@@ -29,5 +29,15 @@
         /// The sales finance details page
         /// </summary>
         SalesFinance = 4,
+
+        /// <summary>
+        /// The customers list page
+        /// </summary>
+        CustomersList = 5,
+
+        /// <summary>
+        /// The vehicles list page
+        /// </summary>
+        VehiclesList = 6,
     }
 }
