@@ -107,7 +107,7 @@
 
                     <DataGrid.InputBindings>
                         <MouseBinding Gesture="LeftDoubleClick"
-                                      Command="{Binding GetCustomerCommand}"
+                                      Command="{Binding GetVehicleCommand}"
                                       CommandParameter="{Binding ElementName=dgridVehicles, Path=SelectedItem}"/>
 
                     </DataGrid.InputBindings>

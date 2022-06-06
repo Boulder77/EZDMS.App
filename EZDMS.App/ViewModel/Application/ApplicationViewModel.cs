@@ -214,7 +214,10 @@ namespace EZDMS.App
                 OnPropertyChanged(nameof(CurrentPage));
 
             // Show side menu or not?
-           SideMenuVisible = page == ApplicationPage.Chat;
+            SideMenuVisible = page != ApplicationPage.Login;
+            // SideMenuVisible = page == (ApplicationPage.Chat | ApplicationPage.SalesRecall | ApplicationPage.VehiclesList | ApplicationPage.CustomersList);
+
+
 
         }
 
