@@ -53,6 +53,11 @@ namespace EZDMS.App.Core
         public int Year { get; set; }
 
         /// <summary>
+        /// The category of this VehicleInventory record
+        /// <summary>
+        public string Category { get; set; }
+
+        /// <summary>
         /// The make of this VehicleInventory record
         /// <summary>
         public string Make { get; set; }

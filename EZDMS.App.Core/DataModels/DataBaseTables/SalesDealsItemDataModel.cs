@@ -98,5 +98,20 @@ namespace EZDMS.App.Core
         /// </summary>
         public string FinanceManager {get; set;}
 
+        /// <summary>
+        /// The buyer number for the deal
+        /// </summary>
+        public string BuyerNumber { get; set; }
+
+        /// <summary>
+        /// The cobuyer number for the deal
+        /// </summary>
+        public string CoBuyerNumber { get; set; }
+
+        /// <summary>
+        /// The stock number for the deal
+        /// </summary>
+        public string StockNumber { get; set; }
+
     }
 }

@@ -184,6 +184,27 @@ namespace EZDMS.App
         public CustomerAddressViewModel CustomerAddress { get; set; }
 
         /// <summary>
+        /// The view model for the vehicle card control
+        /// </summary>
+        public VehicleCardViewModel VehicleCard { get; set; }
+
+        /// <summary>
+        /// The view model for the vehicle info control
+        /// </summary>
+        public VehicleBasicInfoViewModel VehicleBasicInfo { get; set; }
+
+        /// <summary>
+        /// The view model for the vehicle details control
+        /// </summary>
+        public VehicleDetailsViewModel VehicleDetails { get; set; }
+
+        /// <summary>
+        /// The view model for the vehicle pricing control
+        /// </summary>
+        public VehiclePricingViewModel VehiclePricing { get; set; }
+
+
+        /// <summary>
         /// Indicates if the sales finance deal details are currently being loaded
         /// </summary>
         public bool SalesFinancePageLoading { get; set; }
@@ -694,6 +715,56 @@ namespace EZDMS.App
                 County = new TextEntryViewModel { Label = "County", OriginalText = Buyer?.County },
                 CountyCode = new TextEntryViewModel { Label = "County Code", OriginalText = Buyer.CountyCode },
 
+            };
+
+        }
+
+        private void UpdateValuesOfVehicleCard(VehicleInventoryDataModel Vehicle)
+        {
+            // Update Customer address VM with values
+            VehicleCard = new VehicleCardViewModel
+
+            {
+                StockNumber = new TextDisplayViewModel { Label = "Stock Number", DisplayText = Vehicle?.StockNumber },
+                Type = new TextDisplayViewModel { Label = "Type", DisplayText = Vehicle?.Type },
+                Status = new TextDisplayViewModel { Label = "Status", DisplayText = Vehicle?.Status },
+                DaysInStock = new TextDisplayViewModel { Label = "In Stock", DisplayText = $"{Vehicle?.DaysInStock} days" },
+                Color = new TextDisplayViewModel { Label = "Color", DisplayText = Vehicle?.Color },
+                InteriorColor = new TextDisplayViewModel { Label = "Interior", DisplayText = Vehicle?.InteriorColor },
+                LotLocation = new TextDisplayViewModel { Label = "Lot Location", DisplayText = Vehicle?.LotLocation },
+                Category = new TextDisplayViewModel { Label = "Category", DisplayText = Vehicle?.Category },
+                VIN = new TextDisplayViewModel { Label = "VIN", DisplayText = Vehicle?.VIN },
+                Odometer = new TextDisplayViewModel { Label = "Odometer", DisplayText = $"{Vehicle?.Odometer} miles" },
+                MSRP = new TextDisplayViewModel { Label = "MSRP", DisplayText = Vehicle?.MSRP.ToString() },
+                ListPrice = new TextDisplayViewModel { Label = "List Price", DisplayText = Vehicle?.ListPrice.ToString() },
+                InternetPrice = new TextDisplayViewModel { Label = "Internet Price", DisplayText = Vehicle?.InternetPrice.ToString() },
+
+
+            };
+
+        }
+
+        private void UpdateValuesOfVehicleBasicInfo(VehicleInventoryDataModel Vehicle)
+        {
+            // Update Customer address VM with values
+            VehicleBasicInfo = new VehicleBasicInfoViewModel
+
+            {
+                StockNumber = new TextEntryViewModel { Label = "Stock Number", OriginalText = Vehicle?.StockNumber },
+                VIN = new TextEntryViewModel { Label = "VIN", OriginalText = Vehicle?.VIN },
+                Type = new TextEntryViewModel { Label = "Type", OriginalText = Vehicle?.Type },
+                Status = new TextEntryViewModel { Label = "Status", OriginalText = Vehicle?.Status },
+                Year = new TextEntryViewModel { Label = "Year", OriginalText = Vehicle?.Year.ToString() },
+                Make = new TextEntryViewModel { Label = "Make", OriginalText = Vehicle?.Make },
+                Model = new TextEntryViewModel { Label = "Status", OriginalText = Vehicle?.Model },
+                Trim = new TextEntryViewModel { Label = "Trim", OriginalText = Vehicle?.TrimColor },
+                Body = new TextEntryViewModel { Label = "Body", OriginalText = Vehicle?.BodyStyle },                
+                ExteriorColor = new TextEntryViewModel { Label = "Exterior Color", OriginalText = Vehicle?.Color },
+                InteriorColor = new TextEntryViewModel { Label = "Interior Color", OriginalText = Vehicle?.InteriorColor },
+                Class = new TextEntryViewModel { Label = "Class", OriginalText = Vehicle?.Class },
+                Odometer = new TextEntryViewModel { Label = "Odometer", OriginalText = $"{Vehicle?.Odometer} miles" },
+                OdometerStatus = new TextEntryViewModel { Label = "Odometer Status", OriginalText = Vehicle?.OdometerStatus },
+                HasFactoryWarranty = (bool)Vehicle?.HasFactoryWarranty               
             };
 
         }
