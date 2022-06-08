@@ -198,6 +198,9 @@
     <Compile Include="Dialogs\DialogMessageBox.xaml.cs">
       <DependentUpon>DialogMessageBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProductsWindow.xaml.cs">
+      <DependentUpon>ProductsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DI\DI.cs" />
     <Compile Include="DI\FrameworkConstructionExtensions.cs" />
     <Compile Include="DI\UI\IUIManager.cs" />
@@ -280,6 +283,7 @@
     <Compile Include="ViewModel\Vehicle\VehicleCardViewModel.cs" />
     <Compile Include="ViewModel\Vehicle\VehiclePricingViewModel.cs" />
     <Compile Include="WebRequests\WebRequestResultExtensions.cs" />
+    <Compile Include="WPFViewModels\ProductsWindowViewModel.cs" />
     <Compile Include="WPFViewModels\DialogWindowViewModel.cs" />
     <Compile Include="WPFViewModels\ViewModelLocator.cs" />
     <Compile Include="WPFViewModels\WindowViewModel.cs" />
@@ -467,6 +471,10 @@
     <Page Include="Dialogs\DialogMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProductsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="DialogWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

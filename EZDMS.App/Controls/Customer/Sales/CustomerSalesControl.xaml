@@ -21,18 +21,21 @@
             </Grid.RowDefinitions>
 
             <local:CustomerCardControl
+                DataContext="{Binding CustomerCard}"
                 d:DataContext="{x:Static local:CustomerCardDesignModel.Instance}"/>
 
             <Border Grid.Row="1" Background="{StaticResource WordLightBlueBrush}" />
 
             
             <local:CustomerBasicInfoControl 
-                    Grid.Row="2"               
+                    Grid.Row="2"
+                    DataContext="{Binding CustomerBasicInfo}"
                     d:DataContext="{x:Static local:CustomerBasicInfoDesignModel.Instance}"
                 />
 
              <local:CustomerAddressControl                        
                 Grid.Row="3"
+                 DataContext="{Binding CustomerAddress}"
                 d:DataContext="{x:Static local:CustomerAddressDesignModel.Instance}"
                 />
                     
@@ -43,6 +46,8 @@
                     VerticalAlignment="Top" 
                     HorizontalAlignment="Right"
                     FontSize="{StaticResource FontSizeRegular}"
+                    Command="{Binding SaveBuyerCommand}"
+                    
                     />
             
         </Grid>

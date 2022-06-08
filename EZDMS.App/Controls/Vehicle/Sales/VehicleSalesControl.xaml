@@ -16,20 +16,25 @@
             </Grid.RowDefinitions>
 
             <local:VehicleCardControl 
-            d:DataContext="{x:Static local:VehicleCardDesignModel.Instance}"/>
+                DataContext="{Binding VehicleCard}"            
+                d:DataContext="{x:Static local:VehicleCardDesignModel.Instance}"
+                />
 
             <local:VehicleBasicInfoControl
             Grid.Row="1"
+                DataContext="{Binding VehicleBasicInfo}"            
             d:DataContext="{x:Static local:VehicleBasicInfoDesignModel.Instance}"
             />
 
             <local:VehiclePricingControl
             Grid.Row="2"
+                DataContext="{Binding VehiclePricing}"            
             d:DataContext="{x:Static local:VehiclePricingDesignModel.Instance}"
             />
 
             <local:VehicleDetailsControl
                 Grid.Row="3"
+                DataContext="{Binding VehicleDetails}"            
                 d:DataContext="{x:Static local:VehicleDetailsDesignModel.Instance}"
                 />
 

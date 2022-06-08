@@ -248,7 +248,7 @@ namespace EZDMS.App
         {
             // Create commands
             LoadDealCommand = new RelayCommand(async () => await LoadAsync());
-           
+            SaveBuyerCommand = new RelayCommand(async () => await SaveBuyerAsync());
 
         }
 
@@ -267,6 +267,16 @@ namespace EZDMS.App
                 return Task.CompletedTask;
             });
 
+        }
+
+        public async Task SaveBuyerAsync()
+        {
+            await UI.ShowMessage(new MessageBoxDialogViewModel
+            {
+                // TODO: Localize
+                Title = "Save Buyer Info",
+                Message = "The buyer info has been saved"
+            });
         }
 
         #endregion
@@ -690,11 +700,11 @@ namespace EZDMS.App
                 LastName = new TextEntryViewModel { Label = "Last Name", OriginalText = Buyer?.LastName },
                 Suffix = new TextEntryViewModel { Label = "Suffix", OriginalText = Buyer?.Suffix },
                 Nickname = new TextEntryViewModel { Label = "Nickname", OriginalText = Buyer?.Nickname },
-                DateOfBirth = new DateSelectionViewModel { Label = "Date of Birth", Date = Convert.ToDateTime(Buyer?.DateOfBirth) },
-                MaritalStatus=(MaritalStatusType)Enum.Parse(typeof(MaritalStatusType),Buyer?.MaritalStatus),
+                //DateOfBirth = new DateSelectionViewModel { Label = "Date of Birth", Date = Convert.ToDateTime(Buyer?.DateOfBirth) },
+                //MaritalStatus=(MaritalStatusType)Enum.Parse(typeof(MaritalStatusType),Buyer?.MaritalStatus),
                 SocialSecurityNumber = new TextEntryViewModel { Label = "SSN", OriginalText = Buyer?.SSN },
                 Email = new TextEntryViewModel { Label = "Email", OriginalText = Buyer?.Email },
-                EmailType = (EmailType)Enum.Parse(typeof(EmailType), Buyer?.EmailType),
+                //EmailType = (EmailType)Enum.Parse(typeof(EmailType), Buyer?.EmailType),
                 HomePhone = new TextEntryViewModel { Label = "Home Phone", OriginalText = Buyer?.HomePhone },
                 WorkPhone = new TextEntryViewModel { Label = "Work Phone", OriginalText = Buyer?.WorkPhone },
                 CellPhone = new TextEntryViewModel { Label = "Cell Phone", OriginalText = Buyer?.CellPhone },
@@ -819,7 +829,7 @@ namespace EZDMS.App
                 Weight = new TextEntryViewModel { Label = "Weight", OriginalText = Vehicle?.Weight.ToString() },
                 LicensePlate = new TextEntryViewModel { Label = "License Plate", OriginalText = Vehicle?.LicensePlate },
                 LicenseState = new TextEntryViewModel { Label = "License State", OriginalText = Vehicle?.LicenseState },
-                LicenseExpirationDate = new DateSelectionViewModel { Label = "License Expiration Date", Date = Convert.ToDateTime(Vehicle?.LicenseExpirationDate) },
+                //LicenseExpirationDate = new DateSelectionViewModel { Label = "License Expiration Date", Date = Convert.ToDateTime(Vehicle?.LicenseExpirationDate) },
                 LotLocation = new TextEntryViewModel { Label = "Lot Location", OriginalText = Vehicle?.LotLocation },
                 Style = new TextEntryViewModel { Label = "Style", OriginalText = Vehicle?.Style },
                 ModelCode = new TextEntryViewModel { Label = "Model Code", OriginalText = Vehicle?.ModelCode },
