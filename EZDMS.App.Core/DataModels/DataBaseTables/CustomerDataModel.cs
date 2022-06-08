@@ -63,9 +63,9 @@ namespace EZDMS.App.Core
         public string Suffix { get; set; }
 
         /// <summary>
-        /// The company of this customer record
+        /// The business name of this customer record
         /// <summary>
-        public string Company { get; set; }
+        public string BusinessName { get; set; }
 
         /// <summary>
         /// The street address of this customer record
@@ -145,12 +145,12 @@ namespace EZDMS.App.Core
         /// <summary>
         /// The driver license expiration date of this customer record
         /// <summary>
-        public DateTime DriverLicenseExpirationDate { get; set; }
+        public string DriverLicenseExpirationDate { get; set; }
 
         /// <summary>
         /// The driver license issue date of this customer record
         /// <summary>
-        public DateTime DriverLicenseIssueDate { get; set; }
+        public string DriverLicenseIssueDate { get; set; }
 
         /// <summary>
         /// The language of this customer record
@@ -160,7 +160,7 @@ namespace EZDMS.App.Core
         /// <summary>
         /// The date of birth of this customer record
         /// <summary>
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
 
         /// <summary>
         /// The employer of this customer record

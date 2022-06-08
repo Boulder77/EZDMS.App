@@ -141,9 +141,12 @@ namespace EZDMS.App
                 // Set the backing datamodel
                 mSaleVehicle = value;
 
-                //if (value != null)
-                //    // Reload sales deal view model
-                //    UpdateValuesOfSalesDealCard(SalesDealsItem);
+                if (value != null)
+                    // Reload vehicle view models                                
+                    UpdateValuesOfVehicleCard(mSaleVehicle);                
+                    UpdateValuesOfVehicleDetails(mSaleVehicle);
+                    UpdateValuesOfVehiclePricing(mSaleVehicle);
+                    UpdateValuesOfVehicleBasicInfo(mSaleVehicle);
             }
 
         }
@@ -687,7 +690,7 @@ namespace EZDMS.App
                 LastName = new TextEntryViewModel { Label = "Last Name", OriginalText = Buyer?.LastName },
                 Suffix = new TextEntryViewModel { Label = "Suffix", OriginalText = Buyer?.Suffix },
                 Nickname = new TextEntryViewModel { Label = "Nickname", OriginalText = Buyer?.Nickname },
-                DateOfBirth = new DateSelectionViewModel { Label = "Date of Birth", Date = Buyer.DateOfBirth },
+                DateOfBirth = new DateSelectionViewModel { Label = "Date of Birth", Date = Convert.ToDateTime(Buyer?.DateOfBirth) },
                 MaritalStatus=(MaritalStatusType)Enum.Parse(typeof(MaritalStatusType),Buyer?.MaritalStatus),
                 SocialSecurityNumber = new TextEntryViewModel { Label = "SSN", OriginalText = Buyer?.SSN },
                 Email = new TextEntryViewModel { Label = "Email", OriginalText = Buyer?.Email },
@@ -721,7 +724,7 @@ namespace EZDMS.App
 
         private void UpdateValuesOfVehicleCard(VehicleInventoryDataModel Vehicle)
         {
-            // Update Customer address VM with values
+            // Update vehicle card VM with values
             VehicleCard = new VehicleCardViewModel
 
             {
@@ -746,7 +749,7 @@ namespace EZDMS.App
 
         private void UpdateValuesOfVehicleBasicInfo(VehicleInventoryDataModel Vehicle)
         {
-            // Update Customer address VM with values
+            // Update vehicle basic info VM with values
             VehicleBasicInfo = new VehicleBasicInfoViewModel
 
             {
@@ -765,6 +768,62 @@ namespace EZDMS.App
                 Odometer = new TextEntryViewModel { Label = "Odometer", OriginalText = $"{Vehicle?.Odometer} miles" },
                 OdometerStatus = new TextEntryViewModel { Label = "Odometer Status", OriginalText = Vehicle?.OdometerStatus },
                 HasFactoryWarranty = (bool)Vehicle?.HasFactoryWarranty               
+            };
+
+        }
+
+        private void UpdateValuesOfVehiclePricing(VehicleInventoryDataModel Vehicle)
+        {
+            // Update vehicle pricing VM with values
+            VehiclePricing = new VehiclePricingViewModel
+
+            {
+                MSRP = new NumericalEntryViewModel { Label = "MSRP", OriginalAmount = Vehicle.MSRP },
+                InventoryPrice = new NumericalEntryViewModel { Label = "Inventory Price", OriginalAmount = Vehicle.InventoryPrice },
+                ListPrice = new NumericalEntryViewModel { Label = "List Price", OriginalAmount = Vehicle.ListPrice },
+                InternetPrice = new NumericalEntryViewModel { Label = "Internet Price", OriginalAmount = Vehicle.InternetPrice },
+                AccountingCost = new NumericalEntryViewModel { Label = "Accounting Cost", OriginalAmount = Vehicle.AccountingCost },
+                ACV = new NumericalEntryViewModel { Label = "ACV", OriginalAmount = Vehicle.ACV },
+                AddedCosts = new NumericalEntryViewModel { Label = "Added Costs", OriginalAmount = Vehicle.AddedCosts },
+                Advertising = new NumericalEntryViewModel { Label = "Advertising", OriginalAmount = Vehicle.Advertising },
+                Reconditioning = new NumericalEntryViewModel { Label = "Reconditioning", OriginalAmount = Vehicle.Reconditioning },
+                Holdback = new NumericalEntryViewModel { Label = "Holdback", OriginalAmount = Vehicle.Holdback },
+                DealerPack = new NumericalEntryViewModel { Label = "Dealer Pack", OriginalAmount = Vehicle.DealerPack },
+                BuyerFee = new NumericalEntryViewModel { Label = "Buyer Fee", OriginalAmount = Vehicle.BuyerFee },
+                InvoicePrice = new NumericalEntryViewModel { Label = "Invoice Price", OriginalAmount = Vehicle.InvoicePrice },
+                DealerPackPercentage = new NumericalEntryViewModel { Label = "Dealer Pack(%)", OriginalAmount = Vehicle.InvoicePrice },
+                
+            };
+
+        }
+
+        private void UpdateValuesOfVehicleDetails(VehicleInventoryDataModel Vehicle)
+        {
+            // Update vehicle details VM with values
+            VehicleDetails = new VehicleDetailsViewModel
+
+            {
+                NumberOfDoors = new TextEntryViewModel { Label = "Number Of Doors", OriginalText = Vehicle?.NumberOfDoors.ToString() },
+                Cylinders = new TextEntryViewModel { Label = "Cylinders", OriginalText = Vehicle?.Cylinders.ToString() },
+                FuelType = new TextEntryViewModel { Label = "Fuel Type", OriginalText = Vehicle?.FuelType },
+                FuelSystem = new TextEntryViewModel { Label = "Fuel System", OriginalText = Vehicle?.FuelSystem },
+                FuelEconomy = new TextEntryViewModel { Label = "Fuel Economy", OriginalText = Vehicle?.FuelEconomy },
+                TransmissionType = new TextEntryViewModel { Label = "Transmission Type", OriginalText = Vehicle?.TransmissionType },
+                TransmissionSpeed = new TextEntryViewModel { Label = "Transmission Speed", OriginalText = Vehicle?.TransmissionSpeed },
+                Drivetrain = new TextEntryViewModel { Label = "Drivetrain", OriginalText = Vehicle?.Drivetrain },
+                Engine = new TextEntryViewModel { Label = "Engine", OriginalText = Vehicle?.Engine },
+                EngineType = new TextEntryViewModel { Label = "Engine Type", OriginalText = Vehicle?.EngineType },
+                EngineSerialNumber = new TextEntryViewModel { Label = "Engine Serial Number", OriginalText = Vehicle?.EngineSerialNumber },
+                IgnitionKeyCode = new TextEntryViewModel { Label = "Ignition Key Code", OriginalText = Vehicle?.IgnitionKeyCode },
+                TrunkKeyCode = new TextEntryViewModel { Label = "Trunk Key Code", OriginalText = Vehicle?.TrunkKeyCode },
+                Weight = new TextEntryViewModel { Label = "Weight", OriginalText = Vehicle?.Weight.ToString() },
+                LicensePlate = new TextEntryViewModel { Label = "License Plate", OriginalText = Vehicle?.LicensePlate },
+                LicenseState = new TextEntryViewModel { Label = "License State", OriginalText = Vehicle?.LicenseState },
+                LicenseExpirationDate = new DateSelectionViewModel { Label = "License Expiration Date", Date = Convert.ToDateTime(Vehicle?.LicenseExpirationDate) },
+                LotLocation = new TextEntryViewModel { Label = "Lot Location", OriginalText = Vehicle?.LotLocation },
+                Style = new TextEntryViewModel { Label = "Style", OriginalText = Vehicle?.Style },
+                ModelCode = new TextEntryViewModel { Label = "Model Code", OriginalText = Vehicle?.ModelCode },
+
             };
 
         }
