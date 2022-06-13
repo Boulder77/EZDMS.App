@@ -121,7 +121,6 @@ namespace EZDMS.App.Relational
             mDbContext.SaveChanges();
 
             return Task.FromResult(mDataModel);
-
         }
 
         /// <summary>
@@ -133,7 +132,6 @@ namespace EZDMS.App.Relational
         {
             // Gets a single sales record
             return Task.FromResult(mDbContext.VehicleInventory.FirstOrDefault(u => u.StockNumber == stockNumber));
-
         }
 
         /// <summary>
@@ -148,15 +146,13 @@ namespace EZDMS.App.Relational
 
         }
 
-
         /// <summary>
         /// Returns all records in SearchDeals table
         /// </summary>
         public Task<List<SalesDealsItemDataModel>> GetSalesDealRecallsAsync()
         {
             // Gets all the sales                      
-            return Task.FromResult(mDbContext.SalesDealsInfo.ToList());
-            
+            return Task.FromResult(mDbContext.SalesDealsInfo.ToList());            
         }
 
         /// <summary>
@@ -166,7 +162,6 @@ namespace EZDMS.App.Relational
         {
             // Gets all the sales                      
             return Task.FromResult(mDbContext.VehicleInventory.ToList());
-
         }
 
         /// <summary>
@@ -210,6 +205,17 @@ namespace EZDMS.App.Relational
                     //Add new customer entry
                     mDbContext.Customer.Add(mDataModel as CustomerDataModel);
                     break;
+
+                case DbTableNames.CoverageProvider:
+                    //Add new customer entry
+                    mDbContext.CoverageProvider.Add(mDataModel as CoverageProviderDataModel);
+                    break;
+
+                case DbTableNames.CoveragePlan:
+                    //Add new customer entry
+                    mDbContext.CoveragePlan.Add(mDataModel as CoveragePlanDataModel);
+                    break;
+
 
                 default:
                     throw new Exception();

@@ -16,7 +16,7 @@ namespace EZDMS.App.Relational
         /// </summary>
         public static FrameworkConstruction AddClientDataStore(this FrameworkConstruction construction)
         {
-            // Inject our SQLite EF data store
+            // Inject our SQL Server data store
             construction.Services.AddDbContext<ClientDataStoreDbContext>(options =>
             {
                 // Setup connection string

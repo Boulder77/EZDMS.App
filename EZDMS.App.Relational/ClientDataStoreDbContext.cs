@@ -35,6 +35,16 @@ namespace EZDMS.App.Relational
         /// </summary>
         public DbSet<CustomerDataModel> Customer { get; set; }
 
+        /// <summary>
+        /// The coverage provider table
+        /// </summary>
+        public DbSet<CoverageProviderDataModel> CoverageProvider { get; set; }
+
+        /// <summary>
+        /// The coverage plan table
+        /// </summary>
+        public DbSet<CoveragePlanDataModel> CoveragePlan { get; set; }
+
         #endregion
 
         #region Constructor
@@ -71,6 +81,10 @@ namespace EZDMS.App.Relational
             modelBuilder.Entity<VehicleInventoryDataModel>().HasKey(a => a.ID);
 
             modelBuilder.Entity<CustomerDataModel>().HasKey(a => a.ID);
+
+            modelBuilder.Entity<CoverageProviderDataModel>().HasKey(a => a.ID);
+
+            modelBuilder.Entity<CoveragePlanDataModel>().HasKey(a => a.ID);
 
             // TODO: Set up limits
             //modelBuilder.Entity<LoginCredentialsDataModel>().Property(a => a.FirstName).HasMaxLength(50);

@@ -33,6 +33,11 @@ namespace EZDMS.App.Core
         public DateTime LastModifiedDate { get; set; }
 
         /// <summary>
+        /// The Is Active flag for this customer record
+        /// </summary>
+        public bool IsActive { get; set; }
+
+        /// <summary>
         /// The type of this customer record
         /// <summary>
         public string Type { get; set; }

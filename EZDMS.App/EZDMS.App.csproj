@@ -155,6 +155,7 @@
     <Compile Include="Controls\PageHost.xaml.cs">
       <DependentUpon>PageHost.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Products\BaseProductsUserControl.cs" />
     <Compile Include="Controls\Sales\SalesDealCardControl.xaml.cs">
       <DependentUpon>SalesDealCardControl.xaml</DependentUpon>
     </Compile>
@@ -256,6 +257,7 @@
     <Compile Include="ViewModel\Customer\Design\CustomerAddressDesignModel.cs" />
     <Compile Include="ViewModel\Customer\Design\CustomerDesignModel.cs" />
     <Compile Include="ViewModel\Customer\CustomersListViewModel.cs" />
+    <Compile Include="ViewModel\Products\BaseProductsViewModel.cs" />
     <Compile Include="ViewModel\Sales\Design\TruthInLendingDisclosureDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\SalesSummaryDetailsDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\SalesDeskingTotalsDesignModel.cs" />

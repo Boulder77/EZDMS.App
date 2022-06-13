@@ -29,5 +29,15 @@
         /// The Customer table
         /// </summary>
         Customer = 4,
+
+        /// <summary>
+        /// The CoverageProvider table
+        /// </summary>
+        CoverageProvider = 5,
+
+        /// <summary>
+        /// The CoveragePlan table
+        /// </summary>
+        CoveragePlan = 6,
     }
 }

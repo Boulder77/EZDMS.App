@@ -49,6 +49,7 @@ namespace EZDMS.App.Core
         /// <summary>
         /// Gets a single sales record
         /// </summary>
+        /// <param name="dealNumber">the deal number of the sales record</param>
         /// <returns></returns>
         Task<SalesFinanceDataModel> GetSalesFinanceDealAsync(int dealNumber);
 
