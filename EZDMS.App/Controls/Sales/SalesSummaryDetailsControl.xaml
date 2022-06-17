@@ -49,15 +49,15 @@
                           SelectedItem="{Binding Path=SelectedState}"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="1" Grid.ColumnSpan="3"
+            <StackPanel Grid.Row="1"
                         Orientation="Vertical"
-                        Margin="2,0,10,0">
+                        Margin="3,0,10,0">
                 <Label Content="Lender"
                        FontFamily="{StaticResource LatoRegular}"/>
 
-                <!--<ComboBox FontFamily="{StaticResource LatoRegular}"
+                <ComboBox FontFamily="{StaticResource LatoRegular}"
                           ItemsSource="{Binding}"
-                          SelectedItem="{Binding}"/>-->                
+                          SelectedItem="{Binding Lender}"/>                
             </StackPanel>
 
             <local:TextInputVertControl Grid.Row="2" DataContext="{Binding APR}"/>

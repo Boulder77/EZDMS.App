@@ -1,0 +1,57 @@
+﻿<local:BaseProductsUserControl x:Class="EZDMS.App.ProductsSalesControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EZDMS.App"
+             mc:Ignorable="d" 
+             d:DataContext="{x:Static local:ProductSalesDesignModel.Instance}"
+             d:DesignHeight="800" d:DesignWidth="800">
+    <Border Background="{StaticResource BackgroundVeryLightBrush}"
+            
+            >
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Border BorderThickness="1"
+                    BorderBrush="{StaticResource ForegroundVeryDarkBrush}"
+                    CornerRadius="2">
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Coverages"/>
+
+                    <local:ProductItemControl Grid.Row="1" DataContext="{Binding Service}"/>
+                    <local:ProductItemControl Grid.Row="2" DataContext="{Binding Warranty}"/>
+                    <local:ProductItemControl Grid.Row="3" DataContext="{Binding Maintenance}"/>
+                    <local:GapItemControl Grid.Row="4" DataContext="{Binding Gap}"/>
+
+                    <local:NumericalDisplayVertControl
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"                           
+                           Grid.Row="5" 
+                           DataContext="{Binding TotalRetail}"
+                        />
+
+                </Grid>
+
+            </Border>
+
+        </Grid>
+
+    </Border>
+    </local:BaseProductsUserControl>

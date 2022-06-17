@@ -173,6 +173,49 @@ namespace EZDMS.App.Relational
             return Task.FromResult(mDbContext.Customer.ToList());
         }
 
+        /// <summary>
+        /// Returns all records in coverage provider table
+        /// </summary>
+        public Task<List<CoverageProviderDataModel>> GetCoverageProvidersAsync()
+        {
+            // Gets all the sales                      
+            return Task.FromResult(mDbContext.CoverageProvider.ToList());
+        }
+
+        /// <summary>
+        /// Gets a single provider record from the coverage provider table
+        /// </summary>
+        /// <param name="providerNumber"></param>
+        /// <returns>CoverageProviderDataModel</returns>
+        public Task<CoverageProviderDataModel> GetCoverageProviderAsync(string providerNumber)
+        {
+            // Gets a single provider record
+            return Task.FromResult(mDbContext.CoverageProvider.FirstOrDefault(u => u.Number == providerNumber));
+
+        }
+
+        /// <summary>
+        /// Returns all records in coverage plan table
+        /// </summary>
+        public Task<List<CoveragePlanDataModel>> GetCoveragePlansAsync()
+        {
+            // Gets all the sales                      
+            return Task.FromResult(mDbContext.CoveragePlan.ToList());
+        }
+
+        /// <summary>
+        /// Gets a single provider plan record from the coverage plan table
+        /// </summary>
+        /// <param name="providerNumber"></param>
+        /// <returns>CoveragePlanDataModel</returns>
+        public Task<CoveragePlanDataModel> GetCoveragePlanAsync(string providerNumber)
+        {
+            // Gets a single plan record
+            return Task.FromResult(mDbContext.CoveragePlan.FirstOrDefault(u => u.ProviderNumber == providerNumber));
+
+        }
+
+
         public async Task AddNewSalesRecordAsync(object mDataModel, DbTableNames type)
         {
             // return if no data model

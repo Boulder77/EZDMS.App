@@ -8,7 +8,7 @@ using System.Windows.Input;
 namespace EZDMS.App
 {
     /// <summary>
-    /// The View Model for the custom flat window
+    /// The View Model for the products window
     /// </summary>
     public class ProductsWindowViewModel : WindowViewModel
     {
@@ -37,8 +37,8 @@ namespace EZDMS.App
             //WindowMinimumWidth = 250;
             //WindowMinimumHeight = 100;
 
-            //// Make title bar smaller
-            //TitleHeight = 30;
+            // Make title bar larger
+            TitleHeight = 80;
         }
 
         #endregion

@@ -155,6 +155,12 @@
     <Compile Include="Controls\PageHost.xaml.cs">
       <DependentUpon>PageHost.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Products\GapItemControl.cs">
+      <DependentUpon>GapItemControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Products\Sales\ProductsSalesControl.xaml.cs">
+      <DependentUpon>ProductsSalesControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Products\BaseProductsUserControl.cs" />
     <Compile Include="Controls\Sales\SalesDealCardControl.xaml.cs">
       <DependentUpon>SalesDealCardControl.xaml</DependentUpon>
@@ -231,6 +237,9 @@
     <Compile Include="Pages\Vehicle\VehiclesListPage.cs">
       <DependentUpon>VehiclesListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Products\ProductItemControl.xaml.cs">
+      <DependentUpon>ProductItemControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValueConverters\ApplicationPageHelpers.cs" />
     <Compile Include="ValueConverters\BaseValueConverter.cs" />
     <Compile Include="ValueConverters\SideMenuContentConverter.cs" />
@@ -258,6 +267,10 @@
     <Compile Include="ViewModel\Customer\Design\CustomerDesignModel.cs" />
     <Compile Include="ViewModel\Customer\CustomersListViewModel.cs" />
     <Compile Include="ViewModel\Products\BaseProductsViewModel.cs" />
+    <Compile Include="ViewModel\Products\Design\ProductSalesDesignModel.cs" />
+    <Compile Include="ViewModel\Products\Design\ProductItemDesignModel.cs" />
+    <Compile Include="ViewModel\Products\ProductItemViewModel.cs" />
+    <Compile Include="ViewModel\Products\ProductSalesViewModel.cs" />
     <Compile Include="ViewModel\Sales\Design\TruthInLendingDisclosureDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\SalesSummaryDetailsDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\SalesDeskingTotalsDesignModel.cs" />
@@ -418,6 +431,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Products\GapItemControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Products\Sales\ProductsSalesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Sales\SalesDealCardControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -522,6 +543,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\Products\ProductItemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Scroll.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -623,7 +648,7 @@
       <Version>1.0.7.19</Version>
     </PackageReference>
     <PackageReference Include="Fody">
-      <Version>6.6.2</Version>
+      <Version>6.6.3</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

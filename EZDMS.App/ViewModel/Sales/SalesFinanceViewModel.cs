@@ -271,12 +271,20 @@ namespace EZDMS.App
 
         public async Task SaveBuyerAsync()
         {
-            await UI.ShowMessage(new MessageBoxDialogViewModel
-            {
-                // TODO: Localize
-                Title = "Save Buyer Info",
-                Message = "The buyer info has been saved"
+            await UI.ShowProducts(new ProductsSalesViewModel 
+            { 
+                Title="Coverage"
+            
+            
             });
+
+
+            //await UI.ShowMessage(new MessageBoxDialogViewModel
+            //{
+            //    // TODO: Localize
+            //    Title = "Save Buyer Info",
+            //    Message = "The buyer info has been saved"
+            //});
         }
 
         #endregion
@@ -444,10 +452,10 @@ namespace EZDMS.App
 
                 // Create the APR
                 EffectiveAPR = new TextEntryViewModel
-                
+
                 {
                     Label = "Effective APR",
-                     OriginalText = salesFinance.EffectiveAPR.ToString("#.00")
+                    OriginalText = salesFinance.EffectiveAPR.ToString("#.00")
 
                 },
 
@@ -487,6 +495,10 @@ namespace EZDMS.App
                     Label = "Payment Date",
                     Date = salesFinance.FirstPaymentDate
                 },
+
+                // Create the lender name
+                Lender = salesFinance.BankName
+                
 
             };
 

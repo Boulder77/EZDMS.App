@@ -74,7 +74,7 @@ namespace EZDMS.App
             if (page is CustomersListPage)
                 return ApplicationPage.CustomersList;
 
-            if (page is CustomersListPage)
+            if (page is VehiclesListPage)
                 return ApplicationPage.VehiclesList;
 
             // Alert developer of issue
