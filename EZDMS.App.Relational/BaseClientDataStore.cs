@@ -40,6 +40,99 @@ namespace EZDMS.App.Relational
         #region Interface Implementation
 
         /// <summary>
+        /// Makes sure the client data store is correctly set up
+        /// </summary>
+        /// <returns>Returns a task that will finish once setup is complete</returns>
+        public async Task EnsureDataStoreAsync()
+        {
+            // Make sure the database exists and is created
+            await mDbContext.Database.EnsureCreatedAsync();
+        }
+
+
+        /// <summary>
+        /// Add a new record to the appropriate data store table
+        /// </summary>
+        /// <param name="mDataModel"></param>
+        /// <param name="type"></param>
+        /// <returns>Task completed</returns>
+        /// <exception cref="Exception"></exception>
+        public async Task AddNewSalesRecordAsync(object mDataModel, DbTableNames type)
+        {
+            // return if no data model
+            if (mDataModel == null)
+                return;
+
+            switch (type)
+            {
+                // Add new login entry
+                case DbTableNames.LoginCredentials:
+                    mDbContext.LoginCredentials.Add(mDataModel as LoginCredentialsDataModel);
+                    break;
+
+                case DbTableNames.SalesDealsInfo:
+                    // Add new sales deals list entry
+                    mDbContext.SalesDealsInfo.Add(mDataModel as SalesDealsItemDataModel);
+                    break;
+
+                case DbTableNames.SalesFinance:
+                    //Add new sales finance entry
+                    mDbContext.SalesFinance.Add(mDataModel as SalesFinanceDataModel);
+                    break;
+
+                case DbTableNames.VehicleInventory:
+                    //Add new vehicle inventory entry
+                    mDbContext.VehicleInventory.Add(mDataModel as VehicleInventoryDataModel);
+                    break;
+
+                case DbTableNames.Customer:
+                    //Add new customer entry
+                    mDbContext.Customer.Add(mDataModel as CustomerDataModel);
+                    break;
+
+                case DbTableNames.CoverageProvider:
+                    //Add new customer entry
+                    mDbContext.CoverageProvider.Add(mDataModel as CoverageProviderDataModel);
+                    break;
+
+                case DbTableNames.CoveragePlan:
+                    //Add new customer entry
+                    mDbContext.CoveragePlan.Add(mDataModel as CoveragePlanDataModel);
+                    break;
+
+                case DbTableNames.SalesGap:
+                    // Add new SalesGap entry
+                    mDbContext.SalesGap.Add(mDataModel as SalesGapDataModel);
+                    break;
+
+                case DbTableNames.SalesMaintenance:
+                    // Add new SalesMaintenance entry
+                    mDbContext.SalesMaintenance.Add(mDataModel as SalesMaintenanceDataModel);
+                    break;
+
+                case DbTableNames.SalesService:
+                    // Add new SalesService entry
+                    mDbContext.SalesService.Add(mDataModel as SalesServiceDataModel);
+                    break;
+
+                case DbTableNames.SalesWarranty:
+                    // Add new SalesService entry
+                    mDbContext.SalesWarranty.Add(mDataModel as SalesWarrantyDataModel);
+                    break;
+
+                default:
+                    throw new Exception();
+                    break;
+            }
+
+            // Save changes
+            await mDbContext.SaveChangesAsync();
+
+        }
+
+        #region Login Credentials Methods
+
+        /// <summary>
         /// Determines if the current user has logged in credentials
         /// </summary>
         public async Task<bool> HasCredentialsAsync()
@@ -47,15 +140,6 @@ namespace EZDMS.App.Relational
             return await GetLoginCredentialsAsync() != null;
         }
 
-        /// <summary>
-        /// Makes sure the client data store is correctly set up
-        /// </summary>
-        /// <returns>Returns a task that will finish once setup is complete</returns>
-        public async Task EnsureDataStoreAsync()    
-        {
-            // Make sure the database exists and is created
-            await mDbContext.Database.EnsureCreatedAsync();
-        }
 
         /// <summary>
         /// Gets the stored login credentials for this client
@@ -97,6 +181,11 @@ namespace EZDMS.App.Relational
             await mDbContext.SaveChangesAsync();
         }
 
+
+        #endregion
+
+        #region Sales Finance Methods
+
         /// <summary>
         /// Gets a single sales finance deal
         /// </summary>
@@ -105,7 +194,7 @@ namespace EZDMS.App.Relational
         public Task<SalesFinanceDataModel> GetSalesFinanceDealAsync(int dealNumber)
         {
             // Gets a single sales record
-            return Task.FromResult(mDbContext.SalesFinance.FirstOrDefault(u=> u.DealNumber==dealNumber));
+            return Task.FromResult(mDbContext.SalesFinance.FirstOrDefault(u => u.DealNumber == dealNumber));
 
         }
 
@@ -124,6 +213,36 @@ namespace EZDMS.App.Relational
         }
 
         /// <summary>
+        /// Stores the sales finance deal to the backing data store
+        /// </summary>
+        /// <param name="salesFinance">The sales finance deal to save</param>
+        /// <returns>Returns a task that will finish once the save is complete</returns>
+        public async Task SaveSalesFinanceDealAsync(SalesFinanceDataModel salesFinance)
+        {
+            // Clear all entries
+            mDbContext.SalesFinance.RemoveRange(mDbContext.SalesFinance);
+
+            // Add new one
+            mDbContext.SalesFinance.Add(salesFinance);
+
+            // Save changes
+            await mDbContext.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Returns all records in SearchDeals table
+        /// </summary>
+        public Task<List<SalesDealsItemDataModel>> GetSalesDealRecallsAsync()
+        {
+            // Gets all the sales                      
+            return Task.FromResult(mDbContext.SalesDealsInfo.ToList());
+        }
+
+        #endregion
+
+        #region Vehicle Inventory Methods
+
+        /// <summary>
         /// Gets a single vehicle record from the inventory table
         /// </summary>
         /// <param name="stockNumber"></param>
@@ -133,6 +252,19 @@ namespace EZDMS.App.Relational
             // Gets a single sales record
             return Task.FromResult(mDbContext.VehicleInventory.FirstOrDefault(u => u.StockNumber == stockNumber));
         }
+
+        /// <summary>
+        /// Returns all records in vehicle inventory table
+        /// </summary>
+        public Task<List<VehicleInventoryDataModel>> GetVehicleInventoryAsync()
+        {
+            // Gets all the sales                      
+            return Task.FromResult(mDbContext.VehicleInventory.ToList());
+        }
+
+        #endregion
+
+        #region Customer Methods
 
         /// <summary>
         /// Gets a single customer record from the customer table
@@ -147,24 +279,6 @@ namespace EZDMS.App.Relational
         }
 
         /// <summary>
-        /// Returns all records in SearchDeals table
-        /// </summary>
-        public Task<List<SalesDealsItemDataModel>> GetSalesDealRecallsAsync()
-        {
-            // Gets all the sales                      
-            return Task.FromResult(mDbContext.SalesDealsInfo.ToList());            
-        }
-
-        /// <summary>
-        /// Returns all records in vehicle inventory table
-        /// </summary>
-        public Task<List<VehicleInventoryDataModel>> GetVehicleInventoryAsync()
-        {
-            // Gets all the sales                      
-            return Task.FromResult(mDbContext.VehicleInventory.ToList());
-        }
-
-        /// <summary>
         /// Returns all records in customer table
         /// </summary>
         public Task<List<CustomerDataModel>> GetCustomersAsync()
@@ -172,6 +286,12 @@ namespace EZDMS.App.Relational
             // Gets all the sales                      
             return Task.FromResult(mDbContext.Customer.ToList());
         }
+
+
+
+        #endregion
+
+        #region Products Methods
 
         /// <summary>
         /// Returns all records in coverage provider table
@@ -216,59 +336,8 @@ namespace EZDMS.App.Relational
         }
 
 
-        public async Task AddNewSalesRecordAsync(object mDataModel, DbTableNames type)
-        {
-            // return if no data model
-            if (mDataModel == null)
-                    return;
-                       
-            switch (type)
-            {
-                // Add new login entry
-                case DbTableNames.LoginCredentials:
-                    mDbContext.LoginCredentials.Add(mDataModel as LoginCredentialsDataModel);
-                    break;
-                                    
-                case DbTableNames.SalesDealsInfo:
-                    // Add new sales deals list entry
-                    mDbContext.SalesDealsInfo.Add(mDataModel as SalesDealsItemDataModel);
-                    break;
 
-                case DbTableNames.SalesFinance:
-                    //Add new sales finance entry
-                    mDbContext.SalesFinance.Add(mDataModel as SalesFinanceDataModel);
-                    break;
-
-                case DbTableNames.VehicleInventory:
-                    //Add new vehicle inventory entry
-                    mDbContext.VehicleInventory.Add(mDataModel as VehicleInventoryDataModel);
-                    break;
-
-                case DbTableNames.Customer:
-                    //Add new customer entry
-                    mDbContext.Customer.Add(mDataModel as CustomerDataModel);
-                    break;
-
-                case DbTableNames.CoverageProvider:
-                    //Add new customer entry
-                    mDbContext.CoverageProvider.Add(mDataModel as CoverageProviderDataModel);
-                    break;
-
-                case DbTableNames.CoveragePlan:
-                    //Add new customer entry
-                    mDbContext.CoveragePlan.Add(mDataModel as CoveragePlanDataModel);
-                    break;
-
-
-                default:
-                    throw new Exception();
-                    break;
-            }
-            
-            // Save changes
-            await mDbContext.SaveChangesAsync();
-
-        }
+        #endregion
 
         #endregion
     }

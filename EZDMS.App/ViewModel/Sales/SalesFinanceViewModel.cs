@@ -206,7 +206,6 @@ namespace EZDMS.App
         /// </summary>
         public VehiclePricingViewModel VehiclePricing { get; set; }
 
-
         /// <summary>
         /// Indicates if the sales finance deal details are currently being loaded
         /// </summary>
@@ -230,7 +229,6 @@ namespace EZDMS.App
         /// The command to clear the users data from the view model
         /// </summary>
         public ICommand ClearUserDataCommand { get; set; }
-
 
         /// <summary>
         /// Saves the current buyer info to the server
@@ -278,7 +276,6 @@ namespace EZDMS.App
             
             });
 
-
             //await UI.ShowMessage(new MessageBoxDialogViewModel
             //{
             //    // TODO: Localize
@@ -287,12 +284,12 @@ namespace EZDMS.App
             //});
         }
 
+
+
+
         #endregion
 
-
-
         #region Private Helper Methods
-
 
         private void UpdateValuesOfDeskingTotals(SalesFinanceDataModel salesFinance)
         {
@@ -850,12 +847,7 @@ namespace EZDMS.App
 
         }
 
-
         #endregion
-
-
-
-
 
     }
 

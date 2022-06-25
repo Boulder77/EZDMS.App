@@ -139,6 +139,23 @@ namespace EZDMS.App
             // Create new instance of sales desking view model
             ViewModelSalesFinance.SalesFinanceDeal = SalesDeal;
 
+            // Create new sales search records
+            var salesDealItem = new SalesDealsItemDataModel
+            {
+                DealNumber = SalesDeal.DealNumber,
+                CreatedDate = SalesDeal.DealDate,
+                DealDate = SalesDeal.DealDate,
+                LastActivityDate = SalesDeal.DealDate,
+                IsActive=true,
+                IsFinalized=false,
+                Status="Quote",
+
+            };
+
+            await ClientDataStore.AddNewSalesRecordAsync(salesDealItem, DbTableNames.SalesDealsInfo);
+
+            ViewModelSalesFinance.SalesDealsItem = salesDealItem;
+
             // Go to sales desking page
             ViewModelApplication.GoToPage(ApplicationPage.SalesFinance, ViewModelSalesFinance);
 

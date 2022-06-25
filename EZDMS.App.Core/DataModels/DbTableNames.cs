@@ -39,5 +39,25 @@
         /// The CoveragePlan table
         /// </summary>
         CoveragePlan = 6,
+
+        /// <summary>
+        /// The SalesGap table
+        /// <summary>
+        SalesGap = 7,
+
+        /// <summary>
+        /// The SalesMaintenance table
+        /// <summary>
+        SalesMaintenance = 8,
+
+        /// <summary>
+        /// The SalesService table
+        /// <summary>
+        SalesService = 9,
+
+        /// <summary>
+        /// The SalesWarranty table
+        /// <summary>
+        SalesWarranty = 10,
     }
 }

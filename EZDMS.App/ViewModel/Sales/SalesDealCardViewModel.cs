@@ -13,9 +13,18 @@ namespace EZDMS.App
     /// </summary>
     public class SalesDealCardViewModel : BaseViewModel
     {
+        
+        #region Private Members
+
+        /// <summary>
+        /// The text to show as default
+        /// </summary>
+        private string mDefaultText = "-";
+
+        #endregion
 
         #region Public Properties
-       
+
         /// <summary>
         /// The current working sales deal number
         /// </summary>
@@ -84,11 +93,9 @@ namespace EZDMS.App
         /// <summary>
         /// Indicates if the sales finance deal details are currently being loaded
         /// </summary>
-        public bool SalesFinanceInfoPageLoading { get; set; } 
+        public bool SalesFinanceInfoPageLoading { get; set; }
 
         #endregion
-
-
 
         #region Constructor
 
@@ -97,14 +104,84 @@ namespace EZDMS.App
         /// </summary>
         public SalesDealCardViewModel()
         {
-           
+            BuyerName = new TextDisplayViewModel
+            {
+                Label = "Buyer Name",
+                DisplayText = mDefaultText,
+            };
+
+
+
+            CoBuyerName = new TextDisplayViewModel
+            {
+                Label = "CoBuyer Name",
+                DisplayText = mDefaultText,
+
+            };
+
+            Vehicle = new TextDisplayViewModel
+            {
+                Label = "Vehicle",
+                DisplayText = mDefaultText,
+            };
+
+            Status = new TextDisplayViewModel
+            {
+                Label = "Status",
+                DisplayText = mDefaultText,
+            };
+
+            DealType = new TextDisplayViewModel
+            {
+                Label = "Deal Type",
+                DisplayText = mDefaultText,
+            };
+
+            Salesperson = new TextDisplayViewModel
+            {
+                Label = "Sales Person",
+                DisplayText = mDefaultText,
+            };
+
+            SalesManager = new TextDisplayViewModel
+            {
+                Label = "Sales Manager",
+                DisplayText = mDefaultText,
+            };
+
+            FinanceManager = new TextDisplayViewModel
+            {
+                Label = "Finance Manager",
+                DisplayText = mDefaultText,
+            };
+
+            Trades = new TextDisplayViewModel
+            {
+                Label = "Trades",
+                DisplayText = mDefaultText,
+            };
+
+            CreatedDate = new TextDisplayViewModel
+            {
+                Label = "Created Date",
+                DisplayText = mDefaultText,
+            };
+
+            LastActivityDate = new TextDisplayViewModel
+            {
+                Label = "Last Activity Date",
+                DisplayText = mDefaultText,
+            };
+
+            DealDate = new TextDisplayViewModel
+            {
+                Label = "Deal Date",
+                DisplayText = mDefaultText,
+            };
 
         }
 
         #endregion
-
-
-
 
     }
 

@@ -275,7 +275,9 @@
     <Compile Include="ViewModel\Sales\Design\SalesSummaryDetailsDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\SalesDeskingTotalsDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\SalesDealCardDesignModel.cs" />
+    <Compile Include="ViewModel\Sales\Products\SalesMaintenanceViewModel.cs" />
     <Compile Include="ViewModel\Sales\SalesFinanceViewModel.cs" />
+    <Compile Include="ViewModel\Sales\Products\SalesGapViewModel.cs" />
     <Compile Include="ViewModel\Sales\TruthinLendingDisclosureViewModel.cs" />
     <Compile Include="ViewModel\Sales\SalesDeskingTotalsViewModel.cs" />
     <Compile Include="ViewModel\Sales\SalesSummaryViewModel.cs" />

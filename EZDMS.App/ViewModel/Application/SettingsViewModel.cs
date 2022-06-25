@@ -408,7 +408,6 @@ namespace EZDMS.App
             });
         }
 
-
         /// <summary>
         /// Saves the new Password to the server
         /// </summary>

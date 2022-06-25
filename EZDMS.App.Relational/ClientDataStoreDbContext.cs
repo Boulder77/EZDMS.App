@@ -45,6 +45,27 @@ namespace EZDMS.App.Relational
         /// </summary>
         public DbSet<CoveragePlanDataModel> CoveragePlan { get; set; }
 
+        /// <summary>
+        /// The SalesGap table
+        /// <summary>
+        public DbSet<SalesGapDataModel> SalesGap { get; set; }
+
+        /// <summary>
+        /// The SalesMaintenance table
+        /// <summary>
+        public DbSet<SalesMaintenanceDataModel> SalesMaintenance { get; set; }
+
+        /// <summary>
+        /// The SalesMaintenance table
+        /// <summary>
+        public DbSet<SalesServiceDataModel> SalesService { get; set; }
+
+        /// <summary>
+        /// The SalesWarranty table
+        /// <summary>
+        public DbSet<SalesWarrantyDataModel> SalesWarranty { get; set; }
+
+
         #endregion
 
         #region Constructor
@@ -85,6 +106,15 @@ namespace EZDMS.App.Relational
             modelBuilder.Entity<CoverageProviderDataModel>().HasKey(a => a.ID);
 
             modelBuilder.Entity<CoveragePlanDataModel>().HasKey(a => a.ID);
+
+            modelBuilder.Entity<SalesGapDataModel>().HasKey(a => a.DealNumber);
+
+            modelBuilder.Entity<SalesMaintenanceDataModel>().HasKey(a => a.DealNumber);
+
+            modelBuilder.Entity<SalesServiceDataModel>().HasKey(a => a.DealNumber);
+
+            modelBuilder.Entity<SalesWarrantyDataModel>().HasKey(a => a.DealNumber);
+
 
             // TODO: Set up limits
             //modelBuilder.Entity<LoginCredentialsDataModel>().Property(a => a.FirstName).HasMaxLength(50);
