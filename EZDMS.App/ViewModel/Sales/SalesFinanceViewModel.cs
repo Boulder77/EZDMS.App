@@ -269,12 +269,7 @@ namespace EZDMS.App
 
         public async Task SaveBuyerAsync()
         {
-            await UI.ShowProducts(new ProductsSalesViewModel 
-            { 
-                Title="Coverage"
-            
-            
-            });
+            await UI.ShowProducts(ProductSalesDesignModel.Instance);
 
             //await UI.ShowMessage(new MessageBoxDialogViewModel
             //{

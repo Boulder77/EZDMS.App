@@ -22,10 +22,10 @@
             </Grid.ColumnDefinitions>
 
 
-            <StackPanel>
+            <StackPanel Margin="0,2,3,0" >
                 <!-- Label -->
                 <TextBlock Text="{Binding Label}"
-                       Name="Label"                      
+                       Name="Label"                          
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        FontFamily="{StaticResource LatoRegular}"

@@ -158,10 +158,12 @@
     <Compile Include="Controls\Products\GapItemControl.cs">
       <DependentUpon>GapItemControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Products\Sales\ProductsSalesControl.xaml.cs">
+    <Compile Include="Dialogs\CustomerSelectControl.xaml.cs">
+      <DependentUpon>CustomerSelectControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ProductsSalesControl.xaml.cs">
       <DependentUpon>ProductsSalesControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Products\BaseProductsUserControl.cs" />
     <Compile Include="Controls\Sales\SalesDealCardControl.xaml.cs">
       <DependentUpon>SalesDealCardControl.xaml</DependentUpon>
     </Compile>
@@ -204,9 +206,6 @@
     <Compile Include="Dialogs\BaseDialogUserControl.cs" />
     <Compile Include="Dialogs\DialogMessageBox.xaml.cs">
       <DependentUpon>DialogMessageBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ProductsWindow.xaml.cs">
-      <DependentUpon>ProductsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DI\DI.cs" />
     <Compile Include="DI\FrameworkConstructionExtensions.cs" />
@@ -266,11 +265,10 @@
     <Compile Include="ViewModel\Customer\Design\CustomerAddressDesignModel.cs" />
     <Compile Include="ViewModel\Customer\Design\CustomerDesignModel.cs" />
     <Compile Include="ViewModel\Customer\CustomersListViewModel.cs" />
-    <Compile Include="ViewModel\Products\BaseProductsViewModel.cs" />
-    <Compile Include="ViewModel\Products\Design\ProductSalesDesignModel.cs" />
+    <Compile Include="ViewModel\Dialogs\Design\ProductSalesDesignModel.cs" />
     <Compile Include="ViewModel\Products\Design\ProductItemDesignModel.cs" />
     <Compile Include="ViewModel\Products\ProductItemViewModel.cs" />
-    <Compile Include="ViewModel\Products\ProductSalesViewModel.cs" />
+    <Compile Include="ViewModel\Dialogs\ProductSalesViewModel.cs" />
     <Compile Include="ViewModel\Sales\Design\TruthInLendingDisclosureDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\SalesSummaryDetailsDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\SalesDeskingTotalsDesignModel.cs" />
@@ -437,7 +435,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Products\Sales\ProductsSalesControl.xaml">
+    <Page Include="Dialogs\CustomerSelectControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\ProductsSalesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -496,10 +498,6 @@
     <Page Include="Dialogs\DialogMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ProductsWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="DialogWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

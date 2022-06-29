@@ -60,6 +60,7 @@ namespace EZDMS.App
         /// <returns></returns>
         public async Task LoginAsync(object parameter)
         {
+
             ViewModelApplication.GoToPage(ApplicationPage.Chat);
 
             await Task.Delay(1);

@@ -92,7 +92,7 @@
                DataContext="{Binding Total}"/>
 
         <local:NumericalDisplayVertControl
-               Grid.Row="5"            
+               Grid.Row="5"                
                Background="{StaticResource WordGreenBrush}"
                Foreground="{StaticResource BackgroundVeryLightBrush}"
                DataContext="{Binding CashFromCustomer}"/>
