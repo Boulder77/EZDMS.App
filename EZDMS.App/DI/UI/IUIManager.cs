@@ -20,7 +20,14 @@ namespace EZDMS.App
         /// </summary>
         /// <param name="viewModel">The view model</param>
         /// <returns></returns>
-        Task ShowProducts(ProductsSalesViewModel viewModel);
+        Task ShowProducts(ProductsSalesDialogViewModel viewModel);
+
+        /// <summary>
+        /// Displays a customer select window to the user
+        /// </summary>
+        /// <param name="viewModel">The view model</param>
+        /// <returns></returns>
+        Task ShowCustomers(CustomerSelectDialogViewModel viewModel);
 
 
     }

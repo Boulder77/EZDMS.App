@@ -14,15 +14,16 @@ namespace EZDMS.App
     /// </summary>
     public class CustomersListViewModel : BaseViewModel
     {
+
         #region Private Members
 
         /// <summary>
-        /// The sales search deals items for the list
+        /// The customer items for the list
         /// </summary>
         protected List<CustomerDataModel> mItems;
 
         /// <summary>
-        /// The deal item selected from the list
+        /// The customer selected from the list
         /// </summary>
         private CustomerDataModel mSelectedCustomer;
 
@@ -30,7 +31,6 @@ namespace EZDMS.App
         /// The customer ID selected from the list
         /// </summary>
         private int mCustomerID;
-
 
         #endregion
         
@@ -40,6 +40,7 @@ namespace EZDMS.App
         {
 
             get => mItems;
+
             set
             {
                 // Make sure list has changed
@@ -56,7 +57,7 @@ namespace EZDMS.App
         }
 
         /// <summary>
-        /// The chat thread items for the list that include any search filtering
+        /// The customer items for the list that include any search filtering
         /// </summary>
         public ObservableCollection<CustomerDataModel> FilteredItems { get; set; }
 
@@ -76,13 +77,15 @@ namespace EZDMS.App
             }
         }
 
-
-
-
         /// <summary>
         /// Indicates if the customers list are currently being loaded
         /// </summary>
         public bool CustomersListPageLoading { get; set; }
+
+        /// <summary>
+        /// The string for the entry count label
+        /// </summary>
+        public string EntryCount { get; set; }
 
         #endregion
 
@@ -97,9 +100,29 @@ namespace EZDMS.App
         /// The command to get a saved customer
         /// </summary>
         public ICommand GetCustomerCommand { get; set; }
-              
+
+        /// <summary>
+        /// The command to select a customer
+        /// </summary>
+        public ICommand SelectCustomerCommand { get; set; }
+
+        /// <summary>
+        /// The command to search the customer list
+        /// </summary>
+        public ICommand SearchCustomerCommand { get; set; }
+
+        /// <summary>
+        /// The command to search the customer list
+        /// </summary>
+        public ICommand ClearSearchCommand { get; set; }
+
+        /// <summary>
+        /// The command to cancel the selection of a customer and exit the window
+        /// </summary>
+        public ICommand CancelSelectCommand { get; set; }
+
         #endregion
-                
+
         #region Constructor
 
         /// <summary>
@@ -144,18 +167,21 @@ namespace EZDMS.App
 
         //}
 
-        //private async Task RecallSalesDealAsync(object salesDeal)
-        //{
-        //    if (!(salesDeal is SalesDealsItemDataModel))
-        //        return;
+        private void SetCustomerViewModel(object mCustomer, string mType)
+        {
 
-        //    ViewModelSalesFinance.SalesDealsItem = (SalesDealsItemDataModel)salesDeal;
-        //    ViewModelSalesFinance.SalesFinanceDeal = await ClientDataStore.GetSalesFinanceDealAsync(mDealNumber);
+            // return 
+            if (!(mCustomer is CustomerDataModel))
+                return;
 
-        //    // Go to sales desking page
-        //    ViewModelApplication.GoToPage(ApplicationPage.SalesFinance, ViewModelSalesFinance);
+            if (mType == "C")
 
-        //}
+                // set view model
+                ViewModelSalesFinance.SecondCustomer = (CustomerDataModel)mCustomer;
+            else
+                ViewModelSalesFinance.Customer = (CustomerDataModel)mCustomer;
+           
+        }
 
         #endregion
 

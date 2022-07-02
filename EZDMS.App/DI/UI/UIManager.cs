@@ -45,7 +45,7 @@ namespace EZDMS.App
         /// </summary>
         /// <param name="viewModel">The view model</param>
         /// <returns></returns>
-        public Task ShowProducts(ProductsSalesViewModel viewModel)
+        public Task ShowProducts(ProductsSalesDialogViewModel viewModel)
         {
             // Create a task completion source
             var tcs = new TaskCompletionSource<bool>();
@@ -56,7 +56,7 @@ namespace EZDMS.App
                 try
                 {
                     // Show the dialog box
-                    await new ProductsSalesControl().ShowDialog(viewModel);
+                    await new DialogProductsSales().ShowDialog(viewModel);
                 }
                 finally
                 {
@@ -69,7 +69,7 @@ namespace EZDMS.App
             return tcs.Task;
         }
 
-        public Task ShowCustomers(ProductsSalesViewModel viewModel)
+        public Task ShowCustomers(CustomerSelectDialogViewModel viewModel)
         {
             // Create a task completion source
             var tcs = new TaskCompletionSource<bool>();
@@ -80,7 +80,7 @@ namespace EZDMS.App
                 try
                 {
                     // Show the dialog box
-                    await new ProductsSalesControl().ShowDialog(viewModel);
+                    await new DialogCustomerSelect().ShowCustomerSelectDialog(viewModel);
                 }
                 finally
                 {

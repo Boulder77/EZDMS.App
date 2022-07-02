@@ -2,9 +2,9 @@
 namespace EZDMS.App
 {
     /// <summary>
-    /// The view model for the <see cref="ProductsSalesControl"/>
+    /// The view model for the <see cref="DialogProductsSales"/>
     /// <summary>
-    public class ProductsSalesViewModel:BaseDialogViewModel
+    public class ProductsSalesDialogViewModel:BaseDialogViewModel
     {
     
         #region Public Properties
@@ -46,7 +46,7 @@ namespace EZDMS.App
         /// <summary>
         /// Default constructor
         /// </summary>
-        public ProductsSalesViewModel()
+        public ProductsSalesDialogViewModel()
         {
             
         }

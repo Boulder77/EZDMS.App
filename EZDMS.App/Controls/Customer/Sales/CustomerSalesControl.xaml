@@ -19,8 +19,50 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+            
+            <Grid HorizontalAlignment="Right"
+                  VerticalAlignment="Top"
+                  Panel.ZIndex="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Button Content="Change Buyer"
+                        Margin="5"
+                        Padding="8"
+                        IsDefault="True"
+                        Focusable="False"
+                        Command="{Binding SelectCustomerCommand}"
+                        BorderBrush="{StaticResource WordLightBlueBrush}"
+                        BorderThickness="1"
+                        Background="{StaticResource WordTransparentBlueBrush}"
+                        Foreground="{StaticResource WordLightBlueBrush}"
+                        FontSize="{StaticResource FontSizeSmall}"
+                        />
+
+                <Button Content="Update Zip Code"
+                        Grid.Column="1"
+                        Margin="5"
+                        Padding="8"
+                        IsDefault="True"
+                        Focusable="False"
+                        Command="{Binding SendCommand}"
+                        BorderBrush="{StaticResource WordLightBlueBrush}"
+                        BorderThickness="1"
+                        Background="{StaticResource WordTransparentBlueBrush}"
+                        Foreground="{StaticResource WordLightBlueBrush}"
+                        FontSize="{StaticResource FontSizeSmall}"
+                        />
+
+            </Grid>
+
+
 
             <local:CustomerCardControl
+                
                 DataContext="{Binding CustomerCard}"
                 d:DataContext="{x:Static local:CustomerCardDesignModel.Instance}"/>
 
@@ -46,7 +88,7 @@
                     VerticalAlignment="Top" 
                     HorizontalAlignment="Right"
                     FontSize="{StaticResource FontSizeRegular}"
-                    Command="{Binding SaveBuyerCommand}"
+                    Command="{Binding SaveCustomerCommand}"
                     
                     />
             

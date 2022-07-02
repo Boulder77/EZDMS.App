@@ -22,9 +22,9 @@ namespace EZDMS.App
 
         protected SalesDealsItemDataModel mSalesDealItem;
 
-        protected CustomerDataModel mBuyer;
+        protected CustomerDataModel mCustomer;
 
-        protected CustomerDataModel mCoBuyer;
+        protected CustomerDataModel mSecondCustomer;
 
         protected VehicleInventoryDataModel mSaleVehicle;
 
@@ -80,24 +80,25 @@ namespace EZDMS.App
         /// <summary>
         /// The data model for the buyer
         /// </summary>
-        public CustomerDataModel Buyer
+        public CustomerDataModel Customer
         {
-            get => mBuyer;
+            get => mCustomer;
+            
             set
             {
                 // If datamodel has not changed...
-                if (mBuyer == value)
+                if (mCustomer == value)
                     // Ignore
                     return;
 
                 // Set the backing datamodel
-                mBuyer = value;
+                mCustomer = value;
 
                 if (value != null)
                     // Reload customer card view model
-                    UpdateValuesOfCustomerCard(Buyer);
-                    UpdateValuesOfCustomerBasicInfo(Buyer);
-                    UpdateValuesOfCustomerAddress(Buyer);
+                    UpdateValuesOfCustomerCard(Customer);
+                    UpdateValuesOfCustomerBasicInfo(Customer);
+                    UpdateValuesOfCustomerAddress(Customer);
             }
 
         }
@@ -105,18 +106,20 @@ namespace EZDMS.App
         /// <summary>
         /// The data model for the cobuyer
         /// </summary>
-        public CustomerDataModel CoBuyer
+        public CustomerDataModel SecondCustomer
         {
-            get => mCoBuyer;
+
+            get => mSecondCustomer;
+            
             set
             {
                 // If datamodel has not changed...
-                if (mCoBuyer == value)
+                if (mSecondCustomer == value)
                     // Ignore
                     return;
 
                 // Set the backing datamodel
-                mCoBuyer = value;
+                mSecondCustomer = value;
 
                 //if (value != null)
                 //    // Reload sales deal view model
@@ -233,7 +236,14 @@ namespace EZDMS.App
         /// <summary>
         /// Saves the current buyer info to the server
         /// </summary>
-        public ICommand SaveBuyerCommand { get; set; }
+        public ICommand SaveCustomerCommand { get; set; }
+
+        /// <summary>
+        /// Saves the current buyer info to the server
+        /// </summary>
+        public ICommand SelectCustomerCommand { get; set; }
+
+
 
         #endregion
 
@@ -246,8 +256,8 @@ namespace EZDMS.App
         {
             // Create commands
             LoadDealCommand = new RelayCommand(async () => await LoadAsync());
-            SaveBuyerCommand = new RelayCommand(async () => await SaveBuyerAsync());
-
+            SaveCustomerCommand = new RelayCommand(async () => await SaveCustomerAsync());
+            SelectCustomerCommand =  new RelayCommand(async () => await SelectCustomerAsync());
         }
 
         #endregion
@@ -267,7 +277,7 @@ namespace EZDMS.App
 
         }
 
-        public async Task SaveBuyerAsync()
+        public async Task SaveCustomerAsync()
         {
             await UI.ShowProducts(ProductSalesDesignModel.Instance);
 
@@ -278,6 +288,29 @@ namespace EZDMS.App
             //    Message = "The buyer info has been saved"
             //});
         }
+
+        public async Task SelectCustomerAsync()
+        {
+            await UI.ShowCustomers(new CustomerSelectDialogViewModel 
+            {
+                
+                Title = "Customers"
+
+            
+            
+            
+            });
+
+
+
+            //await UI.ShowMessage(new MessageBoxDialogViewModel
+            //{
+            //    // TODO: Localize
+            //    Title = "Save Buyer Info",
+            //    Message = "The buyer info has been saved"
+            //});
+        }
+
 
 
 

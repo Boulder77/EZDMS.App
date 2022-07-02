@@ -3,11 +3,11 @@
 namespace EZDMS.App
 {
     /// <summary>
-    /// Interaction logic for ProductsSalesControl.xaml
+    /// Interaction logic for DialogProductsSales.xaml
     /// </summary>
-    public partial class ProductsSalesControl : BaseDialogUserControl
+    public partial class DialogProductsSales : BaseDialogUserControl
     {
-        public ProductsSalesControl()
+        public DialogProductsSales()
         {
             InitializeComponent();
                        

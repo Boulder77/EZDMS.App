@@ -13,10 +13,10 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+               
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -82,43 +82,7 @@
 
             </StackPanel>
 
-            <Grid Grid.Column="4" >
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                
-
-                <Button Content="Change Buyer"
-                        Margin="5"
-                        Padding="8"
-                        IsDefault="True"
-                        Focusable="False"
-                        Command="{Binding SendCommand}"
-                        BorderBrush="{StaticResource WordLightBlueBrush}"
-                        BorderThickness="1"
-                        Background="{StaticResource WordTransparentBlueBrush}"
-                        Foreground="{StaticResource WordLightBlueBrush}"
-                        FontSize="{StaticResource FontSizeSmall}"
-                        />
-
-                <Button Content="Update Zip Code"
-                        Grid.Column="1"
-                        Margin="5"
-                        Padding="8"
-                        IsDefault="True"
-                        Focusable="False"
-                        Command="{Binding SendCommand}"
-                        BorderBrush="{StaticResource WordLightBlueBrush}"
-                        BorderThickness="1"
-                        Background="{StaticResource WordTransparentBlueBrush}"
-                        Foreground="{StaticResource WordLightBlueBrush}"
-                        FontSize="{StaticResource FontSizeSmall}"
-                        />
-
-            </Grid>
-
+            
         </Grid>
         
     </Border>

@@ -2,9 +2,9 @@
 namespace EZDMS.App
 {
     /// <summary>
-    /// The design-time data for a <see cref="ProductsSalesViewModel"/>
+    /// The design-time data for a <see cref="ProductsSalesDialogViewModel"/>
     /// </summary>
-    public class ProductSalesDesignModel : ProductsSalesViewModel
+    public class ProductSalesDesignModel : ProductsSalesDialogViewModel
     {
         #region Singleton
 

@@ -158,11 +158,11 @@
     <Compile Include="Controls\Products\GapItemControl.cs">
       <DependentUpon>GapItemControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\CustomerSelectControl.xaml.cs">
-      <DependentUpon>CustomerSelectControl.xaml</DependentUpon>
+    <Compile Include="Dialogs\DialogCustomerSelect.xaml.cs">
+      <DependentUpon>DialogCustomerSelect.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\ProductsSalesControl.xaml.cs">
-      <DependentUpon>ProductsSalesControl.xaml</DependentUpon>
+    <Compile Include="Dialogs\DialogProductsSales.xaml.cs">
+      <DependentUpon>DialogProductsSales.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Sales\SalesDealCardControl.xaml.cs">
       <DependentUpon>SalesDealCardControl.xaml</DependentUpon>
@@ -266,6 +266,7 @@
     <Compile Include="ViewModel\Customer\Design\CustomerDesignModel.cs" />
     <Compile Include="ViewModel\Customer\CustomersListViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\Design\ProductSalesDesignModel.cs" />
+    <Compile Include="ViewModel\Dialogs\CustomerSelectDialogViewModel.cs" />
     <Compile Include="ViewModel\Products\Design\ProductItemDesignModel.cs" />
     <Compile Include="ViewModel\Products\ProductItemViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\ProductSalesViewModel.cs" />
@@ -274,7 +275,7 @@
     <Compile Include="ViewModel\Sales\Design\SalesDeskingTotalsDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\SalesDealCardDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Products\SalesMaintenanceViewModel.cs" />
-    <Compile Include="ViewModel\Sales\SalesFinanceViewModel.cs" />
+    <Compile Include="ViewModel\Application\SalesFinanceViewModel.cs" />
     <Compile Include="ViewModel\Sales\Products\SalesGapViewModel.cs" />
     <Compile Include="ViewModel\Sales\TruthinLendingDisclosureViewModel.cs" />
     <Compile Include="ViewModel\Sales\SalesDeskingTotalsViewModel.cs" />
@@ -435,11 +436,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Dialogs\CustomerSelectControl.xaml">
+    <Page Include="Dialogs\DialogCustomerSelect.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Dialogs\ProductsSalesControl.xaml">
+    <Page Include="Dialogs\DialogProductsSales.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
