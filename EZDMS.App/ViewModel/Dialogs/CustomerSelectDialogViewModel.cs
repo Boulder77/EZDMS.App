@@ -46,7 +46,7 @@ namespace EZDMS.App
             /// </summary>
         public CustomerSelectDialogViewModel()
         {
-            
+            Customer = new CustomersListViewModel();
         }
 
         #endregion

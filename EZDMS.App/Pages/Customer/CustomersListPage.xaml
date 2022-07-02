@@ -84,7 +84,7 @@
         
         
 
-        <!-- Login main content white box -->
+        <!-- Datagrid content -->
         <Border Background="{StaticResource ForegroundLightBrush}" 
                             CornerRadius="10"
                             Margin="5"

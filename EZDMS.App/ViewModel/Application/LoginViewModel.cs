@@ -60,18 +60,7 @@ namespace EZDMS.App
         /// <returns></returns>
         public async Task LoginAsync(object parameter)
         {
-
-            //await UI.ShowCustomers(new CustomerSelectDialogViewModel
-            //{
-
-            //    Title = "Customers"
-
-
-
-
-            //});
-
-
+                       
             ViewModelApplication.GoToPage(ApplicationPage.Chat);
 
             await Task.Delay(1);

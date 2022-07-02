@@ -80,7 +80,7 @@ namespace EZDMS.App
                 try
                 {
                     // Show the dialog box
-                    await new DialogCustomerSelect().ShowCustomerSelectDialog(viewModel);
+                    await new DialogCustomerSelect().ShowDialog(viewModel);
                 }
                 finally
                 {

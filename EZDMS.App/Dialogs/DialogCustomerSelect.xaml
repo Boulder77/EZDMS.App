@@ -44,7 +44,7 @@
 
                     <Button Margin="5"  
                             Background="{StaticResource WordOrangeBrush}"
-                            
+                            Command="{Binding ClearSearchCommand}"
                             Foreground="{StaticResource ForegroundLightBrush}"
                             FontSize="{StaticResource FontSizeRegular}"
                             Content="Search"
@@ -56,7 +56,7 @@
 
             <!-- Working spinner container -->
             <StackPanel VerticalAlignment="Top"  Grid.Row="2" Background="Transparent"                     
-                  Visibility="{Binding CustomersListLoading, 
+                  Visibility="{Binding Customer.CustomersListPageLoading, 
                   Converter={local:BooleanToVisiblityGoneConverter}, 
                    FallbackValue=Collapsed}"
                   >
@@ -86,7 +86,7 @@
             <Border Background="{StaticResource ForegroundLightBrush}" 
                             CornerRadius="10"
                             Margin="5"                            
-                            Visibility="{Binding CustomersListLoading, 
+                            Visibility="{Binding Customer.CustomersListPageLoading, 
                                         Converter={local:BooleanToVisiblityConverter}}"
                             Grid.Row="2" 
                             >
@@ -99,8 +99,8 @@
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
                   IsReadOnly="True"
-                  ItemsSource="{Binding FilteredItems}"
-                  SelectedItem="{Binding SelectedCustomer}"
+                  ItemsSource="{Binding Customer.FilteredItems}"
+                  SelectedItem="{Binding Customer.SelectedCustomer}"
                    >
 
                         <DataGrid.InputBindings>

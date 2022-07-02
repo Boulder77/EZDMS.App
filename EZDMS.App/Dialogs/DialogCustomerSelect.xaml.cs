@@ -12,5 +12,13 @@ namespace EZDMS.App
             InitializeComponent();
                        
         }
+
+        public DialogCustomerSelect(CustomersListViewModel specificViewModel)
+        {
+            InitializeComponent();
+
+
+
+        }
     }
 }

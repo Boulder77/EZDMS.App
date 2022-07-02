@@ -133,7 +133,7 @@ namespace EZDMS.App
             // Create commands
             //NewDealCommand = new RelayCommand(async () => await CreateNewSalesDealAsync());
             //RecallDealCommand = new RelayCommand(async () => await RecallSalesDealAsync(SelectedDeal));
-
+            ClearSearchCommand = new RelayCommand(async () => await GetCustomersListAsync());
             Task.Run(GetCustomersListAsync);
            
         }
@@ -152,6 +152,10 @@ namespace EZDMS.App
             });
 
         }
+
+        
+
+
 
         //public async Task CreateNewSalesDealAsync()
         //{
