@@ -178,9 +178,9 @@ namespace EZDMS.App
                 // While working, come out of edit mode
                 Editing = false;
 
-                // Commit the changed text
-                // So we can see it while it is working
-                OriginalAmount = EditedAmount;
+                //// Commit the changed text
+                //// So we can see it while it is working
+                //OriginalAmount = EditedAmount;
 
                 // Try and do the work
                 result = DialogAction == null ? true : await DialogAction();
@@ -192,8 +192,8 @@ namespace EZDMS.App
                 // If we fail...
                 if (!result)
                 {
-                    // Restore original value
-                    OriginalAmount = currentSavedValue;
+                    //// Restore original value
+                    //OriginalAmount = currentSavedValue;
 
                     // Go back into edit mode
                     Editing = true;

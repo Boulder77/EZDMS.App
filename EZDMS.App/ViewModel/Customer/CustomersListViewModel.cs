@@ -142,18 +142,23 @@ namespace EZDMS.App
 
         #region Command Methods
 
+        /// <summary>
+        /// Gets the customer list from the data store
+        /// </summary>
+        /// <returns></returns>
         public async Task GetCustomersListAsync()
         {
-
-            // Store single transcient instance of client data store
+            // Sets items with the customer list
             await RunCommandAsync(() => CustomersListPageLoading, async () =>
-            {
+            {  
                 Items = await ClientDataStore.GetCustomersAsync();
             });
-
         }
 
-        
+        public async Task SelectCustomerAsync()
+        {
+
+        }
 
 
 

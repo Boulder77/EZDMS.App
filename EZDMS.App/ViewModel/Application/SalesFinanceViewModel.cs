@@ -19,6 +19,7 @@ namespace EZDMS.App
     /// </summary>
     public class SalesFinanceViewModel : BaseViewModel
     {
+       
         #region Private Members
 
         protected SalesFinanceDataModel mSalesFinanceDeal;
@@ -303,6 +304,9 @@ namespace EZDMS.App
                     Title = "Products"
                 });
 
+                // Update view model
+                SalesFinanceDeal.ServiceContract = 4500;
+                UpdateValuesOfDeskingTotals(SalesFinanceDeal);
 
                 return true;            
             });
@@ -903,7 +907,6 @@ namespace EZDMS.App
 
         }
 
-
         /// <summary>
         /// Updates a specific value from the client data store for the user profile details
         /// and attempts to update the server to match those details.
@@ -976,7 +979,6 @@ namespace EZDMS.App
             // Return successful
             return true;
         }
-
 
         #endregion
 
