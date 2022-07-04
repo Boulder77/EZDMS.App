@@ -122,47 +122,6 @@ namespace EZDMS.App
             return tcs.Task;
         }
 
-        public Task ShowCustomerSelectDialog<T>(T viewModel)
-            where T : CustomerSelectDialogViewModel
-        {
-            // Create a task to await the dialog closing
-            var tcs = new TaskCompletionSource<bool>();
-
-            // Run on UI thread
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                try
-                {
-                    // Match controls expected sizes to the dialog windows view model
-                    mDialogWindow.ViewModel.WindowMinimumWidth = WindowMinimumWidth;
-                    mDialogWindow.ViewModel.WindowMinimumHeight = WindowMinimumHeight;
-                    mDialogWindow.ViewModel.TitleHeight = TitleHeight;
-                    mDialogWindow.ViewModel.Title = string.IsNullOrEmpty(viewModel.Title) ? Title : viewModel.Title;
-
-                    // Set this control to the dialog window content
-                    mDialogWindow.ViewModel.Content = this;
-
-                    // Setup this controls data context binding to the view model
-                    viewModel.Customer = new CustomersListViewModel { };
-                    DataContext = viewModel;
-                   
-
-                    // Show in the center of the parent
-                    mDialogWindow.Owner = Application.Current.MainWindow;
-                    mDialogWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-
-                    // Show dialog
-                    mDialogWindow.ShowDialog();
-                }
-                finally
-                {
-                    // Let caller know we finished
-                    tcs.TrySetResult(true);
-                }
-            });
-
-            return tcs.Task;
-        }
         #endregion
     }
 }

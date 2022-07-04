@@ -92,8 +92,10 @@
             <!-- Edit button container -->
             <Grid Grid.Column="2" 
                   HorizontalAlignment="Right"
-                  VerticalAlignment="Center"                  
-                  local:AnimateFadeInProperty.Value="{Binding Editing, Converter={local:BooleanInvertConverter}}">
+                  VerticalAlignment="Center" 
+                  >
+                  <!--local:AnimateFadeInProperty.Value="{Binding Editing, Converter={local:BooleanInvertConverter}}"-->
+                  
 
                 <!-- Edit Button -->                
                 <Button Content="{StaticResource FontAwesomeArrowRightIcon}"
@@ -102,7 +104,7 @@
                         Visibility="{Binding Editable, Converter={local:BooleanToVisiblityGoneConverter}}"
                         IsDefault="True"
                         Cursor="Hand"
-                        Command="{Binding EditCommand}"
+                        Command="{Binding ShowDialogCommand}"
                         Background="Transparent"
                         Foreground="{StaticResource WordVeryLightBlueBrush}"
                         Padding="2"

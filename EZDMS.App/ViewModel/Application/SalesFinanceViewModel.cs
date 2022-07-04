@@ -8,6 +8,9 @@ using System.Windows.Input;
 using static EZDMS.App.DI;
 using static EZDMS.App.Core.CoreDI;
 using System.Text;
+using static Dna.FrameworkDI;
+using System.Linq.Expressions;
+using System.Diagnostics;
 
 namespace EZDMS.App
 {
@@ -214,6 +217,12 @@ namespace EZDMS.App
         /// </summary>
         public bool SalesFinancePageLoading { get; set; }
 
+        /// <summary>
+        /// Indicates if a dialog window is currently being loaded
+        /// </summary>
+        public bool DialogWindowLoading { get; set; }
+
+
         #endregion
 
         #region Public Commands
@@ -243,6 +252,11 @@ namespace EZDMS.App
         /// </summary>
         public ICommand SelectCustomerCommand { get; set; }
 
+        /// <summary>
+        /// Shows a products dialog window
+        /// </summary>
+        public ICommand ShowProductsDialogCommand { get; set; }
+
 
 
         #endregion
@@ -258,6 +272,7 @@ namespace EZDMS.App
             LoadDealCommand = new RelayCommand(async () => await LoadAsync());
             SaveCustomerCommand = new RelayCommand(async () => await SaveCustomerAsync());
             SelectCustomerCommand =  new RelayCommand(async () => await SelectCustomerAsync());
+            ShowProductsDialogCommand = new RelayCommand(async () => await ShowProductsDialogAsync());
         }
 
         #endregion
@@ -277,16 +292,32 @@ namespace EZDMS.App
 
         }
 
+        public async Task<bool> ShowProductsDialogAsync()
+        {
+
+            return await RunCommandAsync(() => DialogWindowLoading, async () =>
+            {
+                // Lock this command to ignore any other requests while processing
+                await UI.ShowProducts(new ProductsSalesDialogViewModel
+                {
+                    Title = "Products"
+                });
+
+
+                return true;            
+            });
+            
+        }
+
         public async Task SaveCustomerAsync()
         {
-            await UI.ShowProducts(ProductSalesDesignModel.Instance);
 
-            //await UI.ShowMessage(new MessageBoxDialogViewModel
-            //{
-            //    // TODO: Localize
-            //    Title = "Save Buyer Info",
-            //    Message = "The buyer info has been saved"
-            //});
+            await UI.ShowMessage(new MessageBoxDialogViewModel
+            {
+                // TODO: Localize
+                Title = "Save Buyer Info",
+                Message = "The buyer info has been saved"
+            });
         }
 
         public async Task SelectCustomerAsync()
@@ -296,9 +327,6 @@ namespace EZDMS.App
                 
                 Title = "Customers"
 
-            
-            
-            
             });
 
 
@@ -310,10 +338,6 @@ namespace EZDMS.App
             //    Message = "The buyer info has been saved"
             //});
         }
-
-
-
-
 
         #endregion
 
@@ -356,6 +380,7 @@ namespace EZDMS.App
                     Label = "Front Options", 
                     OriginalAmount = salesFinance.TotalFrontAdds, 
                     Editable = true 
+
                 },
                     
                 Taxes = new NumericalEntryViewModel 
@@ -383,21 +408,24 @@ namespace EZDMS.App
                 { 
                     Label = "Service", 
                     OriginalAmount = (salesFinance.ServiceContract + salesFinance.Maintenance + salesFinance.Warranty),
-                    Editable = true 
+                    Editable = true,
+                    DialogAction = ShowProductsDialogAsync
                 },
                   
                 Gap = new NumericalEntryViewModel 
                 { 
                     Label = "Gap", 
                     OriginalAmount = salesFinance.Gap,
-                    Editable = true 
+                    Editable = true,
+                    DialogAction = ShowProductsDialogAsync
                 },
                   
                 CreditInsurance = new NumericalEntryViewModel 
                 { 
                     Label = "Credit Insurance", 
                     OriginalAmount = salesFinance.LAHInsurance, 
-                    Editable = true 
+                    Editable = true,
+                    DialogAction = ShowProductsDialogAsync
                 },
                   
                 SubTotal = new NumericalEntryViewModel 
@@ -874,6 +902,81 @@ namespace EZDMS.App
             };
 
         }
+
+
+        /// <summary>
+        /// Updates a specific value from the client data store for the user profile details
+        /// and attempts to update the server to match those details.
+        /// For example, updating the first name of the user.
+        /// </summary>
+        /// <param name="displayName">The display name for logging and display purposes of the property we are updating</param>
+        /// <param name="propertyToUpdate">The property from the <see cref="LoginCredentialsDataModel"/> to be updated</param>
+        /// <param name="newValue">The new value to update the property to</param>
+        /// <param name="setApiModel">Sets the correct property in the <see cref="UpdateUserProfileApiModel"/> model that this property maps to</param>
+        /// <returns></returns>
+        private async Task<bool> UpdateSalesFinanceValueAsync(string displayName, Expression<Func<SalesFinanceDataModel, string>> propertyToUpdate, string newValue, Action<SalesFinanceDataModel, string> saveDeal)
+        {
+            // Log it
+            Logger.LogDebugSource($"Saving {displayName}...");
+
+            // Get the current known credentials
+            var salesfinance = await ClientDataStore.GetSalesFinanceDealAsync(SalesFinanceDeal.DealNumber);
+
+            // Get the property to update from the credentials
+            var toUpdate = propertyToUpdate.GetPropertyValue(salesfinance);
+
+            // Log it
+            Logger.LogDebugSource($"{displayName} currently {toUpdate}, updating to {newValue}");
+
+            // Check if the value is the same. If so...
+            if (toUpdate == newValue)
+            {
+                // Log it
+                Logger.LogDebugSource($"{displayName} is the same, ignoring");
+
+                // Return true
+                return true;
+            }
+
+            // Set the property
+            propertyToUpdate.SetPropertyValue(newValue, salesfinance);
+
+            // Create update details
+            var updateApiModel = new SalesFinanceDataModel();
+
+            // Ask caller to set appropriate value
+            ;
+
+            //var result = true;
+            //// Update the server with the details
+            //var result = await WebRequests.PostAsync<ApiResponse>(
+            //    // Set URL
+            //    RouteHelpers.GetAbsoluteRoute(ApiRoutes.UpdateUserProfile),
+            //    // Pass the Api model
+            //    updateApiModel,
+            //    // Pass in user Token
+            //    bearerToken: credentials.Token);
+
+            //// If the response has an error...
+            //if (await result.HandleErrorIfFailedAsync($"Update {displayName}"))
+            //{
+            //    // Log it
+            //    Logger.LogDebugSource($"Failed to update {displayName}. {result.ErrorMessage}");
+
+            //    // Return false
+            //    return false;
+            //}
+
+            // Log it
+            Logger.LogDebugSource($"Successfully updated {displayName}. Saving to local database cache...");
+
+            // Store the new user credentials the data store
+            await ClientDataStore.SaveSalesFinanceDealAsync(salesfinance);
+
+            // Return successful
+            return true;
+        }
+
 
         #endregion
 

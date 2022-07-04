@@ -44,10 +44,6 @@ namespace EZDMS.App
         /// <summary>
         /// Indicates if the current control is pending an update (in progress)
         /// </summary>
-
-        /// <summary>
-        /// Indicates if the current control is pending an update (in progress)
-        /// </summary>
         public bool Working { get; set; }
 
         /// <summary>
@@ -55,6 +51,12 @@ namespace EZDMS.App
         /// Returns true if the commit was successful, or false otherwise.
         /// </summary>
         public Func<Task<bool>> CommitAction { get; set; }
+
+        /// <summary>
+        /// The action to run when showing a dialog window.
+        /// Returns true if the commit was successful, or false otherwise.
+        /// </summary>
+        public Func<Task<bool>> DialogAction { get; set; }
 
         #endregion
 
@@ -76,6 +78,11 @@ namespace EZDMS.App
         /// </summary>
         public ICommand SaveCommand { get; set; }
 
+        /// <summary>
+        /// Shows a dialog window
+        /// </summary>
+        public ICommand ShowDialogCommand { get; set; }
+
         #endregion
 
         #region Constructor 
@@ -89,6 +96,7 @@ namespace EZDMS.App
             EditCommand = new RelayCommand(Edit);
             CancelCommand = new RelayCommand(Cancel);
             SaveCommand = new RelayCommand(Save);
+            ShowDialogCommand = new RelayCommand(ShowDialog);
         }
 
         #endregion
@@ -137,6 +145,45 @@ namespace EZDMS.App
 
                 // Try and do the work
                 result = CommitAction == null ? true : await CommitAction();
+
+            }).ContinueWith(t =>
+            {
+                // If we succeeded...
+                // Nothing to do
+                // If we fail...
+                if (!result)
+                {
+                    // Restore original value
+                    OriginalAmount = currentSavedValue;
+
+                    // Go back into edit mode
+                    Editing = true;
+                }
+            });
+        }
+
+        /// <summary>
+        /// Shows a dialog window and saves the new amount on return
+        /// </summary>
+        public void ShowDialog()
+        {
+            // Store the result of a commit call
+            var result = default(bool);
+
+            // Save currently saved value
+            var currentSavedValue = OriginalAmount;
+
+            RunCommandAsync(() => Working, async () =>
+            {
+                // While working, come out of edit mode
+                Editing = false;
+
+                // Commit the changed text
+                // So we can see it while it is working
+                OriginalAmount = EditedAmount;
+
+                // Try and do the work
+                result = DialogAction == null ? true : await DialogAction();
 
             }).ContinueWith(t =>
             {
