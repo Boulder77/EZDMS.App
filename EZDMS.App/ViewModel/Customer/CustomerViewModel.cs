@@ -22,9 +22,9 @@ namespace EZDMS.App
         public TextEntryViewModel FirstName { get; set; }
 
         /// <summary>
-        /// The customer middle name
+        /// The business name
         /// </summary>
-        public TextEntryViewModel MiddleName { get; set; }
+        public TextEntryViewModel Business { get; set; }
 
         /// <summary>
         /// The customer last name
@@ -32,58 +32,19 @@ namespace EZDMS.App
         public TextEntryViewModel LastName { get; set; }
 
         /// <summary>
-        /// The customer street address
+        /// The customer full address
         /// </summary>
-        public TextEntryViewModel StreetAddress { get; set; }
-
+        public TextEntryViewModel Address { get; set; }
+                
         /// <summary>
-        /// The customer city
+        /// The customer phone number
         /// </summary>
-        public TextEntryViewModel City { get; set; }
-
-        /// <summary>
-        /// The customer county
-        /// </summary>
-        public TextEntryViewModel County { get; set; }
-
-        /// <summary>
-        /// The customer state
-        /// </summary>
-        public States State { get; set; }
-
-        /// <summary>
-        /// The customer zip code
-        public TextEntryViewModel Zip { get; set; }      
-
-        /// <summary>
-        /// The customer home phone number
-        /// </summary>
-        public TextEntryViewModel HomePhone { get; set; }
-
-        /// <summary>
-        /// The customer work phone number
-        /// </summary>
-        public TextEntryViewModel WorkPhone { get; set; }
-
-        /// <summary>
-        /// The customer cell phone number
-        /// </summary>
-        public TextEntryViewModel CellPhone { get; set; }
-
-        /// <summary>
-        /// The customer date of birth
-        /// </summary>
-        public DateSelectionViewModel DateOfBirth { get; set; }
+        public TextEntryViewModel Phone { get; set; }
 
         /// <summary>
         /// The customer email
         /// </summary>
         public TextEntryViewModel Email { get; set; }
-
-        /// <summary>
-        /// The type of email
-        /// </summary>
-        public EmailType EmailType { get; set; }
 
         #endregion
 
@@ -94,6 +55,7 @@ namespace EZDMS.App
         /// </summary>
         public CustomerViewModel()
         {
+
            
 
         }

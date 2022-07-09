@@ -1,4 +1,6 @@
-﻿namespace EZDMS.App
+﻿using System;
+
+namespace EZDMS.App
 {
     /// <summary>
     /// A base view model for any dialogs
@@ -9,5 +11,7 @@
         /// The title of the dialog
         /// </summary>
         public string Title { get; set; }
+
+        public Action CloseAction { get; set; }
     }
 }

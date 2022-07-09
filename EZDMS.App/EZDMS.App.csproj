@@ -209,6 +209,7 @@
     </Compile>
     <Compile Include="DI\DI.cs" />
     <Compile Include="DI\FrameworkConstructionExtensions.cs" />
+    <Compile Include="DI\UI\IClosing.cs" />
     <Compile Include="DI\UI\IUIManager.cs" />
     <Compile Include="DI\UI\UIManager.cs" />
     <Compile Include="DialogWindow.xaml.cs">

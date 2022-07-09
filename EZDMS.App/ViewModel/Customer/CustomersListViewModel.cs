@@ -131,9 +131,8 @@ namespace EZDMS.App
         public CustomersListViewModel()
         {
             // Create commands
-            //NewDealCommand = new RelayCommand(async () => await CreateNewSalesDealAsync());
-            //RecallDealCommand = new RelayCommand(async () => await RecallSalesDealAsync(SelectedDeal));
-            ClearSearchCommand = new RelayCommand(async () => await GetCustomersListAsync());
+
+            SelectCustomerCommand = new RelayCommand(async () => await SelectCustomerAsync(SelectedCustomer, "B"));
             Task.Run(GetCustomersListAsync);
            
         }
@@ -155,46 +154,32 @@ namespace EZDMS.App
             });
         }
 
-        public async Task SelectCustomerAsync()
-        {
-
-        }
-
-
-
-        //public async Task CreateNewSalesDealAsync()
-        //{
-
-        //    // Add a new record to the SalesFinance table
-        //    SalesDeal = await ClientDataStore.CreateSalesFinanceDeal();
-
-        //    // Create new instance of sales desking view model
-        //    ViewModelSalesFinance.SalesFinanceDeal = SalesDeal;
-
-        //    // Go to sales desking page
-        //    ViewModelApplication.GoToPage(ApplicationPage.SalesFinance, ViewModelSalesFinance);
-
-        //}
-
-        private void SetCustomerViewModel(object mCustomer, string mType)
-        {
-
-            // return 
-            if (!(mCustomer is CustomerDataModel))
-                return;
-
-            if (mType == "C")
-
-                // set view model
-                ViewModelSalesFinance.SecondCustomer = (CustomerDataModel)mCustomer;
-            else
-                ViewModelSalesFinance.Customer = (CustomerDataModel)mCustomer;
-           
-        }
-
         #endregion
 
         #region Private Helpers
+
+        /// <summary>
+        /// Select the customer item and update sales finance view model
+        /// </summary>
+        /// <param name="mCustomer"></param>
+        /// <param name="mType"></param>
+        /// <returns></returns>
+        public async Task SelectCustomerAsync(object mCustomer, string mType)
+        {
+           
+            // return 
+            if (!(mCustomer is CustomerDataModel))
+
+            // update view model
+            if (mType == "C")
+                
+                ViewModelSalesFinance.SecondCustomer = (CustomerDataModel)mCustomer;
+            else
+                ViewModelSalesFinance.Customer = (CustomerDataModel)mCustomer;
+
+            await Task.Delay(1);
+            
+        }
 
         #endregion
 

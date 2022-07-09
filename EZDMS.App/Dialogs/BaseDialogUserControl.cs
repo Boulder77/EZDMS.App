@@ -1,4 +1,5 @@
 ﻿using EZDMS.App.Core;
+using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
@@ -52,10 +53,12 @@ namespace EZDMS.App
         /// </summary>
         public string Title { get; set; }
 
+       
+
         #endregion
 
         #region Constructor
-        
+
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -102,6 +105,7 @@ namespace EZDMS.App
                     // Set this control to the dialog window content
                     mDialogWindow.ViewModel.Content = this;
 
+                    viewModel.CloseAction = new Action(mDialogWindow.Close);
                     // Setup this controls data context binding to the view model
                     DataContext = viewModel;
 

@@ -329,18 +329,12 @@ namespace EZDMS.App
             await UI.ShowCustomers(new CustomerSelectDialogViewModel 
             {
                 
-                Title = "Customers"
+                Title = "Customers",
+               
 
             });
 
 
-
-            //await UI.ShowMessage(new MessageBoxDialogViewModel
-            //{
-            //    // TODO: Localize
-            //    Title = "Save Buyer Info",
-            //    Message = "The buyer info has been saved"
-            //});
         }
 
         #endregion

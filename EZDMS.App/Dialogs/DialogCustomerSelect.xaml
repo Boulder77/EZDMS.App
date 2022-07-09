@@ -45,6 +45,7 @@
                     <Button Margin="5"  
                             Background="{StaticResource WordOrangeBrush}"
                             Command="{Binding ClearSearchCommand}"
+
                             Foreground="{StaticResource ForegroundLightBrush}"
                             FontSize="{StaticResource FontSizeRegular}"
                             Content="Search"
@@ -56,7 +57,7 @@
 
             <!-- Working spinner container -->
             <StackPanel VerticalAlignment="Top"  Grid.Row="2" Background="Transparent"                     
-                  Visibility="{Binding Customer.CustomersListPageLoading, 
+                  Visibility="{Binding CustomerWindowLoading, 
                   Converter={local:BooleanToVisiblityGoneConverter}, 
                    FallbackValue=Collapsed}"
                   >
@@ -86,7 +87,7 @@
             <Border Background="{StaticResource ForegroundLightBrush}" 
                             CornerRadius="10"
                             Margin="5"                            
-                            Visibility="{Binding Customer.CustomersListPageLoading, 
+                            Visibility="{Binding CustomerWindowLoading, 
                                         Converter={local:BooleanToVisiblityConverter}}"
                             Grid.Row="2" 
                             >
@@ -99,16 +100,18 @@
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
                   IsReadOnly="True"
-                  ItemsSource="{Binding Customer.FilteredItems}"
-                  SelectedItem="{Binding Customer.SelectedCustomer}"
+                  ItemsSource="{Binding FilteredItems}"
+                  SelectedItem="{Binding SelectedCustomer}"
                    >
 
                         <DataGrid.InputBindings>
                             <MouseBinding Gesture="LeftDoubleClick"
-                                      Command="{Binding Customer.SelectCustomerCommand}"
+                                      Command="{Binding SelectCustomerCommand}"
                                       CommandParameter="{Binding ElementName=dgridCustomers, Path=SelectedItem}"/>
 
-                        </DataGrid.InputBindings>
+                           
+
+                    </DataGrid.InputBindings>
 
                         <DataGrid.Resources>
 
@@ -133,7 +136,7 @@
                             </Style>
                         </DataGrid.Resources>
 
-                        <DataGrid.Columns>
+                        <!--<DataGrid.Columns>
 
                             <DataGridTextColumn                    
                     Header="Number"                    
@@ -183,7 +186,7 @@
                     Width="*"
                     Binding="{Binding Zip}"/>
 
-                        </DataGrid.Columns>
+                        </DataGrid.Columns>-->
 
                     </DataGrid>
 
