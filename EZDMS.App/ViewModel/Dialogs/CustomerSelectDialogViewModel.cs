@@ -6,13 +6,14 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using static EZDMS.App.DI;
+using static Dna.FrameworkDI;
 
 namespace EZDMS.App
 {
     /// <summary>
     /// The view model for the <see cref="DialogCustomerSelect"/>
     /// <summary>
-    public class CustomerSelectDialogViewModel:BaseDialogViewModel
+    public class CustomerSelectDialogViewModel : BaseDialogViewModel
     {
 
         #region Private Members
@@ -151,10 +152,10 @@ namespace EZDMS.App
             await RunCommandAsync(() => CustomerWindowLoading, async () =>
             {
                 var mList = await ClientDataStore.GetCustomersAsync();
-                
+
                 var mNewList = new List<CustomerItemDataModel>();
 
-                foreach (var item in mList) 
+                foreach (var item in mList)
                 {
                     if (!(item is CustomerDataModel))
                         return;
@@ -172,38 +173,39 @@ namespace EZDMS.App
                     };
 
                     mNewList.Add(newItem);
-                
+
                 }
 
                 Items = mNewList;
             });
         }
 
-
-
         #endregion
 
         #region Private Helpers
 
-        public async Task SelectCustomerAsync(object mCustomer, string mType)
+        private async Task SelectCustomerAsync(object mCustomer, string mType)
         {
 
             // return 
             if (!(mCustomer is CustomerItemDataModel))
                 return;
 
-                var mNewCustomer = await ClientDataStore.GetCustomerAsync(mCustomerNumber);
+            var mNewCustomer = await ClientDataStore.GetCustomerAsync(mCustomerNumber);
 
             if (mType == "C")
 
-                    // set view model
-                    ViewModelSalesFinance.SecondCustomer = (CustomerDataModel)mNewCustomer;
-                else
-                    ViewModelSalesFinance.Customer = (CustomerDataModel)mNewCustomer;
+                // set view model
+                ViewModelSalesFinance.SecondCustomer = (CustomerDataModel)mNewCustomer;
+            else
+                ViewModelSalesFinance.Customer = (CustomerDataModel)mNewCustomer;
+
+            await ViewModelSalesFinance.UpdateSalesDealItemAsync(mNewCustomer, "B");
 
             CloseAction();
         }
 
+        
         #endregion
 
 

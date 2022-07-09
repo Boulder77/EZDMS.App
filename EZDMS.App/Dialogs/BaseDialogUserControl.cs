@@ -105,7 +105,9 @@ namespace EZDMS.App
                     // Set this control to the dialog window content
                     mDialogWindow.ViewModel.Content = this;
 
+                    // Set the view model close window action
                     viewModel.CloseAction = new Action(mDialogWindow.Close);
+
                     // Setup this controls data context binding to the view model
                     DataContext = viewModel;
 

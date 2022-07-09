@@ -62,6 +62,14 @@ namespace EZDMS.App.Core
         Task AddNewSalesRecordAsync(object mDataModel, DbTableNames type);
 
         /// <summary>
+        /// add new record to a data store table
+        /// </summary>
+        /// <param name="mDataModel">the datamodel to add</param>
+        /// <param name="type">the table to add the datamodel to</param>
+        /// <returns>Returns a task that will finish once record has been added</returns>
+        Task SaveSalesRecordAsync(object mDataModel, DbTableNames type);
+
+        /// <summary>
         /// add new record to sales finance table and returns record
         /// </summary>
         /// <param name="mDataModel">the datamodel to add</param>

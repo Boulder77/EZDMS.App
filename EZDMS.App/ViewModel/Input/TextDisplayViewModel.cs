@@ -9,6 +9,7 @@ namespace EZDMS.App
     /// <summary>
     public class TextDisplayViewModel : BaseViewModel
     {
+
         #region Public Properties
 
         /// <summary>
@@ -19,7 +20,7 @@ namespace EZDMS.App
         /// <summary>
         /// The current displayed text
         /// </summary>
-        public string DisplayText { get; set; }        
+        public string DisplayText { get; set; }
 
         #endregion
 

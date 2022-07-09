@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EZDMS.App.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace EZDMS.App.Relational
 {
@@ -73,6 +74,90 @@ namespace EZDMS.App.Relational
                 case DbTableNames.SalesDealsInfo:
                     // Add new sales deals list entry
                     mDbContext.SalesDealsInfo.Add(mDataModel as SalesDealsItemDataModel);
+                    break;
+
+                case DbTableNames.SalesFinance:
+                    //Add new sales finance entry
+                    mDbContext.SalesFinance.Add(mDataModel as SalesFinanceDataModel);
+                    break;
+
+                case DbTableNames.VehicleInventory:
+                    //Add new vehicle inventory entry
+                    mDbContext.VehicleInventory.Add(mDataModel as VehicleInventoryDataModel);
+                    break;
+
+                case DbTableNames.Customer:
+                    //Add new customer entry
+                    mDbContext.Customer.Add(mDataModel as CustomerDataModel);
+                    break;
+
+                case DbTableNames.CoverageProvider:
+                    //Add new customer entry
+                    mDbContext.CoverageProvider.Add(mDataModel as CoverageProviderDataModel);
+                    break;
+
+                case DbTableNames.CoveragePlan:
+                    //Add new customer entry
+                    mDbContext.CoveragePlan.Add(mDataModel as CoveragePlanDataModel);
+                    break;
+
+                case DbTableNames.SalesGap:
+                    // Add new SalesGap entry
+                    mDbContext.SalesGap.Add(mDataModel as SalesGapDataModel);
+                    break;
+
+                case DbTableNames.SalesMaintenance:
+                    // Add new SalesMaintenance entry
+                    mDbContext.SalesMaintenance.Add(mDataModel as SalesMaintenanceDataModel);
+                    break;
+
+                case DbTableNames.SalesService:
+                    // Add new SalesService entry
+                    mDbContext.SalesService.Add(mDataModel as SalesServiceDataModel);
+                    break;
+
+                case DbTableNames.SalesWarranty:
+                    // Add new SalesService entry
+                    mDbContext.SalesWarranty.Add(mDataModel as SalesWarrantyDataModel);
+                    break;
+
+                default:
+                    throw new Exception();
+                    break;
+            }
+
+            // Save changes
+            await mDbContext.SaveChangesAsync();
+
+        }
+
+        /// <summary>
+        /// Add a new record to the appropriate data store table
+        /// </summary>
+        /// <param name="mDataModel"></param>
+        /// <param name="type"></param>
+        /// <returns>Task completed</returns>
+        /// <exception cref="Exception"></exception>
+        public async Task SaveSalesRecordAsync(object mDataModel, DbTableNames type)
+        {
+            // return if no data model
+            if (mDataModel == null)
+                return;
+
+            switch (type)
+            {
+                // Add new login entry
+                case DbTableNames.LoginCredentials:
+                    mDbContext.LoginCredentials.Add(mDataModel as LoginCredentialsDataModel);
+                    break;
+
+                case DbTableNames.SalesDealsInfo:
+                    // Add new sales deals list entry
+                    // Clear all entries
+                    mDbContext.Attach(mDataModel as SalesDealsItemDataModel);
+
+                    mDbContext.Entry(mDataModel as SalesDealsItemDataModel).State = EntityState.Modified;
+
                     break;
 
                 case DbTableNames.SalesFinance:

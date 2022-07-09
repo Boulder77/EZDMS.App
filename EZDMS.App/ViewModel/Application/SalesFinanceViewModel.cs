@@ -103,6 +103,8 @@ namespace EZDMS.App
                     UpdateValuesOfCustomerCard(Customer);
                     UpdateValuesOfCustomerBasicInfo(Customer);
                     UpdateValuesOfCustomerAddress(Customer);
+
+                
             }
 
         }
@@ -274,6 +276,8 @@ namespace EZDMS.App
             SaveCustomerCommand = new RelayCommand(async () => await SaveCustomerAsync());
             SelectCustomerCommand =  new RelayCommand(async () => await SelectCustomerAsync());
             ShowProductsDialogCommand = new RelayCommand(async () => await ShowProductsDialogAsync());
+
+            SalesDealCard = new SalesDealCardViewModel();
         }
 
         #endregion
@@ -336,6 +340,33 @@ namespace EZDMS.App
 
 
         }
+
+        public async Task UpdateSalesDealItemAsync(CustomerDataModel mCustomer, string mType)
+        {
+            // return 
+            if (!(mCustomer is CustomerDataModel))
+                return;
+
+            // Update view model
+            if (mType == "C")
+            {
+                SalesDealsItem.CoBuyerName = $"{mCustomer.FirstName} {mCustomer.LastName}";
+                SalesDealsItem.CoBuyerNumber = mCustomer.Number;
+            }
+            else
+            {
+                SalesDealsItem.BuyerName = $"{mCustomer.FirstName} {mCustomer.LastName}";
+                SalesDealsItem.BuyerNumber = mCustomer.Number;
+            }
+
+            // Update sales card view model
+            UpdateValuesOfSalesDealCard(SalesDealsItem);
+
+            // Update client datastore record
+            await ClientDataStore.SaveSalesRecordAsync(SalesDealsItem, DbTableNames.SalesDealsInfo);
+
+        }
+
 
         #endregion
 
@@ -611,81 +642,95 @@ namespace EZDMS.App
             if (salesDeal == null)
                 return;
 
-            SalesDealCard = new SalesDealCardViewModel
-            {
-                BuyerName = new TextDisplayViewModel
-                {
-                    Label = "Buyer Name",
-                    DisplayText = salesDeal?.BuyerName
-                },
+            SalesDealCard.BuyerName.DisplayText = salesDeal?.BuyerName;
+            SalesDealCard.CoBuyerName.DisplayText = salesDeal?.CoBuyerName;
+            SalesDealCard.Vehicle.DisplayText = salesDeal?.VehicleInfo;
+            SalesDealCard.Status.DisplayText = salesDeal?.Status;
+            SalesDealCard.Vehicle.DisplayText = salesDeal?.VehicleInfo;
+            SalesDealCard.DealType.DisplayText = salesDeal?.Type;
+            SalesDealCard.CreatedDate.DisplayText = salesDeal.CreatedDate.ToString("MM/dd/yyyy");
+            SalesDealCard.DealDate.DisplayText = salesDeal.DealDate.ToString("MM/dd/yyyy");
+            SalesDealCard.LastActivityDate.DisplayText = salesDeal.LastActivityDate.ToString("MM/dd/yyyy");
+            SalesDealCard.Trades.DisplayText = $"{salesDeal?.Trade1Info} \r\n {salesDeal?.Trade2Info} \r\n {salesDeal?.Trade3Info}";
+            SalesDealCard.Salesperson.DisplayText = $"{salesDeal?.SalesPerson} \r\n {salesDeal?.SalesPerson2}";
+            SalesDealCard.SalesManager.DisplayText = salesDeal?.SalesManager;
+            SalesDealCard.FinanceManager.DisplayText = salesDeal?.FinanceManager;
 
-                CoBuyerName = new TextDisplayViewModel
-                {
-                    Label = "CoBuyer Name",
-                    DisplayText = salesDeal?.CoBuyerName
-                },
+            //SalesDealCard = new SalesDealCardViewModel
+            //{
+            //    BuyerName = new TextDisplayViewModel
+            //    {
+            //        Label = "Buyer Name",
+            //        DisplayText = salesDeal?.BuyerName
+            //    },
 
-                Vehicle = new TextDisplayViewModel
-                {
-                    Label = "Vehicle",
-                    DisplayText = salesDeal?.VehicleInfo
-                },
+            //    CoBuyerName = new TextDisplayViewModel
+            //    {
+            //        Label = "CoBuyer Name",
+            //        DisplayText = salesDeal?.CoBuyerName
+            //    },
 
-                Status = new TextDisplayViewModel
-                {
-                    Label = "Status",
-                    DisplayText = salesDeal?.Status
-                },
+            //    Vehicle = new TextDisplayViewModel
+            //    {
+            //        Label = "Vehicle",
+            //        DisplayText = salesDeal?.VehicleInfo
+            //    },
 
-                DealType = new TextDisplayViewModel
-                {
-                    Label = "Deal Type",
-                    DisplayText = salesDeal?.Type
-                },
+            //    Status = new TextDisplayViewModel
+            //    {
+            //        Label = "Status",
+            //        DisplayText = salesDeal?.Status
+            //    },
 
-                Salesperson = new TextDisplayViewModel
-                {
-                    Label = "Sales Person",
-                    DisplayText = $"{salesDeal?.SalesPerson} \r\n {salesDeal?.SalesPerson2}"
-                },
+            //    DealType = new TextDisplayViewModel
+            //    {
+            //        Label = "Deal Type",
+            //        DisplayText = salesDeal?.Type
+            //    },
 
-                SalesManager = new TextDisplayViewModel
-                {
-                    Label = "Sales Manager",
-                    DisplayText = salesDeal?.SalesManager
-                },
+            //    Salesperson = new TextDisplayViewModel
+            //    {
+            //        Label = "Sales Person",
+            //        DisplayText = $"{salesDeal?.SalesPerson} \r\n {salesDeal?.SalesPerson2}"
+            //    },
 
-                FinanceManager = new TextDisplayViewModel
-                {
-                    Label = "Finance Manager",
-                    DisplayText = salesDeal?.FinanceManager
-                },
+            //    SalesManager = new TextDisplayViewModel
+            //    {
+            //        Label = "Sales Manager",
+            //        DisplayText = salesDeal?.SalesManager
+            //    },
 
-                Trades = new TextDisplayViewModel
-                {
-                    Label = "Trades",
-                    DisplayText = $"{salesDeal?.Trade1Info} \r\n {salesDeal?.Trade2Info} \r\n {salesDeal?.Trade3Info}"
-                },
+            //    FinanceManager = new TextDisplayViewModel
+            //    {
+            //        Label = "Finance Manager",
+            //        DisplayText = salesDeal?.FinanceManager
+            //    },
 
-                CreatedDate = new TextDisplayViewModel
-                {
-                    Label = "Created Date",
-                    DisplayText = salesDeal.CreatedDate.ToString("MM/dd/yyyy")
-                },
+            //    Trades = new TextDisplayViewModel
+            //    {
+            //        Label = "Trades",
+            //        DisplayText = $"{salesDeal?.Trade1Info} \r\n {salesDeal?.Trade2Info} \r\n {salesDeal?.Trade3Info}"
+            //    },
 
-                LastActivityDate = new TextDisplayViewModel
-                {
-                    Label = "Last Activity Date",
-                    DisplayText = salesDeal.LastActivityDate.ToString("MM/dd/yyyy")
-                },
+            //    CreatedDate = new TextDisplayViewModel
+            //    {
+            //        Label = "Created Date",
+            //        DisplayText = salesDeal.CreatedDate.ToString("MM/dd/yyyy")
+            //    },
 
-                DealDate = new TextDisplayViewModel
-                {
-                    Label = "Deal Date",
-                    DisplayText = salesDeal.DealDate.ToString("MM/dd/yyyy")
-                },
+            //    LastActivityDate = new TextDisplayViewModel
+            //    {
+            //        Label = "Last Activity Date",
+            //        DisplayText = salesDeal.LastActivityDate.ToString("MM/dd/yyyy")
+            //    },
 
-            };
+            //    DealDate = new TextDisplayViewModel
+            //    {
+            //        Label = "Deal Date",
+            //        DisplayText = salesDeal.DealDate.ToString("MM/dd/yyyy")
+            //    },
+
+            //};
 
 
         }

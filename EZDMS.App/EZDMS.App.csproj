@@ -209,7 +209,6 @@
     </Compile>
     <Compile Include="DI\DI.cs" />
     <Compile Include="DI\FrameworkConstructionExtensions.cs" />
-    <Compile Include="DI\UI\IClosing.cs" />
     <Compile Include="DI\UI\IUIManager.cs" />
     <Compile Include="DI\UI\UIManager.cs" />
     <Compile Include="DialogWindow.xaml.cs">
@@ -300,7 +299,6 @@
     <Compile Include="ViewModel\Vehicle\VehicleCardViewModel.cs" />
     <Compile Include="ViewModel\Vehicle\VehiclePricingViewModel.cs" />
     <Compile Include="WebRequests\WebRequestResultExtensions.cs" />
-    <Compile Include="WPFViewModels\ProductsWindowViewModel.cs" />
     <Compile Include="WPFViewModels\DialogWindowViewModel.cs" />
     <Compile Include="WPFViewModels\ViewModelLocator.cs" />
     <Compile Include="WPFViewModels\WindowViewModel.cs" />
