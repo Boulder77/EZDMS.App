@@ -202,5 +202,15 @@ namespace EZDMS.App.Core
         /// <summary>
         public string MaritalStatus { get; set; }
 
+        /// <summary>
+        /// The privacy type of this customer record
+        /// <summary>
+        public string PrivacyType { get; set; }
+
+        /// <summary>
+        /// The contact type of this customer record
+        /// <summary>
+        public string ContactType { get; set; }
+
     }
 }

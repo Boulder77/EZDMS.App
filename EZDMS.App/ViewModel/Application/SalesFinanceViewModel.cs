@@ -225,6 +225,10 @@ namespace EZDMS.App
         /// </summary>
         public bool DialogWindowLoading { get; set; }
 
+        /// <summary>
+        /// Indicates if there is a save action
+        /// </summary>
+        public bool Saving { get; set; }
 
         #endregion
 
@@ -642,19 +646,19 @@ namespace EZDMS.App
             if (salesDeal == null)
                 return;
 
-            SalesDealCard.BuyerName.DisplayText = salesDeal?.BuyerName;
-            SalesDealCard.CoBuyerName.DisplayText = salesDeal?.CoBuyerName;
-            SalesDealCard.Vehicle.DisplayText = salesDeal?.VehicleInfo;
-            SalesDealCard.Status.DisplayText = salesDeal?.Status;
-            SalesDealCard.Vehicle.DisplayText = salesDeal?.VehicleInfo;
-            SalesDealCard.DealType.DisplayText = salesDeal?.Type;
-            SalesDealCard.CreatedDate.DisplayText = salesDeal.CreatedDate.ToString("MM/dd/yyyy");
-            SalesDealCard.DealDate.DisplayText = salesDeal.DealDate.ToString("MM/dd/yyyy");
-            SalesDealCard.LastActivityDate.DisplayText = salesDeal.LastActivityDate.ToString("MM/dd/yyyy");
-            SalesDealCard.Trades.DisplayText = $"{salesDeal?.Trade1Info} \r\n {salesDeal?.Trade2Info} \r\n {salesDeal?.Trade3Info}";
-            SalesDealCard.Salesperson.DisplayText = $"{salesDeal?.SalesPerson} \r\n {salesDeal?.SalesPerson2}";
-            SalesDealCard.SalesManager.DisplayText = salesDeal?.SalesManager;
-            SalesDealCard.FinanceManager.DisplayText = salesDeal?.FinanceManager;
+            //SalesDealCard.BuyerName.DisplayText = salesDeal?.BuyerName;
+            //SalesDealCard.CoBuyerName.DisplayText = salesDeal?.CoBuyerName;
+            //SalesDealCard.Vehicle.DisplayText = salesDeal?.VehicleInfo;
+            //SalesDealCard.Status.DisplayText = salesDeal?.Status;
+            //SalesDealCard.Vehicle.DisplayText = salesDeal?.VehicleInfo;
+            //SalesDealCard.DealType.DisplayText = salesDeal?.Type;
+            //SalesDealCard.CreatedDate.DisplayText = salesDeal.CreatedDate.ToString("MM/dd/yyyy");
+            //SalesDealCard.DealDate.DisplayText = salesDeal.DealDate.ToString("MM/dd/yyyy");
+            //SalesDealCard.LastActivityDate.DisplayText = salesDeal.LastActivityDate.ToString("MM/dd/yyyy");
+            //SalesDealCard.Trades.DisplayText = $"{salesDeal?.Trade1Info} \r\n {salesDeal?.Trade2Info} \r\n {salesDeal?.Trade3Info}";
+            //SalesDealCard.Salesperson.DisplayText = $"{salesDeal?.SalesPerson} \r\n {salesDeal?.SalesPerson2}";
+            //SalesDealCard.SalesManager.DisplayText = salesDeal?.SalesManager;
+            //SalesDealCard.FinanceManager.DisplayText = salesDeal?.FinanceManager;
 
             //SalesDealCard = new SalesDealCardViewModel
             //{
@@ -943,6 +947,82 @@ namespace EZDMS.App
                 ModelCode = new TextEntryViewModel { Label = "Model Code", OriginalText = Vehicle?.ModelCode },
 
             };
+
+        }
+
+        private void UpdateCustomerDM()
+        {
+            
+            Customer.Prefix = CustomerBasicInfo.Prefix.ToString();
+            Customer.Suffix = CustomerBasicInfo.Suffix.OriginalText;
+            Customer.Status = CustomerBasicInfo.MaritalStatus.ToString();
+            Customer.FirstName = CustomerBasicInfo.FirstName.OriginalText;
+            Customer.MiddleName = CustomerBasicInfo.MiddleName.OriginalText;
+            Customer.LastName = CustomerBasicInfo.LastName.OriginalText;
+            Customer.Gender = CustomerBasicInfo.Gender.ToString();
+            Customer.Email = CustomerBasicInfo.Email.OriginalText;
+            Customer.EmailType = CustomerBasicInfo.EmailType.ToString();
+            Customer.PrivacyType = CustomerBasicInfo.PrivacyType.ToString();
+            Customer.ContactType = CustomerBasicInfo.ContactType.ToString();
+            Customer.Nickname = CustomerBasicInfo.Nickname.OriginalText;
+            Customer.DateOfBirth = CustomerBasicInfo.DateOfBirth.Date.ToString("mm/dd/yyyy");
+            Customer.HomePhone = CustomerBasicInfo.HomePhone.OriginalText;
+            Customer.WorkPhone = CustomerBasicInfo.WorkPhone.OriginalText;
+            Customer.CellPhone = CustomerBasicInfo.CellPhone.OriginalText;
+
+            Customer.StreetAddress = CustomerAddress.StreetAddress.OriginalText;
+            Customer.City = CustomerAddress.City.OriginalText;
+            Customer.State = CustomerAddress.State.ToString();
+            Customer.Zip = CustomerAddress.Zip.OriginalText;
+            Customer.County = CustomerAddress.County.OriginalText;
+            Customer.CountyCode = CustomerAddress.CountyCode.OriginalText;
+
+        }
+
+        private void UpdateSecondCustomerDM()
+        {
+            // customer basic info view model
+            SecondCustomer.Prefix = CustomerBasicInfo.Prefix.ToString();
+            SecondCustomer.Suffix = CustomerBasicInfo.Suffix.OriginalText;
+            SecondCustomer.Status = CustomerBasicInfo.MaritalStatus.ToString();
+            SecondCustomer.FirstName = CustomerBasicInfo.FirstName.OriginalText;
+            SecondCustomer.MiddleName = CustomerBasicInfo.MiddleName.OriginalText;
+            SecondCustomer.LastName = CustomerBasicInfo.LastName.OriginalText;
+            SecondCustomer.Gender = CustomerBasicInfo.Gender.ToString();
+            SecondCustomer.Email = CustomerBasicInfo.Email.OriginalText;
+            SecondCustomer.EmailType = CustomerBasicInfo.EmailType.ToString();
+            SecondCustomer.PrivacyType = CustomerBasicInfo.PrivacyType.ToString();
+            SecondCustomer.ContactType = CustomerBasicInfo.ContactType.ToString();
+            SecondCustomer.Nickname = CustomerBasicInfo.Nickname.OriginalText;
+            SecondCustomer.DateOfBirth = CustomerBasicInfo.DateOfBirth.Date.ToString("mm/dd/yyyy");
+            SecondCustomer.HomePhone = CustomerBasicInfo.HomePhone.OriginalText;
+            SecondCustomer.WorkPhone = CustomerBasicInfo.WorkPhone.OriginalText;
+            SecondCustomer.CellPhone = CustomerBasicInfo.CellPhone.OriginalText;
+            // customer address view model
+            SecondCustomer.StreetAddress = CustomerAddress.StreetAddress.OriginalText;
+            SecondCustomer.City = CustomerAddress.City.OriginalText;
+            SecondCustomer.State = CustomerAddress.State.ToString();
+            SecondCustomer.Zip = CustomerAddress.Zip.OriginalText;
+            SecondCustomer.County = CustomerAddress.County.OriginalText;
+            SecondCustomer.CountyCode = CustomerAddress.CountyCode.OriginalText;
+
+        }
+
+        private async Task SaveCustomerInfoAsync(object mCustomer)
+        {
+
+            if (!(mCustomer is CustomerDataModel))
+                return;
+
+            await RunCommandAsync(() => Saving, async () =>
+            {
+                // Lock this command to ignore any other requests while processing
+                // Update client datastore record
+                await ClientDataStore.SaveSalesRecordAsync(mCustomer, DbTableNames.Customer);
+
+                
+            });
+
 
         }
 

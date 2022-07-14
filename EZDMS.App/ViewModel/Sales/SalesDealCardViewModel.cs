@@ -110,13 +110,10 @@ namespace EZDMS.App
                 DisplayText = mDefaultText,
             };
 
-
-
             CoBuyerName = new TextDisplayViewModel
             {
                 Label = "CoBuyer Name",
                 DisplayText = mDefaultText,
-
             };
 
             Vehicle = new TextDisplayViewModel
