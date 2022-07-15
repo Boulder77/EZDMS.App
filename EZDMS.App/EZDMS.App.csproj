@@ -158,6 +158,9 @@
     <Compile Include="Controls\Products\GapItemControl.cs">
       <DependentUpon>GapItemControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\DialogVehicleSelect.cs">
+      <DependentUpon>DialogVehicleSelect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\DialogCustomerSelect.xaml.cs">
       <DependentUpon>DialogCustomerSelect.xaml</DependentUpon>
     </Compile>
@@ -265,6 +268,7 @@
     <Compile Include="ViewModel\Customer\Design\CustomerAddressDesignModel.cs" />
     <Compile Include="ViewModel\Customer\Design\CustomerDesignModel.cs" />
     <Compile Include="ViewModel\Customer\CustomersListViewModel.cs" />
+    <Compile Include="ViewModel\Dialogs\VehicleSelectDialogViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\Design\ProductSalesDesignModel.cs" />
     <Compile Include="ViewModel\Dialogs\CustomerSelectDialogViewModel.cs" />
     <Compile Include="ViewModel\Products\Design\ProductItemDesignModel.cs" />
@@ -432,6 +436,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Products\GapItemControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\DialogVehicleSelect.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

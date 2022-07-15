@@ -41,9 +41,9 @@ namespace EZDMS.App
 
 
         /// <summary>
-        /// Displays a single message box to the user
+        /// Show the products dialog window
         /// </summary>
-        /// <param name="viewModel">The view model</param>
+        /// <param name="viewModel"></param>
         /// <returns></returns>
         public Task ShowProducts(ProductsSalesDialogViewModel viewModel)
         {
@@ -69,6 +69,12 @@ namespace EZDMS.App
             return tcs.Task;
         }
 
+        /// <summary>
+        /// Show the customer list dialog window
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <returns></returns>
+
         public Task ShowCustomers(CustomerSelectDialogViewModel viewModel)
         {
             // Create a task completion source
@@ -93,6 +99,34 @@ namespace EZDMS.App
             return tcs.Task;
         }
 
+        /// <summary>
+        /// Show the vehicles list dialog window
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <returns></returns>
+        public Task ShowVehicles(VehicleSelectDialogViewModel viewModel)
+        {
+            // Create a task completion source
+            var tcs = new TaskCompletionSource<bool>();
+
+            // Run on UI thread
+            Application.Current.Dispatcher.Invoke(async () =>
+            {
+                try
+                {
+                    // Show the dialog box
+                    await new DialogVehicleSelect().ShowDialog(viewModel);
+                }
+                finally
+                {
+                    // Flag we are done
+                    tcs.SetResult(true);
+                }
+            });
+
+            // Return the task once complete
+            return tcs.Task;
+        }
 
     }
 }

@@ -76,7 +76,7 @@ namespace EZDMS.App
 
                 if (value != null)
                     // Reload sales deal view model
-                    UpdateValuesOfSalesDealCard(SalesDealsItem);
+                    UpdateValuesOfSalesDealCard(value);
             }
         
         }
@@ -100,9 +100,9 @@ namespace EZDMS.App
 
                 if (value != null)
                     // Reload customer card view model
-                    UpdateValuesOfCustomerCard(Customer);
-                    UpdateValuesOfCustomerBasicInfo(Customer);
-                    UpdateValuesOfCustomerAddress(Customer);
+                    UpdateValuesOfCustomerCard(value);
+                    UpdateValuesOfCustomerBasicInfo(value);
+                    UpdateValuesOfCustomerAddress(value);
 
                 
             }
@@ -129,7 +129,7 @@ namespace EZDMS.App
 
                 //if (value != null)
                 //    // Reload sales deal view model
-                //    UpdateValuesOfSalesDealCard(SalesDealsItem);
+                //    UpdateValuesOfSalesDealCard(value);
             }
 
         }
@@ -152,10 +152,10 @@ namespace EZDMS.App
 
                 if (value != null)
                     // Reload vehicle view models                                
-                    UpdateValuesOfVehicleCard(mSaleVehicle);                
-                    UpdateValuesOfVehicleDetails(mSaleVehicle);
-                    UpdateValuesOfVehiclePricing(mSaleVehicle);
-                    UpdateValuesOfVehicleBasicInfo(mSaleVehicle);
+                    UpdateValuesOfVehicleCard(value);                
+                    UpdateValuesOfVehicleDetails(value);
+                    UpdateValuesOfVehiclePricing(value);
+                    UpdateValuesOfVehicleBasicInfo(value);
             }
 
         }
@@ -228,7 +228,7 @@ namespace EZDMS.App
         /// <summary>
         /// Indicates if there is a save action
         /// </summary>
-        public bool Saving { get; set; }
+        public bool SavingInfo { get; set; }
 
         #endregion
 
@@ -260,6 +260,16 @@ namespace EZDMS.App
         public ICommand SelectCustomerCommand { get; set; }
 
         /// <summary>
+        /// Saves the current vehicle info to the server
+        /// </summary>
+        public ICommand SaveVehicleCommand { get; set; }
+
+        /// <summary>
+        /// Saves the current vehicle info to the server
+        /// </summary>
+        public ICommand SelectVehicleCommand { get; set; }
+
+        /// <summary>
         /// Shows a products dialog window
         /// </summary>
         public ICommand ShowProductsDialogCommand { get; set; }
@@ -279,6 +289,8 @@ namespace EZDMS.App
             LoadDealCommand = new RelayCommand(async () => await LoadAsync());
             SaveCustomerCommand = new RelayCommand(async () => await SaveCustomerAsync());
             SelectCustomerCommand =  new RelayCommand(async () => await SelectCustomerAsync());
+            SaveVehicleCommand = new RelayCommand(async () => await SaveVehicleAsync());
+            SelectVehicleCommand = new RelayCommand(async () => await SelectVehicleAsync());
             ShowProductsDialogCommand = new RelayCommand(async () => await ShowProductsDialogAsync());
 
             SalesDealCard = new SalesDealCardViewModel();
@@ -315,7 +327,7 @@ namespace EZDMS.App
                 // Update view model
                 SalesFinanceDeal.ServiceContract = 4500;
                 UpdateValuesOfDeskingTotals(SalesFinanceDeal);
-
+                    
                 return true;            
             });
             
@@ -324,11 +336,18 @@ namespace EZDMS.App
         public async Task SaveCustomerAsync()
         {
 
-            await UI.ShowMessage(new MessageBoxDialogViewModel
+
+            await RunCommandAsync(() => SavingInfo, async () =>
             {
-                // TODO: Localize
-                Title = "Save Buyer Info",
-                Message = "The buyer info has been saved"
+
+                // Update data model
+                //await Task.Run(UpdateCustomerDM);
+
+                await Task.Delay(3);
+                // Save to datastore
+                // Update client datastore record
+                await ClientDataStore.SaveSalesRecordAsync(Customer, DbTableNames.Customer);
+
             });
         }
 
@@ -339,6 +358,36 @@ namespace EZDMS.App
                 
                 Title = "Customers",
                
+
+            });
+
+
+        }
+
+        public async Task SaveVehicleAsync()
+        {
+
+
+            await RunCommandAsync(() => SavingInfo, async () =>
+            {
+
+                // Update data model
+                //await Task.Run(UpdateCustomerDM);
+
+                // Save to datastore
+                // Update client datastore record
+                await ClientDataStore.SaveSalesRecordAsync(SaleVehicle, DbTableNames.VehicleInventory);
+
+            });
+        }
+
+        public async Task SelectVehicleAsync()
+        {
+            await UI.ShowVehicles(new VehicleSelectDialogViewModel
+            {
+
+                Title = "Sale Vehicles",
+
 
             });
 
@@ -646,19 +695,19 @@ namespace EZDMS.App
             if (salesDeal == null)
                 return;
 
-            //SalesDealCard.BuyerName.DisplayText = salesDeal?.BuyerName;
-            //SalesDealCard.CoBuyerName.DisplayText = salesDeal?.CoBuyerName;
-            //SalesDealCard.Vehicle.DisplayText = salesDeal?.VehicleInfo;
-            //SalesDealCard.Status.DisplayText = salesDeal?.Status;
-            //SalesDealCard.Vehicle.DisplayText = salesDeal?.VehicleInfo;
-            //SalesDealCard.DealType.DisplayText = salesDeal?.Type;
-            //SalesDealCard.CreatedDate.DisplayText = salesDeal.CreatedDate.ToString("MM/dd/yyyy");
-            //SalesDealCard.DealDate.DisplayText = salesDeal.DealDate.ToString("MM/dd/yyyy");
-            //SalesDealCard.LastActivityDate.DisplayText = salesDeal.LastActivityDate.ToString("MM/dd/yyyy");
-            //SalesDealCard.Trades.DisplayText = $"{salesDeal?.Trade1Info} \r\n {salesDeal?.Trade2Info} \r\n {salesDeal?.Trade3Info}";
-            //SalesDealCard.Salesperson.DisplayText = $"{salesDeal?.SalesPerson} \r\n {salesDeal?.SalesPerson2}";
-            //SalesDealCard.SalesManager.DisplayText = salesDeal?.SalesManager;
-            //SalesDealCard.FinanceManager.DisplayText = salesDeal?.FinanceManager;
+            SalesDealCard.BuyerName.DisplayText = salesDeal?.BuyerName;
+            SalesDealCard.CoBuyerName.DisplayText = salesDeal?.CoBuyerName;
+            SalesDealCard.Vehicle.DisplayText = salesDeal?.VehicleInfo;
+            SalesDealCard.Status.DisplayText = salesDeal?.Status;
+            SalesDealCard.Vehicle.DisplayText = salesDeal?.VehicleInfo;
+            SalesDealCard.DealType.DisplayText = salesDeal?.Type;
+            SalesDealCard.CreatedDate.DisplayText = salesDeal.CreatedDate.ToString("MM/dd/yyyy");
+            SalesDealCard.DealDate.DisplayText = salesDeal.DealDate.ToString("MM/dd/yyyy");
+            SalesDealCard.LastActivityDate.DisplayText = salesDeal.LastActivityDate.ToString("MM/dd/yyyy");
+            SalesDealCard.Trades.DisplayText = $"{salesDeal?.Trade1Info} \r\n {salesDeal?.Trade2Info} \r\n {salesDeal?.Trade3Info}";
+            SalesDealCard.Salesperson.DisplayText = $"{salesDeal?.SalesPerson} \r\n {salesDeal?.SalesPerson2}";
+            SalesDealCard.SalesManager.DisplayText = salesDeal?.SalesManager;
+            SalesDealCard.FinanceManager.DisplayText = salesDeal?.FinanceManager;
 
             //SalesDealCard = new SalesDealCardViewModel
             //{
@@ -953,26 +1002,26 @@ namespace EZDMS.App
         private void UpdateCustomerDM()
         {
             
-            Customer.Prefix = CustomerBasicInfo.Prefix.ToString();
+            //Customer.Prefix = CustomerBasicInfo.Prefix.ToString();
             Customer.Suffix = CustomerBasicInfo.Suffix.OriginalText;
-            Customer.Status = CustomerBasicInfo.MaritalStatus.ToString();
+            //Customer.Status = CustomerBasicInfo.MaritalStatus.ToString();
             Customer.FirstName = CustomerBasicInfo.FirstName.OriginalText;
             Customer.MiddleName = CustomerBasicInfo.MiddleName.OriginalText;
             Customer.LastName = CustomerBasicInfo.LastName.OriginalText;
-            Customer.Gender = CustomerBasicInfo.Gender.ToString();
+            //Customer.Gender = CustomerBasicInfo.Gender.ToString();
             Customer.Email = CustomerBasicInfo.Email.OriginalText;
-            Customer.EmailType = CustomerBasicInfo.EmailType.ToString();
-            Customer.PrivacyType = CustomerBasicInfo.PrivacyType.ToString();
-            Customer.ContactType = CustomerBasicInfo.ContactType.ToString();
-            Customer.Nickname = CustomerBasicInfo.Nickname.OriginalText;
-            Customer.DateOfBirth = CustomerBasicInfo.DateOfBirth.Date.ToString("mm/dd/yyyy");
+            //Customer.EmailType = CustomerBasicInfo.EmailType.ToString();
+            //Customer.PrivacyType = CustomerBasicInfo.PrivacyType.ToString();
+            //Customer.ContactType = CustomerBasicInfo.ContactType.ToString();
+            Customer.Nickname = CustomerBasicInfo.Nickname.EditedText;
+            //Customer.DateOfBirth = CustomerBasicInfo.DateOfBirth.Date.ToString("mm/dd/yyyy");
             Customer.HomePhone = CustomerBasicInfo.HomePhone.OriginalText;
             Customer.WorkPhone = CustomerBasicInfo.WorkPhone.OriginalText;
             Customer.CellPhone = CustomerBasicInfo.CellPhone.OriginalText;
 
             Customer.StreetAddress = CustomerAddress.StreetAddress.OriginalText;
             Customer.City = CustomerAddress.City.OriginalText;
-            Customer.State = CustomerAddress.State.ToString();
+            //Customer.State = CustomerAddress.State.ToString();
             Customer.Zip = CustomerAddress.Zip.OriginalText;
             Customer.County = CustomerAddress.County.OriginalText;
             Customer.CountyCode = CustomerAddress.CountyCode.OriginalText;
@@ -1008,13 +1057,23 @@ namespace EZDMS.App
 
         }
 
+        private void UpdateVehicleDM()
+        {
+            if (SaleVehicle == null)
+                return;
+
+            //SaleVehicle.
+
+
+        }
+
         private async Task SaveCustomerInfoAsync(object mCustomer)
         {
 
             if (!(mCustomer is CustomerDataModel))
                 return;
 
-            await RunCommandAsync(() => Saving, async () =>
+            await RunCommandAsync(() => SavingInfo, async () =>
             {
                 // Lock this command to ignore any other requests while processing
                 // Update client datastore record
@@ -1093,7 +1152,7 @@ namespace EZDMS.App
             Logger.LogDebugSource($"Successfully updated {displayName}. Saving to local database cache...");
 
             // Store the new user credentials the data store
-            await ClientDataStore.SaveSalesFinanceDealAsync(salesfinance);
+            await ClientDataStore.SaveSalesRecordAsync(salesfinance, DbTableNames.SalesFinance);
 
             // Return successful
             return true;

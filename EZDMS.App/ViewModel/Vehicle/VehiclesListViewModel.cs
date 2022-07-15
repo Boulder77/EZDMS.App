@@ -118,11 +118,10 @@ namespace EZDMS.App
 
         public async Task GetVehiclesListAsync()
         {
-
             // Store single transcient instance of client data store
             await RunCommandAsync(() => VehiclesListPageLoading, async () =>
             {
-                Items = await ClientDataStore.GetVehicleInventoryAsync();
+                Items = await ClientDataStore.GetVehicleInventoryListAsync();
             });
 
         }

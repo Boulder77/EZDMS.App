@@ -146,63 +146,62 @@ namespace EZDMS.App.Relational
 
             switch (type)
             {
-                // Add new login entry
+                //  // Update the data store record
                 case DbTableNames.LoginCredentials:
-                    mDbContext.LoginCredentials.Add(mDataModel as LoginCredentialsDataModel);
+
+                    mDbContext.Update(mDataModel as LoginCredentialsDataModel);
                     break;
 
                 case DbTableNames.SalesDealsInfo:
-                    // Add new sales deals list entry
-                    // Clear all entries
-                    mDbContext.Attach(mDataModel as SalesDealsItemDataModel);
 
-                    mDbContext.Entry(mDataModel as SalesDealsItemDataModel).State = EntityState.Modified;
-
+                    mDbContext.Update(mDataModel as SalesDealsItemDataModel);
+                    //mDbContext.Attach(mDataModel as SalesDealsItemDataModel);
+                    //mDbContext.Entry(mDataModel as SalesDealsItemDataModel).State = EntityState.Modified;
                     break;
 
                 case DbTableNames.SalesFinance:
-                    //Add new sales finance entry
-                    mDbContext.SalesFinance.Add(mDataModel as SalesFinanceDataModel);
+                    
+                    mDbContext.Update(mDataModel as SalesFinanceDataModel);
                     break;
 
                 case DbTableNames.VehicleInventory:
-                    //Add new vehicle inventory entry
-                    mDbContext.VehicleInventory.Add(mDataModel as VehicleInventoryDataModel);
+
+                    mDbContext.Update(mDataModel as VehicleInventoryDataModel);
                     break;
 
                 case DbTableNames.Customer:
-                    //Add new customer entry
-                    mDbContext.Customer.Add(mDataModel as CustomerDataModel);
+
+                    mDbContext.Update(mDataModel as CustomerDataModel);
                     break;
 
                 case DbTableNames.CoverageProvider:
-                    //Add new customer entry
-                    mDbContext.CoverageProvider.Add(mDataModel as CoverageProviderDataModel);
+
+                    mDbContext.Update(mDataModel as CoverageProviderDataModel);
                     break;
 
                 case DbTableNames.CoveragePlan:
-                    //Add new customer entry
-                    mDbContext.CoveragePlan.Add(mDataModel as CoveragePlanDataModel);
+
+                    mDbContext.Update(mDataModel as CoveragePlanDataModel);
                     break;
 
                 case DbTableNames.SalesGap:
-                    // Add new SalesGap entry
-                    mDbContext.SalesGap.Add(mDataModel as SalesGapDataModel);
+
+                    mDbContext.Update(mDataModel as SalesGapDataModel);
                     break;
 
                 case DbTableNames.SalesMaintenance:
-                    // Add new SalesMaintenance entry
-                    mDbContext.SalesMaintenance.Add(mDataModel as SalesMaintenanceDataModel);
+
+                    mDbContext.Update(mDataModel as SalesMaintenanceDataModel);
                     break;
 
                 case DbTableNames.SalesService:
-                    // Add new SalesService entry
-                    mDbContext.SalesService.Add(mDataModel as SalesServiceDataModel);
+
+                    mDbContext.Update(mDataModel as SalesServiceDataModel);
                     break;
 
                 case DbTableNames.SalesWarranty:
-                    // Add new SalesService entry
-                    mDbContext.SalesWarranty.Add(mDataModel as SalesWarrantyDataModel);
+
+                    mDbContext.Update(mDataModel as SalesWarrantyDataModel);
                     break;
 
                 default:
@@ -298,23 +297,6 @@ namespace EZDMS.App.Relational
         }
 
         /// <summary>
-        /// Stores the sales finance deal to the backing data store
-        /// </summary>
-        /// <param name="salesFinance">The sales finance deal to save</param>
-        /// <returns>Returns a task that will finish once the save is complete</returns>
-        public async Task SaveSalesFinanceDealAsync(SalesFinanceDataModel salesFinance)
-        {
-            // Clear all entries
-            mDbContext.SalesFinance.RemoveRange(mDbContext.SalesFinance);
-
-            // Add new one
-            mDbContext.SalesFinance.Add(salesFinance);
-
-            // Save changes
-            await mDbContext.SaveChangesAsync();
-        }
-
-        /// <summary>
         /// Returns all records in SearchDeals table
         /// </summary>
         public Task<List<SalesDealsItemDataModel>> GetSalesDealRecallsAsync()
@@ -341,7 +323,7 @@ namespace EZDMS.App.Relational
         /// <summary>
         /// Returns all records in vehicle inventory table
         /// </summary>
-        public Task<List<VehicleInventoryDataModel>> GetVehicleInventoryAsync()
+        public Task<List<VehicleInventoryDataModel>> GetVehicleInventoryListAsync()
         {
             // Gets all the sales                      
             return Task.FromResult(mDbContext.VehicleInventory.ToList());
@@ -376,6 +358,7 @@ namespace EZDMS.App.Relational
 
         #endregion
 
+        
         #region Products Methods
 
         /// <summary>

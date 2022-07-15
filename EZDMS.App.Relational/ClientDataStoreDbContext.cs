@@ -100,11 +100,11 @@ namespace EZDMS.App.Relational
             modelBuilder.Entity<SalesFinanceDataModel>().HasKey(a => a.DealNumber);
 
             modelBuilder.Entity<VehicleInventoryDataModel>().HasKey(a => a.ID);
-
+                        
             modelBuilder.Entity<CustomerDataModel>().HasKey(a => a.ID);
-
+                        
             modelBuilder.Entity<CoverageProviderDataModel>().HasKey(a => a.ID);
-
+                        
             modelBuilder.Entity<CoveragePlanDataModel>().HasKey(a => a.ID);
 
             modelBuilder.Entity<SalesGapDataModel>().HasKey(a => a.DealNumber);
@@ -118,6 +118,14 @@ namespace EZDMS.App.Relational
 
             // TODO: Set up limits
             //modelBuilder.Entity<LoginCredentialsDataModel>().Property(a => a.FirstName).HasMaxLength(50);
+
+            // Setup computed columns
+            modelBuilder.Entity<VehicleInventoryDataModel>().Property(p => p.StockNumber).HasComputedColumnSql("[PreFixID]+right('0000'+CONVERT([nvarchar](4),[ID]),(4)))");
+
+            modelBuilder.Entity<CustomerDataModel>().Property(p => p.Number).HasComputedColumnSql("[PreFixID]+right('0000000'+CONVERT([nvarchar](7),[Id]),(7)))");
+
+            modelBuilder.Entity<CoverageProviderDataModel>().Property(p => p.Number).HasComputedColumnSql("[PreFixID]+right('000'+CONVERT([nvarchar](3),[Id]),(3)))");
+
         }
 
         #endregion

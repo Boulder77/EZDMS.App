@@ -78,13 +78,6 @@ namespace EZDMS.App.Core
         Task<SalesFinanceDataModel> CreateSalesFinanceDeal();
 
         /// <summary>
-        /// Stores the sales finance deal to the backing data store
-        /// </summary>
-        /// <param name="salesFinance">The sales finance deal to save</param>
-        /// <returns>Returns a task that will finish once the save is complete</returns>
-        Task SaveSalesFinanceDealAsync(SalesFinanceDataModel salesFinance);
-
-        /// <summary>
         /// Gets a single customer record from the customer table
         /// </summary>
         /// <param name="customerNumber"></param>
@@ -101,7 +94,7 @@ namespace EZDMS.App.Core
         /// <summary>
         /// Returns all records in vehicle inventory table
         /// </summary>
-        Task<List<VehicleInventoryDataModel>> GetVehicleInventoryAsync();
+        Task<List<VehicleInventoryDataModel>> GetVehicleInventoryListAsync();
 
         /// <summary>
         /// Returns all records in customer table
