@@ -274,8 +274,6 @@ namespace EZDMS.App
         /// </summary>
         public ICommand ShowProductsDialogCommand { get; set; }
 
-
-
         #endregion
 
         #region Constructor
@@ -333,19 +331,20 @@ namespace EZDMS.App
             
         }
 
+        /// <summary>
+        /// Update the customer datamodel then save to the data store
+        /// </summary>
+        /// <returns></returns>
         public async Task SaveCustomerAsync()
         {
-
 
             await RunCommandAsync(() => SavingInfo, async () =>
             {
 
                 // Update data model
-                //await Task.Run(UpdateCustomerDM);
+                await Task.Run(UpdateCustomerDM);
 
-                await Task.Delay(3);
-                // Save to datastore
-                // Update client datastore record
+                // save to data store
                 await ClientDataStore.SaveSalesRecordAsync(Customer, DbTableNames.Customer);
 
             });
@@ -370,12 +369,10 @@ namespace EZDMS.App
 
             await RunCommandAsync(() => SavingInfo, async () =>
             {
-
                 // Update data model
-                //await Task.Run(UpdateCustomerDM);
+                await Task.Run(UpdateVehicleDM);
 
                 // Save to datastore
-                // Update client datastore record
                 await ClientDataStore.SaveSalesRecordAsync(SaleVehicle, DbTableNames.VehicleInventory);
 
             });
@@ -393,24 +390,39 @@ namespace EZDMS.App
 
 
         }
-
-        public async Task UpdateSalesDealItemAsync(CustomerDataModel mCustomer, string mType)
+        
+        public async Task UpdateSalesDealItemAsync(object mDataModel, string mType = null)
         {
-            // return 
-            if (!(mCustomer is CustomerDataModel))
+           
+             // return if no data model
+            if (mDataModel == null)
                 return;
 
-            // Update view model
-            if (mType == "C")
+            if (mDataModel is CustomerDataModel)
             {
-                SalesDealsItem.CoBuyerName = $"{mCustomer.FirstName} {mCustomer.LastName}";
-                SalesDealsItem.CoBuyerNumber = mCustomer.Number;
+                // Update view model
+                if (mType == "C")
+                {
+                    SalesDealsItem.CoBuyerName = $"{(mDataModel as CustomerDataModel).FirstName} {(mDataModel as CustomerDataModel).LastName}";
+                    SalesDealsItem.CoBuyerNumber = (mDataModel as CustomerDataModel).Number;
+                }
+                else
+                {
+                    SalesDealsItem.BuyerName = $"{(mDataModel as CustomerDataModel).FirstName} {(mDataModel as CustomerDataModel).LastName}";
+                    SalesDealsItem.BuyerNumber = (mDataModel as CustomerDataModel).Number;
+                }
+
+            }
+            else if (mDataModel is VehicleInventoryDataModel)
+            {
+                if (mType == "S")
+                {
+                    SalesDealsItem.StockNumber = (mDataModel as VehicleInventoryDataModel).StockNumber;
+                    SalesDealsItem.VehicleInfo = $"{(mDataModel as VehicleInventoryDataModel).Year} {(mDataModel as VehicleInventoryDataModel).Make} {(mDataModel as VehicleInventoryDataModel).Model}";
+                }
             }
             else
-            {
-                SalesDealsItem.BuyerName = $"{mCustomer.FirstName} {mCustomer.LastName}";
-                SalesDealsItem.BuyerNumber = mCustomer.Number;
-            }
+                return;
 
             // Update sales card view model
             UpdateValuesOfSalesDealCard(SalesDealsItem);
@@ -419,7 +431,6 @@ namespace EZDMS.App
             await ClientDataStore.SaveSalesRecordAsync(SalesDealsItem, DbTableNames.SalesDealsInfo);
 
         }
-
 
         #endregion
 
@@ -1062,28 +1073,98 @@ namespace EZDMS.App
             if (SaleVehicle == null)
                 return;
 
+            // Update values from vehicle basic info view model
+            SaleVehicle.VIN = VehicleBasicInfo.VIN.EditedText;
+            SaleVehicle.Type = VehicleBasicInfo.Type.EditedText;
+            SaleVehicle.Status = VehicleBasicInfo.Status.EditedText;
+            SaleVehicle.Year = Convert.ToInt32(VehicleBasicInfo.Year.EditedText);
+            SaleVehicle.Make = VehicleBasicInfo.Make.EditedText;
+            SaleVehicle.Model = VehicleBasicInfo.Model.EditedText;
+            SaleVehicle.BodyStyle = VehicleBasicInfo.Body.EditedText;
+            SaleVehicle.TrimColor = VehicleBasicInfo.Trim.EditedText;
+            SaleVehicle.Color = VehicleBasicInfo.ExteriorColor.EditedText;
+            SaleVehicle.Class = VehicleBasicInfo.Class.EditedText;
+            SaleVehicle.Odometer = Convert.ToInt32(VehicleBasicInfo.Odometer.EditedText);
+            SaleVehicle.OdometerStatus = VehicleBasicInfo.OdometerStatus.EditedText;
+            SaleVehicle.HasFactoryWarranty = VehicleBasicInfo.HasFactoryWarranty;
+            SaleVehicle.Color = VehicleBasicInfo.ExteriorColor.EditedText;
+            // Update values from vehicle details view model
+            SaleVehicle.NumberOfDoors = Convert.ToInt32(VehicleDetails.NumberOfDoors.EditedText);
+            SaleVehicle.Cylinders = Convert.ToInt32(VehicleDetails.Cylinders.EditedText);
+            SaleVehicle.FuelType = VehicleDetails.FuelType.EditedText;
+            SaleVehicle.FuelSystem = VehicleDetails.FuelSystem.EditedText;
+            SaleVehicle.FuelEconomy = VehicleDetails.FuelEconomy.EditedText;
+            SaleVehicle.TransmissionType = VehicleDetails.TransmissionType.EditedText;
+            SaleVehicle.TransmissionSpeed = VehicleDetails.TransmissionSpeed.EditedText;
+            SaleVehicle.Drivetrain = VehicleDetails.Drivetrain.EditedText;
+            SaleVehicle.Engine = VehicleDetails.Engine.EditedText;
+            SaleVehicle.EngineType = VehicleDetails.EngineType.EditedText;
+            SaleVehicle.EngineSerialNumber = VehicleDetails.EngineSerialNumber.EditedText;
+            SaleVehicle.IgnitionKeyCode = VehicleDetails.IgnitionKeyCode.EditedText;
+            SaleVehicle.TrunkKeyCode = VehicleDetails.TrunkKeyCode.EditedText;
+            SaleVehicle.Weight = Convert.ToInt32(VehicleDetails.Weight.EditedText);
+            SaleVehicle.LicensePlate = VehicleDetails.LicensePlate.EditedText;
+            SaleVehicle.LicenseState = VehicleDetails.LicenseState.EditedText;
+            SaleVehicle.LotLocation = VehicleDetails.LotLocation.EditedText;
+            SaleVehicle.Style = VehicleDetails.Style.EditedText;
+            SaleVehicle.ModelCode = VehicleDetails.ModelCode.EditedText;
+            //SaleVehicle.LicenseExpirationDate = VehicleDetails.LicenseExpirationDate.Date.ToShortDateString();
+            // Update values from the vehicle pricing view model
+            SaleVehicle.MSRP = VehiclePricing.MSRP.EditedAmount;
+            SaleVehicle.InventoryPrice = VehiclePricing.InventoryPrice.EditedAmount;
+            SaleVehicle.ListPrice = VehiclePricing.ListPrice.EditedAmount;
+            SaleVehicle.InternetPrice = VehiclePricing.InternetPrice.EditedAmount;
+            SaleVehicle.AccountingCost = VehiclePricing.AccountingCost.EditedAmount;
+            SaleVehicle.ACV = VehiclePricing.ACV.EditedAmount;
+            SaleVehicle.AddedCosts = VehiclePricing.AddedCosts.EditedAmount;
+            SaleVehicle.Advertising = VehiclePricing.Advertising.EditedAmount;
+            SaleVehicle.Reconditioning = VehiclePricing.Reconditioning.EditedAmount;
+            SaleVehicle.Holdback = VehiclePricing.Holdback.EditedAmount;
+            SaleVehicle.DealerPack = VehiclePricing.DealerPack.EditedAmount;
+            SaleVehicle.BuyerFee = VehiclePricing.BuyerFee.EditedAmount;
+            SaleVehicle.InvoicePrice = VehiclePricing.InvoicePrice.EditedAmount;
+            SaleVehicle.DealerPackPercentage = VehiclePricing.DealerPackPercentage.EditedAmount;
+            
             //SaleVehicle.
 
-
         }
 
-        private async Task SaveCustomerInfoAsync(object mCustomer)
-        {
+        //private async Task SaveCustomerInfoAsync(object mCustomer)
+        //{
 
-            if (!(mCustomer is CustomerDataModel))
-                return;
+        //    if (!(mCustomer is CustomerDataModel))
+        //        return;
 
-            await RunCommandAsync(() => SavingInfo, async () =>
-            {
-                // Lock this command to ignore any other requests while processing
-                // Update client datastore record
-                await ClientDataStore.SaveSalesRecordAsync(mCustomer, DbTableNames.Customer);
-
-                
-            });
+        //    await RunCommandAsync(() => SavingInfo, async () =>
+        //    {
+        //        Lock this command to ignore any other requests while processing
+        //         Update client datastore record
+        //        await ClientDataStore.SaveSalesRecordAsync(mCustomer, DbTableNames.Customer);
 
 
-        }
+        //    });
+
+
+        //}
+
+        //private async Task SaveVehicleInfoAsync(object mVehicle)
+        //{
+
+        //    if (!(mVehicle is VehicleInventoryDataModel))
+        //        return;
+
+        //    await RunCommandAsync(() => SavingInfo, async () =>
+        //    {
+        //        Lock this command to ignore any other requests while processing
+        //         Update client datastore record
+        //        await ClientDataStore.SaveSalesRecordAsync(mVehicle, DbTableNames.VehicleInventory);
+
+
+        //    });
+
+
+        //}
+
 
         /// <summary>
         /// Updates a specific value from the client data store for the user profile details

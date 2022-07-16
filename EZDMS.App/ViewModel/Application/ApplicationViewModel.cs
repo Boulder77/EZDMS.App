@@ -160,13 +160,9 @@ namespace EZDMS.App
             CurrentSideMenuContent = SideMenuContent.Media;
         }
 
-        
-
         public void OpenSalesRecall()
         {
-
             ViewModelApplication.GoToPage(ApplicationPage.SalesRecall);
-
         }
 
         public void OpenCustomersList()
@@ -182,8 +178,6 @@ namespace EZDMS.App
             ViewModelApplication.GoToPage(ApplicationPage.VehiclesList);
 
         }
-
-
 
         #endregion
 

@@ -169,9 +169,12 @@ namespace EZDMS.App
 
             //var mNewVehicle = await ClientDataStore.GetVehicleInventoryAsync(mStockNumber);
 
-                // set view model                
-                ViewModelSalesFinance.SaleVehicle = (mVehicle as VehicleInventoryDataModel);
-            await Task.Run(CloseAction);
+            // set view model                
+            ViewModelSalesFinance.SaleVehicle = (mVehicle as VehicleInventoryDataModel);
+
+            await ViewModelSalesFinance.UpdateSalesDealItemAsync(mVehicle, "S");
+
+            CloseAction();
             
         }
                 
