@@ -44,7 +44,7 @@
 
                     <Button Margin="5"  
                             Background="{StaticResource WordOrangeBrush}"
-                            Command="{Binding ClearSearchCommand}"
+                            Command="{Binding SearchCommand}"
 
                             Foreground="{StaticResource ForegroundLightBrush}"
                             FontSize="{StaticResource FontSizeRegular}"

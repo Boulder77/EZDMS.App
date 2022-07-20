@@ -101,5 +101,30 @@ namespace EZDMS.App.Core
         /// </summary>
         Task<List<CustomerDataModel>> GetCustomersAsync();
 
+        /// <summary>
+        /// Returns all records in coverage provider table
+        /// </summary>
+        Task<List<CoverageProviderDataModel>> GetCoverageProvidersAsync();
+
+        /// <summary>
+        /// Gets a single provider record from the coverage provider table
+        /// </summary>
+        /// <param name="providerNumber"></param>
+        /// <returns>CoverageProviderDataModel</returns>
+        Task<CoverageProviderDataModel> GetCoverageProviderAsync(string providerNumber);
+
+        /// <summary>
+        /// Returns all records in coverage plan table
+        /// </summary>
+        Task<List<CoveragePlanDataModel>> GetCoveragePlansAsync();
+
+        /// <summary>
+        /// Gets a single provider plan record from the coverage plan table
+        /// </summary>
+        /// <param name="providerNumber"></param>
+        /// <returns>CoveragePlanDataModel</returns>
+        Task<CoveragePlanDataModel> GetCoveragePlanAsync(string providerNumber);
+       
+
     }
 }

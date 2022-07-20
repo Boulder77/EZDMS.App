@@ -319,7 +319,11 @@ namespace EZDMS.App
                 // Lock this command to ignore any other requests while processing
                 await UI.ShowProducts(new ProductsSalesDialogViewModel
                 {
-                    Title = "Products"
+                    Title = "Products",
+                    
+                    Plans = await ClientDataStore.GetCoveragePlansAsync(),
+                    Providers = await ClientDataStore.GetCoverageProvidersAsync()
+
                 });
 
                 // Update view model
@@ -880,8 +884,7 @@ namespace EZDMS.App
                 HomePhone = new TextEntryViewModel { Label = "Home Phone", OriginalText = Buyer?.HomePhone },
                 WorkPhone = new TextEntryViewModel { Label = "Work Phone", OriginalText = Buyer?.WorkPhone },
                 CellPhone = new TextEntryViewModel { Label = "Cell Phone", OriginalText = Buyer?.CellPhone },
-
-        };
+            };
 
         }
 
@@ -1128,43 +1131,6 @@ namespace EZDMS.App
             //SaleVehicle.
 
         }
-
-        //private async Task SaveCustomerInfoAsync(object mCustomer)
-        //{
-
-        //    if (!(mCustomer is CustomerDataModel))
-        //        return;
-
-        //    await RunCommandAsync(() => SavingInfo, async () =>
-        //    {
-        //        Lock this command to ignore any other requests while processing
-        //         Update client datastore record
-        //        await ClientDataStore.SaveSalesRecordAsync(mCustomer, DbTableNames.Customer);
-
-
-        //    });
-
-
-        //}
-
-        //private async Task SaveVehicleInfoAsync(object mVehicle)
-        //{
-
-        //    if (!(mVehicle is VehicleInventoryDataModel))
-        //        return;
-
-        //    await RunCommandAsync(() => SavingInfo, async () =>
-        //    {
-        //        Lock this command to ignore any other requests while processing
-        //         Update client datastore record
-        //        await ClientDataStore.SaveSalesRecordAsync(mVehicle, DbTableNames.VehicleInventory);
-
-
-        //    });
-
-
-        //}
-
 
         /// <summary>
         /// Updates a specific value from the client data store for the user profile details

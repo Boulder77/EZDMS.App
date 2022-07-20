@@ -354,8 +354,6 @@ namespace EZDMS.App.Relational
             return Task.FromResult(mDbContext.Customer.ToList());
         }
 
-
-
         #endregion
 
         
@@ -367,7 +365,7 @@ namespace EZDMS.App.Relational
         public Task<List<CoverageProviderDataModel>> GetCoverageProvidersAsync()
         {
             // Gets all the sales                      
-            return Task.FromResult(mDbContext.CoverageProvider.ToList());
+            return Task.FromResult(mDbContext.CoverageProvider.Where(e => e.IsActive == true).ToList());
         }
 
         /// <summary>
@@ -388,9 +386,9 @@ namespace EZDMS.App.Relational
         public Task<List<CoveragePlanDataModel>> GetCoveragePlansAsync()
         {
             // Gets all the sales                      
-            return Task.FromResult(mDbContext.CoveragePlan.ToList());
+            return Task.FromResult(mDbContext.CoveragePlan.Where(e => e.IsActive == true).ToList());
         }
-
+              
         /// <summary>
         /// Gets a single provider plan record from the coverage plan table
         /// </summary>
@@ -402,8 +400,6 @@ namespace EZDMS.App.Relational
             return Task.FromResult(mDbContext.CoveragePlan.FirstOrDefault(u => u.ProviderNumber == providerNumber));
 
         }
-
-
 
         #endregion
 

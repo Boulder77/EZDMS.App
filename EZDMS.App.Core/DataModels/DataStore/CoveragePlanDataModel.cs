@@ -23,6 +23,11 @@ namespace EZDMS.App.Core
         public string ProviderNumber { get; set; }
 
         /// <summary>
+        /// The provider name of this ProductsPlan record
+        /// <summary>
+        public string ProviderName { get; set; }
+
+        /// <summary>
         /// The create date of this ProductsPlan record
         /// <summary>
         public DateTime CreateDate { get; set; }

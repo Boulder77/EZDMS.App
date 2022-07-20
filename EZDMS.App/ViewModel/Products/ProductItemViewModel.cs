@@ -17,7 +17,15 @@ namespace EZDMS.App
     {
 
         #region Public Properties
-               
+
+        public ObservableCollection<CoverageProviderDataModel> Providers { get; set; }
+
+        public ObservableCollection<CoveragePlanDataModel> Plans { get; set; }
+
+        public CoveragePlanDataModel SelectedPlan { get; set; }
+
+        public CoverageProviderDataModel SelectedProvider { get; set; }
+
         /// <summary>
         /// The product type
         /// <summary>

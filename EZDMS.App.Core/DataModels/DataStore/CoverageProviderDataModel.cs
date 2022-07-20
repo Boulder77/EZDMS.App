@@ -87,5 +87,37 @@ namespace EZDMS.App.Core
         /// <summary>
         public string ContactName { get; set; }
 
+        /// <summary>
+        /// The is service flag for the provider
+        /// <summary>
+        public bool IsService { get; set; }
+
+        /// <summary>
+        /// The is warranty flag for the provider
+        /// <summary>
+        public bool IsWarranty { get; set; }
+
+        /// <summary>
+        /// The is maintenance flag for the provider
+        /// <summary>
+        public bool IsMaintenance { get; set; }
+
+        /// <summary>
+        /// The is gap flag for the provider
+        /// <summary>
+        public bool IsGap { get; set; }
+
+        /// <summary>
+        /// The is front add flag for the provider
+        /// <summary>
+        public bool IsFrontAdd { get; set; }
+
+        /// <summary>
+        /// The is back add flag for the provider
+        /// <summary>
+        public bool IsBackAdd { get; set; }
+
+
+
     }
 }

@@ -21,7 +21,10 @@
 
          <!---->         
         <ComboBox  ItemsSource="{Binding Items}"
+                   DisplayMemberPath="{Binding DisplayValue}"
+                   
                    SelectedItem="{Binding SelectedItem}"
+                   Margin="5,10,5,0"
                    HorizontalContentAlignment="Center"
                    FontFamily="{StaticResource LatoRegular}"
                    />

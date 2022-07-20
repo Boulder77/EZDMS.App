@@ -28,8 +28,67 @@
             </Grid.RowDefinitions>
 
             <local:TextDisplayVertControl Margin="0,8,0,0" DataContext="{Binding Type}"/>
-            <local:TextInputVertControl Grid.Column="1"  DataContext="{Binding Provider}"/>
-            <local:TextInputVertControl Grid.Column="2"  DataContext="{Binding Plan}"/>           
+            <StackPanel Orientation="Vertical"
+                        Grid.Column="1" >
+
+                <!-- Label -->
+                <TextBlock Text="Provider"
+                       Margin="5,10,5,0"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       FontFamily="{StaticResource LatoRegular}"
+                       />
+
+                <!---->
+                <StackPanel>
+                    <ComboBox  ItemsSource="{Binding Providers}"
+                           DisplayMemberPath="Name" 
+                           SelectedItem="{Binding Path=SelectedProvider}"
+                           IsSynchronizedWithCurrentItem="True"    
+                           Margin="5,10,5,0"
+                           HorizontalContentAlignment="Center"
+                           FontFamily="{StaticResource LatoRegular}">
+                    
+                           <!--<ComboBox.ItemTemplate>
+                            <DataTemplate>
+                             <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                           </ComboBox.ItemTemplate>-->
+                    
+                    </ComboBox>
+                </StackPanel>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical"
+                        Grid.Column="2" >
+
+                <!-- Label -->
+                <TextBlock Text="Plan"
+                       Margin="5,10,5,0"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       FontFamily="{StaticResource LatoRegular}"
+                       />
+
+                <!---->
+                <ComboBox  ItemsSource="{Binding Plans}"
+                   SelectedItem="{Binding SelectedPlan}"
+                   Margin="5,10,5,0"
+                   HorizontalContentAlignment="Center"
+                   FontFamily="{StaticResource LatoRegular}"
+                   >
+
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+
+                </ComboBox>
+
+            </StackPanel>
+                  
             <local:NumericalInputVertControl Grid.Column="3" DataContext="{Binding Retail}"/>
             <local:NumericalInputVertControl Grid.Column="4" DataContext="{Binding Cost}"/>
             
