@@ -16,13 +16,38 @@ namespace EZDMS.App
     public class ProductItemViewModel : BaseViewModel
     {
 
+        #region Private Members
+
+        protected CoveragePlanDataModel mSelectedPlan;
+
+        #endregion
+
+
         #region Public Properties
 
         public ObservableCollection<CoverageProviderDataModel> Providers { get; set; }
 
         public ObservableCollection<CoveragePlanDataModel> Plans { get; set; }
 
-        public CoveragePlanDataModel SelectedPlan { get; set; }
+        public CoveragePlanDataModel SelectedPlan
+        {
+            get => mSelectedPlan;
+
+            set
+            {
+                // Make sure list has changed
+                if (mSelectedPlan == value)
+                    return;
+
+                // Update value
+                mSelectedPlan = value;
+
+                // Update the view model
+                UpdateValuesFromDataModel(mSelectedPlan);
+
+            }
+
+        }
 
         public CoverageProviderDataModel SelectedProvider { get; set; }
 
@@ -84,7 +109,7 @@ namespace EZDMS.App
         /// <summary>
         /// The product disappearing deductible flag
         /// <summary>
-        public bool DisappearingDeductible { get; set; }
+        public bool IsDisappearingDeductible { get; set; }
 
         /// <summary>
         /// The product taxable flag
@@ -104,5 +129,24 @@ namespace EZDMS.App
         }
 
         #endregion
+
+        private void UpdateValuesFromDataModel(CoveragePlanDataModel coveragePlan)
+        {
+            if (coveragePlan == null)
+                return;
+
+            Retail.OriginalAmount = coveragePlan.Retail;
+            Cost.OriginalAmount = coveragePlan.Cost;
+            Deductible.OriginalAmount = coveragePlan.Deductible;
+            Term.OriginalText = coveragePlan.Term.ToString();
+            Mileage.OriginalText = coveragePlan.Mileage.ToString();
+            Taxable = coveragePlan.IsTaxable;
+            InPayment = coveragePlan.DefaultInPayment;
+            IsDisappearingDeductible = coveragePlan.IsDisappearingDeductible;
+
+
+        }
+
+
     }
 }

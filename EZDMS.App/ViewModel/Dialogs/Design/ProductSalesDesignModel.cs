@@ -36,7 +36,7 @@ namespace EZDMS.App
                 Mileage = new TextEntryViewModel { Label = "Mileage", OriginalText = "80000" },
                 ContractNumber = new TextEntryViewModel { Label = "Contract No", OriginalText = "SV#111" },
                 InPayment = true,
-                DisappearingDeductible = false,
+                IsDisappearingDeductible = false,
                 Taxable = true,
             };
 
@@ -53,7 +53,7 @@ namespace EZDMS.App
                 Mileage = new TextEntryViewModel { Label = "Mileage", OriginalText = "24000" },
                 ContractNumber = new TextEntryViewModel { Label = "Contract No", OriginalText = "WA#333" },
                 InPayment = true,
-                DisappearingDeductible = false,
+                IsDisappearingDeductible = false,
                 Taxable = true,
             };
 
@@ -72,7 +72,7 @@ namespace EZDMS.App
                 Mileage = new TextEntryViewModel { Label = "Mileage", OriginalText = "24000" },
                 ContractNumber = new TextEntryViewModel { Label = "Contract No", OriginalText = "WA#333" },
                 InPayment = true,
-                DisappearingDeductible = false,
+                IsDisappearingDeductible = false,
                 Taxable = true,
             };
 
@@ -89,7 +89,7 @@ namespace EZDMS.App
                 Mileage = new TextEntryViewModel { Label = "Mileage", OriginalText = "36000" },
                 ContractNumber = new TextEntryViewModel { Label = "Contract No", OriginalText = "MT#333" },
                 InPayment = true,
-                DisappearingDeductible = true,
+                IsDisappearingDeductible = true,
                 Taxable = true,
             };
 
@@ -103,7 +103,7 @@ namespace EZDMS.App
                 Cost = new NumericalEntryViewModel { Label = "Cost", OriginalAmount = 350.00m, Editable = true },                
                 ContractNumber = new TextEntryViewModel { Label = "Contract No", OriginalText = "GP#444" },
                 InPayment = true,
-                DisappearingDeductible = true,
+                IsDisappearingDeductible = true,
                 Taxable = true,
             };
 

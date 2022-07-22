@@ -103,8 +103,6 @@ namespace EZDMS.App
                     UpdateValuesOfCustomerCard(value);
                     UpdateValuesOfCustomerBasicInfo(value);
                     UpdateValuesOfCustomerAddress(value);
-
-                
             }
 
         }

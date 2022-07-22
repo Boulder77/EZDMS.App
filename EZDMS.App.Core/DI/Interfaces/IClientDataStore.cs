@@ -124,7 +124,35 @@ namespace EZDMS.App.Core
         /// <param name="providerNumber"></param>
         /// <returns>CoveragePlanDataModel</returns>
         Task<CoveragePlanDataModel> GetCoveragePlanAsync(string providerNumber);
-       
+
+        /// <summary>
+        /// Gets a single sales service contract record from the sales service table
+        /// </summary>
+        /// <param name="dealNumber"></param>
+        /// <returns>SalesServiceDataModel</returns>
+        Task<SalesServiceDataModel> GetSalesServiceAsync(int dealNumber);
+
+        /// <summary>
+        /// Gets a single sales maintenance contract record from the sales service table
+        /// </summary>
+        /// <param name="dealNumber"></param>
+        /// <returns>SalesMaintenanceDataModel</returns>
+        Task<SalesMaintenanceDataModel> GetSalesMaintenanceAsync(int dealNumber);
+
+        /// <summary>
+        /// Gets a single sales warranty contract record from the sales service table
+        /// </summary>
+        /// <param name="dealNumber"></param>
+        /// <returns>SalesWarrantyDataModel</returns>
+        Task<SalesWarrantyDataModel> GetSalesWarrantyAsync(int dealNumber);
+
+
+        /// <summary>
+        /// Gets a single sales gap contract record from the sales service table
+        /// </summary>
+        /// <param name="dealNumber"></param>
+        /// <returns>SalesGapDataModel</returns>
+        Task<SalesGapDataModel> GetSalesGapAsync(int dealNumber);
 
     }
 }

@@ -401,6 +401,54 @@ namespace EZDMS.App.Relational
 
         }
 
+        /// <summary>
+        /// Gets a single sales service contract record from the sales service table
+        /// </summary>
+        /// <param name="dealNumber"></param>
+        /// <returns>SalesServiceDataModel</returns>
+        public Task<SalesServiceDataModel> GetSalesServiceAsync(int dealNumber)
+        {
+            // Gets a single sales record
+            return Task.FromResult(mDbContext.SalesService.FirstOrDefault(u => u.DealNumber == dealNumber));
+
+        }
+
+        /// <summary>
+        /// Gets a single sales maintenance contract record from the sales service table
+        /// </summary>
+        /// <param name="dealNumber"></param>
+        /// <returns>SalesMaintenanceDataModel</returns>
+        public Task<SalesMaintenanceDataModel> GetSalesMaintenanceAsync(int dealNumber)
+        {
+            // Gets a single sales record
+            return Task.FromResult(mDbContext.SalesMaintenance.FirstOrDefault(u => u.DealNumber == dealNumber));
+
+        }
+
+        /// <summary>
+        /// Gets a single sales warranty contract record from the sales service table
+        /// </summary>
+        /// <param name="dealNumber"></param>
+        /// <returns>SalesWarrantyDataModel</returns>
+        public Task<SalesWarrantyDataModel> GetSalesWarrantyAsync(int dealNumber)
+        {
+            // Gets a single sales record
+            return Task.FromResult(mDbContext.SalesWarranty.FirstOrDefault(u => u.DealNumber == dealNumber));
+
+        }
+
+        /// <summary>
+        /// Gets a single sales gap contract record from the sales service table
+        /// </summary>
+        /// <param name="dealNumber"></param>
+        /// <returns>SalesGapDataModel</returns>
+        public Task<SalesGapDataModel> GetSalesGapAsync(int dealNumber)
+        {
+            // Gets a single sales record
+            return Task.FromResult(mDbContext.SalesGap.FirstOrDefault(u => u.DealNumber == dealNumber));
+
+        }
+
         #endregion
 
         #endregion

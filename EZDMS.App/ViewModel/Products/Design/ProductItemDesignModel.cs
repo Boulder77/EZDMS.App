@@ -34,7 +34,7 @@ namespace EZDMS.App
             Mileage = new TextEntryViewModel { Label = "Mileage", OriginalText = "80000" };
             ContractNumber = new TextEntryViewModel { Label = "Contract No", OriginalText = "myContract No" };
             InPayment = true;
-            DisappearingDeductible = false;
+            IsDisappearingDeductible = false;
             Taxable = true;
 
         }

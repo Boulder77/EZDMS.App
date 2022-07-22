@@ -67,8 +67,8 @@
 
                 <Button Margin="5"  
                             Background="{StaticResource WordOrangeBrush}"
-                            Command="{Binding ClearSearchCommand}"
-
+                            Command="{Binding SaveCommand}"
+                            local:IsBusyProperty.Value="{Binding Saving}"
                             Foreground="{StaticResource ForegroundLightBrush}"
                             FontSize="{StaticResource FontSizeRegular}"
                             Content="Save Close"

@@ -41,10 +41,11 @@
 
                 <!---->
                 <StackPanel>
-                    <ComboBox  ItemsSource="{Binding Providers}"
-                           DisplayMemberPath="Name" 
-                           SelectedItem="{Binding Path=SelectedProvider}"
-                           IsSynchronizedWithCurrentItem="True"    
+                    <ComboBox x:Name="cbProviders"  ItemsSource="{Binding Providers}"
+                           DisplayMemberPath="Name"                                                       
+                           SelectedValuePath="Number"
+                           SelectedItem="SelectedProviderNumber"
+                           SelectionChanged="CbProviders_SelectionChanged"
                            Margin="5,10,5,0"
                            HorizontalContentAlignment="Center"
                            FontFamily="{StaticResource LatoRegular}">
@@ -72,19 +73,15 @@
                        />
 
                 <!---->
-                <ComboBox  ItemsSource="{Binding Plans}"
+                <ComboBox  ItemsSource="{Binding Plans}"                   
                    SelectedItem="{Binding SelectedPlan}"
+                   IsSynchronizedWithCurrentItem="True"
+                   DisplayMemberPath="Name" 
                    Margin="5,10,5,0"
                    HorizontalContentAlignment="Center"
                    FontFamily="{StaticResource LatoRegular}"
                    >
-
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}"/>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-
+                  
                 </ComboBox>
 
             </StackPanel>
@@ -107,7 +104,7 @@
             <StackPanel Grid.Row="1" Grid.Column="5" Margin="8">
                 <Label Content="Disappearing"/>
                 <CheckBox Grid.Column="5"
-                      IsChecked="{Binding DisappearingDeductible}"                      
+                      IsChecked="{Binding IsDisappearingDeductible}"                      
                       />                
             </StackPanel>
 
