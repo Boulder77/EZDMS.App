@@ -84,7 +84,27 @@
                 </ComboBox>
 
             </StackPanel>
-            <local:NumericalInputVertControl Grid.Column="3" DataContext="{Binding Retail}"/>
+            <StackPanel Orientation="Vertical"
+                        Grid.Column="3" >
+
+                <!-- Label -->
+                <TextBlock Text="Retail"
+                       Margin="10 12"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       FontFamily="{StaticResource LatoRegular}"
+                       />
+
+                <!---->
+                <TextBox Text="{Binding Amount}"
+                     Background="Transparent"
+                     Grid.Row="1"
+                     FontSize="{StaticResource FontSizeRegular}"
+                     Padding="2"
+                     Margin="10 10 15 8"
+                     />
+
+            </StackPanel>
             <local:NumericalInputVertControl Grid.Column="4" DataContext="{Binding Cost}"/>
             <StackPanel Grid.Column="5" Margin="8">
                 <Label Content="Payment"/>

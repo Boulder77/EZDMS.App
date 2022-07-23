@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:EZDMS.App"
              xmlns:core="clr-namespace:EZDMS.App.Core;assembly=EZDMS.App.Core"
              mc:Ignorable="d" 
-             d:DataContext="{x:Static local:NumericalEntryDesignModel.Instance}">
+             d:DataContext="{x:Static local:DecimalInputDesignModel.Instance}">
 
     <!-- Grey underline -->
     <Border BorderBrush="{StaticResource ForegroundDarkBrush}"
@@ -16,12 +16,12 @@
         <Grid Background="Transparent"              
               >
 
-            <!-- Double click to edit --><!--
-            <Grid.InputBindings>
+            <!-- Double click to edit -->
+            <!--<Grid.InputBindings>
                 <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding EditCommand}" />
-            </Grid.InputBindings>
+            </Grid.InputBindings>-->
 
-            --><!-- Hover over to show edit button --><!--
+            <!-- Hover over to show edit button --><!--
             <Grid.Triggers>
                 <EventTrigger RoutedEvent="MouseEnter">
                     <BeginStoryboard>
@@ -47,9 +47,10 @@
 
             <!-- Label -> Name* -> Buttons -->
             <Grid.ColumnDefinitions>
+                
                 <ColumnDefinition Name="LabelColumnDefinition" Width="120" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="25" />
+               
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -67,84 +68,14 @@
                        FontFamily="{StaticResource LatoRegular}"
                        />
 
-            <!-- Edit Content --><!--
-            <TextBox Text="{Binding EditedText, UpdateSourceTrigger=PropertyChanged}"
-                     Grid.Column="1"
-                     Opacity="0"
-                     local:AnimateFadeInProperty.Value="{Binding Editing}"
-                     local:FocusAndSelectProperty.Value="{Binding Editing}"
+            <!-- Edit Content -->
+            <TextBox Text="{Binding Amount}"
+                     Background="Transparent"
+                     Grid.Row="1"
                      FontSize="{StaticResource FontSizeRegular}"
                      Padding="2"
                      Margin="10 10 15 8"
-                     />-->
-
-            <!-- Content -->
-            <Grid Grid.Row="1"
-                  Margin="5,5,10,5"
-                  VerticalAlignment="Center"                  
-                        >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="15" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="$" HorizontalAlignment="Left" />                
-                    <TextBlock Grid.Column="1" Text="{Binding OriginalAmount, Converter={local:DecimalToDisplayMoneyConverter}}"                       
-                               local:AnimateFadeInProperty.Value="{Binding Editing, Converter={local:BooleanInvertConverter}}"                               
-                               HorizontalAlignment="Left"
-                               IsEnabled="{Binding Editable, Converter={local:BooleanToVisiblityGoneConverter}}"
-                               ToolTip="{Binding OriginalAmount}"
-                                />
-            </Grid>
-            
-
-            <!-- Edit button container --><!--
-            <Grid Grid.Column="2" 
-                  HorizontalAlignment="Right"
-                  VerticalAlignment="Center"                  
-                  local:AnimateFadeInProperty.Value="{Binding Editing, Converter={local:BooleanInvertConverter}}">
-
-                --><!-- Edit Button --><!--                
-                <Button Content="{StaticResource FontAwesomeArrowRightIcon}"
-                        FontFamily="{StaticResource FontAwesome}" 
-                        HorizontalContentAlignment="Right"
-                        Visibility="{Binding Editable, Converter={local:BooleanToVisiblityGoneConverter}}"
-                        IsDefault="True"
-                        Cursor="Hand"
-                        Command="{Binding EditCommand}"
-                        Background="Transparent"
-                        Foreground="{StaticResource WordVeryLightBlueBrush}"
-                        Padding="2"
-                        Margin="6 0 0 0"
-                        VerticalAlignment="Center"
-                        FontSize="{StaticResource FontSizeSmall}"
-                        >
-                    <Button.LayoutTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="-45"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Button.LayoutTransform>
-                </Button>
-
-            </Grid>-->
-
-            <!-- Working spinner container --><!--
-            <Grid Grid.Column="2" 
-                  HorizontalAlignment="Right"
-                  VerticalAlignment="Center"
-                  Visibility="{Binding Editable, Converter={local:BooleanToVisiblityGoneConverter}}"
-                  local:AnimateFadeInProperty.Value="{Binding Working}">
-                  
-
-                <Border Padding="0 0 5 0">
-                    <TextBlock Style="{StaticResource SpinningText}" />
-                </Border>
-
-            </Grid>-->
-
-
+                     />
 
         </Grid>
 

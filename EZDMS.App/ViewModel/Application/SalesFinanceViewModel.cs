@@ -464,115 +464,116 @@ namespace EZDMS.App
             DeskingTotals = new SalesDeskingTotalsViewModel
             {
 
-                SellingPrice = new NumericalEntryViewModel 
+                SellingPrice = new DecimalInputViewModel 
                 { 
                     Label = "Selling Price",
-                    OriginalAmount = salesFinance.SellingPrice
+                    Amount = salesFinance.SellingPrice,
+                   
                 },
                                    
-                FrontOptions = new NumericalEntryViewModel 
+                FrontOptions = new DecimalInputViewModel 
                 { 
                     Label = "Front Options", 
-                    OriginalAmount = salesFinance.TotalFrontAdds, 
+                    Amount = salesFinance.TotalFrontAdds, 
                     Editable = true 
 
                 },
                     
-                Taxes = new NumericalEntryViewModel 
+                Taxes = new DecimalInputViewModel 
                 { 
                     Label = "Taxes", 
-                    OriginalAmount = salesFinance.TotalTaxes,
+                    Amount = salesFinance.TotalTaxes,
                     Editable = true 
                 },
                     
-                Fees = new NumericalEntryViewModel 
+                Fees = new DecimalInputViewModel 
                 { 
                     Label = "Fees",
-                    OriginalAmount = (salesFinance.TotalOfficialFees + salesFinance.TotalDealerFees),
+                    Amount = (salesFinance.TotalOfficialFees + salesFinance.TotalDealerFees),
                     Editable = true
                 },
                   
-                BackOptions = new NumericalEntryViewModel 
+                BackOptions = new DecimalInputViewModel 
                 { 
                     Label = "Back Options",
-                    OriginalAmount = salesFinance.TotalBackAdds,
+                    Amount = salesFinance.TotalBackAdds,
                     Editable = true 
                 },
                     
-                Service = new NumericalEntryViewModel 
+                Service = new DecimalInputViewModel 
                 { 
                     Label = "Service", 
-                    OriginalAmount = (salesFinance.ServiceContract + salesFinance.Maintenance + salesFinance.Warranty),
+                    Amount = (salesFinance.ServiceContract + salesFinance.Maintenance + salesFinance.Warranty),
                     Editable = true,
                     DialogAction = ShowProductsDialogAsync
                 },
                   
-                Gap = new NumericalEntryViewModel 
+                Gap = new DecimalInputViewModel 
                 { 
                     Label = "Gap", 
-                    OriginalAmount = salesFinance.Gap,
+                    Amount = salesFinance.Gap,
                     Editable = true,
                     DialogAction = ShowProductsDialogAsync
                 },
                   
-                CreditInsurance = new NumericalEntryViewModel 
+                CreditInsurance = new DecimalInputViewModel 
                 { 
                     Label = "Credit Insurance", 
-                    OriginalAmount = salesFinance.LAHInsurance, 
+                    Amount = salesFinance.LAHInsurance, 
                     Editable = true,
                     DialogAction = ShowProductsDialogAsync
                 },
                   
-                SubTotal = new NumericalEntryViewModel 
+                SubTotal = new DecimalInputViewModel 
                 {
                     Label = "SUBTOTAL",
-                    OriginalAmount = SubTotalAmount
+                    Amount = SubTotalAmount
                 },
                   
-                Cash = new NumericalEntryViewModel 
+                Cash = new DecimalInputViewModel 
                 { 
                     Label = "Cash", 
-                    OriginalAmount = salesFinance.TotalCashDown, 
+                    Amount = salesFinance.TotalCashDown, 
                     Editable = true 
                 },
                   
-                Rebates = new NumericalEntryViewModel 
+                Rebates = new DecimalInputViewModel 
                 { 
                     Label = "Rebates",
-                    OriginalAmount = salesFinance.TotalRebates,
+                    Amount = salesFinance.TotalRebates,
                     Editable = true 
                 },
                   
-                TradeAllowance = new NumericalEntryViewModel 
+                TradeAllowance = new DecimalInputViewModel 
                 { 
                     Label = "Trade Allowance",
-                    OriginalAmount = salesFinance.TotalAllowance,
+                    Amount = salesFinance.TotalAllowance,
                     Editable = true 
                 },
                   
-                TradePayoff = new NumericalEntryViewModel 
+                TradePayoff = new DecimalInputViewModel 
                 { 
                     Label = "Trade Payoff",
-                    OriginalAmount = salesFinance.TotalPayoff,
+                    Amount = salesFinance.TotalPayoff,
                     Editable = true 
                 },
                   
-                Total = new NumericalEntryViewModel 
+                Total = new DecimalInputViewModel 
                 { 
                     Label = "TOTAL",
-                    OriginalAmount = TotalAmount 
+                    Amount = TotalAmount 
                 },
                   
-                CashFromCustomer = new NumericalEntryViewModel 
+                CashFromCustomer = new DecimalInputViewModel 
                 { 
                     Label = "Cash From Customer",
-                    OriginalAmount = salesFinance.TotalCashDown
+                    Amount = salesFinance.TotalCashDown
                 },
                   
-                Payment = new NumericalEntryViewModel 
+                Payment = new DecimalInputViewModel 
                 { 
                     Label = "Payment",
-                    OriginalAmount = salesFinance.Payment 
+                    Amount = salesFinance.Payment 
                 },
 
             };
@@ -585,41 +586,42 @@ namespace EZDMS.App
             if (salesFinance == null)
                 return;
 
-            // The amount for the trade difference TextDisplayViewModel
+            // The amount for the trade difference 
             var tradeDifference = salesFinance.SellingPrice - salesFinance.TotalAllowance;
 
 
             SalesSummary = new SalesSummaryViewModel
             {
                 // Create the APR
-                APR = new TextEntryViewModel
+                APR = new TextInputViewModel
                 {
                     Label = "APR",
-                    OriginalText = salesFinance.APR.ToString("#.00")
+                    Text = salesFinance.APR.ToString("#.00")
                 },
 
                 // Create the APR
-                EffectiveAPR = new TextEntryViewModel
+                EffectiveAPR = new TextInputViewModel
 
                 {
                     Label = "Effective APR",
-                    OriginalText = salesFinance.EffectiveAPR.ToString("#.00")
+                    Text = salesFinance.EffectiveAPR.ToString("#.00")
 
                 },
 
                 // Create the trade difference
-                TradeDifference = new TextDisplayViewModel
+                TradeDifference = new TextInputViewModel
                 {
                     Label = "Trade Difference",
-                    DisplayText = tradeDifference.ToString("#.00")
+                    Text = tradeDifference.ToString("#.00"),                    
+                    Editable = true
 
                 },
 
                 // Create the term
-                Term = new TextEntryViewModel
+                Term = new TextInputViewModel
                 {
                     Label = "Term",
-                    OriginalText = salesFinance.Term.ToString("###")
+                    Text = salesFinance.Term.ToString("###")
 
                 },
 
@@ -631,10 +633,10 @@ namespace EZDMS.App
                 },
 
                 // Create the days to first payment
-                DaysToFirstPayment = new TextEntryViewModel
+                DaysToFirstPayment = new TextInputViewModel
                 {
                     Label = "Days To First Payment",
-                    OriginalText = salesFinance.DaysTo1stPayment.ToString("###")
+                    Text = salesFinance.DaysTo1stPayment.ToString("###")
                 },
 
                 // Create the payment date
@@ -662,40 +664,40 @@ namespace EZDMS.App
             {
                 NumberOfPayments=salesFinance.NumberOfPayments,
 
-                Payment = new NumericalEntryViewModel
+                Payment = new DecimalInputViewModel
                 {
                     Label = $"{salesFinance.NumberOfPayments} Payments of {salesFinance.Payment}",
-                    OriginalAmount = salesFinance.Payment
+                    Amount = salesFinance.Payment
                 },
 
-                FinalPayment = new NumericalEntryViewModel
+                FinalPayment = new DecimalInputViewModel
                 {
                     Label = "Final Payment",
-                    OriginalAmount = salesFinance.LastPayment
+                    Amount = salesFinance.LastPayment
                 },
 
-                FinanceCharge = new NumericalEntryViewModel
+                FinanceCharge = new DecimalInputViewModel
                 {
                     Label = "Finance Charge",
-                    OriginalAmount = salesFinance.FinanceCharge
+                    Amount = salesFinance.FinanceCharge
                 },
 
-                TotalOfPayments = new NumericalEntryViewModel
+                TotalOfPayments = new DecimalInputViewModel
                 {
                     Label = "Total Of Payments",
-                    OriginalAmount = salesFinance.TotalOfPayments
+                    Amount = salesFinance.TotalOfPayments
                 },
 
-                TotalDown = new NumericalEntryViewModel
+                TotalDown = new DecimalInputViewModel
                 {
                     Label = "Total Down",
-                    OriginalAmount = salesFinance.TotalDown
+                    Amount = salesFinance.TotalDown
                 },
 
-                TotalSalePrice = new NumericalEntryViewModel
+                TotalSalePrice = new DecimalInputViewModel
                 {
                     Label = "Total Sale Price",
-                    OriginalAmount = salesFinance.TotalSalePrice
+                    Amount = salesFinance.TotalSalePrice
                 },
 
             };
@@ -708,92 +710,92 @@ namespace EZDMS.App
             if (salesDeal == null)
                 return;
 
-            SalesDealCard.BuyerName.DisplayText = salesDeal?.BuyerName;
-            SalesDealCard.CoBuyerName.DisplayText = salesDeal?.CoBuyerName;
-            SalesDealCard.Vehicle.DisplayText = salesDeal?.VehicleInfo;
-            SalesDealCard.Status.DisplayText = salesDeal?.Status;
-            SalesDealCard.Vehicle.DisplayText = salesDeal?.VehicleInfo;
-            SalesDealCard.DealType.DisplayText = salesDeal?.Type;
-            SalesDealCard.CreatedDate.DisplayText = salesDeal.CreatedDate.ToString("MM/dd/yyyy");
-            SalesDealCard.DealDate.DisplayText = salesDeal.DealDate.ToString("MM/dd/yyyy");
-            SalesDealCard.LastActivityDate.DisplayText = salesDeal.LastActivityDate.ToString("MM/dd/yyyy");
-            SalesDealCard.Trades.DisplayText = $"{salesDeal?.Trade1Info} \r\n {salesDeal?.Trade2Info} \r\n {salesDeal?.Trade3Info}";
-            SalesDealCard.Salesperson.DisplayText = $"{salesDeal?.SalesPerson} \r\n {salesDeal?.SalesPerson2}";
-            SalesDealCard.SalesManager.DisplayText = salesDeal?.SalesManager;
-            SalesDealCard.FinanceManager.DisplayText = salesDeal?.FinanceManager;
+            SalesDealCard.BuyerName.Text = salesDeal?.BuyerName;
+            SalesDealCard.CoBuyerName.Text = salesDeal?.CoBuyerName;
+            SalesDealCard.Vehicle.Text = salesDeal?.VehicleInfo;
+            SalesDealCard.Status.Text = salesDeal?.Status;
+            SalesDealCard.Vehicle.Text = salesDeal?.VehicleInfo;
+            SalesDealCard.DealType.Text = salesDeal?.Type;
+            SalesDealCard.CreatedDate.Text = salesDeal.CreatedDate.ToString("MM/dd/yyyy");
+            SalesDealCard.DealDate.Text = salesDeal.DealDate.ToString("MM/dd/yyyy");
+            SalesDealCard.LastActivityDate.Text = salesDeal.LastActivityDate.ToString("MM/dd/yyyy");
+            SalesDealCard.Trades.Text = $"{salesDeal?.Trade1Info} \r\n {salesDeal?.Trade2Info} \r\n {salesDeal?.Trade3Info}";
+            SalesDealCard.Salesperson.Text = $"{salesDeal?.SalesPerson} \r\n {salesDeal?.SalesPerson2}";
+            SalesDealCard.SalesManager.Text = salesDeal?.SalesManager;
+            SalesDealCard.FinanceManager.Text = salesDeal?.FinanceManager;
 
             //SalesDealCard = new SalesDealCardViewModel
             //{
-            //    BuyerName = new TextDisplayViewModel
+            //    BuyerName = new TextInputViewModel
             //    {
             //        Label = "Buyer Name",
-            //        DisplayText = salesDeal?.BuyerName
+            //        Text = salesDeal?.BuyerName
             //    },
 
-            //    CoBuyerName = new TextDisplayViewModel
+            //    CoBuyerName = new TextInputViewModel
             //    {
             //        Label = "CoBuyer Name",
-            //        DisplayText = salesDeal?.CoBuyerName
+            //        Text = salesDeal?.CoBuyerName
             //    },
 
-            //    Vehicle = new TextDisplayViewModel
+            //    Vehicle = new TextInputViewModel
             //    {
             //        Label = "Vehicle",
-            //        DisplayText = salesDeal?.VehicleInfo
+            //        Text = salesDeal?.VehicleInfo
             //    },
 
-            //    Status = new TextDisplayViewModel
+            //    Status = new TextInputViewModel
             //    {
             //        Label = "Status",
-            //        DisplayText = salesDeal?.Status
+            //        Text = salesDeal?.Status
             //    },
 
-            //    DealType = new TextDisplayViewModel
+            //    DealType = new TextInputViewModel
             //    {
             //        Label = "Deal Type",
-            //        DisplayText = salesDeal?.Type
+            //        Text = salesDeal?.Type
             //    },
 
-            //    Salesperson = new TextDisplayViewModel
+            //    Salesperson = new TextInputViewModel
             //    {
             //        Label = "Sales Person",
-            //        DisplayText = $"{salesDeal?.SalesPerson} \r\n {salesDeal?.SalesPerson2}"
+            //        Text = $"{salesDeal?.SalesPerson} \r\n {salesDeal?.SalesPerson2}"
             //    },
 
-            //    SalesManager = new TextDisplayViewModel
+            //    SalesManager = new TextInputViewModel
             //    {
             //        Label = "Sales Manager",
-            //        DisplayText = salesDeal?.SalesManager
+            //        Text = salesDeal?.SalesManager
             //    },
 
-            //    FinanceManager = new TextDisplayViewModel
+            //    FinanceManager = new TextInputViewModel
             //    {
             //        Label = "Finance Manager",
-            //        DisplayText = salesDeal?.FinanceManager
+            //        Text = salesDeal?.FinanceManager
             //    },
 
-            //    Trades = new TextDisplayViewModel
+            //    Trades = new TextInputViewModel
             //    {
             //        Label = "Trades",
-            //        DisplayText = $"{salesDeal?.Trade1Info} \r\n {salesDeal?.Trade2Info} \r\n {salesDeal?.Trade3Info}"
+            //        Text = $"{salesDeal?.Trade1Info} \r\n {salesDeal?.Trade2Info} \r\n {salesDeal?.Trade3Info}"
             //    },
 
-            //    CreatedDate = new TextDisplayViewModel
+            //    CreatedDate = new TextInputViewModel
             //    {
             //        Label = "Created Date",
-            //        DisplayText = salesDeal.CreatedDate.ToString("MM/dd/yyyy")
+            //        Text = salesDeal.CreatedDate.ToString("MM/dd/yyyy")
             //    },
 
-            //    LastActivityDate = new TextDisplayViewModel
+            //    LastActivityDate = new TextInputViewModel
             //    {
             //        Label = "Last Activity Date",
-            //        DisplayText = salesDeal.LastActivityDate.ToString("MM/dd/yyyy")
+            //        Text = salesDeal.LastActivityDate.ToString("MM/dd/yyyy")
             //    },
 
-            //    DealDate = new TextDisplayViewModel
+            //    DealDate = new TextInputViewModel
             //    {
             //        Label = "Deal Date",
-            //        DisplayText = salesDeal.DealDate.ToString("MM/dd/yyyy")
+            //        Text = salesDeal.DealDate.ToString("MM/dd/yyyy")
             //    },
 
             //};
@@ -850,13 +852,13 @@ namespace EZDMS.App
 
             {
 
-                CustomerNumber = new TextDisplayViewModel { Label = "Customer Number", DisplayText = Buyer?.Number },
+                CustomerNumber = new TextInputViewModel { Label = "Customer Number", Text = Buyer?.Number, Editable = false },
                 FullName = $"{Buyer?.FirstName} {Buyer?.MiddleName} {Buyer?.LastName}",
-                CreateDate = new TextDisplayViewModel { Label = "Created", DisplayText = Buyer.CreateDate.ToString("MM/dd/yyyy") },
-                LastModifiedDate = new TextDisplayViewModel { Label = "Last Modified", DisplayText = Buyer.LastModifiedDate.ToString("MM/dd/yyyy") },
-                MainPhone = new TextDisplayViewModel { Label = phoneLabel.ToString(), DisplayText = $"{mainPhone} {Buyer?.MainPhoneType}" },
-                MainEmail = new TextDisplayViewModel { Label = "1 Email", DisplayText = $"{Buyer?.Email} {Buyer?.EmailType}" },
-                FullAddress = new TextDisplayViewModel { Label = "1 Address", DisplayText = $"{Buyer?.StreetAddress} \r\n {Buyer?.City} , {Buyer?.State} {Buyer?.Zip}"},
+                CreateDate = new TextInputViewModel { Label = "Created", Text = Buyer.CreateDate.ToString("MM/dd/yyyy"), Editable = false },
+                LastModifiedDate = new TextInputViewModel { Label = "Last Modified", Text = Buyer.LastModifiedDate.ToString("MM/dd/yyyy"), Editable = false },
+                MainPhone = new TextInputViewModel { Label = phoneLabel.ToString(), Text = $"{mainPhone} {Buyer?.MainPhoneType}", Editable = false },
+                MainEmail = new TextInputViewModel { Label = "1 Email", Text = $"{Buyer?.Email} {Buyer?.EmailType}", Editable = false },
+                FullAddress = new TextInputViewModel { Label = "1 Address", Text = $"{Buyer?.StreetAddress} \r\n {Buyer?.City} , {Buyer?.State} {Buyer?.Zip}", Editable = false },
 
             };
 
@@ -869,19 +871,19 @@ namespace EZDMS.App
             CustomerBasicInfo = new CustomerBasicInfoViewModel
 
             {
-                FirstName = new TextEntryViewModel { Label = "First Name", OriginalText = Buyer?.FirstName },
-                MiddleName = new TextEntryViewModel { Label = "Middle Name", OriginalText = Buyer?.MiddleName },
-                LastName = new TextEntryViewModel { Label = "Last Name", OriginalText = Buyer?.LastName },
-                Suffix = new TextEntryViewModel { Label = "Suffix", OriginalText = Buyer?.Suffix },
-                Nickname = new TextEntryViewModel { Label = "Nickname", OriginalText = Buyer?.Nickname },
+                FirstName = new TextInputViewModel { Label = "First Name", Text = Buyer?.FirstName },
+                MiddleName = new TextInputViewModel { Label = "Middle Name", Text = Buyer?.MiddleName },
+                LastName = new TextInputViewModel { Label = "Last Name", Text = Buyer?.LastName },
+                Suffix = new TextInputViewModel { Label = "Suffix", Text = Buyer?.Suffix },
+                Nickname = new TextInputViewModel { Label = "Nickname", Text = Buyer?.Nickname },
                 //DateOfBirth = new DateSelectionViewModel { Label = "Date of Birth", Date = Convert.ToDateTime(Buyer?.DateOfBirth) },
                 //MaritalStatus=(MaritalStatusType)Enum.Parse(typeof(MaritalStatusType),Buyer?.MaritalStatus),
-                SocialSecurityNumber = new TextEntryViewModel { Label = "SSN", OriginalText = Buyer?.SSN },
-                Email = new TextEntryViewModel { Label = "Email", OriginalText = Buyer?.Email },
+                SocialSecurityNumber = new TextInputViewModel { Label = "SSN", Text = Buyer?.SSN },
+                Email = new TextInputViewModel { Label = "Email", Text = Buyer?.Email },
                 //EmailType = (EmailType)Enum.Parse(typeof(EmailType), Buyer?.EmailType),
-                HomePhone = new TextEntryViewModel { Label = "Home Phone", OriginalText = Buyer?.HomePhone },
-                WorkPhone = new TextEntryViewModel { Label = "Work Phone", OriginalText = Buyer?.WorkPhone },
-                CellPhone = new TextEntryViewModel { Label = "Cell Phone", OriginalText = Buyer?.CellPhone },
+                HomePhone = new TextInputViewModel { Label = "Home Phone", Text = Buyer?.HomePhone },
+                WorkPhone = new TextInputViewModel { Label = "Work Phone", Text = Buyer?.WorkPhone },
+                CellPhone = new TextInputViewModel { Label = "Cell Phone", Text = Buyer?.CellPhone },
             };
 
         }
@@ -893,13 +895,13 @@ namespace EZDMS.App
 
             {
                 AddressDescription = "Physical Address (Primary)",
-                StreetAddress = new TextEntryViewModel { Label = "Address", OriginalText = Buyer?.StreetAddress },
-                City = new TextEntryViewModel { Label = "City", OriginalText = Buyer?.City },
+                StreetAddress = new TextInputViewModel { Label = "Address", Text = Buyer?.StreetAddress },
+                City = new TextInputViewModel { Label = "City", Text = Buyer?.City },
                 State = States.OH,
-                Zip = new TextEntryViewModel { Label = "Zip", OriginalText = Buyer?.Zip },
+                Zip = new TextInputViewModel { Label = "Zip", Text = Buyer?.Zip },
                 AddressType = AddressType.Physical,
-                County = new TextEntryViewModel { Label = "County", OriginalText = Buyer?.County },
-                CountyCode = new TextEntryViewModel { Label = "County Code", OriginalText = Buyer.CountyCode },
+                County = new TextInputViewModel { Label = "County", Text = Buyer?.County },
+                CountyCode = new TextInputViewModel { Label = "County Code", Text = Buyer.CountyCode },
 
             };
 
@@ -911,19 +913,19 @@ namespace EZDMS.App
             VehicleCard = new VehicleCardViewModel
 
             {
-                StockNumber = new TextDisplayViewModel { Label = "Stock Number", DisplayText = Vehicle?.StockNumber },
-                Type = new TextDisplayViewModel { Label = "Type", DisplayText = Vehicle?.Type },
-                Status = new TextDisplayViewModel { Label = "Status", DisplayText = Vehicle?.Status },
-                DaysInStock = new TextDisplayViewModel { Label = "In Stock", DisplayText = $"{Vehicle?.DaysInStock} days" },
-                Color = new TextDisplayViewModel { Label = "Color", DisplayText = Vehicle?.Color },
-                InteriorColor = new TextDisplayViewModel { Label = "Interior", DisplayText = Vehicle?.InteriorColor },
-                LotLocation = new TextDisplayViewModel { Label = "Lot Location", DisplayText = Vehicle?.LotLocation },
-                Category = new TextDisplayViewModel { Label = "Category", DisplayText = Vehicle?.Category },
-                VIN = new TextDisplayViewModel { Label = "VIN", DisplayText = Vehicle?.VIN },
-                Odometer = new TextDisplayViewModel { Label = "Odometer", DisplayText = $"{Vehicle?.Odometer} miles" },
-                MSRP = new TextDisplayViewModel { Label = "MSRP", DisplayText = Vehicle?.MSRP.ToString() },
-                ListPrice = new TextDisplayViewModel { Label = "List Price", DisplayText = Vehicle?.ListPrice.ToString() },
-                InternetPrice = new TextDisplayViewModel { Label = "Internet Price", DisplayText = Vehicle?.InternetPrice.ToString() },
+                StockNumber = new TextInputViewModel { Label = "Stock Number", Text = Vehicle?.StockNumber, Editable = false },
+                Type = new TextInputViewModel { Label = "Type", Text = Vehicle?.Type, Editable = false },
+                Status = new TextInputViewModel { Label = "Status", Text = Vehicle?.Status, Editable = false },
+                DaysInStock = new TextInputViewModel { Label = "In Stock", Text = $"{Vehicle?.DaysInStock} days", Editable = false },
+                Color = new TextInputViewModel { Label = "Color", Text = Vehicle?.Color, Editable = false },
+                InteriorColor = new TextInputViewModel { Label = "Interior", Text = Vehicle?.InteriorColor, Editable = false },
+                LotLocation = new TextInputViewModel { Label = "Lot Location", Text = Vehicle?.LotLocation, Editable = false },
+                Category = new TextInputViewModel { Label = "Category", Text = Vehicle?.Category, Editable = false },
+                VIN = new TextInputViewModel { Label = "VIN", Text = Vehicle?.VIN, Editable = false },
+                Odometer = new TextInputViewModel { Label = "Odometer", Text = $"{Vehicle?.Odometer} miles", Editable = false },
+                MSRP = new TextInputViewModel { Label = "MSRP", Text = Vehicle?.MSRP.ToString(), Editable = false },
+                ListPrice = new TextInputViewModel { Label = "List Price", Text = Vehicle?.ListPrice.ToString(), Editable = false },
+                InternetPrice = new TextInputViewModel { Label = "Internet Price", Text = Vehicle?.InternetPrice.ToString(), Editable = false },
 
 
             };
@@ -936,20 +938,20 @@ namespace EZDMS.App
             VehicleBasicInfo = new VehicleBasicInfoViewModel
 
             {
-                StockNumber = new TextEntryViewModel { Label = "Stock Number", OriginalText = Vehicle?.StockNumber },
-                VIN = new TextEntryViewModel { Label = "VIN", OriginalText = Vehicle?.VIN },
-                Type = new TextEntryViewModel { Label = "Type", OriginalText = Vehicle?.Type },
-                Status = new TextEntryViewModel { Label = "Status", OriginalText = Vehicle?.Status },
-                Year = new TextEntryViewModel { Label = "Year", OriginalText = Vehicle?.Year.ToString() },
-                Make = new TextEntryViewModel { Label = "Make", OriginalText = Vehicle?.Make },
-                Model = new TextEntryViewModel { Label = "Status", OriginalText = Vehicle?.Model },
-                Trim = new TextEntryViewModel { Label = "Trim", OriginalText = Vehicle?.TrimColor },
-                Body = new TextEntryViewModel { Label = "Body", OriginalText = Vehicle?.BodyStyle },                
-                ExteriorColor = new TextEntryViewModel { Label = "Exterior Color", OriginalText = Vehicle?.Color },
-                InteriorColor = new TextEntryViewModel { Label = "Interior Color", OriginalText = Vehicle?.InteriorColor },
-                Class = new TextEntryViewModel { Label = "Class", OriginalText = Vehicle?.Class },
-                Odometer = new TextEntryViewModel { Label = "Odometer", OriginalText = $"{Vehicle?.Odometer} miles" },
-                OdometerStatus = new TextEntryViewModel { Label = "Odometer Status", OriginalText = Vehicle?.OdometerStatus },
+                StockNumber = new TextInputViewModel { Label = "Stock Number", Text = Vehicle?.StockNumber },
+                VIN = new TextInputViewModel { Label = "VIN", Text = Vehicle?.VIN },
+                Type = new TextInputViewModel { Label = "Type", Text = Vehicle?.Type },
+                Status = new TextInputViewModel { Label = "Status", Text = Vehicle?.Status },
+                Year = new TextInputViewModel { Label = "Year", Text = Vehicle?.Year.ToString() },
+                Make = new TextInputViewModel { Label = "Make", Text = Vehicle?.Make },
+                Model = new TextInputViewModel { Label = "Status", Text = Vehicle?.Model },
+                Trim = new TextInputViewModel { Label = "Trim", Text = Vehicle?.TrimColor },
+                Body = new TextInputViewModel { Label = "Body", Text = Vehicle?.BodyStyle },                
+                ExteriorColor = new TextInputViewModel { Label = "Exterior Color", Text = Vehicle?.Color },
+                InteriorColor = new TextInputViewModel { Label = "Interior Color", Text = Vehicle?.InteriorColor },
+                Class = new TextInputViewModel { Label = "Class", Text = Vehicle?.Class },
+                Odometer = new TextInputViewModel { Label = "Odometer", Text = $"{Vehicle?.Odometer} miles" },
+                OdometerStatus = new TextInputViewModel { Label = "Odometer Status", Text = Vehicle?.OdometerStatus },
                 HasFactoryWarranty = (bool)Vehicle?.HasFactoryWarranty               
             };
 
@@ -961,20 +963,20 @@ namespace EZDMS.App
             VehiclePricing = new VehiclePricingViewModel
 
             {
-                MSRP = new NumericalEntryViewModel { Label = "MSRP", OriginalAmount = Vehicle.MSRP },
-                InventoryPrice = new NumericalEntryViewModel { Label = "Inventory Price", OriginalAmount = Vehicle.InventoryPrice },
-                ListPrice = new NumericalEntryViewModel { Label = "List Price", OriginalAmount = Vehicle.ListPrice },
-                InternetPrice = new NumericalEntryViewModel { Label = "Internet Price", OriginalAmount = Vehicle.InternetPrice },
-                AccountingCost = new NumericalEntryViewModel { Label = "Accounting Cost", OriginalAmount = Vehicle.AccountingCost },
-                ACV = new NumericalEntryViewModel { Label = "ACV", OriginalAmount = Vehicle.ACV },
-                AddedCosts = new NumericalEntryViewModel { Label = "Added Costs", OriginalAmount = Vehicle.AddedCosts },
-                Advertising = new NumericalEntryViewModel { Label = "Advertising", OriginalAmount = Vehicle.Advertising },
-                Reconditioning = new NumericalEntryViewModel { Label = "Reconditioning", OriginalAmount = Vehicle.Reconditioning },
-                Holdback = new NumericalEntryViewModel { Label = "Holdback", OriginalAmount = Vehicle.Holdback },
-                DealerPack = new NumericalEntryViewModel { Label = "Dealer Pack", OriginalAmount = Vehicle.DealerPack },
-                BuyerFee = new NumericalEntryViewModel { Label = "Buyer Fee", OriginalAmount = Vehicle.BuyerFee },
-                InvoicePrice = new NumericalEntryViewModel { Label = "Invoice Price", OriginalAmount = Vehicle.InvoicePrice },
-                DealerPackPercentage = new NumericalEntryViewModel { Label = "Dealer Pack(%)", OriginalAmount = Vehicle.InvoicePrice },
+                MSRP = new DecimalInputViewModel { Label = "MSRP", Amount = Vehicle.MSRP },
+                InventoryPrice = new DecimalInputViewModel { Label = "Inventory Price", Amount = Vehicle.InventoryPrice },
+                ListPrice = new DecimalInputViewModel { Label = "List Price", Amount = Vehicle.ListPrice },
+                InternetPrice = new DecimalInputViewModel { Label = "Internet Price", Amount = Vehicle.InternetPrice },
+                AccountingCost = new DecimalInputViewModel { Label = "Accounting Cost", Amount = Vehicle.AccountingCost },
+                ACV = new DecimalInputViewModel { Label = "ACV", Amount = Vehicle.ACV },
+                AddedCosts = new DecimalInputViewModel { Label = "Added Costs", Amount = Vehicle.AddedCosts },
+                Advertising = new DecimalInputViewModel { Label = "Advertising", Amount = Vehicle.Advertising },
+                Reconditioning = new DecimalInputViewModel { Label = "Reconditioning", Amount = Vehicle.Reconditioning },
+                Holdback = new DecimalInputViewModel { Label = "Holdback", Amount = Vehicle.Holdback },
+                DealerPack = new DecimalInputViewModel { Label = "Dealer Pack", Amount = Vehicle.DealerPack },
+                BuyerFee = new DecimalInputViewModel { Label = "Buyer Fee", Amount = Vehicle.BuyerFee },
+                InvoicePrice = new DecimalInputViewModel { Label = "Invoice Price", Amount = Vehicle.InvoicePrice },
+                DealerPackPercentage = new DecimalInputViewModel { Label = "Dealer Pack(%)", Amount = Vehicle.InvoicePrice },
                 
             };
 
@@ -986,26 +988,26 @@ namespace EZDMS.App
             VehicleDetails = new VehicleDetailsViewModel
 
             {
-                NumberOfDoors = new TextEntryViewModel { Label = "Number Of Doors", OriginalText = Vehicle?.NumberOfDoors.ToString() },
-                Cylinders = new TextEntryViewModel { Label = "Cylinders", OriginalText = Vehicle?.Cylinders.ToString() },
-                FuelType = new TextEntryViewModel { Label = "Fuel Type", OriginalText = Vehicle?.FuelType },
-                FuelSystem = new TextEntryViewModel { Label = "Fuel System", OriginalText = Vehicle?.FuelSystem },
-                FuelEconomy = new TextEntryViewModel { Label = "Fuel Economy", OriginalText = Vehicle?.FuelEconomy },
-                TransmissionType = new TextEntryViewModel { Label = "Transmission Type", OriginalText = Vehicle?.TransmissionType },
-                TransmissionSpeed = new TextEntryViewModel { Label = "Transmission Speed", OriginalText = Vehicle?.TransmissionSpeed },
-                Drivetrain = new TextEntryViewModel { Label = "Drivetrain", OriginalText = Vehicle?.Drivetrain },
-                Engine = new TextEntryViewModel { Label = "Engine", OriginalText = Vehicle?.Engine },
-                EngineType = new TextEntryViewModel { Label = "Engine Type", OriginalText = Vehicle?.EngineType },
-                EngineSerialNumber = new TextEntryViewModel { Label = "Engine Serial Number", OriginalText = Vehicle?.EngineSerialNumber },
-                IgnitionKeyCode = new TextEntryViewModel { Label = "Ignition Key Code", OriginalText = Vehicle?.IgnitionKeyCode },
-                TrunkKeyCode = new TextEntryViewModel { Label = "Trunk Key Code", OriginalText = Vehicle?.TrunkKeyCode },
-                Weight = new TextEntryViewModel { Label = "Weight", OriginalText = Vehicle?.Weight.ToString() },
-                LicensePlate = new TextEntryViewModel { Label = "License Plate", OriginalText = Vehicle?.LicensePlate },
-                LicenseState = new TextEntryViewModel { Label = "License State", OriginalText = Vehicle?.LicenseState },
+                NumberOfDoors = new TextInputViewModel { Label = "Number Of Doors", Text = Vehicle?.NumberOfDoors.ToString() },
+                Cylinders = new TextInputViewModel { Label = "Cylinders", Text = Vehicle?.Cylinders.ToString() },
+                FuelType = new TextInputViewModel { Label = "Fuel Type", Text = Vehicle?.FuelType },
+                FuelSystem = new TextInputViewModel { Label = "Fuel System", Text = Vehicle?.FuelSystem },
+                FuelEconomy = new TextInputViewModel { Label = "Fuel Economy", Text = Vehicle?.FuelEconomy },
+                TransmissionType = new TextInputViewModel { Label = "Transmission Type", Text = Vehicle?.TransmissionType },
+                TransmissionSpeed = new TextInputViewModel { Label = "Transmission Speed", Text = Vehicle?.TransmissionSpeed },
+                Drivetrain = new TextInputViewModel { Label = "Drivetrain", Text = Vehicle?.Drivetrain },
+                Engine = new TextInputViewModel { Label = "Engine", Text = Vehicle?.Engine },
+                EngineType = new TextInputViewModel { Label = "Engine Type", Text = Vehicle?.EngineType },
+                EngineSerialNumber = new TextInputViewModel { Label = "Engine Serial Number", Text = Vehicle?.EngineSerialNumber },
+                IgnitionKeyCode = new TextInputViewModel { Label = "Ignition Key Code", Text = Vehicle?.IgnitionKeyCode },
+                TrunkKeyCode = new TextInputViewModel { Label = "Trunk Key Code", Text = Vehicle?.TrunkKeyCode },
+                Weight = new TextInputViewModel { Label = "Weight", Text = Vehicle?.Weight.ToString() },
+                LicensePlate = new TextInputViewModel { Label = "License Plate", Text = Vehicle?.LicensePlate },
+                LicenseState = new TextInputViewModel { Label = "License State", Text = Vehicle?.LicenseState },
                 //LicenseExpirationDate = new DateSelectionViewModel { Label = "License Expiration Date", Date = Convert.ToDateTime(Vehicle?.LicenseExpirationDate) },
-                LotLocation = new TextEntryViewModel { Label = "Lot Location", OriginalText = Vehicle?.LotLocation },
-                Style = new TextEntryViewModel { Label = "Style", OriginalText = Vehicle?.Style },
-                ModelCode = new TextEntryViewModel { Label = "Model Code", OriginalText = Vehicle?.ModelCode },
+                LotLocation = new TextInputViewModel { Label = "Lot Location", Text = Vehicle?.LotLocation },
+                Style = new TextInputViewModel { Label = "Style", Text = Vehicle?.Style },
+                ModelCode = new TextInputViewModel { Label = "Model Code", Text = Vehicle?.ModelCode },
 
             };
 
@@ -1015,28 +1017,28 @@ namespace EZDMS.App
         {
             
             //Customer.Prefix = CustomerBasicInfo.Prefix.ToString();
-            Customer.Suffix = CustomerBasicInfo.Suffix.OriginalText;
+            Customer.Suffix = CustomerBasicInfo.Suffix.Text;
             //Customer.Status = CustomerBasicInfo.MaritalStatus.ToString();
-            Customer.FirstName = CustomerBasicInfo.FirstName.OriginalText;
-            Customer.MiddleName = CustomerBasicInfo.MiddleName.OriginalText;
-            Customer.LastName = CustomerBasicInfo.LastName.OriginalText;
+            Customer.FirstName = CustomerBasicInfo.FirstName.Text;
+            Customer.MiddleName = CustomerBasicInfo.MiddleName.Text;
+            Customer.LastName = CustomerBasicInfo.LastName.Text;
             //Customer.Gender = CustomerBasicInfo.Gender.ToString();
-            Customer.Email = CustomerBasicInfo.Email.OriginalText;
+            Customer.Email = CustomerBasicInfo.Email.Text;
             //Customer.EmailType = CustomerBasicInfo.EmailType.ToString();
             //Customer.PrivacyType = CustomerBasicInfo.PrivacyType.ToString();
             //Customer.ContactType = CustomerBasicInfo.ContactType.ToString();
-            Customer.Nickname = CustomerBasicInfo.Nickname.EditedText;
+            Customer.Nickname = CustomerBasicInfo.Nickname.Text;
             //Customer.DateOfBirth = CustomerBasicInfo.DateOfBirth.Date.ToString("mm/dd/yyyy");
-            Customer.HomePhone = CustomerBasicInfo.HomePhone.OriginalText;
-            Customer.WorkPhone = CustomerBasicInfo.WorkPhone.OriginalText;
-            Customer.CellPhone = CustomerBasicInfo.CellPhone.OriginalText;
+            Customer.HomePhone = CustomerBasicInfo.HomePhone.Text;
+            Customer.WorkPhone = CustomerBasicInfo.WorkPhone.Text;
+            Customer.CellPhone = CustomerBasicInfo.CellPhone.Text;
 
-            Customer.StreetAddress = CustomerAddress.StreetAddress.OriginalText;
-            Customer.City = CustomerAddress.City.OriginalText;
+            Customer.StreetAddress = CustomerAddress.StreetAddress.Text;
+            Customer.City = CustomerAddress.City.Text;
             //Customer.State = CustomerAddress.State.ToString();
-            Customer.Zip = CustomerAddress.Zip.OriginalText;
-            Customer.County = CustomerAddress.County.OriginalText;
-            Customer.CountyCode = CustomerAddress.CountyCode.OriginalText;
+            Customer.Zip = CustomerAddress.Zip.Text;
+            Customer.County = CustomerAddress.County.Text;
+            Customer.CountyCode = CustomerAddress.CountyCode.Text;
 
         }
 
@@ -1044,28 +1046,28 @@ namespace EZDMS.App
         {
             // customer basic info view model
             SecondCustomer.Prefix = CustomerBasicInfo.Prefix.ToString();
-            SecondCustomer.Suffix = CustomerBasicInfo.Suffix.OriginalText;
+            SecondCustomer.Suffix = CustomerBasicInfo.Suffix.Text;
             SecondCustomer.Status = CustomerBasicInfo.MaritalStatus.ToString();
-            SecondCustomer.FirstName = CustomerBasicInfo.FirstName.OriginalText;
-            SecondCustomer.MiddleName = CustomerBasicInfo.MiddleName.OriginalText;
-            SecondCustomer.LastName = CustomerBasicInfo.LastName.OriginalText;
+            SecondCustomer.FirstName = CustomerBasicInfo.FirstName.Text;
+            SecondCustomer.MiddleName = CustomerBasicInfo.MiddleName.Text;
+            SecondCustomer.LastName = CustomerBasicInfo.LastName.Text;
             SecondCustomer.Gender = CustomerBasicInfo.Gender.ToString();
-            SecondCustomer.Email = CustomerBasicInfo.Email.OriginalText;
+            SecondCustomer.Email = CustomerBasicInfo.Email.Text;
             SecondCustomer.EmailType = CustomerBasicInfo.EmailType.ToString();
             SecondCustomer.PrivacyType = CustomerBasicInfo.PrivacyType.ToString();
             SecondCustomer.ContactType = CustomerBasicInfo.ContactType.ToString();
-            SecondCustomer.Nickname = CustomerBasicInfo.Nickname.OriginalText;
+            SecondCustomer.Nickname = CustomerBasicInfo.Nickname.Text;
             SecondCustomer.DateOfBirth = CustomerBasicInfo.DateOfBirth.Date.ToString("mm/dd/yyyy");
-            SecondCustomer.HomePhone = CustomerBasicInfo.HomePhone.OriginalText;
-            SecondCustomer.WorkPhone = CustomerBasicInfo.WorkPhone.OriginalText;
-            SecondCustomer.CellPhone = CustomerBasicInfo.CellPhone.OriginalText;
+            SecondCustomer.HomePhone = CustomerBasicInfo.HomePhone.Text;
+            SecondCustomer.WorkPhone = CustomerBasicInfo.WorkPhone.Text;
+            SecondCustomer.CellPhone = CustomerBasicInfo.CellPhone.Text;
             // customer address view model
-            SecondCustomer.StreetAddress = CustomerAddress.StreetAddress.OriginalText;
-            SecondCustomer.City = CustomerAddress.City.OriginalText;
+            SecondCustomer.StreetAddress = CustomerAddress.StreetAddress.Text;
+            SecondCustomer.City = CustomerAddress.City.Text;
             SecondCustomer.State = CustomerAddress.State.ToString();
-            SecondCustomer.Zip = CustomerAddress.Zip.OriginalText;
-            SecondCustomer.County = CustomerAddress.County.OriginalText;
-            SecondCustomer.CountyCode = CustomerAddress.CountyCode.OriginalText;
+            SecondCustomer.Zip = CustomerAddress.Zip.Text;
+            SecondCustomer.County = CustomerAddress.County.Text;
+            SecondCustomer.CountyCode = CustomerAddress.CountyCode.Text;
 
         }
 
@@ -1075,56 +1077,56 @@ namespace EZDMS.App
                 return;
 
             // Update values from vehicle basic info view model
-            SaleVehicle.VIN = VehicleBasicInfo.VIN.EditedText;
-            SaleVehicle.Type = VehicleBasicInfo.Type.EditedText;
-            SaleVehicle.Status = VehicleBasicInfo.Status.EditedText;
-            SaleVehicle.Year = Convert.ToInt32(VehicleBasicInfo.Year.EditedText);
-            SaleVehicle.Make = VehicleBasicInfo.Make.EditedText;
-            SaleVehicle.Model = VehicleBasicInfo.Model.EditedText;
-            SaleVehicle.BodyStyle = VehicleBasicInfo.Body.EditedText;
-            SaleVehicle.TrimColor = VehicleBasicInfo.Trim.EditedText;
-            SaleVehicle.Color = VehicleBasicInfo.ExteriorColor.EditedText;
-            SaleVehicle.Class = VehicleBasicInfo.Class.EditedText;
-            SaleVehicle.Odometer = Convert.ToInt32(VehicleBasicInfo.Odometer.EditedText);
-            SaleVehicle.OdometerStatus = VehicleBasicInfo.OdometerStatus.EditedText;
+            SaleVehicle.VIN = VehicleBasicInfo.VIN.Text;
+            SaleVehicle.Type = VehicleBasicInfo.Type.Text;
+            SaleVehicle.Status = VehicleBasicInfo.Status.Text;
+            SaleVehicle.Year = Convert.ToInt32(VehicleBasicInfo.Year.Text);
+            SaleVehicle.Make = VehicleBasicInfo.Make.Text;
+            SaleVehicle.Model = VehicleBasicInfo.Model.Text;
+            SaleVehicle.BodyStyle = VehicleBasicInfo.Body.Text;
+            SaleVehicle.TrimColor = VehicleBasicInfo.Trim.Text;
+            SaleVehicle.Color = VehicleBasicInfo.ExteriorColor.Text;
+            SaleVehicle.Class = VehicleBasicInfo.Class.Text;
+            SaleVehicle.Odometer = Convert.ToInt32(VehicleBasicInfo.Odometer.Text);
+            SaleVehicle.OdometerStatus = VehicleBasicInfo.OdometerStatus.Text;
             SaleVehicle.HasFactoryWarranty = VehicleBasicInfo.HasFactoryWarranty;
-            SaleVehicle.Color = VehicleBasicInfo.ExteriorColor.EditedText;
+            SaleVehicle.Color = VehicleBasicInfo.ExteriorColor.Text;
             // Update values from vehicle details view model
-            SaleVehicle.NumberOfDoors = Convert.ToInt32(VehicleDetails.NumberOfDoors.EditedText);
-            SaleVehicle.Cylinders = Convert.ToInt32(VehicleDetails.Cylinders.EditedText);
-            SaleVehicle.FuelType = VehicleDetails.FuelType.EditedText;
-            SaleVehicle.FuelSystem = VehicleDetails.FuelSystem.EditedText;
-            SaleVehicle.FuelEconomy = VehicleDetails.FuelEconomy.EditedText;
-            SaleVehicle.TransmissionType = VehicleDetails.TransmissionType.EditedText;
-            SaleVehicle.TransmissionSpeed = VehicleDetails.TransmissionSpeed.EditedText;
-            SaleVehicle.Drivetrain = VehicleDetails.Drivetrain.EditedText;
-            SaleVehicle.Engine = VehicleDetails.Engine.EditedText;
-            SaleVehicle.EngineType = VehicleDetails.EngineType.EditedText;
-            SaleVehicle.EngineSerialNumber = VehicleDetails.EngineSerialNumber.EditedText;
-            SaleVehicle.IgnitionKeyCode = VehicleDetails.IgnitionKeyCode.EditedText;
-            SaleVehicle.TrunkKeyCode = VehicleDetails.TrunkKeyCode.EditedText;
-            SaleVehicle.Weight = Convert.ToInt32(VehicleDetails.Weight.EditedText);
-            SaleVehicle.LicensePlate = VehicleDetails.LicensePlate.EditedText;
-            SaleVehicle.LicenseState = VehicleDetails.LicenseState.EditedText;
-            SaleVehicle.LotLocation = VehicleDetails.LotLocation.EditedText;
-            SaleVehicle.Style = VehicleDetails.Style.EditedText;
-            SaleVehicle.ModelCode = VehicleDetails.ModelCode.EditedText;
+            SaleVehicle.NumberOfDoors = Convert.ToInt32(VehicleDetails.NumberOfDoors.Text);
+            SaleVehicle.Cylinders = Convert.ToInt32(VehicleDetails.Cylinders.Text);
+            SaleVehicle.FuelType = VehicleDetails.FuelType.Text;
+            SaleVehicle.FuelSystem = VehicleDetails.FuelSystem.Text;
+            SaleVehicle.FuelEconomy = VehicleDetails.FuelEconomy.Text;
+            SaleVehicle.TransmissionType = VehicleDetails.TransmissionType.Text;
+            SaleVehicle.TransmissionSpeed = VehicleDetails.TransmissionSpeed.Text;
+            SaleVehicle.Drivetrain = VehicleDetails.Drivetrain.Text;
+            SaleVehicle.Engine = VehicleDetails.Engine.Text;
+            SaleVehicle.EngineType = VehicleDetails.EngineType.Text;
+            SaleVehicle.EngineSerialNumber = VehicleDetails.EngineSerialNumber.Text;
+            SaleVehicle.IgnitionKeyCode = VehicleDetails.IgnitionKeyCode.Text;
+            SaleVehicle.TrunkKeyCode = VehicleDetails.TrunkKeyCode.Text;
+            SaleVehicle.Weight = Convert.ToInt32(VehicleDetails.Weight.Text);
+            SaleVehicle.LicensePlate = VehicleDetails.LicensePlate.Text;
+            SaleVehicle.LicenseState = VehicleDetails.LicenseState.Text;
+            SaleVehicle.LotLocation = VehicleDetails.LotLocation.Text;
+            SaleVehicle.Style = VehicleDetails.Style.Text;
+            SaleVehicle.ModelCode = VehicleDetails.ModelCode.Text;
             //SaleVehicle.LicenseExpirationDate = VehicleDetails.LicenseExpirationDate.Date.ToShortDateString();
             // Update values from the vehicle pricing view model
-            SaleVehicle.MSRP = VehiclePricing.MSRP.EditedAmount;
-            SaleVehicle.InventoryPrice = VehiclePricing.InventoryPrice.EditedAmount;
-            SaleVehicle.ListPrice = VehiclePricing.ListPrice.EditedAmount;
-            SaleVehicle.InternetPrice = VehiclePricing.InternetPrice.EditedAmount;
-            SaleVehicle.AccountingCost = VehiclePricing.AccountingCost.EditedAmount;
-            SaleVehicle.ACV = VehiclePricing.ACV.EditedAmount;
-            SaleVehicle.AddedCosts = VehiclePricing.AddedCosts.EditedAmount;
-            SaleVehicle.Advertising = VehiclePricing.Advertising.EditedAmount;
-            SaleVehicle.Reconditioning = VehiclePricing.Reconditioning.EditedAmount;
-            SaleVehicle.Holdback = VehiclePricing.Holdback.EditedAmount;
-            SaleVehicle.DealerPack = VehiclePricing.DealerPack.EditedAmount;
-            SaleVehicle.BuyerFee = VehiclePricing.BuyerFee.EditedAmount;
-            SaleVehicle.InvoicePrice = VehiclePricing.InvoicePrice.EditedAmount;
-            SaleVehicle.DealerPackPercentage = VehiclePricing.DealerPackPercentage.EditedAmount;
+            SaleVehicle.MSRP = VehiclePricing.MSRP.Amount;
+            SaleVehicle.InventoryPrice = VehiclePricing.InventoryPrice.Amount;
+            SaleVehicle.ListPrice = VehiclePricing.ListPrice.Amount;
+            SaleVehicle.InternetPrice = VehiclePricing.InternetPrice.Amount;
+            SaleVehicle.AccountingCost = VehiclePricing.AccountingCost.Amount;
+            SaleVehicle.ACV = VehiclePricing.ACV.Amount;
+            SaleVehicle.AddedCosts = VehiclePricing.AddedCosts.Amount;
+            SaleVehicle.Advertising = VehiclePricing.Advertising.Amount;
+            SaleVehicle.Reconditioning = VehiclePricing.Reconditioning.Amount;
+            SaleVehicle.Holdback = VehiclePricing.Holdback.Amount;
+            SaleVehicle.DealerPack = VehiclePricing.DealerPack.Amount;
+            SaleVehicle.BuyerFee = VehiclePricing.BuyerFee.Amount;
+            SaleVehicle.InvoicePrice = VehiclePricing.InvoicePrice.Amount;
+            SaleVehicle.DealerPackPercentage = VehiclePricing.DealerPackPercentage.Amount;
             
             //SaleVehicle.
 

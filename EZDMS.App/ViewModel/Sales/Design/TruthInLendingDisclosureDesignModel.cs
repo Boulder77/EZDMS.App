@@ -23,12 +23,12 @@ namespace EZDMS.App
         /// </summary>
         public TruthInLendingDisclosureDesignModel()
         {
-            Payment = new NumericalEntryViewModel { Label = "47 Payments", OriginalAmount = 203436 };
-            FinalPayment = new NumericalEntryViewModel { Label = "Final Payment", OriginalAmount = 203436};
-            FinanceCharge = new NumericalEntryViewModel { Label = "Finance Charge", OriginalAmount = 1431798};
-            TotalOfPayments = new NumericalEntryViewModel { Label = "Total of Payments", OriginalAmount = 9764928};
-            TotalDown = new NumericalEntryViewModel { Label = "Total Down", OriginalAmount = 3500000};
-            TotalSalePrice = new NumericalEntryViewModel { Label = "Total Sale Price", OriginalAmount = 10114928};
+            Payment = new DecimalInputViewModel { Label = "47 Payments", Amount = 203436 };
+            FinalPayment = new DecimalInputViewModel { Label = "Final Payment", Amount = 203436};
+            FinanceCharge = new DecimalInputViewModel { Label = "Finance Charge", Amount = 1431798};
+            TotalOfPayments = new DecimalInputViewModel { Label = "Total of Payments", Amount = 9764928};
+            TotalDown = new DecimalInputViewModel { Label = "Total Down", Amount = 3500000};
+            TotalSalePrice = new DecimalInputViewModel { Label = "Total Sale Price", Amount = 10114928};
             
         }
 

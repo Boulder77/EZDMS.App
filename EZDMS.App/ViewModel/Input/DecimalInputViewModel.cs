@@ -7,7 +7,7 @@ namespace EZDMS.App
     /// <summary>
     /// The view model for a numerical entry to edit a string value
     /// <summary>
-    public class NumericalEntryViewModel : BaseViewModel
+    public class DecimalInputViewModel : BaseViewModel
     {
         #region Public Properties
 
@@ -19,33 +19,18 @@ namespace EZDMS.App
         /// <summary>
         /// The current saved amount
         /// </summary>
-        public decimal OriginalAmount { get; set; }
+        public decimal Amount { get; set; }
 
         /// <summary>
-        /// The current non-commit edited amount
+        /// Indicates if the 
         /// </summary>
-        public decimal EditedAmount { get; set; }
-
-        /// <summary>
-        /// The current non-commit edited amount to text
-        /// </summary>
-        public string EditedText { get; set; }
-
-        /// <summary>
-        /// Indicates if the current amount is in edit mode
-        /// </summary>
-        public bool Editing { get; set; }
+        public bool Working { get; set; }
 
         /// <summary>
         /// Indicates if the current amount can be edited
         /// </summary>
         public bool Editable { get; set; } = false;
-
-        /// <summary>
-        /// Indicates if the current control is pending an update (in progress)
-        /// </summary>
-        public bool Working { get; set; }
-
+                
         /// <summary>
         /// The action to run when saving the amount.
         /// Returns true if the commit was successful, or false otherwise.
@@ -61,23 +46,7 @@ namespace EZDMS.App
         #endregion
 
         #region Public Commands
-
-        /// <summary>
-        /// Puts the control into edit mode
-        /// </summary>
-        public ICommand EditCommand { get; set; }
-
-        /// <summary>
-        /// Cancels out of edit mode
-        /// </summary>
-        public ICommand CancelCommand { get; set; }
-
-        /// <summary>
-        /// Commits the edits and saves the value
-        /// as well as goes back to non-edit mode
-        /// </summary>
-        public ICommand SaveCommand { get; set; }
-
+                
         /// <summary>
         /// Shows a dialog window
         /// </summary>
@@ -90,12 +59,9 @@ namespace EZDMS.App
         /// <summary>
         /// Default constructor
         /// </summary>
-        public NumericalEntryViewModel()
+        public DecimalInputViewModel()
         {
             // Create commands
-            EditCommand = new RelayCommand(Edit);
-            CancelCommand = new RelayCommand(Cancel);
-            SaveCommand = new RelayCommand(Save);
             ShowDialogCommand = new RelayCommand(ShowDialog);
         }
 
@@ -104,44 +70,20 @@ namespace EZDMS.App
         #region Command Methods
 
         /// <summary>
-        /// Puts the control into edit mode
-        /// </summary>
-        public void Edit()
-        {
-            // Set the edited amount to the current value
-            EditedAmount = OriginalAmount;
-
-            // Go into edit mode
-            Editing = true;
-        }
-
-        /// <summary>
-        /// Cancels out of edit mode
-        /// </summary>
-        public void Cancel()
-        {
-            Editing = false;
-        }
-
-        /// <summary>
-        /// Commits the content and exits out of edit mode
+        /// Shows a dialog window and saves the new amount on return
         /// </summary>
         public void Save()
         {
             // Store the result of a commit call
             var result = default(bool);
 
-            // Save currently saved value
-            var currentSavedValue = OriginalAmount;
-
+           
             RunCommandAsync(() => Working, async () =>
             {
-                // While working, come out of edit mode
-                Editing = false;
 
-                // Commit the changed text
-                // So we can see it while it is working
-                OriginalAmount = EditedAmount;
+                //// Commit the changed text
+                //// So we can see it while it is working
+                //OriginalAmount = Amount;
 
                 // Try and do the work
                 result = CommitAction == null ? true : await CommitAction();
@@ -153,14 +95,13 @@ namespace EZDMS.App
                 // If we fail...
                 if (!result)
                 {
-                    // Restore original value
-                    OriginalAmount = currentSavedValue;
+                    //// Restore original value
+                    //OriginalAmount = currentSavedValue;
 
-                    // Go back into edit mode
-                    Editing = true;
                 }
             });
         }
+
 
         /// <summary>
         /// Shows a dialog window and saves the new amount on return
@@ -171,16 +112,14 @@ namespace EZDMS.App
             var result = default(bool);
 
             // Save currently saved value
-            var currentSavedValue = OriginalAmount;
+            var currentSavedValue = Amount;
 
             RunCommandAsync(() => Working, async () =>
             {
-                // While working, come out of edit mode
-                Editing = false;
-
+               
                 //// Commit the changed text
                 //// So we can see it while it is working
-                //OriginalAmount = EditedAmount;
+                //OriginalAmount = Amount;
 
                 // Try and do the work
                 result = DialogAction == null ? true : await DialogAction();
@@ -195,8 +134,6 @@ namespace EZDMS.App
                     //// Restore original value
                     //OriginalAmount = currentSavedValue;
 
-                    // Go back into edit mode
-                    Editing = true;
                 }
             });
         }

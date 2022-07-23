@@ -24,15 +24,15 @@ namespace EZDMS.App
 
         {
             
-            Type = new TextDisplayViewModel { Label = "Product", DisplayText = "Service" };
-            Provider = new TextEntryViewModel { Label = "Provider", OriginalText = "GMPP" };
-            Plan = new TextEntryViewModel { Label = "Plan", OriginalText = "VALUE GUARD" };            
-            Retail = new NumericalEntryViewModel { Label = "Retail", OriginalAmount = 2165.00m, Editable = true };
-            Cost = new NumericalEntryViewModel { Label = "Cost", OriginalAmount = 1120.00m, Editable = true };
-            Deductible = new NumericalEntryViewModel { Label = "Deductible", OriginalAmount = 100.00m, Editable = true };
-            Term = new TextEntryViewModel { Label = "Term", OriginalText = "84" };
-            Mileage = new TextEntryViewModel { Label = "Mileage", OriginalText = "80000" };
-            ContractNumber = new TextEntryViewModel { Label = "Contract No", OriginalText = "myContract No" };
+            Type = new TextInputViewModel { Label = "Product", Text = "Service", Editable = false };
+            Provider = new TextInputViewModel { Label = "Provider", Text = "GMPP" };
+            Plan = new TextInputViewModel { Label = "Plan", Text = "VALUE GUARD" };            
+            Retail = 2165.00m;
+            Cost = new DecimalInputViewModel { Label = "Cost", Amount = 1120.00m, Editable = true };
+            Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 100.00m, Editable = true };
+            Term = new TextInputViewModel { Label = "Term", Text = "84" };
+            Mileage = new TextInputViewModel { Label = "Mileage", Text = "80000" };
+            ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "myContract No" };
             InPayment = true;
             IsDisappearingDeductible = false;
             Taxable = true;

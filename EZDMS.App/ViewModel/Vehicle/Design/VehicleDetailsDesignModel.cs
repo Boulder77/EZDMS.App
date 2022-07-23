@@ -27,26 +27,26 @@ namespace EZDMS.App
         public VehicleDetailsDesignModel()
         {
 
-            NumberOfDoors = new TextEntryViewModel { Label = "Number Of Doors", OriginalText = "myNumberOfDoors" };
-            Cylinders = new TextEntryViewModel { Label = "Cylinders", OriginalText = "myCylinders" };
-            FuelType = new TextEntryViewModel { Label = "Fuel Type", OriginalText = "myFuelType" };
-            FuelSystem = new TextEntryViewModel { Label = "Fuel System", OriginalText = "myFuelSystem" };
-            FuelEconomy = new TextEntryViewModel { Label = "Fuel Economy", OriginalText = "myFuelEconomy" };
-            TransmissionType = new TextEntryViewModel { Label = "Transmission Type", OriginalText = "myTransmissionType" };
-            TransmissionSpeed = new TextEntryViewModel { Label = "Transmission Speed", OriginalText = "myTransmissionSpeed" };
-            Drivetrain = new TextEntryViewModel { Label = "Drivetrain", OriginalText = "myDrivetrain" };
-            Engine = new TextEntryViewModel { Label = "Engine", OriginalText = "myEngine" };
-            EngineType = new TextEntryViewModel { Label = "Engine Type", OriginalText = "myEngineType" };
-            EngineSerialNumber = new TextEntryViewModel { Label = "Engine Serial Number", OriginalText = "myEngineSerialNumber" };
-            IgnitionKeyCode = new TextEntryViewModel { Label = "Ignition Key Code", OriginalText = "myIgnitionKeyCode" };
-            TrunkKeyCode = new TextEntryViewModel { Label = "Trunk Key Code", OriginalText = "myTrunkKeyCode" };
-            Weight = new TextEntryViewModel { Label = "Weight", OriginalText = "myWeight" };
-            LicensePlate = new TextEntryViewModel { Label = "License Plate", OriginalText = "myLicensePlate" };
-            LicenseState = new TextEntryViewModel { Label = "License State", OriginalText = "myLicenseState" };
+            NumberOfDoors = new TextInputViewModel { Label = "Number Of Doors", Text = "myNumberOfDoors" };
+            Cylinders = new TextInputViewModel { Label = "Cylinders", Text = "myCylinders" };
+            FuelType = new TextInputViewModel { Label = "Fuel Type", Text = "myFuelType" };
+            FuelSystem = new TextInputViewModel { Label = "Fuel System", Text = "myFuelSystem" };
+            FuelEconomy = new TextInputViewModel { Label = "Fuel Economy", Text = "myFuelEconomy" };
+            TransmissionType = new TextInputViewModel { Label = "Transmission Type", Text = "myTransmissionType" };
+            TransmissionSpeed = new TextInputViewModel { Label = "Transmission Speed", Text = "myTransmissionSpeed" };
+            Drivetrain = new TextInputViewModel { Label = "Drivetrain", Text = "myDrivetrain" };
+            Engine = new TextInputViewModel { Label = "Engine", Text = "myEngine" };
+            EngineType = new TextInputViewModel { Label = "Engine Type", Text = "myEngineType" };
+            EngineSerialNumber = new TextInputViewModel { Label = "Engine Serial Number", Text = "myEngineSerialNumber" };
+            IgnitionKeyCode = new TextInputViewModel { Label = "Ignition Key Code", Text = "myIgnitionKeyCode" };
+            TrunkKeyCode = new TextInputViewModel { Label = "Trunk Key Code", Text = "myTrunkKeyCode" };
+            Weight = new TextInputViewModel { Label = "Weight", Text = "myWeight" };
+            LicensePlate = new TextInputViewModel { Label = "License Plate", Text = "myLicensePlate" };
+            LicenseState = new TextInputViewModel { Label = "License State", Text = "myLicenseState" };
             LicenseExpirationDate = new DateSelectionViewModel { Label = "License Expiration Date", Date = Convert.ToDateTime("02/05/1991") };
-            LotLocation = new TextEntryViewModel { Label = "Lot Location", OriginalText = "myLotLocation" };
-            Style = new TextEntryViewModel { Label = "Style", OriginalText = "myStyle" };
-            ModelCode = new TextEntryViewModel { Label = "Model Code", OriginalText = "myModelCode" };
+            LotLocation = new TextInputViewModel { Label = "Lot Location", Text = "myLotLocation" };
+            Style = new TextInputViewModel { Label = "Style", Text = "myStyle" };
+            ModelCode = new TextInputViewModel { Label = "Model Code", Text = "myModelCode" };
         }
 
         #endregion

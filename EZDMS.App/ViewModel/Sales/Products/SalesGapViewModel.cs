@@ -20,27 +20,27 @@ namespace EZDMS.App
         /// <summary>
         /// The SalesGap plan
         /// <summary>
-        public TextEntryViewModel Plan { get; set; }
+        public TextInputViewModel Plan { get; set; }
 
         /// <summary>
         /// The SalesGap retail
         /// <summary>
-        public NumericalEntryViewModel Retail { get; set; }
+        public DecimalInputViewModel Retail { get; set; }
 
         /// <summary>
         /// The SalesGap cost
         /// <summary>
-        public NumericalEntryViewModel Cost { get; set; }
+        public DecimalInputViewModel Cost { get; set; }
 
         /// <summary>
         /// The SalesGap profit
         /// <summary>
-        public NumericalEntryViewModel Profit { get; set; }
+        public DecimalInputViewModel Profit { get; set; }
 
         /// <summary>
         /// The SalesGap dealer number
         /// <summary>
-        public TextEntryViewModel DealerNumber { get; set; }
+        public TextInputViewModel DealerNumber { get; set; }
 
         /// <summary>
         /// The SalesGap in payment

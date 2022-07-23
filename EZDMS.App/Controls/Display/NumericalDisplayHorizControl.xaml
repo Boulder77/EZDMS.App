@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:EZDMS.App"
              xmlns:core="clr-namespace:EZDMS.App.Core;assembly=EZDMS.App.Core"
              mc:Ignorable="d" 
-             d:DataContext="{x:Static local:NumericalEntryDesignModel.Instance}">
+             d:DataContext="{x:Static local:DecimalInputDesignModel.Instance}">
 
     <!-- Grey underline -->
     <Border BorderBrush="{StaticResource ForegroundDarkBrush}"

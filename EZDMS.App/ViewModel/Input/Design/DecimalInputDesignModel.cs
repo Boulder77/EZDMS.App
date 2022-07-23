@@ -1,16 +1,16 @@
 ﻿namespace EZDMS.App
 {
     /// <summary>
-    /// The design-time data for a <see cref="TextEntryViewModel"/>
+    /// The design-time data for a <see cref="DecimalInputViewModel"/>
     /// </summary>
-    public class NumericalEntryDesignModel : NumericalEntryViewModel
+    public class DecimalInputDesignModel : DecimalInputViewModel
     {
         #region Singleton
 
         /// <summary>
         /// A single instance of the design model
         /// </summary>
-        public static NumericalEntryDesignModel Instance => new NumericalEntryDesignModel();
+        public static DecimalInputDesignModel Instance => new DecimalInputDesignModel();
 
         #endregion
 
@@ -19,11 +19,11 @@
         /// <summary>
         /// Default Constructor
         /// </summary>
-        public NumericalEntryDesignModel()
+        public DecimalInputDesignModel()
         {
             Label = "Selling Price";
-            OriginalAmount = 15687522;            
-            EditedText = "Editing...";
+            Amount = 156875.22m;            
+            
             Editable = true;
         }
 

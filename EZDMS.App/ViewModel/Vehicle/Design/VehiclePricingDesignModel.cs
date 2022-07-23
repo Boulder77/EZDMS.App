@@ -27,19 +27,19 @@ namespace EZDMS.App
 
         {
 
-            MSRP = new NumericalEntryViewModel { Label = "MSRP", OriginalAmount= 56875.00m, Editable = true };
-            InventoryPrice = new NumericalEntryViewModel { Label = "Inventory Price", OriginalAmount = 56875.00m, Editable = true };
-            ListPrice = new NumericalEntryViewModel { Label = "List Price", OriginalAmount = 56875.00m, Editable = true };
-            InternetPrice = new NumericalEntryViewModel { Label = "Internet Price", OriginalAmount = 56875.00m, Editable = true };
-            AccountingCost = new NumericalEntryViewModel { Label = "Accounting Cost", OriginalAmount = 0, Editable = false };
-            ACV = new NumericalEntryViewModel { Label = "ACV", OriginalAmount = 0, Editable = true };
-            Advertising = new NumericalEntryViewModel { Label = "Advertising", OriginalAmount = 555.80m, Editable = true };
-            Reconditioning = new NumericalEntryViewModel { Label = "Reconditioning", OriginalAmount =0, Editable = true };
-            Holdback = new NumericalEntryViewModel { Label = "Holdback", OriginalAmount = 1667.40m, Editable = true };
-            DealerPack = new NumericalEntryViewModel { Label = "Dealer Pack", OriginalAmount = 300, Editable = true };
-            BuyerFee = new NumericalEntryViewModel { Label = "Buyer Fee", OriginalAmount = 0, Editable = true };
-            DealerPackPercentage = new NumericalEntryViewModel { Label = "Dealer Pack (%)", OriginalAmount = .20m, Editable = true };
-            InvoicePrice = new NumericalEntryViewModel { Label = "Invoice Price", OriginalAmount = 54651.80m, Editable = true };
+            MSRP = new DecimalInputViewModel { Label = "MSRP", Amount= 56875.00m, Editable = true };
+            InventoryPrice = new DecimalInputViewModel { Label = "Inventory Price", Amount = 56875.00m, Editable = true };
+            ListPrice = new DecimalInputViewModel { Label = "List Price", Amount = 56875.00m, Editable = true };
+            InternetPrice = new DecimalInputViewModel { Label = "Internet Price", Amount = 56875.00m, Editable = true };
+            AccountingCost = new DecimalInputViewModel { Label = "Accounting Cost", Amount = 0, Editable = false };
+            ACV = new DecimalInputViewModel { Label = "ACV", Amount = 0, Editable = true };
+            Advertising = new DecimalInputViewModel { Label = "Advertising", Amount = 555.80m, Editable = true };
+            Reconditioning = new DecimalInputViewModel { Label = "Reconditioning", Amount =0, Editable = true };
+            Holdback = new DecimalInputViewModel { Label = "Holdback", Amount = 1667.40m, Editable = true };
+            DealerPack = new DecimalInputViewModel { Label = "Dealer Pack", Amount = 300, Editable = true };
+            BuyerFee = new DecimalInputViewModel { Label = "Buyer Fee", Amount = 0, Editable = true };
+            DealerPackPercentage = new DecimalInputViewModel { Label = "Dealer Pack (%)", Amount = .20m, Editable = true };
+            InvoicePrice = new DecimalInputViewModel { Label = "Invoice Price", Amount = 54651.80m, Editable = true };
 
         }      
 

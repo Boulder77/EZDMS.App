@@ -11,82 +11,82 @@
         /// <summary>
         /// The VehicleDetails number of doors
         /// <summary>
-        public TextEntryViewModel NumberOfDoors { get; set; }
+        public TextInputViewModel NumberOfDoors { get; set; }
 
         /// <summary>
         /// The VehicleDetails cylinders
         /// <summary>
-        public TextEntryViewModel Cylinders { get; set; }
+        public TextInputViewModel Cylinders { get; set; }
 
         /// <summary>
         /// The VehicleDetails fuel type
         /// <summary>
-        public TextEntryViewModel FuelType { get; set; }
+        public TextInputViewModel FuelType { get; set; }
 
         /// <summary>
         /// The VehicleDetails fuel system
         /// <summary>
-        public TextEntryViewModel FuelSystem { get; set; }
+        public TextInputViewModel FuelSystem { get; set; }
 
         /// <summary>
         /// The VehicleDetails fuel economy
         /// <summary>
-        public TextEntryViewModel FuelEconomy { get; set; }
+        public TextInputViewModel FuelEconomy { get; set; }
 
         /// <summary>
         /// The VehicleDetails transmission type
         /// <summary>
-        public TextEntryViewModel TransmissionType { get; set; }
+        public TextInputViewModel TransmissionType { get; set; }
 
         /// <summary>
         /// The VehicleDetails transmission speed
         /// <summary>
-        public TextEntryViewModel TransmissionSpeed { get; set; }
+        public TextInputViewModel TransmissionSpeed { get; set; }
 
         /// <summary>
         /// The VehicleDetails drivetrain
         /// <summary>
-        public TextEntryViewModel Drivetrain { get; set; }
+        public TextInputViewModel Drivetrain { get; set; }
 
         /// <summary>
         /// The VehicleDetails engine
         /// <summary>
-        public TextEntryViewModel Engine { get; set; }
+        public TextInputViewModel Engine { get; set; }
 
         /// <summary>
         /// The VehicleDetails engine type
         /// <summary>
-        public TextEntryViewModel EngineType { get; set; }
+        public TextInputViewModel EngineType { get; set; }
 
         /// <summary>
         /// The VehicleDetails engine serial number
         /// <summary>
-        public TextEntryViewModel EngineSerialNumber { get; set; }
+        public TextInputViewModel EngineSerialNumber { get; set; }
 
         /// <summary>
         /// The VehicleDetails ignition key code
         /// <summary>
-        public TextEntryViewModel IgnitionKeyCode { get; set; }
+        public TextInputViewModel IgnitionKeyCode { get; set; }
 
         /// <summary>
         /// The VehicleDetails trunk key code
         /// <summary>
-        public TextEntryViewModel TrunkKeyCode { get; set; }
+        public TextInputViewModel TrunkKeyCode { get; set; }
 
         /// <summary>
         /// The VehicleDetails weight
         /// <summary>
-        public TextEntryViewModel Weight { get; set; }
+        public TextInputViewModel Weight { get; set; }
 
         /// <summary>
         /// The VehicleDetails license plate
         /// <summary>
-        public TextEntryViewModel LicensePlate { get; set; }
+        public TextInputViewModel LicensePlate { get; set; }
 
         /// <summary>
         /// The VehicleDetails license state
         /// <summary>
-        public TextEntryViewModel LicenseState { get; set; }
+        public TextInputViewModel LicenseState { get; set; }
 
         /// <summary>
         /// The VehicleDetails license expiration date
@@ -96,17 +96,17 @@
         /// <summary>
         /// The VehicleDetails lot location
         /// <summary>
-        public TextEntryViewModel LotLocation { get; set; }
+        public TextInputViewModel LotLocation { get; set; }
 
         /// <summary>
         /// The VehicleDetails style
         /// <summary>
-        public TextEntryViewModel Style { get; set; }
+        public TextInputViewModel Style { get; set; }
 
         /// <summary>
         /// The VehicleDetails model code
         /// <summary>
-        public TextEntryViewModel ModelCode { get; set; }
+        public TextInputViewModel ModelCode { get; set; }
 
         #endregion
 

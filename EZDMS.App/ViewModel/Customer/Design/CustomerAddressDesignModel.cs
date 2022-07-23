@@ -27,13 +27,13 @@ namespace EZDMS.App
 
         {
             AddressDescription = "Physical Address (Primary)";
-            StreetAddress = new TextEntryViewModel { Label = "Address", OriginalText = "129 Smith Valley Rd" };
-            City = new TextEntryViewModel { Label = "City", OriginalText = "Fredonia" };
+            StreetAddress = new TextInputViewModel { Label = "Address", Text = "129 Smith Valley Rd" };
+            City = new TextInputViewModel { Label = "City", Text = "Fredonia" };
             State = States.OH;
-            Zip = new TextEntryViewModel { Label = "Zip", OriginalText = "45011" };
+            Zip = new TextInputViewModel { Label = "Zip", Text = "45011" };
             AddressType = AddressType.Physical;
-            County = new TextEntryViewModel { Label = "County", OriginalText = "Butler" };
-            CountyCode = new TextEntryViewModel { Label = "County Code",OriginalText = "12345" };
+            County = new TextInputViewModel { Label = "County", Text = "Butler" };
+            CountyCode = new TextInputViewModel { Label = "County Code",Text = "12345" };
 
         }
 

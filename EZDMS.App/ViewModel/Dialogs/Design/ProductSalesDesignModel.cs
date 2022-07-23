@@ -26,15 +26,15 @@ namespace EZDMS.App
             Service = new ProductItemViewModel
 
             {
-                Type = new TextDisplayViewModel { Label = "Product", DisplayText = "Service" },
-                Provider = new TextEntryViewModel { Label = "Provider", OriginalText = "GMPP" },
-                Plan = new TextEntryViewModel { Label = "Plan", OriginalText = "VALUE GUARD" },
-                Retail = new NumericalEntryViewModel { Label = "Retail", OriginalAmount = 2165.00m, Editable = true },
-                Cost = new NumericalEntryViewModel { Label = "Cost", OriginalAmount = 1120.00m, Editable = true },
-                Deductible = new NumericalEntryViewModel { Label = "Deductible", OriginalAmount = 100.00m, Editable = true },
-                Term = new TextEntryViewModel { Label = "Term", OriginalText = "84" },
-                Mileage = new TextEntryViewModel { Label = "Mileage", OriginalText = "80000" },
-                ContractNumber = new TextEntryViewModel { Label = "Contract No", OriginalText = "SV#111" },
+                Type = new TextInputViewModel { Label = "Product", Text = "Service", Editable = false },
+                Provider = new TextInputViewModel { Label = "Provider", Text = "GMPP" },
+                Plan = new TextInputViewModel { Label = "Plan", Text = "VALUE GUARD" },
+                Retail = 2165.00m,
+                Cost = new DecimalInputViewModel { Label = "Cost", Amount = 1120.00m, Editable = true },
+                Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 100.00m, Editable = true },
+                Term = new TextInputViewModel { Label = "Term", Text = "84" },
+                Mileage = new TextInputViewModel { Label = "Mileage", Text = "80000" },
+                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "SV#111" },
                 InPayment = true,
                 IsDisappearingDeductible = false,
                 Taxable = true,
@@ -43,15 +43,15 @@ namespace EZDMS.App
             Warranty = new ProductItemViewModel
 
             {
-                Type = new TextDisplayViewModel { Label = "Product", DisplayText = "Warranty" },
-                Provider = new TextEntryViewModel { Label = "Provider", OriginalText = "WilliamW" },
-                Plan = new TextEntryViewModel { Label = "Plan", OriginalText = "WilliamW" },
-                Retail = new NumericalEntryViewModel { Label = "Retail", OriginalAmount = 400.00m, Editable = true },
-                Cost = new NumericalEntryViewModel { Label = "Cost", OriginalAmount = 200.00m, Editable = true },
-                Deductible = new NumericalEntryViewModel { Label = "Deductible", OriginalAmount = 200.00m, Editable = true },
-                Term = new TextEntryViewModel { Label = "Term", OriginalText = "24" },
-                Mileage = new TextEntryViewModel { Label = "Mileage", OriginalText = "24000" },
-                ContractNumber = new TextEntryViewModel { Label = "Contract No", OriginalText = "WA#333" },
+                Type = new TextInputViewModel { Label = "Product", Text = "Warranty", Editable = false },
+                Provider = new TextInputViewModel { Label = "Provider", Text = "WilliamW" },
+                Plan = new TextInputViewModel { Label = "Plan", Text = "WilliamW" },
+                Retail = 400.00m,
+                Cost = new DecimalInputViewModel { Label = "Cost", Amount = 200.00m, Editable = true },
+                Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 200.00m, Editable = true },
+                Term = new TextInputViewModel { Label = "Term", Text = "24" },
+                Mileage = new TextInputViewModel { Label = "Mileage", Text = "24000" },
+                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "WA#333" },
                 InPayment = true,
                 IsDisappearingDeductible = false,
                 Taxable = true,
@@ -62,15 +62,15 @@ namespace EZDMS.App
             Warranty = new ProductItemViewModel
 
             {
-                Type = new TextDisplayViewModel { Label = "Product", DisplayText = "Warranty" },
-                Provider = new TextEntryViewModel { Label = "Provider", OriginalText = "WilliamW" },
-                Plan = new TextEntryViewModel { Label = "Plan", OriginalText = "WilliamW" },
-                Retail = new NumericalEntryViewModel { Label = "Retail", OriginalAmount = 400.00m, Editable = true },
-                Cost = new NumericalEntryViewModel { Label = "Cost", OriginalAmount = 200.00m, Editable = true },
-                Deductible = new NumericalEntryViewModel { Label = "Deductible", OriginalAmount = 200.00m, Editable = true },
-                Term = new TextEntryViewModel { Label = "Term", OriginalText = "24" },
-                Mileage = new TextEntryViewModel { Label = "Mileage", OriginalText = "24000" },
-                ContractNumber = new TextEntryViewModel { Label = "Contract No", OriginalText = "WA#333" },
+                Type = new TextInputViewModel { Label = "Product", Text = "Warranty", Editable = false },
+                Provider = new TextInputViewModel { Label = "Provider", Text = "WilliamW" },
+                Plan = new TextInputViewModel { Label = "Plan", Text = "WilliamW" },
+                Retail = 400.00m,
+                Cost = new DecimalInputViewModel { Label = "Cost", Amount = 200.00m, Editable = true },
+                Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 200.00m, Editable = true },
+                Term = new TextInputViewModel { Label = "Term", Text = "24" },
+                Mileage = new TextInputViewModel { Label = "Mileage", Text = "24000" },
+                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "WA#333" },
                 InPayment = true,
                 IsDisappearingDeductible = false,
                 Taxable = true,
@@ -79,15 +79,15 @@ namespace EZDMS.App
             Maintenance = new ProductItemViewModel
 
             {
-                Type = new TextDisplayViewModel { Label = "Product", DisplayText = "Maintenance" },
-                Provider = new TextEntryViewModel { Label = "Provider", OriginalText = "Sheldon214" },
-                Plan = new TextEntryViewModel { Label = "Plan", OriginalText = "Sheldon214" },
-                Retail = new NumericalEntryViewModel { Label = "Retail", OriginalAmount = 350.00m, Editable = true },
-                Cost = new NumericalEntryViewModel { Label = "Cost", OriginalAmount = 150.00m, Editable = true },
-                Deductible = new NumericalEntryViewModel { Label = "Deductible", OriginalAmount = 0m, Editable = true },
-                Term = new TextEntryViewModel { Label = "Term", OriginalText = "36" },
-                Mileage = new TextEntryViewModel { Label = "Mileage", OriginalText = "36000" },
-                ContractNumber = new TextEntryViewModel { Label = "Contract No", OriginalText = "MT#333" },
+                Type = new TextInputViewModel { Label = "Product", Text = "Maintenance", Editable = false },
+                Provider = new TextInputViewModel { Label = "Provider", Text = "Sheldon214" },
+                Plan = new TextInputViewModel { Label = "Plan", Text = "Sheldon214" },
+                Retail = 350.00m,
+                Cost = new DecimalInputViewModel { Label = "Cost", Amount = 150.00m, Editable = true },
+                Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 0m, Editable = true },
+                Term = new TextInputViewModel { Label = "Term", Text = "36" },
+                Mileage = new TextInputViewModel { Label = "Mileage", Text = "36000" },
+                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "MT#333" },
                 InPayment = true,
                 IsDisappearingDeductible = true,
                 Taxable = true,
@@ -96,20 +96,18 @@ namespace EZDMS.App
             Gap = new ProductItemViewModel
 
             {
-                Type = new TextDisplayViewModel { Label = "Product", DisplayText = "Gap" },
-                Provider = new TextEntryViewModel { Label = "Provider", OriginalText = "Easy Care" },
-                Plan = new TextEntryViewModel { Label = "Plan", OriginalText = "GAP" },
-                Retail = new NumericalEntryViewModel { Label = "Retail", OriginalAmount = 895.00m, Editable = true },
-                Cost = new NumericalEntryViewModel { Label = "Cost", OriginalAmount = 350.00m, Editable = true },                
-                ContractNumber = new TextEntryViewModel { Label = "Contract No", OriginalText = "GP#444" },
+                Type = new TextInputViewModel { Label = "Product", Text = "Gap", Editable = false},
+                Provider = new TextInputViewModel { Label = "Provider", Text = "Easy Care" },
+                Plan = new TextInputViewModel { Label = "Plan", Text = "GAP" },
+                Retail = 895.00m,
+                Cost = new DecimalInputViewModel { Label = "Cost", Amount = 350.00m, Editable = true },                
+                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "GP#444" },
                 InPayment = true,
                 IsDisappearingDeductible = true,
                 Taxable = true,
             };
 
-            TotalRetailAmount = 3810.00m;
-
-            TotalRetail = new NumericalEntryViewModel { Label = "Total Retail", OriginalAmount =TotalRetailAmount};
+            TotalRetail = new DecimalInputViewModel { Label = "Total Retail", Amount = 3810.00m};
 
 
         }

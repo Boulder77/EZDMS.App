@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:EZDMS.App"
              xmlns:core="clr-namespace:EZDMS.App.Core;assembly=EZDMS.App.Core"
              mc:Ignorable="d" 
-             d:DataContext="{x:Static local:TextDisplayDesignModel.Instance}">
+             d:DataContext="{x:Static local:TextInputDesignModel.Instance}">
     
     <!-- Grey underline -->
     <Border BorderBrush="{StaticResource ForegroundDarkBrush}"            
@@ -32,7 +32,7 @@
                        />
 
             <!-- Content -->
-            <TextBlock Text="{Binding DisplayText}" 
+            <TextBlock Text="{Binding Text}" 
                        Grid.Column="1"                       
                        Margin="15 4"
                        VerticalAlignment="Center"

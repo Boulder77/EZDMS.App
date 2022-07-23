@@ -56,22 +56,22 @@ namespace EZDMS.App
         /// <summary>
         /// The customer first name
         /// </summary>
-        public TextEntryViewModel FirstName { get; set; }
+        public TextInputViewModel FirstName { get; set; }
 
         /// <summary>
         /// The customer middle name
         /// </summary>
-        public TextEntryViewModel MiddleName { get; set; }
+        public TextInputViewModel MiddleName { get; set; }
 
         /// <summary>
         /// The customer last name
         /// </summary>
-        public TextEntryViewModel LastName { get; set; }
+        public TextInputViewModel LastName { get; set; }
 
         /// <summary>
         /// The customer street address
         /// </summary>
-        public TextEntryViewModel Suffix { get; set; }
+        public TextInputViewModel Suffix { get; set; }
 
         /// <summary>
         /// The customer gender
@@ -81,7 +81,7 @@ namespace EZDMS.App
         /// <summary>
         /// The customer nickname
         /// </summary>
-        public TextEntryViewModel Nickname { get; set; }
+        public TextInputViewModel Nickname { get; set; }
 
         /// <summary>
         /// The customer date of birth
@@ -96,7 +96,7 @@ namespace EZDMS.App
         /// <summary>
         /// The customer social security number
         /// </summary>
-        public TextEntryViewModel SocialSecurityNumber { get; set; }
+        public TextInputViewModel SocialSecurityNumber { get; set; }
 
         /// <summary>
         /// The customer contact type
@@ -111,7 +111,7 @@ namespace EZDMS.App
         /// <summary>
         /// The customer email
         /// </summary>
-        public TextEntryViewModel Email { get; set; }
+        public TextInputViewModel Email { get; set; }
 
         /// <summary>
         /// The type of email
@@ -121,17 +121,17 @@ namespace EZDMS.App
         /// <summary>
         /// The customer home phone number
         /// </summary>
-        public TextEntryViewModel HomePhone { get; set; }
+        public TextInputViewModel HomePhone { get; set; }
 
         /// <summary>
         /// The customer cell phone number
         /// </summary>
-        public TextEntryViewModel CellPhone { get; set; }
+        public TextInputViewModel CellPhone { get; set; }
 
         /// <summary>
         /// The customer work phone number
         /// </summary>
-        public TextEntryViewModel WorkPhone { get; set; }
+        public TextInputViewModel WorkPhone { get; set; }
 
         #endregion
 

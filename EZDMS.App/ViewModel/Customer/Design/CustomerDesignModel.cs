@@ -25,11 +25,11 @@ namespace EZDMS.App
         public CustomerDesignModel()
 
         {
-            //CustomerNumber = new TextDisplayViewModel { Label = "Customer Number", DisplayText="YCV1000010" };
+            //CustomerNumber = new TextInputViewModel { Label = "Customer Number", Text="YCV1000010" };
             //FullName = "Donald Fred Gomez";
             //CreateDate = new DateSelectionViewModel { Label = "Created", Date = Convert.ToDateTime("06/14/2020") };
             //LastModifiedDate = new DateSelectionViewModel { Label = "Last Modified", Date = Convert.ToDateTime("10/12/2021") };
-            //MainPhone = new TextDisplayViewModel { Label = "2 Phones", DisplayText = $"(724) 967-4272 { MainPhoneType }" };
+            //MainPhone = new TextInputViewModel { Label = "2 Phones", Text = $"(724) 967-4272 { MainPhoneType }" };
             
 
 

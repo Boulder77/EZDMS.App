@@ -27,19 +27,19 @@ namespace EZDMS.App
 
         {
             
-            FirstName = new TextEntryViewModel { Label = "First Name", OriginalText = "Donald" };
-            MiddleName = new TextEntryViewModel { Label = "Middle Name", OriginalText = "Fred" };
-            LastName = new TextEntryViewModel { Label = "Last Name", OriginalText = "Gomez" };
-            Suffix = new TextEntryViewModel { Label = "Suffix", OriginalText = "" };
-            Nickname = new TextEntryViewModel { Label = "Nickname", OriginalText = "Donny" };
+            FirstName = new TextInputViewModel { Label = "First Name", Text = "Donald" };
+            MiddleName = new TextInputViewModel { Label = "Middle Name", Text = "Fred" };
+            LastName = new TextInputViewModel { Label = "Last Name", Text = "Gomez" };
+            Suffix = new TextInputViewModel { Label = "Suffix", Text = "" };
+            Nickname = new TextInputViewModel { Label = "Nickname", Text = "Donny" };
             DateOfBirth = new DateSelectionViewModel { Label = "Date of Birth", Date = Convert.ToDateTime("02/05/1991") };
             MaritalStatus = MaritalStatusType.Married;
-            SocialSecurityNumber = new TextEntryViewModel { Label = "SSN", OriginalText = "11-22-4454" };
-            Email = new TextEntryViewModel { Label = "Email", OriginalText = "DonaldGomez@nowhere.com" };
+            SocialSecurityNumber = new TextInputViewModel { Label = "SSN", Text = "11-22-4454" };
+            Email = new TextInputViewModel { Label = "Email", Text = "DonaldGomez@nowhere.com" };
             EmailType = EmailType.Home;
-            HomePhone = new TextEntryViewModel { Label = "Home Phone", OriginalText = "(619) 445-2212" };
-            WorkPhone = new TextEntryViewModel { Label = "Work Phone", OriginalText = "(800) 456-2222" };
-            CellPhone = new TextEntryViewModel { Label = "Cell Phone", OriginalText = "(619) 112-3332" };
+            HomePhone = new TextInputViewModel { Label = "Home Phone", Text = "(619) 445-2212" };
+            WorkPhone = new TextInputViewModel { Label = "Work Phone", Text = "(800) 456-2222" };
+            CellPhone = new TextInputViewModel { Label = "Cell Phone", Text = "(619) 112-3332" };
 
         }
 

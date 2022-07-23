@@ -23,18 +23,18 @@ namespace EZDMS.App
         /// </summary>
         public SalesDealCardDesignModel()
         {
-            BuyerName = new TextDisplayViewModel { Label = "Buyer", DisplayText = "Gomez, Donald" };
-            CoBuyerName = new TextDisplayViewModel { Label = "Co-Buyer", DisplayText = "Bell, Betrix" };
-            Vehicle = new TextDisplayViewModel { Label = "Vehicle", DisplayText = "P1807 - 2018 Chevrolet Tahoe" };
-            Status = new TextDisplayViewModel { Label = "Status", DisplayText = "Working" };
-            DealType = new TextDisplayViewModel { Label = "Deal Type", DisplayText = "Retail" };
-            Salesperson = new TextDisplayViewModel { Label = "Salesperson", DisplayText = "Matt Islas" };
-            SalesManager = new TextDisplayViewModel { Label = "Sales Manager", DisplayText = "Chris Dixon" };
-            FinanceManager = new TextDisplayViewModel { Label = "Finance Manager", DisplayText = "Gary Zimmerman" };
-            Trades = new TextDisplayViewModel { Label = "Trades", DisplayText = "1900 Toyota Corolla black" };
-            CreatedDate = new TextDisplayViewModel { Label = "Created Date", DisplayText = "8/27/2021" };
-            DealDate = new TextDisplayViewModel { Label = "Purchase Date", DisplayText = "8/27/2021" };
-            LastActivityDate = new TextDisplayViewModel { Label = "Last Activity", DisplayText = "3/18/2022" };
+            BuyerName = new TextInputViewModel { Label = "Buyer", Text = "Gomez, Donald", Editable = false };
+            CoBuyerName = new TextInputViewModel { Label = "Co-Buyer", Text = "Bell, Betrix", Editable = false };
+            Vehicle = new TextInputViewModel { Label = "Vehicle", Text = "P1807 - 2018 Chevrolet Tahoe", Editable = false };
+            Status = new TextInputViewModel { Label = "Status", Text = "Working", Editable = false };
+            DealType = new TextInputViewModel { Label = "Deal Type", Text = "Retail", Editable = false };
+            Salesperson = new TextInputViewModel { Label = "Salesperson", Text = "Matt Islas", Editable = false };
+            SalesManager = new TextInputViewModel { Label = "Sales Manager", Text = "Chris Dixon", Editable = false };
+            FinanceManager = new TextInputViewModel { Label = "Finance Manager", Text = "Gary Zimmerman", Editable = false };
+            Trades = new TextInputViewModel { Label = "Trades", Text = "1900 Toyota Corolla black", Editable = false };
+            CreatedDate = new TextInputViewModel { Label = "Created Date", Text = "8/27/2021", Editable = false };
+            DealDate = new TextInputViewModel { Label = "Purchase Date", Text = "8/27/2021", Editable = false };
+            LastActivityDate = new TextInputViewModel { Label = "Last Activity", Text = "3/18/2022", Editable = false };
 
         }
 

@@ -25,19 +25,19 @@ namespace EZDMS.App
         {
 
             Description = "2018 Chevrolet Tahoe";
-            StockNumber = new TextDisplayViewModel { Label = "Stock Number", DisplayText = "P1807" };
-            Type = new TextDisplayViewModel { Label = "Type", DisplayText = "Used" };
-            Status = new TextDisplayViewModel { Label = "Status", DisplayText = "In Stock" };
-            DaysInStock = new TextDisplayViewModel { Label = "In Stock", DisplayText = "1,620 days" };
-            Color = new TextDisplayViewModel { Label = "Color", DisplayText = "Silver" };
-            InteriorColor = new TextDisplayViewModel { Label = "Interior", DisplayText = "Black" };
-            LotLocation = new TextDisplayViewModel { Label = "Lot Location", DisplayText = "-" };
-            Category = new TextDisplayViewModel { Label = "Category", DisplayText = "-" };
-            VIN = new TextDisplayViewModel { Label = "VIN", DisplayText = "1GNSKBKC2JR177272" };
-            Odometer = new TextDisplayViewModel { Label = "Odometer", DisplayText = "34,555 miles" };
-            MSRP = new TextDisplayViewModel { Label = "MSRP", DisplayText = "$56,875.00" };
-            ListPrice = new TextDisplayViewModel { Label = "List Price", DisplayText = "$56,875.00" };
-            InternetPrice = new TextDisplayViewModel { Label = "Internet Price", DisplayText = "$56,875.00" };
+            StockNumber = new TextInputViewModel { Label = "Stock Number", Text = "P1807", Editable = false };
+            Type = new TextInputViewModel { Label = "Type", Text = "Used", Editable = false };
+            Status = new TextInputViewModel { Label = "Status", Text = "In Stock", Editable = false };
+            DaysInStock = new TextInputViewModel { Label = "In Stock", Text = "1,620 days", Editable = false };
+            Color = new TextInputViewModel { Label = "Color", Text = "Silver", Editable = false };
+            InteriorColor = new TextInputViewModel { Label = "Interior", Text = "Black", Editable = false };
+            LotLocation = new TextInputViewModel { Label = "Lot Location", Text = "-", Editable = false };
+            Category = new TextInputViewModel { Label = "Category", Text = "-", Editable = false };
+            VIN = new TextInputViewModel { Label = "VIN", Text = "1GNSKBKC2JR177272", Editable = false };
+            Odometer = new TextInputViewModel { Label = "Odometer", Text = "34,555 miles", Editable = false };
+            MSRP = new TextInputViewModel { Label = "MSRP", Text = "$56,875.00", Editable = false };
+            ListPrice = new TextInputViewModel { Label = "List Price", Text = "$56,875.00", Editable = false };
+            InternetPrice = new TextInputViewModel { Label = "Internet Price", Text = "$56,875.00", Editable = false };
 
         }
 

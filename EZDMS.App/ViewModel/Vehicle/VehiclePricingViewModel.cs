@@ -11,72 +11,72 @@
         /// <summary>
         /// The MSRP of this vehicle inventory record
         /// <summary>
-        public NumericalEntryViewModel MSRP { get; set; }
+        public DecimalInputViewModel MSRP { get; set; }
 
         /// <summary>
         /// The inventory price of this vehicle inventory record
         /// <summary>
-        public NumericalEntryViewModel InventoryPrice { get; set; }
+        public DecimalInputViewModel InventoryPrice { get; set; }
 
         /// <summary>
         /// The list price of this vehicle inventory record
         /// <summary>
-        public NumericalEntryViewModel ListPrice { get; set; }
+        public DecimalInputViewModel ListPrice { get; set; }
 
         /// <summary>
         /// The internet price of this vehicle inventory record
         /// <summary>
-        public NumericalEntryViewModel InternetPrice { get; set; }
+        public DecimalInputViewModel InternetPrice { get; set; }
 
         /// <summary>
         /// The accounting cost of this vehicle inventory record
         /// <summary>
-        public NumericalEntryViewModel AccountingCost { get; set; }
+        public DecimalInputViewModel AccountingCost { get; set; }
 
         /// <summary>
         /// The a c v of this vehicle inventory record
         /// <summary>
-        public NumericalEntryViewModel ACV { get; set; }
+        public DecimalInputViewModel ACV { get; set; }
 
         /// <summary>
         /// The added costs of this vehicle inventory record
         /// <summary>
-        public NumericalEntryViewModel AddedCosts { get; set; }
+        public DecimalInputViewModel AddedCosts { get; set; }
 
         /// <summary>
         /// The advertising of this vehicle inventory record
         /// <summary>
-        public NumericalEntryViewModel Advertising { get; set; }
+        public DecimalInputViewModel Advertising { get; set; }
 
         /// <summary>
         /// The reconditioning of this vehicle inventory record
         /// <summary>
-        public NumericalEntryViewModel Reconditioning { get; set; }
+        public DecimalInputViewModel Reconditioning { get; set; }
 
         /// <summary>
         /// The holdback of this vehicle inventory record
         /// <summary>
-        public NumericalEntryViewModel Holdback { get; set; }
+        public DecimalInputViewModel Holdback { get; set; }
 
         /// <summary>
         /// The dealer pack of this vehicle inventory record
         /// <summary>
-        public NumericalEntryViewModel DealerPack { get; set; }
+        public DecimalInputViewModel DealerPack { get; set; }
 
         /// <summary>
         /// The buyer fee of this vehicle inventory record
         /// <summary>
-        public NumericalEntryViewModel BuyerFee { get; set; }
+        public DecimalInputViewModel BuyerFee { get; set; }
 
         /// <summary>
         /// The invoice price of this vehicle inventory record
         /// <summary>
-        public NumericalEntryViewModel InvoicePrice { get; set; }
+        public DecimalInputViewModel InvoicePrice { get; set; }
 
         /// <summary>
         /// The dealer pack percentage of this vehicle inventory record
         /// <summary>
-        public NumericalEntryViewModel DealerPackPercentage { get; set; }
+        public DecimalInputViewModel DealerPackPercentage { get; set; }
 
 
         #endregion

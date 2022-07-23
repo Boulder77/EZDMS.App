@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:EZDMS.App"
              xmlns:core="clr-namespace:EZDMS.App.Core;assembly=EZDMS.App.Core"
              mc:Ignorable="d" 
-             d:DataContext="{x:Static local:NumericalEntryDesignModel.Instance}">
+             d:DataContext="{x:Static local:DecimalInputDesignModel.Instance}">
 
     <!-- Grey underline -->
     <Border BorderBrush="{StaticResource ForegroundDarkBrush}"
@@ -15,12 +15,9 @@
 
         <Grid Background="Transparent">
 
-            <!-- Double click to edit --><!--
-            <Grid.InputBindings>
-                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding EditCommand}" />
-            </Grid.InputBindings>
+            
 
-            --><!-- Hover over to show edit button --><!--
+            <!-- Hover over to show edit button --><!--
             <Grid.Triggers>
                 <EventTrigger RoutedEvent="MouseEnter">
                     <BeginStoryboard>
@@ -60,33 +57,16 @@
                        FontFamily="{StaticResource LatoRegular}"
                        />
 
-            <!-- Edit Content --><!--
-            <TextBox Text="{Binding EditedText, UpdateSourceTrigger=PropertyChanged}"
+            <!-- Edit Content -->
+            <TextBox Text="{Binding Amount, Converter={local:DecimalToDisplayMoneyConverter}}"
                      Grid.Column="1"
-                     Opacity="0"
-                     local:AnimateFadeInProperty.Value="{Binding Editing}"
-                     local:FocusAndSelectProperty.Value="{Binding Editing}"
+                     HorizontalAlignment="Stretch"
+                     HorizontalContentAlignment="Right"
+                     Background="Transparent"
                      FontSize="{StaticResource FontSizeRegular}"
                      Padding="2"
                      Margin="10 10 15 8"
-                     />-->
-
-            <!-- Content -->
-            <Grid Grid.Column="1"
-                  VerticalAlignment="Center"                  
-                        >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="$" HorizontalAlignment="Left" />                
-                    <TextBlock Grid.Column="1" Text="{Binding OriginalAmount, Converter={local:DecimalToDisplayMoneyConverter}}"                       
-                               local:AnimateFadeInProperty.Value="{Binding Editing, Converter={local:BooleanInvertConverter}}"
-                               HorizontalAlignment="Right"
-                               IsEnabled="{Binding Editable, Converter={local:BooleanToVisiblityGoneConverter}}"
-                               ToolTip="{Binding OriginalAmount}"
-                                />
-            </Grid>
+                     />
             
 
             <!-- Edit button container -->
@@ -97,7 +77,7 @@
                   <!--local:AnimateFadeInProperty.Value="{Binding Editing, Converter={local:BooleanInvertConverter}}"-->
                   
 
-                <!-- Edit Button -->                
+                <!-- Dialog Button -->                
                 <Button Content="{StaticResource FontAwesomeArrowRightIcon}"
                         FontFamily="{StaticResource FontAwesome}" 
                         HorizontalContentAlignment="Right"

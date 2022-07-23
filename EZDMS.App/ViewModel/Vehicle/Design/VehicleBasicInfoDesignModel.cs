@@ -27,20 +27,20 @@ namespace EZDMS.App
 
         {
             
-            StockNumber = new TextEntryViewModel { Label = "Stock Number", OriginalText = "P1807" };
-            VIN = new TextEntryViewModel { Label = "VIN", OriginalText = "1GNSKBKC2JR177272" };
-            Type = new TextEntryViewModel { Label = "Type", OriginalText = "Used" };
-            Status = new TextEntryViewModel { Label = "Status", OriginalText = "In Stock" };
-            Year = new TextEntryViewModel { Label = "Year", OriginalText = "2018" };            
-            Make = new TextEntryViewModel { Label = "Make", OriginalText = "Chevrolet" };
-            Model = new TextEntryViewModel { Label = "Model", OriginalText = "Tahoe" };
-            Trim = new TextEntryViewModel { Label = "Trim", OriginalText = "LT" };
-            Body = new TextEntryViewModel { Label = "Body", OriginalText = "Utility" };
-            ExteriorColor = new TextEntryViewModel { Label = "Exterior Color", OriginalText = "Silver" };
-            InteriorColor = new TextEntryViewModel { Label = "Interior Color", OriginalText = "Black" };
-            Class = new TextEntryViewModel { Label = "Class", OriginalText = "Passenger" };
-            Odometer = new TextEntryViewModel { Label = "Odometer", OriginalText = "34,555" };
-            OdometerStatus = new TextEntryViewModel { Label = "Odometer Status", OriginalText = "Actual Miles" };
+            StockNumber = new TextInputViewModel { Label = "Stock Number", Text = "P1807" };
+            VIN = new TextInputViewModel { Label = "VIN", Text = "1GNSKBKC2JR177272" };
+            Type = new TextInputViewModel { Label = "Type", Text = "Used" };
+            Status = new TextInputViewModel { Label = "Status", Text = "In Stock" };
+            Year = new TextInputViewModel { Label = "Year", Text = "2018" };            
+            Make = new TextInputViewModel { Label = "Make", Text = "Chevrolet" };
+            Model = new TextInputViewModel { Label = "Model", Text = "Tahoe" };
+            Trim = new TextInputViewModel { Label = "Trim", Text = "LT" };
+            Body = new TextInputViewModel { Label = "Body", Text = "Utility" };
+            ExteriorColor = new TextInputViewModel { Label = "Exterior Color", Text = "Silver" };
+            InteriorColor = new TextInputViewModel { Label = "Interior Color", Text = "Black" };
+            Class = new TextInputViewModel { Label = "Class", Text = "Passenger" };
+            Odometer = new TextInputViewModel { Label = "Odometer", Text = "34,555" };
+            OdometerStatus = new TextInputViewModel { Label = "Odometer Status", Text = "Actual Miles" };
             HasFactoryWarranty = true;
         }
 

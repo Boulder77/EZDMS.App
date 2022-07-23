@@ -19,7 +19,7 @@ namespace EZDMS.App
         /// <summary>
         /// The customer number
         /// </summary>
-        public TextDisplayViewModel CustomerNumber { get; set; }
+        public TextInputViewModel CustomerNumber { get; set; }
 
         /// <summary>
         /// The customer full name
@@ -29,7 +29,7 @@ namespace EZDMS.App
         /// <summary>
         /// The customer full address
         /// </summary>
-        public TextDisplayViewModel FullAddress { get; set; }
+        public TextInputViewModel FullAddress { get; set; }
 
         /// <summary>
         /// The customer full address type
@@ -39,7 +39,7 @@ namespace EZDMS.App
         /// <summary>
         /// The customer main phone number
         /// </summary>
-        public TextDisplayViewModel MainPhone { get; set; }
+        public TextInputViewModel MainPhone { get; set; }
 
         /// <summary>
         /// The type of main phone
@@ -49,17 +49,17 @@ namespace EZDMS.App
         /// <summary>
         /// The customer created date
         /// </summary>
-        public TextDisplayViewModel CreateDate { get; set; }
+        public TextInputViewModel CreateDate { get; set; }
 
         /// <summary>
         /// The customer last modified date
         /// </summary>
-        public TextDisplayViewModel LastModifiedDate { get; set; }
+        public TextInputViewModel LastModifiedDate { get; set; }
 
         /// <summary>
         /// The customer main email address
         /// </summary>
-        public TextDisplayViewModel MainEmail { get; set; }
+        public TextInputViewModel MainEmail { get; set; }
 
         /// <summary>
         /// The main email address type

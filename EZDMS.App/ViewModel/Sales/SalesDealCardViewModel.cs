@@ -33,62 +33,62 @@ namespace EZDMS.App
         /// <summary>
         /// The current buyer name
         /// </summary>
-        public TextDisplayViewModel BuyerName { get; set; }
+        public TextInputViewModel BuyerName { get; set; }
 
         /// <summary>
         /// The current Co-Buyer name
         /// </summary>
-        public TextDisplayViewModel CoBuyerName { get; set; }
+        public TextInputViewModel CoBuyerName { get; set; }
 
         /// <summary>
         /// The current vehicle info
         /// </summary>
-        public TextDisplayViewModel Vehicle { get; set; }
+        public TextInputViewModel Vehicle { get; set; }
 
         /// <summary>
         /// The current status of the sales deal
         /// </summary>
-        public TextDisplayViewModel Status { get; set; }
+        public TextInputViewModel Status { get; set; }
 
         /// <summary>
         /// The current type of the sales deal
         /// </summary>
-        public TextDisplayViewModel DealType { get; set; }
+        public TextInputViewModel DealType { get; set; }
 
         /// <summary>
         /// The salesperson name on the deal
         /// </summary>
-        public TextDisplayViewModel Salesperson { get; set; }
+        public TextInputViewModel Salesperson { get; set; }
                 
         /// <summary>
         /// The sales manager name on the deal
         /// </summary>
-        public TextDisplayViewModel SalesManager { get; set; }
+        public TextInputViewModel SalesManager { get; set; }
 
         /// <summary>
         /// The finance manager name on the deal
         /// </summary>
-        public TextDisplayViewModel FinanceManager { get; set; }
+        public TextInputViewModel FinanceManager { get; set; }
 
         /// <summary>
         /// The current trade vehicle(s) info
         /// </summary>
-        public TextDisplayViewModel Trades { get; set; }
+        public TextInputViewModel Trades { get; set; }
 
         /// <summary>
         /// The current created Date
         /// </summary>
-        public TextDisplayViewModel CreatedDate { get; set; }
+        public TextInputViewModel CreatedDate { get; set; }
 
         /// <summary>
         /// The last activity date on the deal
         /// </summary>
-        public TextDisplayViewModel LastActivityDate { get; set; }
+        public TextInputViewModel LastActivityDate { get; set; }
 
         /// <summary>
         /// The date of the deal
         /// </summary>
-        public TextDisplayViewModel DealDate { get; set; }
+        public TextInputViewModel DealDate { get; set; }
 
         /// <summary>
         /// Indicates if the sales finance deal details are currently being loaded
@@ -104,76 +104,88 @@ namespace EZDMS.App
         /// </summary>
         public SalesDealCardViewModel()
         {
-            BuyerName = new TextDisplayViewModel
+            BuyerName = new TextInputViewModel
             {
                 Label = "Buyer Name",
-                DisplayText = mDefaultText,
+                Text = mDefaultText,
+                Editable = false
             };
 
-            CoBuyerName = new TextDisplayViewModel
+            CoBuyerName = new TextInputViewModel
             {
                 Label = "CoBuyer Name",
-                DisplayText = mDefaultText,
+                Text = mDefaultText,
+                Editable = false
             };
 
-            Vehicle = new TextDisplayViewModel
+            Vehicle = new TextInputViewModel
             {
                 Label = "Vehicle",
-                DisplayText = mDefaultText,
+                Text = mDefaultText,
+                Editable = false
             };
 
-            Status = new TextDisplayViewModel
+            Status = new TextInputViewModel
             {
                 Label = "Status",
-                DisplayText = mDefaultText,
+                Text = mDefaultText,
+                Editable = false
             };
 
-            DealType = new TextDisplayViewModel
+            DealType = new TextInputViewModel
             {
                 Label = "Deal Type",
-                DisplayText = mDefaultText,
+                Text = mDefaultText,
+                Editable = false
             };
 
-            Salesperson = new TextDisplayViewModel
+            Salesperson = new TextInputViewModel
             {
                 Label = "Sales Person",
-                DisplayText = mDefaultText,
+                Text = mDefaultText,
+                Editable = false
             };
 
-            SalesManager = new TextDisplayViewModel
+            SalesManager = new TextInputViewModel
             {
                 Label = "Sales Manager",
-                DisplayText = mDefaultText,
+                Text = mDefaultText,
+                Editable = false
             };
 
-            FinanceManager = new TextDisplayViewModel
+            FinanceManager = new TextInputViewModel
             {
                 Label = "Finance Manager",
-                DisplayText = mDefaultText,
+                Text = mDefaultText,
+                Editable = false
             };
 
-            Trades = new TextDisplayViewModel
+            Trades = new TextInputViewModel
             {
                 Label = "Trades",
-                DisplayText = mDefaultText,
+                Text = mDefaultText,
+                Editable = false
             };
 
-            CreatedDate = new TextDisplayViewModel
+            CreatedDate = new TextInputViewModel
             {
                 Label = "Created Date",
-                DisplayText = mDefaultText,
+                Text = mDefaultText,
+                Editable = false
             };
 
-            LastActivityDate = new TextDisplayViewModel
+            LastActivityDate = new TextInputViewModel
             {
                 Label = "Last Activity Date",
-                DisplayText = mDefaultText,
+                Text = mDefaultText,
+                Editable = false
             };
 
-            DealDate = new TextDisplayViewModel
+            DealDate = new TextInputViewModel
             {
                 Label = "Deal Date",
-                DisplayText = mDefaultText,
+                Text = mDefaultText,
+                Editable = false
             };
 
         }

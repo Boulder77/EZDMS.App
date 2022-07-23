@@ -23,13 +23,13 @@ namespace EZDMS.App
         public CustomerCardDesignModel()
 
         {
-            CustomerNumber = new TextDisplayViewModel { Label = "Customer Number", DisplayText = "YCV1000010" };
+            CustomerNumber = new TextInputViewModel { Label = "Customer Number", Text = "YCV1000010",Editable=false };
             FullName = "Donald Fred Gomez";
-            CreateDate = new TextDisplayViewModel { Label = "Created", DisplayText = "06/14/2020" };
-            LastModifiedDate = new TextDisplayViewModel { Label = "Last Modified", DisplayText = "10/12/2021" };
-            MainPhone = new TextDisplayViewModel { Label = "2 Phones", DisplayText = $"(724) 967-4272 {MainPhoneType}" };
-            MainEmail = new TextDisplayViewModel { Label = "1 Email", DisplayText = $"DonaldGomez@nowhere.com {MainEmailType}" };
-            FullAddress = new TextDisplayViewModel { Label = "1 Address", DisplayText = $"129 Smith Valley Rd \r\n Fredonia, OH 45011 {FullAddressType}" };
+            CreateDate = new TextInputViewModel { Label = "Created", Text = "06/14/2020", Editable = false };
+            LastModifiedDate = new TextInputViewModel { Label = "Last Modified", Text = "10/12/2021", Editable = false };
+            MainPhone = new TextInputViewModel { Label = "2 Phones", Text = $"(724) 967-4272 {MainPhoneType}", Editable = false  };
+            MainEmail = new TextInputViewModel { Label = "1 Email", Text = $"DonaldGomez@nowhere.com {MainEmailType}", Editable = false };
+            FullAddress = new TextInputViewModel { Label = "1 Address", Text = $"129 Smith Valley Rd \r\n Fredonia, OH 45011 {FullAddressType}", Editable = false };
 
         }
 

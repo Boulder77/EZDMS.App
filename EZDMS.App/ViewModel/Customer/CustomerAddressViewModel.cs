@@ -41,12 +41,12 @@ namespace EZDMS.App
         /// <summary>
         /// The customer street address
         /// </summary>
-        public TextEntryViewModel StreetAddress { get; set; }
+        public TextInputViewModel StreetAddress { get; set; }
 
         /// <summary>
         /// The customer city
         /// </summary>
-        public TextEntryViewModel City { get; set; }
+        public TextInputViewModel City { get; set; }
 
         /// <summary>
         /// The customer state
@@ -55,17 +55,17 @@ namespace EZDMS.App
              
         /// <summary>
         /// The customer zip code
-        public TextEntryViewModel Zip { get; set; }
+        public TextInputViewModel Zip { get; set; }
 
         /// <summary>
         /// The customer county
         /// </summary>
-        public TextEntryViewModel County { get; set; }
+        public TextInputViewModel County { get; set; }
 
         /// <summary>
         /// The customer county code
         /// </summary>
-        public TextEntryViewModel CountyCode { get; set; }
+        public TextInputViewModel CountyCode { get; set; }
 
         #endregion
 

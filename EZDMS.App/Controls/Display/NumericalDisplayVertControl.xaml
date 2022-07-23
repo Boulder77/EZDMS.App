@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:EZDMS.App"
              xmlns:core="clr-namespace:EZDMS.App.Core;assembly=EZDMS.App.Core"
              mc:Ignorable="d" 
-             d:DataContext="{x:Static local:NumericalEntryDesignModel.Instance}">
+             d:DataContext="{x:Static local:DecimalInputDesignModel.Instance}">
 
     <!-- Grey underline -->
     <Border BorderBrush="{StaticResource ForegroundDarkBrush}"
@@ -36,7 +36,7 @@
                                 FontSize="{StaticResource FontSizeLarge}"
                                HorizontalAlignment="Left"
                                />
-                    <TextBlock Grid.Column="1" Text="{Binding OriginalAmount, Converter={local:DecimalToDisplayMoneyConverter}}"                                             
+                    <TextBlock Grid.Column="1" Text="{Binding Amount, Converter={local:DecimalToDisplayMoneyConverter}}"                                             
                                HorizontalAlignment="Right"
                                FontSize="{StaticResource FontSizeLarge}"
                                ToolTip="{Binding OriginalAmount}"

@@ -271,6 +271,8 @@
     <Compile Include="ViewModel\Dialogs\VehicleSelectDialogViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\Design\ProductSalesDesignModel.cs" />
     <Compile Include="ViewModel\Dialogs\CustomerSelectDialogViewModel.cs" />
+    <Compile Include="ViewModel\Input\Design\TextInputDesignModel.cs" />
+    <Compile Include="ViewModel\Input\TextInputViewModel.cs" />
     <Compile Include="ViewModel\Products\Design\ProductItemDesignModel.cs" />
     <Compile Include="ViewModel\Products\ProductItemViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\ProductsSalesDialogViewModel.cs" />
@@ -290,9 +292,9 @@
     <Compile Include="ViewModel\Input\Design\ComboBoxDisplayDesignModel.cs" />
     <Compile Include="ViewModel\Input\Design\TextDisplayDesignModel.cs" />
     <Compile Include="ViewModel\Input\ComboBoxSelectionViewModel.cs" />
-    <Compile Include="ViewModel\Input\Design\NumericalEntryDesignModel.cs" />
+    <Compile Include="ViewModel\Input\Design\DecimalInputDesignModel.cs" />
     <Compile Include="ViewModel\Input\TextDisplayViewModel.cs" />
-    <Compile Include="ViewModel\Input\NumericalEntryViewModel.cs" />
+    <Compile Include="ViewModel\Input\DecimalInputViewModel.cs" />
     <Compile Include="ViewModel\Vehicle\VehiclesListViewModel.cs" />
     <Compile Include="ViewModel\Vehicle\Design\VehicleDetailsDesignModel.cs" />
     <Compile Include="ViewModel\Vehicle\Design\VehiclePricingDesignModel.cs" />

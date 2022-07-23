@@ -19,32 +19,32 @@ namespace EZDMS.App
         /// <summary>
         /// The customer first name
         /// </summary>
-        public TextEntryViewModel FirstName { get; set; }
+        public TextInputViewModel FirstName { get; set; }
 
         /// <summary>
         /// The business name
         /// </summary>
-        public TextEntryViewModel Business { get; set; }
+        public TextInputViewModel Business { get; set; }
 
         /// <summary>
         /// The customer last name
         /// </summary>
-        public TextEntryViewModel LastName { get; set; }
+        public TextInputViewModel LastName { get; set; }
 
         /// <summary>
         /// The customer full address
         /// </summary>
-        public TextEntryViewModel Address { get; set; }
+        public TextInputViewModel Address { get; set; }
                 
         /// <summary>
         /// The customer phone number
         /// </summary>
-        public TextEntryViewModel Phone { get; set; }
+        public TextInputViewModel Phone { get; set; }
 
         /// <summary>
         /// The customer email
         /// </summary>
-        public TextEntryViewModel Email { get; set; }
+        public TextInputViewModel Email { get; set; }
 
         #endregion
 

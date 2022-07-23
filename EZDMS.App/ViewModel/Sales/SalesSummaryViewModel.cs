@@ -41,22 +41,22 @@ namespace EZDMS.App
         /// <summary>
         /// The APR of the sale
         /// </summary>
-        public TextEntryViewModel APR { get; set; }
+        public TextInputViewModel APR { get; set; }
 
         /// <summary>
         /// The effective APR of the sale
         /// </summary>
-        public TextEntryViewModel EffectiveAPR { get; set; }
+        public TextInputViewModel EffectiveAPR { get; set; }
 
         /// <summary>
         /// The trade difference of the sale
         /// </summary>
-        public TextDisplayViewModel TradeDifference { get; set; }
+        public TextInputViewModel TradeDifference { get; set; }
 
         /// <summary>
         /// The term of the sale
         /// </summary>
-        public TextEntryViewModel Term { get; set; }
+        public TextInputViewModel Term { get; set; }
 
         /// <summary>
         /// The payment schedule type of the sale
@@ -73,7 +73,7 @@ namespace EZDMS.App
         /// <summary>
         /// The number of days to the first payment of the sale
         /// </summary>
-        public TextEntryViewModel DaysToFirstPayment { get; set; }
+        public TextInputViewModel DaysToFirstPayment { get; set; }
 
         /// <summary>
         /// The payment date of the sale
@@ -91,34 +91,34 @@ namespace EZDMS.App
         public SalesSummaryViewModel()
         {
             //// Create the APR
-            //APR = new TextEntryViewModel
+            //APR = new TextInputViewModel
             //{
             //    Label="APR",
-            //    OriginalText="0.00"
+            //    Text="0.00"
 
             //};
 
             //// Create the APR
-            //EffectiveAPR = new TextEntryViewModel
+            //EffectiveAPR = new TextInputViewModel
             //{
             //    Label = "Effective APR",
-            //    OriginalText = "0.00"
+            //    Text = "0.00"
 
             //};
 
             //// Create the trade difference
-            //TradeDifference = new TextDisplayViewModel
+            //TradeDifference = new TextInputViewModel
             //{
             //    Label = "Trade Difference",
-            //    DisplayText = "0.00"
+            //    Text = "0.00"
 
             //};
 
             //// Create the term
-            //Term = new TextEntryViewModel
+            //Term = new TextInputViewModel
             //{
             //    Label = "Term",
-            //    OriginalText="48"
+            //    Text="48"
 
             //};
 
@@ -130,10 +130,10 @@ namespace EZDMS.App
             //};
 
             //// Create the days to first payment
-            //DaysToFirstPayment = new TextEntryViewModel
+            //DaysToFirstPayment = new TextInputViewModel
             //{
             //    Label = "Days To First Payment",
-            //    OriginalText = "30"
+            //    Text = "30"
             //};
 
             //// Create the payment date

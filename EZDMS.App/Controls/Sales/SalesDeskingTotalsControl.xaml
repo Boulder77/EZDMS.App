@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:EZDMS.App"
              d:DataContext="{x:Static local:SalesDeskingTotalsDesignModel.Instance}"
              mc:Ignorable="d" 
-             d:DesignHeight="470" d:DesignWidth="700">
+             d:DesignHeight="650" d:DesignWidth="700">
     <Grid Background="{StaticResource BackgroundLightBrush}">
         
         <Grid.RowDefinitions>

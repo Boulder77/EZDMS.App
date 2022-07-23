@@ -24,32 +24,32 @@ namespace EZDMS.App
         /// <summary>
         /// The payment amount
         /// </summary>
-        public NumericalEntryViewModel Payment { get; set; }
+        public DecimalInputViewModel Payment { get; set; }
 
         /// <summary>
         /// The final payment amount
         /// </summary>
-        public NumericalEntryViewModel FinalPayment { get; set; }
+        public DecimalInputViewModel FinalPayment { get; set; }
 
         /// <summary>
         /// The finance charge amount
         /// </summary>
-        public NumericalEntryViewModel FinanceCharge { get; set; }
+        public DecimalInputViewModel FinanceCharge { get; set; }
 
         /// <summary>
         /// The total of payments amount
         /// </summary>
-        public NumericalEntryViewModel TotalOfPayments { get; set; }
+        public DecimalInputViewModel TotalOfPayments { get; set; }
 
         /// <summary>
         /// The total down amount
         /// </summary>
-        public NumericalEntryViewModel TotalDown { get; set; }
+        public DecimalInputViewModel TotalDown { get; set; }
 
         /// <summary>
         /// The total sale price
         /// </summary>
-        public NumericalEntryViewModel TotalSalePrice { get; set; }
+        public DecimalInputViewModel TotalSalePrice { get; set; }
         
         #endregion
 

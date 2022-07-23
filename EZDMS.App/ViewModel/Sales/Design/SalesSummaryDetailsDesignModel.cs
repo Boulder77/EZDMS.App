@@ -28,13 +28,13 @@ namespace EZDMS.App
             SelectedSaleType = SaleType.Retail;
             SelectedState = States.OH;
             Lender = "GALAXY FCU";
-            APR = new TextEntryViewModel { Label = "APR", OriginalText = "8.000"};
-            EffectiveAPR = new TextEntryViewModel { Label = "Effective APR", OriginalText = "8.000" };
-            TradeDifference = new TextDisplayViewModel { Label = "Trade Difference", DisplayText="$54,475.00"};
-            Term = new TextEntryViewModel { Label = "Term", OriginalText = "48" };
+            APR = new TextInputViewModel { Label = "APR", Text = "8.000"};
+            EffectiveAPR = new TextInputViewModel { Label = "Effective APR", Text = "8.000" };
+            TradeDifference = new TextInputViewModel { Label = "Trade Difference", Text="$54,475.00", Editable = false };
+            Term = new TextInputViewModel { Label = "Term", Text = "48" };
             SelectedPaymentType = PaymentType.Monthly;
             PurchaseDate = new DateSelectionViewModel { Label = "Purchase Date", Date = DateTime.Today };
-            DaysToFirstPayment = new TextEntryViewModel { Label = "Days To First Payment" };
+            DaysToFirstPayment = new TextInputViewModel { Label = "Days To First Payment" };
             PaymentDate = new DateSelectionViewModel { Label = "Payment Date", Date = DateTime.Today.AddDays(30) };
 
         }

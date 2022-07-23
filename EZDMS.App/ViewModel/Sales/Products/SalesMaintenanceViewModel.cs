@@ -19,57 +19,57 @@ namespace EZDMS.App
         /// <summary>
         /// The SalesMaintenance deal number
         /// <summary>
-        public TextEntryViewModel DealNumber { get; set; }
+        public TextInputViewModel DealNumber { get; set; }
 
         /// <summary>
         /// The SalesMaintenance provider number
         /// <summary>
-        public TextEntryViewModel ProviderNumber { get; set; }
+        public TextInputViewModel ProviderNumber { get; set; }
 
         /// <summary>
         /// The SalesMaintenance plan i d
         /// <summary>
-        public TextEntryViewModel PlanID { get; set; }
+        public TextInputViewModel PlanID { get; set; }
 
         /// <summary>
         /// The SalesMaintenance plan
         /// <summary>
-        public TextEntryViewModel Plan { get; set; }
+        public TextInputViewModel Plan { get; set; }
 
         /// <summary>
         /// The SalesMaintenance retail
         /// <summary>
-        public NumericalEntryViewModel Retail { get; set; }
+        public DecimalInputViewModel Retail { get; set; }
 
         /// <summary>
         /// The SalesMaintenance cost
         /// <summary>
-        public NumericalEntryViewModel Cost { get; set; }
+        public DecimalInputViewModel Cost { get; set; }
 
         /// <summary>
         /// The SalesMaintenance profit
         /// <summary>
-        public NumericalEntryViewModel Profit { get; set; }
+        public DecimalInputViewModel Profit { get; set; }
 
         /// <summary>
         /// The SalesMaintenance deductible
         /// <summary>
-        public NumericalEntryViewModel Deductible { get; set; }
+        public DecimalInputViewModel Deductible { get; set; }
 
         /// <summary>
         /// The SalesMaintenance term
         /// <summary>
-        public TextEntryViewModel Term { get; set; }
+        public TextInputViewModel Term { get; set; }
 
         /// <summary>
         /// The SalesMaintenance mileage
         /// <summary>
-        public TextEntryViewModel Mileage { get; set; }
+        public TextInputViewModel Mileage { get; set; }
 
         /// <summary>
         /// The SalesMaintenance dealer number
         /// <summary>
-        public TextEntryViewModel DealerNumber { get; set; }
+        public TextInputViewModel DealerNumber { get; set; }
 
         /// <summary>
         /// The SalesMaintenance in payment

@@ -30,8 +30,8 @@ namespace EZDMS.App
         /// </summary>
         private List<CoveragePlanDataModel> mPlans;
 
-       
-
+        private decimal mServiceRetail;
+               
         #endregion
 
         #region Public Properties
@@ -168,6 +168,28 @@ namespace EZDMS.App
         /// </summary>
         public ObservableCollection<CoverageProviderDataModel> GapProviders { get; set; }
 
+        public decimal ServiceRetail
+        {
+            get => mServiceRetail;
+
+            set
+            {
+                // Make sure list has changed
+                if (mServiceRetail == value)
+                    return;
+
+                // Update value
+                mServiceRetail = value;
+
+
+                UpdateTotalRetail();
+
+
+            }
+
+        }
+
+
         /// <summary>
         /// The sales maintenance data model
         /// </summary>
@@ -189,10 +211,10 @@ namespace EZDMS.App
         public SalesGapDataModel SalesGap { get; set; }
 
         /// <summary>
-        /// The view model for the service contract
+        /// The view model for the service contract 
         /// </summary>
         public ProductItemViewModel Service { get; set; }
-
+        
         /// <summary>
         /// The view model for the warranty
         /// </summary>
@@ -211,12 +233,7 @@ namespace EZDMS.App
         /// <summary>
         /// The text for the total retail 
         /// </summary>
-        public NumericalEntryViewModel TotalRetail { get; set; }
-
-        /// <summary>
-        /// The total of all the retail prices
-        /// </summary>
-        public decimal TotalRetailAmount { get; set; }
+        public DecimalInputViewModel TotalRetail { get; set; }
 
         /// <summary>
         /// Indicates if there is a save action
@@ -253,31 +270,32 @@ namespace EZDMS.App
 
             Service = new ProductItemViewModel
             {
-                Type = new TextDisplayViewModel { Label = "Product", DisplayText = "Service" },
-                Retail = new NumericalEntryViewModel { Label = "Retail", OriginalAmount = 0, Editable = true },
-                Cost = new NumericalEntryViewModel { Label = "Cost", OriginalAmount = 0, Editable = true },
-                Deductible = new NumericalEntryViewModel { Label = "Deductible", OriginalAmount = 0, Editable = true },
-                Term = new TextEntryViewModel { Label = "Term", OriginalText = "" },
-                Mileage = new TextEntryViewModel { Label = "Mileage", OriginalText = "" },
-                ContractNumber = new TextEntryViewModel { Label = "Contract No", OriginalText = "" },
+                Type = new TextInputViewModel { Label = "Product", Text = "Service", Editable = false },
+                Retail = ServiceRetail,
+                Cost = new DecimalInputViewModel { Label = "Cost", Amount = 0, Editable = true },
+                Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 0, Editable = true },
+                Term = new TextInputViewModel { Label = "Term", Text = "" },
+                Mileage = new TextInputViewModel { Label = "Mileage", Text = "" },
+                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "" },
                 InPayment = true,
                 IsDisappearingDeductible = false,
                 Taxable = false,
                 Providers = new ObservableCollection<CoverageProviderDataModel>(),
                 Plans = new ObservableCollection<CoveragePlanDataModel>(),
+                ChangeAction = UpdateTotalRetailAsync
                 //SelectedProvider = new CoverageProviderDataModel(),
                 //SelectedPlan = new CoveragePlanDataModel(),
             };
 
             Warranty = new ProductItemViewModel
             {
-                Type = new TextDisplayViewModel { Label = "Product", DisplayText = "Warranty" },
-                Retail = new NumericalEntryViewModel { Label = "Retail", OriginalAmount = 0, Editable = true },
-                Cost = new NumericalEntryViewModel { Label = "Cost", OriginalAmount = 0, Editable = true },
-                Deductible = new NumericalEntryViewModel { Label = "Deductible", OriginalAmount = 0, Editable = true },
-                Term = new TextEntryViewModel { Label = "Term", OriginalText = "" },
-                Mileage = new TextEntryViewModel { Label = "Mileage", OriginalText = "" },
-                ContractNumber = new TextEntryViewModel { Label = "Contract No", OriginalText = "" },
+                Type = new TextInputViewModel { Label = "Product", Text = "Warranty", Editable = false },
+                Retail = 0,
+                Cost = new DecimalInputViewModel { Label = "Cost", Amount = 0, Editable = true },
+                Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 0, Editable = true },
+                Term = new TextInputViewModel { Label = "Term", Text = "" },
+                Mileage = new TextInputViewModel { Label = "Mileage", Text = "" },
+                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "" },
                 InPayment = true,
                 IsDisappearingDeductible = false,
                 Taxable = true,
@@ -288,13 +306,13 @@ namespace EZDMS.App
 
             Maintenance = new ProductItemViewModel
             {
-                Type = new TextDisplayViewModel { Label = "Product", DisplayText = "Maintenance" },
-                Retail = new NumericalEntryViewModel { Label = "Retail", OriginalAmount = 0, Editable = true },
-                Cost = new NumericalEntryViewModel { Label = "Cost", OriginalAmount = 0, Editable = true },
-                Deductible = new NumericalEntryViewModel { Label = "Deductible", OriginalAmount = 0, Editable = true },
-                Term = new TextEntryViewModel { Label = "Term", OriginalText = "" },
-                Mileage = new TextEntryViewModel { Label = "Mileage", OriginalText = "" },
-                ContractNumber = new TextEntryViewModel { Label = "Contract No", OriginalText = "" },
+                Type = new TextInputViewModel { Label = "Product", Text = "Maintenance", Editable = false },
+                Retail = 0,
+                Cost = new DecimalInputViewModel { Label = "Cost", Amount = 0, Editable = true },
+                Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 0, Editable = true },
+                Term = new TextInputViewModel { Label = "Term", Text = "" },
+                Mileage = new TextInputViewModel { Label = "Mileage", Text = "" },
+                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "" },
                 InPayment = true,
                 IsDisappearingDeductible = false,
                 Taxable = true,
@@ -305,13 +323,13 @@ namespace EZDMS.App
 
             Gap = new ProductItemViewModel
             {
-                Type = new TextDisplayViewModel { Label = "Product", DisplayText = "Gap" },
-                Retail = new NumericalEntryViewModel { Label = "Retail", OriginalAmount = 0, Editable = true },
-                Cost = new NumericalEntryViewModel { Label = "Cost", OriginalAmount = 0, Editable = true },
+                Type = new TextInputViewModel { Label = "Product", Text = "Gap", Editable = false },
+                Retail = 0,
+                Cost = new DecimalInputViewModel { Label = "Cost", Amount = 0, Editable = true },
                 //Deductible = new NumericalEntryViewModel { Label = "Deductible", OriginalAmount = 0, Editable = true },
-                //Term = new TextEntryViewModel { Label = "Term", OriginalText = "" },
-                //Mileage = new TextEntryViewModel { Label = "Mileage", OriginalText = "" },
-                ContractNumber = new TextEntryViewModel { Label = "Contract No", OriginalText = "" },
+                //Term = new TextInputViewModel { Label = "Term", Text = "" },
+                //Mileage = new TextInputViewModel { Label = "Mileage", Text = "" },
+                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "" },
                 InPayment = true,
                 //DisappearingDeductible = false,
                 Taxable = true,
@@ -319,6 +337,8 @@ namespace EZDMS.App
                 Plans = new ObservableCollection<CoveragePlanDataModel>(),
                 
             };
+
+            TotalRetail = new DecimalInputViewModel { Label = "Total Retail", Amount = Service.Retail };
         }
 
         #endregion
@@ -436,9 +456,6 @@ namespace EZDMS.App
 
             });
 
-
-
-
             CloseAction();
 
         }
@@ -447,6 +464,19 @@ namespace EZDMS.App
 
         #endregion
 
+
+        public async Task<bool> UpdateTotalRetailAsync()
+        {
+           
+
+            UpdateTotalRetail();
+
+            // Lock this command to ignore any other requests while processing
+            await Task.Delay(1);
+            return true;
+            
+
+        }
 
 
         #region Private Helper Methods
@@ -457,14 +487,14 @@ namespace EZDMS.App
             SalesMaintenance.Plan = Maintenance.SelectedPlan.Name;
             SalesMaintenance.PlanID = Maintenance.SelectedPlan.ID;
             SalesMaintenance.InPayment = Maintenance.InPayment;
-            SalesMaintenance.Cost = Maintenance.Cost.EditedAmount == 0 ? Maintenance.SelectedPlan.Cost : Maintenance.Cost.EditedAmount;
-            SalesMaintenance.Retail = Maintenance.Retail.EditedAmount == 0 ? Maintenance.SelectedPlan.Retail : Maintenance.Retail.EditedAmount;
+            SalesMaintenance.Cost = Maintenance.Cost.Amount == 0 ? Maintenance.SelectedPlan.Cost : Maintenance.Cost.Amount;
+            SalesMaintenance.Retail = Maintenance.Retail == 0 ? Maintenance.SelectedPlan.Retail : Maintenance.Retail;
             SalesMaintenance.Profit = SalesMaintenance.Retail - SalesMaintenance.Cost;
-            SalesMaintenance.Deductible = Maintenance.Deductible.EditedAmount == 0 ? Maintenance.SelectedPlan.Deductible : Maintenance.Deductible.EditedAmount;
+            SalesMaintenance.Deductible = Maintenance.Deductible.Amount == 0 ? Maintenance.SelectedPlan.Deductible : Maintenance.Deductible.Amount;
             SalesMaintenance.IsDisappearingDeductible = Maintenance.IsDisappearingDeductible;
             SalesMaintenance.ProviderNumber = Maintenance.SelectedPlan.ProviderNumber;
-            SalesMaintenance.Term = Maintenance.Term.EditedText == null ? Maintenance.SelectedPlan.Term : Convert.ToInt32(Maintenance.Term.EditedText);
-            SalesMaintenance.Mileage = Maintenance.Mileage.EditedText == null ? Maintenance.SelectedPlan.Mileage : Convert.ToInt32(Maintenance.Mileage.EditedText);
+            SalesMaintenance.Term = Maintenance.Term.Text == null ? Maintenance.SelectedPlan.Term : Convert.ToInt32(Maintenance.Term.Text);
+            SalesMaintenance.Mileage = Maintenance.Mileage.Text == null ? Maintenance.SelectedPlan.Mileage : Convert.ToInt32(Maintenance.Mileage.Text);
             SalesMaintenance.DealerNumber = Maintenance.SelectedProvider?.DealerNumber;
 
         }
@@ -475,14 +505,14 @@ namespace EZDMS.App
             SalesService.Plan = Service.SelectedPlan.Name;
             SalesService.PlanID = Service.SelectedPlan.ID;
             SalesService.InPayment = Service.InPayment;
-            SalesService.Cost = Service.Cost.EditedAmount == 0 ? Service.SelectedPlan.Cost : Service.Cost.EditedAmount;
-            SalesService.Retail = Service.Retail.EditedAmount == 0 ? Service.SelectedPlan.Retail : Service.Retail.EditedAmount;
+            SalesService.Cost = Service.Cost.Amount == 0 ? Service.SelectedPlan.Cost : Service.Cost.Amount;
+            SalesService.Retail = Service.Retail == 0 ? Service.SelectedPlan.Retail : Service.Retail;
             SalesService.Profit = SalesService.Retail - SalesService.Cost;
-            SalesService.Deductible = Service.Deductible.EditedAmount == 0 ? Service.SelectedPlan.Deductible : Service.Deductible.EditedAmount;
+            SalesService.Deductible = Service.Deductible.Amount == 0 ? Service.SelectedPlan.Deductible : Service.Deductible.Amount;
             SalesService.IsDisappearingDeductible = Service.IsDisappearingDeductible;
             SalesService.ProviderNumber = Service.SelectedPlan.ProviderNumber;
-            SalesService.Term = Service.Term.EditedText==null ? Service.SelectedPlan.Term : Convert.ToInt32(Service.Term.EditedText);
-            SalesService.Mileage = Service.Mileage.EditedText == null ? Service.SelectedPlan.Mileage : Convert.ToInt32(Service.Mileage.EditedText);
+            SalesService.Term = Service.Term.Text==null ? Service.SelectedPlan.Term : Convert.ToInt32(Service.Term.Text);
+            SalesService.Mileage = Service.Mileage.Text == null ? Service.SelectedPlan.Mileage : Convert.ToInt32(Service.Mileage.Text);
             SalesService.DealerNumber = Service.SelectedProvider?.DealerNumber;
 
         }
@@ -493,14 +523,14 @@ namespace EZDMS.App
             SalesWarranty.Plan = Warranty.SelectedPlan.Name;
             SalesWarranty.PlanID = Warranty.SelectedPlan.ID;
             SalesWarranty.InPayment = Warranty.InPayment;
-            SalesWarranty.Cost = Warranty.Cost.EditedAmount == 0 ? Warranty.SelectedPlan.Cost : Warranty.Cost.EditedAmount;
-            SalesWarranty.Retail = Warranty.Retail.EditedAmount == 0 ? Warranty.SelectedPlan.Retail : Warranty.Retail.EditedAmount;
+            SalesWarranty.Cost = Warranty.Cost.Amount == 0 ? Warranty.SelectedPlan.Cost : Warranty.Cost.Amount;
+            SalesWarranty.Retail = Warranty.Retail == 0 ? Warranty.SelectedPlan.Retail : Warranty.Retail;
             SalesWarranty.Profit = SalesWarranty.Retail - SalesWarranty.Cost;
-            SalesWarranty.Deductible = Warranty.Deductible.EditedAmount == 0 ? Warranty.SelectedPlan.Deductible : Warranty.Deductible.EditedAmount;
+            SalesWarranty.Deductible = Warranty.Deductible.Amount == 0 ? Warranty.SelectedPlan.Deductible : Warranty.Deductible.Amount;
             SalesWarranty.IsDisappearingDeductible = Warranty.IsDisappearingDeductible;
             SalesWarranty.ProviderNumber = Warranty.SelectedPlan.ProviderNumber;
-            SalesWarranty.Term = Warranty.Term.EditedText == null ? Warranty.SelectedPlan.Term : Convert.ToInt32(Warranty.Term.EditedText);
-            SalesWarranty.Mileage = Warranty.Mileage.EditedText == null ? Warranty.SelectedPlan.Mileage : Convert.ToInt32(Warranty.Mileage.EditedText);
+            SalesWarranty.Term = Warranty.Term.Text == null ? Warranty.SelectedPlan.Term : Convert.ToInt32(Warranty.Term.Text);
+            SalesWarranty.Mileage = Warranty.Mileage.Text == null ? Warranty.SelectedPlan.Mileage : Convert.ToInt32(Warranty.Mileage.Text);
             SalesWarranty.DealerNumber = Warranty.SelectedProvider?.DealerNumber;
 
         }
@@ -511,15 +541,31 @@ namespace EZDMS.App
             SalesGap.Plan = Gap.SelectedPlan.Name;
             SalesGap.PlanID = Gap.SelectedPlan.ID;
             SalesGap.InPayment = Gap.InPayment;
-            SalesGap.Cost = Gap.Cost.EditedAmount == 0 ? Gap.SelectedPlan.Cost : Gap.Cost.EditedAmount;
-            SalesGap.Retail = Gap.Retail.EditedAmount == 0 ? Gap.SelectedPlan.Retail : Gap.Retail.EditedAmount;
+            SalesGap.Cost = Gap.Cost.Amount == 0 ? Gap.SelectedPlan.Cost : Gap.Cost.Amount;
+            SalesGap.Retail = Gap.Retail == 0 ? Gap.SelectedPlan.Retail : Gap.Retail;
             SalesGap.Profit = SalesGap.Retail - SalesGap.Cost;
             SalesGap.ProviderNumber = Gap.SelectedPlan.ProviderNumber;
             SalesGap.DealerNumber = Gap.SelectedProvider?.DealerNumber;
 
         }
 
+        private void UpdateTotalRetail()
+        {
 
-        #endregion
-    }
+            TotalRetail = new DecimalInputViewModel
+            {
+                Label = "Total Retail",
+
+                Amount = (Service == null ? 0 : Service.Retail) +
+                             (Maintenance == null ? 0 : Maintenance.Retail) +
+                             (Warranty == null ? 0 : Warranty.Retail) +
+                             (Gap == null ? 0 : Gap.Retail)
+
+            };
+
+        }
+
+
+    #endregion
+}
 }
