@@ -29,8 +29,6 @@ namespace EZDMS.App
         /// The list of all the product plans
         /// </summary>
         private List<CoveragePlanDataModel> mPlans;
-
-        private decimal mServiceRetail;
                
         #endregion
 
@@ -120,6 +118,13 @@ namespace EZDMS.App
                 // Update view model
                 Maintenance.Plans = MaintenancePlans;
 
+
+                // Update gap plan list
+                GapPlans = new ObservableCollection<CoveragePlanDataModel>(
+                mPlans.Where(item => item.Type.ToLower().Contains("gap")));
+                // Update view model
+                Gap.Plans = GapPlans;
+
             }
         }
 
@@ -167,29 +172,7 @@ namespace EZDMS.App
         /// The gap provider items for the list
         /// </summary>
         public ObservableCollection<CoverageProviderDataModel> GapProviders { get; set; }
-
-        public decimal ServiceRetail
-        {
-            get => mServiceRetail;
-
-            set
-            {
-                // Make sure list has changed
-                if (mServiceRetail == value)
-                    return;
-
-                // Update value
-                mServiceRetail = value;
-
-
-                UpdateTotalRetail();
-
-
-            }
-
-        }
-
-
+                
         /// <summary>
         /// The sales maintenance data model
         /// </summary>
@@ -271,7 +254,7 @@ namespace EZDMS.App
             Service = new ProductItemViewModel
             {
                 Type = new TextInputViewModel { Label = "Product", Text = "Service", Editable = false },
-                Retail = ServiceRetail,
+                Retail = 0,
                 Cost = new DecimalInputViewModel { Label = "Cost", Amount = 0, Editable = true },
                 Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 0, Editable = true },
                 Term = new TextInputViewModel { Label = "Term", Text = "" },
@@ -282,7 +265,7 @@ namespace EZDMS.App
                 Taxable = false,
                 Providers = new ObservableCollection<CoverageProviderDataModel>(),
                 Plans = new ObservableCollection<CoveragePlanDataModel>(),
-                ChangeAction = UpdateTotalRetailAsync
+                UpdateAction = UpdateTotalRetailAsync,
                 //SelectedProvider = new CoverageProviderDataModel(),
                 //SelectedPlan = new CoveragePlanDataModel(),
             };
@@ -301,7 +284,8 @@ namespace EZDMS.App
                 Taxable = true,
                 Providers = new ObservableCollection<CoverageProviderDataModel>(),
                 Plans = new ObservableCollection<CoveragePlanDataModel>(),
-                
+                UpdateAction = UpdateTotalRetailAsync,
+
             };
 
             Maintenance = new ProductItemViewModel
@@ -318,7 +302,8 @@ namespace EZDMS.App
                 Taxable = true,
                 Providers = new ObservableCollection<CoverageProviderDataModel>(),
                 Plans = new ObservableCollection<CoveragePlanDataModel>(),
-                
+                UpdateAction = UpdateTotalRetailAsync,
+
             };
 
             Gap = new ProductItemViewModel
@@ -326,19 +311,20 @@ namespace EZDMS.App
                 Type = new TextInputViewModel { Label = "Product", Text = "Gap", Editable = false },
                 Retail = 0,
                 Cost = new DecimalInputViewModel { Label = "Cost", Amount = 0, Editable = true },
-                //Deductible = new NumericalEntryViewModel { Label = "Deductible", OriginalAmount = 0, Editable = true },
-                //Term = new TextInputViewModel { Label = "Term", Text = "" },
-                //Mileage = new TextInputViewModel { Label = "Mileage", Text = "" },
+                Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 0, Editable = true },
+                Term = new TextInputViewModel { Label = "Term", Text = "" },
+                Mileage = new TextInputViewModel { Label = "Mileage", Text = "" },
                 ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "" },
                 InPayment = true,
-                //DisappearingDeductible = false,
+                IsDisappearingDeductible = false,
                 Taxable = true,
                 Providers = new ObservableCollection<CoverageProviderDataModel>(),
                 Plans = new ObservableCollection<CoveragePlanDataModel>(),
-                
+                UpdateAction = UpdateTotalRetailAsync,
+
             };
 
-            TotalRetail = new DecimalInputViewModel { Label = "Total Retail", Amount = Service.Retail };
+            
         }
 
         #endregion
@@ -460,14 +446,10 @@ namespace EZDMS.App
 
         }
 
-
-
         #endregion
-
 
         public async Task<bool> UpdateTotalRetailAsync()
         {
-           
 
             UpdateTotalRetail();
 
@@ -475,9 +457,7 @@ namespace EZDMS.App
             await Task.Delay(1);
             return true;
             
-
         }
-
 
         #region Private Helper Methods
 

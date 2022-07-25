@@ -89,7 +89,8 @@ namespace EZDMS.App
                 // Update value
                 mRetail = value;
 
-                Change();
+                // Update view model
+                Update();
             }    
         }
 
@@ -142,7 +143,7 @@ namespace EZDMS.App
         /// The action to run when saving the amount.
         /// Returns true if the commit was successful, or false otherwise.
         /// </summary>
-        public Func<Task<bool>> ChangeAction { get; set; }
+        public Func<Task<bool>> UpdateAction { get; set; }
 
         #endregion
 
@@ -176,7 +177,7 @@ namespace EZDMS.App
         }
 
 
-        public void Change()
+        public void Update()
         {
             // Store the result of a commit call
             var result = default(bool);
@@ -190,7 +191,7 @@ namespace EZDMS.App
                 //OriginalAmount = Amount;
 
                 // Try and do the work
-                result = ChangeAction == null ? true : await ChangeAction();
+                result = UpdateAction == null ? true : await UpdateAction();
 
             }).ContinueWith(t =>
             {

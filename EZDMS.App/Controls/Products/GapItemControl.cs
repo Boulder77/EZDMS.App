@@ -1,5 +1,7 @@
-﻿using System;
+﻿using EZDMS.App.Core;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,18 @@ namespace EZDMS.App
         public GapItemControl()
         {
             InitializeComponent();
+        }
+
+        private void CbProviders_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Update view model
+            if (DataContext is ProductItemViewModel viewModel)
+            {
+                viewModel.Plans = new ObservableCollection<CoveragePlanDataModel>(
+                viewModel.Plans.Where(item => item.ProviderNumber == (string)cbProviders.SelectedValue));
+
+            }
+
         }
     }
 }
