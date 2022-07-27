@@ -27,6 +27,7 @@
             </Grid.RowDefinitions>
 
             <local:TextDisplayVertControl Margin="0,8,0,0" DataContext="{Binding Type}"/>
+           
             <StackPanel Orientation="Vertical"
                         Grid.Column="1" >
 
@@ -38,7 +39,7 @@
                        FontFamily="{StaticResource LatoRegular}"
                        />
 
-                <!---->
+                <!-- Providers -->
                 <ComboBox x:Name="cbProviders"  ItemsSource="{Binding Providers}"
                            DisplayMemberPath="Name"                                                       
                            SelectedValuePath="Number"
@@ -64,7 +65,7 @@
                        FontFamily="{StaticResource LatoRegular}"
                        />
 
-                <!---->
+                <!-- Plans -->
 
                 <ComboBox  ItemsSource="{Binding Plans}"                   
                    SelectedItem="{Binding SelectedPlan}"
@@ -87,7 +88,7 @@
                        FontFamily="{StaticResource LatoRegular}"
                        />
 
-                <!---->
+                <!-- Retail -->
                 <TextBox Text="{Binding Retail}"
                      Background="Transparent"
                      Grid.Row="1"
@@ -108,11 +109,6 @@
 
             <local:TextInputVertControl Grid.Row="1" Grid.Column="1"  DataContext="{Binding ContractNumber}"/>
             
-            
-           
-
-
-
         </Grid>        
     </Border>
 </UserControl>

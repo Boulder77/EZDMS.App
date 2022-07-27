@@ -112,7 +112,7 @@ namespace EZDMS.App
         /// <summary>
         /// The product mileage
         /// <summary>
-        public TextInputViewModel Mileage { get; set; }
+        public TextInputViewModel Miles { get; set; }
 
         /// <summary>
         /// The product description
@@ -168,7 +168,7 @@ namespace EZDMS.App
             Cost.Amount = coveragePlan.Cost;
             Deductible.Amount = coveragePlan.Deductible;
             Term.Text = coveragePlan.Term.ToString();
-            Mileage.Text = coveragePlan.Mileage.ToString();
+            Miles.Text = coveragePlan.Miles.ToString();
             Taxable = coveragePlan.IsTaxable;
             InPayment = coveragePlan.DefaultInPayment;
             IsDisappearingDeductible = coveragePlan.IsDisappearingDeductible;
@@ -177,7 +177,7 @@ namespace EZDMS.App
         }
 
 
-        public void Update()
+        private void Update()
         {
             // Store the result of a commit call
             var result = default(bool);

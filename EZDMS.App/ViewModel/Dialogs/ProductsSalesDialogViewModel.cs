@@ -29,7 +29,28 @@ namespace EZDMS.App
         /// The list of all the product plans
         /// </summary>
         private List<CoveragePlanDataModel> mPlans;
-               
+
+        /// <summary>
+        /// The service contract data model 
+        /// </summary>
+        private SalesServiceDataModel mSalesService;
+
+        /// <summary>
+        /// The warranty data model 
+        /// </summary>
+        private SalesWarrantyDataModel mSalesWarranty;
+
+        /// <summary>
+        /// The maintenance data model 
+        /// </summary>
+        private SalesMaintenanceDataModel mSalesMaintenance;
+
+        /// <summary>
+        /// The gap data model 
+        /// </summary>
+        private SalesGapDataModel mSalesGap;
+
+
         #endregion
 
         #region Public Properties
@@ -77,12 +98,7 @@ namespace EZDMS.App
 
             }
         }
-
-        /// <summary>
-        /// The provider items for the list that include any filtering
-        /// </summary>
-        public ObservableCollection<CoverageProviderDataModel> FilteredProviders { get; set; }
-
+               
         /// <summary>
         /// The list of all the product plans
         /// </summary>
@@ -176,22 +192,103 @@ namespace EZDMS.App
         /// <summary>
         /// The sales maintenance data model
         /// </summary>
-        public SalesMaintenanceDataModel SalesMaintenance { get; set; }
+        public SalesMaintenanceDataModel SalesMaintenance
+        { 
+            get => mSalesMaintenance;
+                
+            set
+            {
+
+                // Make sure data model has changed
+                if (mSalesMaintenance == value)
+                    return;
+
+                // Update value
+                mSalesMaintenance = value;
+
+                if (value != null && ProductsLoading)
+
+                    // Update view model
+                    UpdateMaintenanceVM(mSalesMaintenance);
+
+            }
+        
+        }
 
         /// <summary>
         /// The sales service data model
         /// </summary>
-        public SalesServiceDataModel SalesService { get; set; }
+        public SalesServiceDataModel SalesService
+        {
+            get => mSalesService;
+
+            set
+            {
+
+                // Make sure data model has changed
+                if (mSalesService == value)
+                    return;
+
+                // Update value
+                mSalesService = value;
+
+                //if (value != null && ProductsLoading)
+                //    // Update view model
+                //    UpdateServiceVM(mSalesService);
+
+            }
+
+        }
 
         /// <summary>
         /// The sales warranty data model
         /// </summary>
-        public SalesWarrantyDataModel SalesWarranty { get; set; }
+        public SalesWarrantyDataModel SalesWarranty
+        {
+            get => mSalesWarranty;
+
+            set
+            {
+
+                // Make sure data model has changed
+                if (mSalesWarranty == value)
+                    return;
+
+                // Update value
+                mSalesWarranty = value;
+
+                if (value != null && ProductsLoading)
+                    // Update view model
+                    UpdateWarrantyVM(mSalesWarranty);
+
+            }
+
+        }
 
         /// <summary>
         /// The sales gap data model
         /// </summary>
-        public SalesGapDataModel SalesGap { get; set; }
+        public SalesGapDataModel SalesGap
+        {
+            get => mSalesGap;
+
+            set
+            {
+
+                // Make sure data model has changed
+                if (mSalesGap == value)
+                    return;
+
+                // Update value
+                mSalesGap = value;
+
+                if (value != null && ProductsLoading)
+                    // Update view model
+                    UpdateGapVM(mSalesGap);
+
+            }
+
+        }
 
         /// <summary>
         /// The view model for the service contract 
@@ -223,6 +320,11 @@ namespace EZDMS.App
         /// </summary>
         public bool Saving { get; set; }
 
+        /// <summary>
+        /// Indicates if the dialog has loaded
+        /// </summary>
+        public bool ProductsLoading { get; set; }
+
         #endregion
 
         #region Public Commands
@@ -248,97 +350,49 @@ namespace EZDMS.App
         {
             // Create commands
             SaveCommand = new RelayCommand(async () => await SaveProductsAsync());
-
-
-
-            Service = new ProductItemViewModel
-            {
-                Type = new TextInputViewModel { Label = "Product", Text = "Service", Editable = false },
-                Retail = 0,
-                Cost = new DecimalInputViewModel { Label = "Cost", Amount = 0, Editable = true },
-                Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 0, Editable = true },
-                Term = new TextInputViewModel { Label = "Term", Text = "" },
-                Mileage = new TextInputViewModel { Label = "Mileage", Text = "" },
-                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "" },
-                InPayment = true,
-                IsDisappearingDeductible = false,
-                Taxable = false,
-                Providers = new ObservableCollection<CoverageProviderDataModel>(),
-                Plans = new ObservableCollection<CoveragePlanDataModel>(),
-                UpdateAction = UpdateTotalRetailAsync,
-                //SelectedProvider = new CoverageProviderDataModel(),
-                //SelectedPlan = new CoveragePlanDataModel(),
-            };
-
-            Warranty = new ProductItemViewModel
-            {
-                Type = new TextInputViewModel { Label = "Product", Text = "Warranty", Editable = false },
-                Retail = 0,
-                Cost = new DecimalInputViewModel { Label = "Cost", Amount = 0, Editable = true },
-                Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 0, Editable = true },
-                Term = new TextInputViewModel { Label = "Term", Text = "" },
-                Mileage = new TextInputViewModel { Label = "Mileage", Text = "" },
-                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "" },
-                InPayment = true,
-                IsDisappearingDeductible = false,
-                Taxable = true,
-                Providers = new ObservableCollection<CoverageProviderDataModel>(),
-                Plans = new ObservableCollection<CoveragePlanDataModel>(),
-                UpdateAction = UpdateTotalRetailAsync,
-
-            };
-
-            Maintenance = new ProductItemViewModel
-            {
-                Type = new TextInputViewModel { Label = "Product", Text = "Maintenance", Editable = false },
-                Retail = 0,
-                Cost = new DecimalInputViewModel { Label = "Cost", Amount = 0, Editable = true },
-                Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 0, Editable = true },
-                Term = new TextInputViewModel { Label = "Term", Text = "" },
-                Mileage = new TextInputViewModel { Label = "Mileage", Text = "" },
-                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "" },
-                InPayment = true,
-                IsDisappearingDeductible = false,
-                Taxable = true,
-                Providers = new ObservableCollection<CoverageProviderDataModel>(),
-                Plans = new ObservableCollection<CoveragePlanDataModel>(),
-                UpdateAction = UpdateTotalRetailAsync,
-
-            };
-
-            Gap = new ProductItemViewModel
-            {
-                Type = new TextInputViewModel { Label = "Product", Text = "Gap", Editable = false },
-                Retail = 0,
-                Cost = new DecimalInputViewModel { Label = "Cost", Amount = 0, Editable = true },
-                Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 0, Editable = true },
-                Term = new TextInputViewModel { Label = "Term", Text = "" },
-                Mileage = new TextInputViewModel { Label = "Mileage", Text = "" },
-                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "" },
-                InPayment = true,
-                IsDisappearingDeductible = false,
-                Taxable = true,
-                Providers = new ObservableCollection<CoverageProviderDataModel>(),
-                Plans = new ObservableCollection<CoveragePlanDataModel>(),
-                UpdateAction = UpdateTotalRetailAsync,
-
-            };
-
-            
+                
+            Task.Run(LoadProductsAsync);
         }
 
         #endregion
 
         #region Public Commands
 
+        /// <summary>
+        /// Initialize products view models and controls 
+        /// </summary>
+        /// <returns></returns>
+        public async Task LoadProductsAsync()
+        {
+            await RunCommandAsync(() => ProductsLoading, async () =>
+            {
+                               
+                SetProductItems();
+
+                Providers = await ClientDataStore.GetCoverageProvidersAsync();
+                Plans = await ClientDataStore.GetCoveragePlansAsync();
+
+                //SalesService = await ClientDataStore.GetSalesServiceAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+                //SalesMaintenance = await ClientDataStore.GetSalesMaintenanceAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+                //SalesWarranty = await ClientDataStore.GetSalesWarrantyAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+                //SalesGap = await ClientDataStore.GetSalesGapAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+
+            });
+
+
+        }
+
+
+
+
         public async Task SaveProductsAsync()
         {
             await RunCommandAsync(() => Saving, async () =>
             {
-                // Check if service plan was selected
+                // Check if plan was selected
                 if (Service.SelectedPlan !=null)
                 {
-                    // Get the stored service record
+                    // Get the service record
                     SalesService = await ClientDataStore.GetSalesServiceAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
 
                     // Check if record exists
@@ -361,10 +415,10 @@ namespace EZDMS.App
 
                 }
 
-                // Check if maintenance plan was selected
+                // Check if plan was selected
                 if (Maintenance.SelectedPlan != null)
                 {
-                    // Get the stored maintenance record
+                    // Get the stored record
                     SalesMaintenance = await ClientDataStore.GetSalesMaintenanceAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
 
                     // Check if record exists
@@ -387,10 +441,10 @@ namespace EZDMS.App
 
                 }
 
-                // Check if warranty plan was selected
+                // Check if plan was selected
                 if (Warranty.SelectedPlan != null)
                 {
-                    // Get the stored warranty record
+                    // Get the stored  record
                     SalesWarranty = await ClientDataStore.GetSalesWarrantyAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
 
                     // Check if record exists
@@ -413,10 +467,10 @@ namespace EZDMS.App
 
                 }
 
-                // Check if gap plan was selected
+                // Check if plan was selected
                 if (Gap.SelectedPlan != null)
                 {
-                    // Get the stored warranty record
+                    // Get the stored record
                     SalesGap = await ClientDataStore.GetSalesGapAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
 
                     // Check if record exists
@@ -461,6 +515,75 @@ namespace EZDMS.App
 
         #region Private Helper Methods
 
+        private void UpdateMaintenanceVM(SalesMaintenanceDataModel salesMaintenance)
+        {
+            
+            // Update the view model
+            Maintenance.SelectedPlan.ProviderName = salesMaintenance.ProviderName;
+            Maintenance.SelectedPlan.Name = salesMaintenance.Plan;
+            Maintenance.InPayment = salesMaintenance.InPayment;
+            Maintenance.Taxable = salesMaintenance.IsTaxable;
+            Maintenance.ContractNumber.Text = salesMaintenance.ContractNumber;
+            Maintenance.Term.Text = salesMaintenance.Term.ToString();
+            Maintenance.Miles.Text = salesMaintenance.Miles.ToString();
+            Maintenance.Retail = salesMaintenance.Retail;
+            Maintenance.Cost.Amount = salesMaintenance.Cost;
+            Maintenance.Deductible.Amount = salesMaintenance.Deductible;
+            Maintenance.IsDisappearingDeductible = salesMaintenance.IsDisappearingDeductible;
+                        
+        }
+
+        private void UpdateServiceVM(SalesServiceDataModel salesService)
+        {
+            
+
+            // Update the view model
+            Service.SelectedPlan.ProviderName = salesService.ProviderName;
+            Service.SelectedPlan.Name = salesService.Plan;
+            Service.InPayment = salesService.InPayment;
+            Service.Taxable = salesService.IsTaxable;
+            Service.ContractNumber.Text = salesService.ContractNumber;
+            Service.Term.Text = salesService.Term.ToString();
+            Service.Miles.Text = salesService.Miles.ToString();
+            Service.Retail = salesService.Retail;
+            Service.Cost.Amount = salesService.Cost;
+            Service.Deductible.Amount = salesService.Deductible;
+            Service.IsDisappearingDeductible = salesService.IsDisappearingDeductible;
+
+        }
+
+        private void UpdateWarrantyVM(SalesWarrantyDataModel salesWarranty)
+        {
+           
+            // Update the view model
+            Warranty.SelectedPlan.ProviderName = salesWarranty.ProviderName;
+            Warranty.SelectedPlan.Name = salesWarranty.Plan;
+            Warranty.InPayment = salesWarranty.InPayment;
+            Warranty.Taxable = salesWarranty.IsTaxable;
+            Warranty.ContractNumber.Text = salesWarranty.ContractNumber;
+            Warranty.Term.Text = salesWarranty.Term.ToString();
+            Warranty.Miles.Text = salesWarranty.Miles.ToString();
+            Warranty.Retail = salesWarranty.Retail;
+            Warranty.Cost.Amount = salesWarranty.Cost;
+            Warranty.Deductible.Amount = salesWarranty.Deductible;
+            Warranty.IsDisappearingDeductible = salesWarranty.IsDisappearingDeductible;
+
+        }
+
+        private void UpdateGapVM(SalesGapDataModel salesGap)
+        {
+            
+            // Update the view model
+            Gap.SelectedPlan.ProviderName = salesGap.ProviderName;
+            Gap.SelectedPlan.Name = salesGap.Plan;
+            Gap.InPayment = salesGap.InPayment;
+            Gap.Taxable = salesGap.IsTaxable;
+            Gap.ContractNumber.Text = salesGap.ContractNumber;           
+            Gap.Retail = salesGap.Retail;
+            Gap.Cost.Amount = salesGap.Cost;
+           
+        }
+
         private void UpdateMaintenanceDM()
         {
             
@@ -473,8 +596,9 @@ namespace EZDMS.App
             SalesMaintenance.Deductible = Maintenance.Deductible.Amount == 0 ? Maintenance.SelectedPlan.Deductible : Maintenance.Deductible.Amount;
             SalesMaintenance.IsDisappearingDeductible = Maintenance.IsDisappearingDeductible;
             SalesMaintenance.ProviderNumber = Maintenance.SelectedPlan.ProviderNumber;
+            SalesMaintenance.ProviderName = Maintenance.SelectedPlan.ProviderName;
             SalesMaintenance.Term = Maintenance.Term.Text == null ? Maintenance.SelectedPlan.Term : Convert.ToInt32(Maintenance.Term.Text);
-            SalesMaintenance.Mileage = Maintenance.Mileage.Text == null ? Maintenance.SelectedPlan.Mileage : Convert.ToInt32(Maintenance.Mileage.Text);
+            SalesMaintenance.Miles = Maintenance.Miles.Text == null ? Maintenance.SelectedPlan.Miles : Convert.ToInt32(Maintenance.Miles.Text);
             SalesMaintenance.DealerNumber = Maintenance.SelectedProvider?.DealerNumber;
 
         }
@@ -482,7 +606,7 @@ namespace EZDMS.App
         private void UpdateServiceDM()
         {
 
-            SalesService.Plan = Service.SelectedPlan.Name;
+            SalesService.Plan = Service.SelectedPlan.Name;            
             SalesService.PlanID = Service.SelectedPlan.ID;
             SalesService.InPayment = Service.InPayment;
             SalesService.Cost = Service.Cost.Amount == 0 ? Service.SelectedPlan.Cost : Service.Cost.Amount;
@@ -491,8 +615,9 @@ namespace EZDMS.App
             SalesService.Deductible = Service.Deductible.Amount == 0 ? Service.SelectedPlan.Deductible : Service.Deductible.Amount;
             SalesService.IsDisappearingDeductible = Service.IsDisappearingDeductible;
             SalesService.ProviderNumber = Service.SelectedPlan.ProviderNumber;
-            SalesService.Term = Service.Term.Text==null ? Service.SelectedPlan.Term : Convert.ToInt32(Service.Term.Text);
-            SalesService.Mileage = Service.Mileage.Text == null ? Service.SelectedPlan.Mileage : Convert.ToInt32(Service.Mileage.Text);
+            SalesService.ProviderName = Service.SelectedPlan.ProviderName;
+            SalesService.Term = Service.Term.Text== null ? Service.SelectedPlan.Term : Convert.ToInt32(Service.Term.Text);
+            SalesService.Miles = Service.Miles.Text == null ? Service.SelectedPlan.Miles : Convert.ToInt32(Service.Miles.Text);
             SalesService.DealerNumber = Service.SelectedProvider?.DealerNumber;
 
         }
@@ -509,8 +634,9 @@ namespace EZDMS.App
             SalesWarranty.Deductible = Warranty.Deductible.Amount == 0 ? Warranty.SelectedPlan.Deductible : Warranty.Deductible.Amount;
             SalesWarranty.IsDisappearingDeductible = Warranty.IsDisappearingDeductible;
             SalesWarranty.ProviderNumber = Warranty.SelectedPlan.ProviderNumber;
+            SalesWarranty.ProviderName = Warranty.SelectedPlan.ProviderName;
             SalesWarranty.Term = Warranty.Term.Text == null ? Warranty.SelectedPlan.Term : Convert.ToInt32(Warranty.Term.Text);
-            SalesWarranty.Mileage = Warranty.Mileage.Text == null ? Warranty.SelectedPlan.Mileage : Convert.ToInt32(Warranty.Mileage.Text);
+            SalesWarranty.Miles = Warranty.Miles.Text == null ? Warranty.SelectedPlan.Miles : Convert.ToInt32(Warranty.Miles.Text);
             SalesWarranty.DealerNumber = Warranty.SelectedProvider?.DealerNumber;
 
         }
@@ -525,6 +651,7 @@ namespace EZDMS.App
             SalesGap.Retail = Gap.Retail == 0 ? Gap.SelectedPlan.Retail : Gap.Retail;
             SalesGap.Profit = SalesGap.Retail - SalesGap.Cost;
             SalesGap.ProviderNumber = Gap.SelectedPlan.ProviderNumber;
+            SalesGap.ProviderName = Gap.SelectedPlan.ProviderName;
             SalesGap.DealerNumber = Gap.SelectedProvider?.DealerNumber;
 
         }
@@ -542,6 +669,89 @@ namespace EZDMS.App
                              (Gap == null ? 0 : Gap.Retail)
 
             };
+
+        }
+
+        private void SetProductItems()
+        {
+
+            
+            
+            Service = new ProductItemViewModel
+            {
+                Type = new TextInputViewModel { Label = "Product", Text = "Service", Editable = false },
+                Retail = SalesService != null ? SalesService.Retail : 0,
+                Cost = new DecimalInputViewModel { Label = "Cost", Amount = SalesService != null ? SalesService.Cost : 0, Editable = true },
+                Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = SalesService != null ? SalesService.Deductible : 0, Editable = true },
+                Term = new TextInputViewModel { Label = "Term", Text = SalesService != null ? SalesService.Term.ToString() : "" },
+                Miles = new TextInputViewModel { Label = "Mileage", Text = SalesService != null ? SalesService.Miles.ToString() : ""},
+                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = SalesService != null ? SalesService.ContractNumber : "" },
+                InPayment = SalesService != null ? SalesService.InPayment : true,
+                IsDisappearingDeductible = SalesService != null ? SalesService.IsDisappearingDeductible : false,
+                Taxable = SalesService != null ? SalesService.IsTaxable : false,
+                Providers = new ObservableCollection<CoverageProviderDataModel>(),
+                Plans = new ObservableCollection<CoveragePlanDataModel>(),
+                SelectedProvider = new CoverageProviderDataModel {Number = SalesService != null ? SalesService.ProviderNumber : "" },
+                SelectedPlan = new CoveragePlanDataModel { Name = SalesService != null ? SalesService.Plan : "" },
+
+                UpdateAction = UpdateTotalRetailAsync,
+                
+            };
+
+            Warranty = new ProductItemViewModel
+            {
+                Type = new TextInputViewModel { Label = "Product", Text = "Warranty", Editable = false },
+                Retail = 0,
+                Cost = new DecimalInputViewModel { Label = "Cost", Amount = 0, Editable = true },
+                Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 0, Editable = true },
+                Term = new TextInputViewModel { Label = "Term", Text = "" },
+                Miles = new TextInputViewModel { Label = "Mileage", Text = "" },
+                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "" },
+                InPayment = true,
+                IsDisappearingDeductible = false,
+                Taxable = true,
+                Providers = new ObservableCollection<CoverageProviderDataModel>(),
+                Plans = new ObservableCollection<CoveragePlanDataModel>(),
+                UpdateAction = UpdateTotalRetailAsync,
+
+            };
+
+            Maintenance = new ProductItemViewModel
+            {
+                Type = new TextInputViewModel { Label = "Product", Text = "Maintenance", Editable = false },
+                Retail = 0,
+                Cost = new DecimalInputViewModel { Label = "Cost", Amount = 0, Editable = true },
+                Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 0, Editable = true },
+                Term = new TextInputViewModel { Label = "Term", Text = "" },
+                Miles = new TextInputViewModel { Label = "Mileage", Text = "" },
+                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "" },
+                InPayment = true,
+                IsDisappearingDeductible = false,
+                Taxable = true,
+                Providers = new ObservableCollection<CoverageProviderDataModel>(),
+                Plans = new ObservableCollection<CoveragePlanDataModel>(),
+                UpdateAction = UpdateTotalRetailAsync,
+
+            };
+
+            Gap = new ProductItemViewModel
+            {
+                Type = new TextInputViewModel { Label = "Product", Text = "Gap", Editable = false },
+                Retail = 0,
+                Cost = new DecimalInputViewModel { Label = "Cost", Amount = 0, Editable = true },
+                Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 0, Editable = true },
+                Term = new TextInputViewModel { Label = "Term", Text = "" },
+                Miles = new TextInputViewModel { Label = "Mileage", Text = "" },
+                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "" },
+                InPayment = true,
+                IsDisappearingDeductible = false,
+                Taxable = true,
+                Providers = new ObservableCollection<CoverageProviderDataModel>(),
+                Plans = new ObservableCollection<CoveragePlanDataModel>(),
+                UpdateAction = UpdateTotalRetailAsync,
+
+            };
+
 
         }
 

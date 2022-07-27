@@ -18,6 +18,11 @@ namespace EZDMS.App.Core
         public string ProviderNumber { get; set; }
 
         /// <summary>
+        /// The provider name of this Sales Warranty record
+        /// <summary>
+        public string ProviderName { get; set; }
+
+        /// <summary>
         /// The plan id of this Sales Warranty record
         /// <summary>
         public int PlanID { get; set; }
@@ -55,7 +60,7 @@ namespace EZDMS.App.Core
         /// <summary>
         /// The mileage of this Sales Warranty record
         /// <summary>
-        public int Mileage { get; set; }
+        public int Miles { get; set; }
 
         /// <summary>
         /// The dealer number of this Sales Warranty record
@@ -76,6 +81,16 @@ namespace EZDMS.App.Core
         /// The is disappearing deductible of this Sales Warranty record
         /// <summary>
         public bool IsDisappearingDeductible { get; set; }
+
+        /// <summary>
+        /// The tax flag of this Sales Warranty record
+        /// <summary>
+        public bool IsTaxable { get; set; }
+
+        /// <summary>
+        /// The contract number of this Sales Warranty record
+        /// <summary>
+        public string ContractNumber { get; set; }
 
 
     }

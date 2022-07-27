@@ -18,6 +18,11 @@ namespace EZDMS.App.Core
         public string ProviderNumber { get; set; }
 
         /// <summary>
+        /// The provider name of this SalesGap record
+        /// <summary>
+        public string ProviderName { get; set; }
+
+        /// <summary>
         /// The plan id of this SalesGap record
         /// <summary>
         public int PlanID { get; set; }
@@ -56,6 +61,16 @@ namespace EZDMS.App.Core
         /// The incap flag of this SalesGap record
         /// <summary>
         public bool InCap { get; set; }
+
+        /// <summary>
+        /// The tax flag of this SalesGap record
+        /// <summary>
+        public bool IsTaxable { get; set; }
+
+        /// <summary>
+        /// The contract number of this SalesGap record
+        /// <summary>
+        public string ContractNumber { get; set; }
 
 
 

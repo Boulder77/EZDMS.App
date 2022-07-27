@@ -70,7 +70,7 @@ namespace EZDMS.App.Core
         /// <summary>
         /// The mileage of this ProductsPlan record
         /// <summary>
-        public int Mileage { get; set; }
+        public int Miles { get; set; }
 
         /// <summary>
         /// The description of this ProductsPlan record
@@ -91,7 +91,6 @@ namespace EZDMS.App.Core
         /// The taxable flag of this ProductsPlan record
         /// <summary>
         public bool IsTaxable { get; set; }
-
 
     }
 }

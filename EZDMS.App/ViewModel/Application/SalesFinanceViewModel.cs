@@ -19,7 +19,7 @@ namespace EZDMS.App
     /// </summary>
     public class SalesFinanceViewModel : BaseViewModel
     {
-       
+
         #region Private Members
 
         protected SalesFinanceDataModel mSalesFinanceDeal;
@@ -39,7 +39,7 @@ namespace EZDMS.App
         /// <summary>
         /// The data model for the sales finance deal
         /// </summary>
-        public SalesFinanceDataModel SalesFinanceDeal { 
+        public SalesFinanceDataModel SalesFinanceDeal {
             get => mSalesFinanceDeal;
             set
             {
@@ -56,13 +56,13 @@ namespace EZDMS.App
                     TaskManager.RunAndForget(LoadAsync);
 
             }
-        
+
         }
 
         /// <summary>
         /// The data model for the sales deal item
         /// </summary>
-        public SalesDealsItemDataModel SalesDealsItem { 
+        public SalesDealsItemDataModel SalesDealsItem {
             get => mSalesDealItem;
             set
             {
@@ -78,7 +78,7 @@ namespace EZDMS.App
                     // Reload sales deal view model
                     UpdateValuesOfSalesDealCard(value);
             }
-        
+
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace EZDMS.App
         public CustomerDataModel Customer
         {
             get => mCustomer;
-            
+
             set
             {
                 // If datamodel has not changed...
@@ -101,8 +101,8 @@ namespace EZDMS.App
                 if (value != null)
                     // Reload customer card view model
                     UpdateValuesOfCustomerCard(value);
-                    UpdateValuesOfCustomerBasicInfo(value);
-                    UpdateValuesOfCustomerAddress(value);
+                UpdateValuesOfCustomerBasicInfo(value);
+                UpdateValuesOfCustomerAddress(value);
             }
 
         }
@@ -114,7 +114,7 @@ namespace EZDMS.App
         {
 
             get => mSecondCustomer;
-            
+
             set
             {
                 // If datamodel has not changed...
@@ -149,14 +149,36 @@ namespace EZDMS.App
                 mSaleVehicle = value;
 
                 if (value != null)
-                    // Reload vehicle view models                                
-                    UpdateValuesOfVehicleCard(value);                
+                // Reload vehicle view models                                
+                {
+                    UpdateValuesOfVehicleCard(value);
                     UpdateValuesOfVehicleDetails(value);
                     UpdateValuesOfVehiclePricing(value);
                     UpdateValuesOfVehicleBasicInfo(value);
+                }
             }
 
         }
+
+        /// <summary>
+        /// The sales service contract data model
+        /// </summary>
+        public SalesServiceDataModel SalesService {get; set;}
+
+        /// <summary>
+        /// The sales maintenance data model
+        /// </summary>
+        public SalesMaintenanceDataModel SalesMaintenance { get; set; }
+
+        /// <summary>
+        /// The sales warranty data model
+        /// </summary>
+        public SalesWarrantyDataModel SalesWarranty { get; set; }
+
+        /// <summary>
+        /// The sales gap data model
+        /// </summary>
+        public SalesGapDataModel SalesGap { get; set; }
 
         /// <summary>
         /// The view model for the sales summary control
@@ -212,7 +234,7 @@ namespace EZDMS.App
         /// The view model for the vehicle pricing control
         /// </summary>
         public VehiclePricingViewModel VehiclePricing { get; set; }
-
+        
         /// <summary>
         /// Indicates if the sales finance deal details are currently being loaded
         /// </summary>
@@ -299,10 +321,17 @@ namespace EZDMS.App
         public async Task LoadAsync()
         {
             // Lock this command to ignore any other requests while processing
-            await RunCommandAsync(() => SalesFinancePageLoading, () => {
+            await RunCommandAsync(() => SalesFinancePageLoading, async () => {
                 UpdateValuesOfDeskingTotals(SalesFinanceDeal);
                 UpdateValuesOfSalesSummary(SalesFinanceDeal);
                 UpdateValuesOfTruthinLending(SalesFinanceDeal);
+
+                // Update products data models
+                SalesService = await ClientDataStore.GetSalesServiceAsync(SalesFinanceDeal.DealNumber);
+                SalesMaintenance = await ClientDataStore.GetSalesMaintenanceAsync(SalesFinanceDeal.DealNumber);
+                SalesWarranty = await ClientDataStore.GetSalesWarrantyAsync(SalesFinanceDeal.DealNumber);
+                SalesGap = await ClientDataStore.GetSalesGapAsync(SalesFinanceDeal.DealNumber);
+
                 //UpdateValuesOfSalesDealCard(SalesDealsItem);
                 return Task.CompletedTask;
             });
@@ -314,15 +343,20 @@ namespace EZDMS.App
 
             return await RunCommandAsync(() => DialogWindowLoading, async () =>
             {
+
                 // Lock this command to ignore any other requests while processing
                 await UI.ShowProducts(new ProductsSalesDialogViewModel
                 {
                     Title = "Products",
+                    SalesService = SalesService,
+                    SalesMaintenance = SalesMaintenance,
+                    SalesGap = SalesGap,
+                    SalesWarranty = SalesWarranty,
                     
-                    Plans = await ClientDataStore.GetCoveragePlansAsync(),
-                    Providers = await ClientDataStore.GetCoverageProvidersAsync()
 
-                });
+
+
+            });
 
                 // Update view model
                 SalesFinanceDeal.ServiceContract = 4500;
