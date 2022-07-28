@@ -44,7 +44,8 @@
                     <ComboBox x:Name="cbProviders"  ItemsSource="{Binding Providers}"
                            DisplayMemberPath="Name"                                                       
                            SelectedValuePath="Number"
-                           SelectedItem="SelectedProviderNumber"
+                           SelectedItem="{Binding Path=SelectedProvider, Mode=TwoWay}"
+                           IsSynchronizedWithCurrentItem="True" 
                            SelectionChanged="CbProviders_SelectionChanged"
                            Margin="5,10,5,0"
                            HorizontalContentAlignment="Center"
@@ -75,7 +76,7 @@
 
                 <!---->
                 <ComboBox  ItemsSource="{Binding Plans}"                   
-                   SelectedItem="{Binding SelectedPlan}"
+                   SelectedItem="{Binding Path=SelectedPlan, Mode=TwoWay}"
                    IsSynchronizedWithCurrentItem="True"
                    DisplayMemberPath="Name" 
                    Margin="5,10,5,0"

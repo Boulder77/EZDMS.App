@@ -29,27 +29,7 @@ namespace EZDMS.App
         /// The list of all the product plans
         /// </summary>
         private List<CoveragePlanDataModel> mPlans;
-
-        /// <summary>
-        /// The service contract data model 
-        /// </summary>
-        private SalesServiceDataModel mSalesService;
-
-        /// <summary>
-        /// The warranty data model 
-        /// </summary>
-        private SalesWarrantyDataModel mSalesWarranty;
-
-        /// <summary>
-        /// The maintenance data model 
-        /// </summary>
-        private SalesMaintenanceDataModel mSalesMaintenance;
-
-        /// <summary>
-        /// The gap data model 
-        /// </summary>
-        private SalesGapDataModel mSalesGap;
-
+               
 
         #endregion
 
@@ -72,30 +52,6 @@ namespace EZDMS.App
                 // Update value
                 mProviders = value;
 
-                // Update service provider list
-                ServiceProviders = new ObservableCollection<CoverageProviderDataModel>(
-                mProviders.Where(item => item.IsService == true));
-                // Update view model
-                Service.Providers = ServiceProviders;
-
-                // Update warranty provider list
-                WarrantyProviders = new ObservableCollection<CoverageProviderDataModel>(
-                mProviders.Where(item => item.IsWarranty == true));
-                // Update view model
-                Warranty.Providers = WarrantyProviders;
-
-                // Update maintenance provider list
-                MaintenanceProviders = new ObservableCollection<CoverageProviderDataModel>(
-                mProviders.Where(item => item.IsMaintenance == true));
-                // Update view model
-                Maintenance.Providers = MaintenanceProviders;
-
-                // Update gap provider list
-                GapProviders = new ObservableCollection<CoverageProviderDataModel>(
-                mProviders.Where(item => item.IsGap == true));
-                // Update view model
-                Gap.Providers = GapProviders;
-
             }
         }
                
@@ -116,180 +72,29 @@ namespace EZDMS.App
                 // Update value
                 mPlans = value;
 
-                // Update service plan list
-                ServicePlans = new ObservableCollection<CoveragePlanDataModel>(
-                mPlans.Where(item => item.Type.ToLower().Contains("service")));
-                // Update view model
-                Service.Plans = ServicePlans;
-
-                // Update service plan list
-                WarrantyPlans = new ObservableCollection<CoveragePlanDataModel>(
-                mPlans.Where(item => item.Type.ToLower().Contains("warranty")));
-                // Update view model
-                Warranty.Plans = WarrantyPlans;
-
-                // Update service plan list
-                MaintenancePlans = new ObservableCollection<CoveragePlanDataModel>(
-                mPlans.Where(item => item.Type.ToLower().Contains("maintenance")));
-                // Update view model
-                Maintenance.Plans = MaintenancePlans;
-
-
-                // Update gap plan list
-                GapPlans = new ObservableCollection<CoveragePlanDataModel>(
-                mPlans.Where(item => item.Type.ToLower().Contains("gap")));
-                // Update view model
-                Gap.Plans = GapPlans;
-
             }
         }
 
-        /// <summary>
-        /// The plan items for the list that include any filtering
-        /// </summary>
-        public ObservableCollection<CoveragePlanDataModel> FilteredPlans { get; set; }
-
-        /// <summary>
-        /// The service plan items for the list
-        /// </summary>
-        public ObservableCollection<CoveragePlanDataModel> ServicePlans { get; set; }
-
-        /// <summary>
-        /// The warranty plan items for the list
-        /// </summary>
-        public ObservableCollection<CoveragePlanDataModel> WarrantyPlans { get; set; }
-
-        /// <summary>
-        /// The maintenance plan items for the list
-        /// </summary>
-        public ObservableCollection<CoveragePlanDataModel> MaintenancePlans { get; set; }
-
-        /// <summary>
-        /// The gap plan items for the list
-        /// </summary>
-        public ObservableCollection<CoveragePlanDataModel> GapPlans { get; set; }
-
-        /// <summary>
-        /// The service provider items for the list
-        /// </summary>
-        public ObservableCollection<CoverageProviderDataModel> ServiceProviders { get; set; }
-
-        /// <summary>
-        /// The warranty provider items for the list
-        /// </summary>
-        public ObservableCollection<CoverageProviderDataModel> WarrantyProviders { get; set; }
-
-        /// <summary>
-        /// The maintenance provider items for the list
-        /// </summary>
-        public ObservableCollection<CoverageProviderDataModel> MaintenanceProviders { get; set; }
-
-        /// <summary>
-        /// The gap provider items for the list
-        /// </summary>
-        public ObservableCollection<CoverageProviderDataModel> GapProviders { get; set; }
-                
         /// <summary>
         /// The sales maintenance data model
         /// </summary>
-        public SalesMaintenanceDataModel SalesMaintenance
-        { 
-            get => mSalesMaintenance;
-                
-            set
-            {
-
-                // Make sure data model has changed
-                if (mSalesMaintenance == value)
-                    return;
-
-                // Update value
-                mSalesMaintenance = value;
-
-                if (value != null && ProductsLoading)
-
-                    // Update view model
-                    UpdateMaintenanceVM(mSalesMaintenance);
-
-            }
+        public SalesMaintenanceDataModel SalesMaintenance { get; set; }
         
-        }
-
         /// <summary>
         /// The sales service data model
         /// </summary>
-        public SalesServiceDataModel SalesService
-        {
-            get => mSalesService;
-
-            set
-            {
-
-                // Make sure data model has changed
-                if (mSalesService == value)
-                    return;
-
-                // Update value
-                mSalesService = value;
-
-                //if (value != null && ProductsLoading)
-                //    // Update view model
-                //    UpdateServiceVM(mSalesService);
-
-            }
-
-        }
-
+        public SalesServiceDataModel SalesService { get; set; }
+        
         /// <summary>
         /// The sales warranty data model
         /// </summary>
-        public SalesWarrantyDataModel SalesWarranty
-        {
-            get => mSalesWarranty;
-
-            set
-            {
-
-                // Make sure data model has changed
-                if (mSalesWarranty == value)
-                    return;
-
-                // Update value
-                mSalesWarranty = value;
-
-                if (value != null && ProductsLoading)
-                    // Update view model
-                    UpdateWarrantyVM(mSalesWarranty);
-
-            }
-
-        }
-
+        public SalesWarrantyDataModel SalesWarranty { get; set; }
+        
         /// <summary>
         /// The sales gap data model
         /// </summary>
-        public SalesGapDataModel SalesGap
-        {
-            get => mSalesGap;
-
-            set
-            {
-
-                // Make sure data model has changed
-                if (mSalesGap == value)
-                    return;
-
-                // Update value
-                mSalesGap = value;
-
-                if (value != null && ProductsLoading)
-                    // Update view model
-                    UpdateGapVM(mSalesGap);
-
-            }
-
-        }
-
+        public SalesGapDataModel SalesGap { get; set; }
+        
         /// <summary>
         /// The view model for the service contract 
         /// </summary>
@@ -366,24 +171,47 @@ namespace EZDMS.App
         {
             await RunCommandAsync(() => ProductsLoading, async () =>
             {
-                               
-                SetProductItems();
-
+                // Get provider list from data store
                 Providers = await ClientDataStore.GetCoverageProvidersAsync();
+
+                // Get plan list from data store
                 Plans = await ClientDataStore.GetCoveragePlansAsync();
 
-                //SalesService = await ClientDataStore.GetSalesServiceAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
-                //SalesMaintenance = await ClientDataStore.GetSalesMaintenanceAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
-                //SalesWarranty = await ClientDataStore.GetSalesWarrantyAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
-                //SalesGap = await ClientDataStore.GetSalesGapAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+                // Set product items view model default
+                SetProductItems();
+                
+                // Get service contract from data store
+                SalesService = await ClientDataStore.GetSalesServiceAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+                
+                if (SalesService != null)
+                    // Update service view model
+                    UpdateServiceVM(SalesService);
+
+                // Get the maintenance contract from data store
+                SalesMaintenance = await ClientDataStore.GetSalesMaintenanceAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+                
+                if (SalesMaintenance != null)
+                    // Update maintenance view model
+                    UpdateMaintenanceVM(SalesMaintenance);
+
+                // Get the warranty contract from data store
+                SalesWarranty = await ClientDataStore.GetSalesWarrantyAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+
+                if (SalesWarranty != null)
+                    // Update warranty view model
+                    UpdateWarrantyVM(SalesWarranty);
+
+                // Get the gap contract from data store
+                SalesGap = await ClientDataStore.GetSalesGapAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+
+                if (SalesGap != null)
+                    // Update gap view model
+                    UpdateGapVM(SalesGap);
 
             });
 
 
         }
-
-
-
 
         public async Task SaveProductsAsync()
         {
@@ -519,8 +347,8 @@ namespace EZDMS.App
         {
             
             // Update the view model
-            Maintenance.SelectedPlan.ProviderName = salesMaintenance.ProviderName;
-            Maintenance.SelectedPlan.Name = salesMaintenance.Plan;
+            //Maintenance.SelectedProvider.Number = salesMaintenance.ProviderNumber;
+            //Maintenance.SelectedPlan.Name = salesMaintenance.Plan;
             Maintenance.InPayment = salesMaintenance.InPayment;
             Maintenance.Taxable = salesMaintenance.IsTaxable;
             Maintenance.ContractNumber.Text = salesMaintenance.ContractNumber;
@@ -535,11 +363,16 @@ namespace EZDMS.App
 
         private void UpdateServiceVM(SalesServiceDataModel salesService)
         {
-            
+
 
             // Update the view model
-            Service.SelectedPlan.ProviderName = salesService.ProviderName;
-            Service.SelectedPlan.Name = salesService.Plan;
+
+            Service.SelectedProvider = (CoverageProviderDataModel)Providers.Where(item => item.Number == salesService.ProviderNumber);
+            Service.SelectedPlan = (CoveragePlanDataModel)Plans.Where(item => item.ID == salesService.PlanID);
+            //Service.SelectedProvider = new CoverageProviderDataModel((CoveragePlanDataModel)Providers.Where(item => item.Number == salesService.ProviderNumber));
+            //Service.SelectedPlan = new CoveragePlanDataModel { Name = SalesService != null ? SalesService.Plan : "" };
+
+
             Service.InPayment = salesService.InPayment;
             Service.Taxable = salesService.IsTaxable;
             Service.ContractNumber.Text = salesService.ContractNumber;
@@ -556,8 +389,8 @@ namespace EZDMS.App
         {
            
             // Update the view model
-            Warranty.SelectedPlan.ProviderName = salesWarranty.ProviderName;
-            Warranty.SelectedPlan.Name = salesWarranty.Plan;
+            //Warranty.SelectedProvider.Number = salesWarranty.ProviderNumber;
+            //Warranty.SelectedPlan.Name = salesWarranty.Plan;
             Warranty.InPayment = salesWarranty.InPayment;
             Warranty.Taxable = salesWarranty.IsTaxable;
             Warranty.ContractNumber.Text = salesWarranty.ContractNumber;
@@ -574,8 +407,8 @@ namespace EZDMS.App
         {
             
             // Update the view model
-            Gap.SelectedPlan.ProviderName = salesGap.ProviderName;
-            Gap.SelectedPlan.Name = salesGap.Plan;
+            //Gap.SelectedProvider.Number = salesGap.ProviderNumber;
+            //Gap.SelectedPlan.Name = salesGap.Plan;
             Gap.InPayment = salesGap.InPayment;
             Gap.Taxable = salesGap.IsTaxable;
             Gap.ContractNumber.Text = salesGap.ContractNumber;           
@@ -675,32 +508,10 @@ namespace EZDMS.App
         private void SetProductItems()
         {
 
-            
-            
             Service = new ProductItemViewModel
             {
-                Type = new TextInputViewModel { Label = "Product", Text = "Service", Editable = false },
-                Retail = SalesService != null ? SalesService.Retail : 0,
-                Cost = new DecimalInputViewModel { Label = "Cost", Amount = SalesService != null ? SalesService.Cost : 0, Editable = true },
-                Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = SalesService != null ? SalesService.Deductible : 0, Editable = true },
-                Term = new TextInputViewModel { Label = "Term", Text = SalesService != null ? SalesService.Term.ToString() : "" },
-                Miles = new TextInputViewModel { Label = "Mileage", Text = SalesService != null ? SalesService.Miles.ToString() : ""},
-                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = SalesService != null ? SalesService.ContractNumber : "" },
-                InPayment = SalesService != null ? SalesService.InPayment : true,
-                IsDisappearingDeductible = SalesService != null ? SalesService.IsDisappearingDeductible : false,
-                Taxable = SalesService != null ? SalesService.IsTaxable : false,
-                Providers = new ObservableCollection<CoverageProviderDataModel>(),
-                Plans = new ObservableCollection<CoveragePlanDataModel>(),
-                SelectedProvider = new CoverageProviderDataModel {Number = SalesService != null ? SalesService.ProviderNumber : "" },
-                SelectedPlan = new CoveragePlanDataModel { Name = SalesService != null ? SalesService.Plan : "" },
 
-                UpdateAction = UpdateTotalRetailAsync,
-                
-            };
-
-            Warranty = new ProductItemViewModel
-            {
-                Type = new TextInputViewModel { Label = "Product", Text = "Warranty", Editable = false },
+                Type = new TextInputViewModel { Label = "Product", Text = "Service" },
                 Retail = 0,
                 Cost = new DecimalInputViewModel { Label = "Cost", Amount = 0, Editable = true },
                 Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 0, Editable = true },
@@ -709,16 +520,55 @@ namespace EZDMS.App
                 ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "" },
                 InPayment = true,
                 IsDisappearingDeductible = false,
-                Taxable = true,
-                Providers = new ObservableCollection<CoverageProviderDataModel>(),
-                Plans = new ObservableCollection<CoveragePlanDataModel>(),
+                Taxable = false,
+                Providers = new ObservableCollection<CoverageProviderDataModel>(
+                mProviders.Where(item => item.IsService == true)),
+                Plans = new ObservableCollection<CoveragePlanDataModel>(
+                mPlans.Where(item => item.Type.ToLower().Contains("service"))),
+                UpdateAction = UpdateTotalRetailAsync,
+                SelectedProvider = new CoverageProviderDataModel(),
+                SelectedPlan = new CoveragePlanDataModel(),
+                //Type = new TextInputViewModel { Label = "Product", Text = "Service", Editable = false },
+                //Retail = SalesService != null ? SalesService.Retail : 0,
+                //Cost = new DecimalInputViewModel { Label = "Cost", Amount = SalesService != null ? SalesService.Cost : 0, Editable = true },
+                //Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = SalesService != null ? SalesService.Deductible : 0, Editable = true },
+                //Term = new TextInputViewModel { Label = "Term", Text = SalesService != null ? SalesService.Term.ToString() : "" },
+                //Miles = new TextInputViewModel { Label = "Mileage", Text = SalesService != null ? SalesService.Miles.ToString() : ""},
+                //ContractNumber = new TextInputViewModel { Label = "Contract No", Text = SalesService != null ? SalesService.ContractNumber : "" },
+                //InPayment = SalesService != null ? SalesService.InPayment : true,
+                //IsDisappearingDeductible = SalesService != null ? SalesService.IsDisappearingDeductible : false,
+                //Taxable = SalesService != null ? SalesService.IsTaxable : false,
+                //Providers = new ObservableCollection<CoverageProviderDataModel>(),
+                //Plans = new ObservableCollection<CoveragePlanDataModel>(
+                //mPlans.Where(item => item.Type.ToLower().Contains("service"))),
+
+                //UpdateAction = UpdateTotalRetailAsync,
+
+            };
+
+            Warranty = new ProductItemViewModel
+            {
+                Type = new TextInputViewModel { Label = "Product", Text = "Warranty" },
+                Retail = 0,
+                Cost = new DecimalInputViewModel { Label = "Cost", Amount = 0, Editable = true },
+                Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 0, Editable = true },
+                Term = new TextInputViewModel { Label = "Term", Text = "" },
+                Miles = new TextInputViewModel { Label = "Mileage", Text = "" },
+                ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "" },
+                InPayment = true,
+                IsDisappearingDeductible = false,
+                Taxable = false,
+                Providers = new ObservableCollection<CoverageProviderDataModel>(
+                mProviders.Where(item => item.IsWarranty == true)),
+                Plans = new ObservableCollection<CoveragePlanDataModel>(
+                mPlans.Where(item => item.Type.ToLower().Contains("warranty"))),
                 UpdateAction = UpdateTotalRetailAsync,
 
             };
 
             Maintenance = new ProductItemViewModel
             {
-                Type = new TextInputViewModel { Label = "Product", Text = "Maintenance", Editable = false },
+                Type = new TextInputViewModel { Label = "Product", Text = "Maintenance" },
                 Retail = 0,
                 Cost = new DecimalInputViewModel { Label = "Cost", Amount = 0, Editable = true },
                 Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 0, Editable = true },
@@ -727,16 +577,18 @@ namespace EZDMS.App
                 ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "" },
                 InPayment = true,
                 IsDisappearingDeductible = false,
-                Taxable = true,
-                Providers = new ObservableCollection<CoverageProviderDataModel>(),
-                Plans = new ObservableCollection<CoveragePlanDataModel>(),
+                Taxable = false,
+                Providers = new ObservableCollection<CoverageProviderDataModel>(
+                mProviders.Where(item => item.IsMaintenance == true)),
+                Plans = new ObservableCollection<CoveragePlanDataModel>(
+                mPlans.Where(item => item.Type.ToLower().Contains("maintenance"))),
                 UpdateAction = UpdateTotalRetailAsync,
 
             };
 
             Gap = new ProductItemViewModel
             {
-                Type = new TextInputViewModel { Label = "Product", Text = "Gap", Editable = false },
+                Type = new TextInputViewModel { Label = "Product", Text = "Gap" },
                 Retail = 0,
                 Cost = new DecimalInputViewModel { Label = "Cost", Amount = 0, Editable = true },
                 Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 0, Editable = true },
@@ -745,15 +597,18 @@ namespace EZDMS.App
                 ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "" },
                 InPayment = true,
                 IsDisappearingDeductible = false,
-                Taxable = true,
-                Providers = new ObservableCollection<CoverageProviderDataModel>(),
-                Plans = new ObservableCollection<CoveragePlanDataModel>(),
+                Taxable = false,
+                Providers = new ObservableCollection<CoverageProviderDataModel>(
+                mProviders.Where(item => item.IsGap == true)),
+                Plans = new ObservableCollection<CoveragePlanDataModel>(
+                mPlans.Where(item => item.Type.ToLower().Contains("gap"))),
                 UpdateAction = UpdateTotalRetailAsync,
 
             };
 
-
         }
+
+
 
 
     #endregion

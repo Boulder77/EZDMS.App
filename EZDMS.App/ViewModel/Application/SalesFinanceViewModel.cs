@@ -325,13 +325,7 @@ namespace EZDMS.App
                 UpdateValuesOfDeskingTotals(SalesFinanceDeal);
                 UpdateValuesOfSalesSummary(SalesFinanceDeal);
                 UpdateValuesOfTruthinLending(SalesFinanceDeal);
-
-                // Update products data models
-                SalesService = await ClientDataStore.GetSalesServiceAsync(SalesFinanceDeal.DealNumber);
-                SalesMaintenance = await ClientDataStore.GetSalesMaintenanceAsync(SalesFinanceDeal.DealNumber);
-                SalesWarranty = await ClientDataStore.GetSalesWarrantyAsync(SalesFinanceDeal.DealNumber);
-                SalesGap = await ClientDataStore.GetSalesGapAsync(SalesFinanceDeal.DealNumber);
-
+                                
                 //UpdateValuesOfSalesDealCard(SalesDealsItem);
                 return Task.CompletedTask;
             });
@@ -348,15 +342,8 @@ namespace EZDMS.App
                 await UI.ShowProducts(new ProductsSalesDialogViewModel
                 {
                     Title = "Products",
-                    SalesService = SalesService,
-                    SalesMaintenance = SalesMaintenance,
-                    SalesGap = SalesGap,
-                    SalesWarranty = SalesWarranty,
-                    
-
-
-
-            });
+                   
+                });
 
                 // Update view model
                 SalesFinanceDeal.ServiceContract = 4500;

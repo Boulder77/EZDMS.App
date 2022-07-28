@@ -125,8 +125,14 @@ namespace EZDMS.App.Relational
             modelBuilder.Entity<CustomerDataModel>().Property(p => p.Number).HasComputedColumnSql("[PreFixID]+right('0000000'+CONVERT([nvarchar](7),[Id]),(7)))");
 
             modelBuilder.Entity<CoverageProviderDataModel>().Property(p => p.Number).HasComputedColumnSql("[PreFixID]+right('000'+CONVERT([nvarchar](3),[Id]),(3)))");
-
+                        
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.EnableSensitiveDataLogging();
+        }
+
 
         #endregion
     }
