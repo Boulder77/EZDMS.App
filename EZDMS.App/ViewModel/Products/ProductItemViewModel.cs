@@ -20,7 +20,16 @@ namespace EZDMS.App
 
         protected CoveragePlanDataModel mSelectedPlan;
 
+        protected CoverageProviderDataModel mSelectedProvider;
+
         private decimal mRetail;
+
+        /// <summary>
+        /// The plans for the list
+        /// </summary>
+        protected ObservableCollection<CoveragePlanDataModel> mPlans;
+
+
 
         #endregion
 
@@ -29,7 +38,25 @@ namespace EZDMS.App
 
         public ObservableCollection<CoverageProviderDataModel> Providers { get; set; }
 
-        public ObservableCollection<CoveragePlanDataModel> Plans { get; set; }
+        public ObservableCollection<CoveragePlanDataModel> Plans
+        {
+            get => mPlans;
+            set
+            {
+                // Make sure list has changed
+                if (mPlans == value)
+                    return;
+
+                // Update value
+                mPlans = value;
+
+                // Update filtered list to match
+                FilteredPlans = new ObservableCollection<CoveragePlanDataModel>(mPlans);
+            }
+        }
+
+
+        public ObservableCollection<CoveragePlanDataModel> FilteredPlans { get; set; }
 
         public CoveragePlanDataModel SelectedPlan
         {
@@ -51,7 +78,25 @@ namespace EZDMS.App
 
         }
 
-        public CoverageProviderDataModel SelectedProvider { get; set; }
+        public CoverageProviderDataModel SelectedProvider
+        {
+            get => mSelectedProvider;
+
+            set
+            {
+                // Make sure list has changed
+                if (mSelectedProvider == value)
+                    return;
+
+                // Update value
+                mSelectedProvider = value;
+
+                // Update the view model
+                UpdateValuesOfFilteredPlans(mSelectedProvider.Number);
+
+            }
+
+        }
 
         /// <summary>
         /// The product type
@@ -173,6 +218,13 @@ namespace EZDMS.App
             InPayment = coveragePlan.DefaultInPayment;
             IsDisappearingDeductible = coveragePlan.IsDisappearingDeductible;
 
+
+        }
+
+        private void UpdateValuesOfFilteredPlans(string providerNumber)
+        {
+            FilteredPlans = new ObservableCollection<CoveragePlanDataModel>(
+                Plans.Where(item => item.ProviderNumber == providerNumber));
 
         }
 

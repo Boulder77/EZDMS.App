@@ -19,10 +19,40 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
+
+            <StackPanel Panel.ZIndex="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.ColumnSpan="3" Background="Red"                     
+                  Visibility="{Binding DialogWindowLoading, 
+                  Converter={local:BooleanToVisiblityGoneConverter}, FallbackValue=Collapsed}"
+                  >
+                <TextBlock Text="Loading"
+                       Foreground="{StaticResource ForegroundLightBrush}"
+                       FontFamily="{StaticResource LatoBold}"
+                       FontSize="{StaticResource FontSizeXXLarge}"
+                       HorizontalAlignment="Center"
+                       />
+
+                <Border Padding="100"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                     >
+
+                    <TextBlock 
+                    Foreground="{StaticResource ForegroundLightBrush}"
+                    FontSize="200"                  
+                    Style="{StaticResource SpinningText}" />
+                </Border>
+
+            </StackPanel>
+
+
             <Border BorderThickness="1"
                     BorderBrush="{StaticResource ForegroundVeryDarkBrush}"
-                    CornerRadius="2">
-
+                    CornerRadius="2"
+                    Visibility="{Binding DialogWindowLoading, 
+                                        Converter={local:BooleanToVisiblityConverter}}"
+                    >
+                
+                    <!--Content-->
                 <Grid>
 
                     <Grid.RowDefinitions>
@@ -34,7 +64,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <Label Content="Coverages"/>
+                    <Label Content="Coverages" HorizontalAlignment="Center"/>
 
                     <local:ProductItemControl Grid.Row="1" DataContext="{Binding Service}"/>
                     <local:ProductItemControl Grid.Row="2" DataContext="{Binding Warranty}"/>

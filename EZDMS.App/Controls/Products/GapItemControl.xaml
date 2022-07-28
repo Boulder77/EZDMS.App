@@ -43,8 +43,8 @@
                 <ComboBox x:Name="cbProviders"  ItemsSource="{Binding Providers}"
                            DisplayMemberPath="Name"                                                       
                            SelectedValuePath="Number"
-                           SelectedItem="SelectedProviderNumber"
-                           SelectionChanged="CbProviders_SelectionChanged"
+                           SelectedItem="{Binding SelectedProvider}"
+                           IsSynchronizedWithCurrentItem="True"
                            Margin="5,10,5,0"
                            HorizontalContentAlignment="Center"
                            FontFamily="{StaticResource LatoRegular}">
@@ -67,7 +67,7 @@
 
                 <!-- Plans -->
 
-                <ComboBox  ItemsSource="{Binding Plans}"                   
+                <ComboBox  ItemsSource="{Binding FilteredPlans}"                   
                    SelectedItem="{Binding SelectedPlan}"
                    IsSynchronizedWithCurrentItem="True"
                    DisplayMemberPath="Name" 

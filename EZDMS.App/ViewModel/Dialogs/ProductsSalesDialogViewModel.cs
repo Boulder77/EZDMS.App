@@ -345,10 +345,10 @@ namespace EZDMS.App
 
         private void UpdateMaintenanceVM(SalesMaintenanceDataModel salesMaintenance)
         {
-            
+
             // Update the view model
-            //Maintenance.SelectedProvider.Number = salesMaintenance.ProviderNumber;
-            //Maintenance.SelectedPlan.Name = salesMaintenance.Plan;
+            Maintenance.SelectedProvider = Providers.FirstOrDefault(item => item.Number == salesMaintenance.ProviderNumber);
+            Maintenance.SelectedPlan = Plans.FirstOrDefault(item => item.ID == salesMaintenance.PlanID);
             Maintenance.InPayment = salesMaintenance.InPayment;
             Maintenance.Taxable = salesMaintenance.IsTaxable;
             Maintenance.ContractNumber.Text = salesMaintenance.ContractNumber;
@@ -364,15 +364,9 @@ namespace EZDMS.App
         private void UpdateServiceVM(SalesServiceDataModel salesService)
         {
 
-
             // Update the view model
-
-            Service.SelectedProvider = (CoverageProviderDataModel)Providers.Where(item => item.Number == salesService.ProviderNumber);
-            Service.SelectedPlan = (CoveragePlanDataModel)Plans.Where(item => item.ID == salesService.PlanID);
-            //Service.SelectedProvider = new CoverageProviderDataModel((CoveragePlanDataModel)Providers.Where(item => item.Number == salesService.ProviderNumber));
-            //Service.SelectedPlan = new CoveragePlanDataModel { Name = SalesService != null ? SalesService.Plan : "" };
-
-
+            Service.SelectedProvider = Providers.FirstOrDefault(item => item.Number == salesService.ProviderNumber);
+            Service.SelectedPlan = Plans.FirstOrDefault(item => item.ID == salesService.PlanID);           
             Service.InPayment = salesService.InPayment;
             Service.Taxable = salesService.IsTaxable;
             Service.ContractNumber.Text = salesService.ContractNumber;
@@ -387,10 +381,10 @@ namespace EZDMS.App
 
         private void UpdateWarrantyVM(SalesWarrantyDataModel salesWarranty)
         {
-           
+
             // Update the view model
-            //Warranty.SelectedProvider.Number = salesWarranty.ProviderNumber;
-            //Warranty.SelectedPlan.Name = salesWarranty.Plan;
+            Warranty.SelectedProvider = Providers.FirstOrDefault(item => item.Number == salesWarranty.ProviderNumber);
+            Warranty.SelectedPlan = Plans.FirstOrDefault(item => item.ID == salesWarranty.PlanID);
             Warranty.InPayment = salesWarranty.InPayment;
             Warranty.Taxable = salesWarranty.IsTaxable;
             Warranty.ContractNumber.Text = salesWarranty.ContractNumber;
@@ -405,10 +399,10 @@ namespace EZDMS.App
 
         private void UpdateGapVM(SalesGapDataModel salesGap)
         {
-            
+
             // Update the view model
-            //Gap.SelectedProvider.Number = salesGap.ProviderNumber;
-            //Gap.SelectedPlan.Name = salesGap.Plan;
+            Gap.SelectedProvider = Providers.FirstOrDefault(item => item.Number == salesGap.ProviderNumber);
+            Gap.SelectedPlan = Plans.FirstOrDefault(item => item.ID == salesGap.PlanID);
             Gap.InPayment = salesGap.InPayment;
             Gap.Taxable = salesGap.IsTaxable;
             Gap.ContractNumber.Text = salesGap.ContractNumber;           

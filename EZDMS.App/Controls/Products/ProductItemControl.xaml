@@ -44,13 +44,16 @@
                     <ComboBox x:Name="cbProviders"  ItemsSource="{Binding Providers}"
                            DisplayMemberPath="Name"                                                       
                            SelectedValuePath="Number"
-                           SelectedItem="{Binding Path=SelectedProvider, Mode=TwoWay}"
-                           IsSynchronizedWithCurrentItem="True" 
-                           SelectionChanged="CbProviders_SelectionChanged"
+                           SelectedItem="{Binding SelectedProvider}"
+                           IsSynchronizedWithCurrentItem="True"
                            Margin="5,10,5,0"
                            HorizontalContentAlignment="Center"
                            FontFamily="{StaticResource LatoRegular}"
                               />
+
+                    <!--IsSynchronizedWithCurrentItem="True" 
+                           SelectionChanged="CbProviders_SelectionChanged"-->
+
 
                     <!--<ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -75,8 +78,8 @@
                        />
 
                 <!---->
-                <ComboBox  ItemsSource="{Binding Plans}"                   
-                   SelectedItem="{Binding Path=SelectedPlan, Mode=TwoWay}"
+                <ComboBox  ItemsSource="{Binding FilteredPlans}"                   
+                   SelectedItem="{Binding SelectedPlan}"
                    IsSynchronizedWithCurrentItem="True"
                    DisplayMemberPath="Name" 
                    Margin="5,10,5,0"
