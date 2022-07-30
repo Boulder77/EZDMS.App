@@ -5,8 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EZDMS.App"
              mc:Ignorable="d" 
+             Height="900"
+             Width="850"
              d:DataContext="{x:Static local:ProductSalesDesignModel.Instance}"
-             d:DesignHeight="900" d:DesignWidth="800">
+             d:DesignHeight="900" d:DesignWidth="850">
+    
     <Border Background="{StaticResource BackgroundVeryLightBrush}"
             
             >
@@ -20,12 +23,16 @@
             </Grid.RowDefinitions>
 
 
-            <StackPanel Panel.ZIndex="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.ColumnSpan="3" Background="Red"                     
-                  Visibility="{Binding DialogWindowLoading, 
-                  Converter={local:BooleanToVisiblityGoneConverter}, FallbackValue=Collapsed}"
-                  >
+            <StackPanel Panel.ZIndex="1" VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch" 
+                        Grid.RowSpan="2" 
+                        Background="Transparent"                     
+                        Visibility="{Binding ProductsLoading, 
+                        Converter={local:BooleanToVisiblityGoneConverter}, FallbackValue=Collapsed}"
+                        >
+                
                 <TextBlock Text="Loading"
-                       Foreground="{StaticResource ForegroundLightBrush}"
+                       Foreground="{StaticResource WordVeryLightBlueBrush}"
                        FontFamily="{StaticResource LatoBold}"
                        FontSize="{StaticResource FontSizeXXLarge}"
                        HorizontalAlignment="Center"
@@ -37,7 +44,7 @@
                      >
 
                     <TextBlock 
-                    Foreground="{StaticResource ForegroundLightBrush}"
+                    Foreground="{StaticResource WordBlueBrush}"
                     FontSize="200"                  
                     Style="{StaticResource SpinningText}" />
                 </Border>
@@ -48,7 +55,7 @@
             <Border BorderThickness="1"
                     BorderBrush="{StaticResource ForegroundVeryDarkBrush}"
                     CornerRadius="2"
-                    Visibility="{Binding DialogWindowLoading, 
+                    Visibility="{Binding ProductsLoading, 
                                         Converter={local:BooleanToVisiblityConverter}}"
                     >
                 
@@ -84,7 +91,8 @@
 
             <StackPanel Grid.Row="2"
                         Orientation="Horizontal"
-                        HorizontalAlignment="Right" >
+                        HorizontalAlignment="Right"
+                        >
 
                 <Button Margin="5"  
                             Background="{StaticResource ForegroundLightBrush}"
@@ -92,6 +100,7 @@
                             BorderBrush="{StaticResource WordBlueBrush}"
                             Foreground="{StaticResource WordBlueBrush}"
                             FontSize="{StaticResource FontSizeRegular}"
+                            Command="{Binding CloseCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:BaseDialogUserControl}}}"
                             Content="Cancel"
                             />
 
@@ -99,6 +108,7 @@
                             Background="{StaticResource WordOrangeBrush}"
                             Command="{Binding SaveCommand}"
                             local:IsBusyProperty.Value="{Binding Saving}"
+                            IsEnabled="{Binding ProductsLoading, Converter={local:BooleanInvertConverter}}"
                             Foreground="{StaticResource ForegroundLightBrush}"
                             FontSize="{StaticResource FontSizeRegular}"
                             Content="Save Close"
