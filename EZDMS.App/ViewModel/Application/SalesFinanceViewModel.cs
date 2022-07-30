@@ -322,12 +322,30 @@ namespace EZDMS.App
         {
             // Lock this command to ignore any other requests while processing
             await RunCommandAsync(() => SalesFinancePageLoading, async () => {
+
+                await Task.Delay(1);
                 UpdateValuesOfDeskingTotals(SalesFinanceDeal);
                 UpdateValuesOfSalesSummary(SalesFinanceDeal);
                 UpdateValuesOfTruthinLending(SalesFinanceDeal);
                                 
                 //UpdateValuesOfSalesDealCard(SalesDealsItem);
                 return Task.CompletedTask;
+            });
+
+        }
+
+        public async Task UpdateFinanceAsync()
+        {
+            // Lock this command to ignore any other requests while processing
+            await RunCommandAsync(() => SalesFinancePageLoading, async () => {
+
+                await ClientDataStore.SaveSalesRecordAsync(SalesFinanceDeal, DbTableNames.SalesFinance);
+                UpdateValuesOfDeskingTotals(SalesFinanceDeal);
+                UpdateValuesOfSalesSummary(SalesFinanceDeal);
+                UpdateValuesOfTruthinLending(SalesFinanceDeal);
+
+                //UpdateValuesOfSalesDealCard(SalesDealsItem);
+                
             });
 
         }
@@ -346,9 +364,8 @@ namespace EZDMS.App
                 });
 
                 // Update view model
-                SalesFinanceDeal.ServiceContract = 4500;
-                UpdateValuesOfDeskingTotals(SalesFinanceDeal);
-                    
+
+                await UpdateFinanceAsync();
                 return true;            
             });
             

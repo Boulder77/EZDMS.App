@@ -241,6 +241,8 @@ namespace EZDMS.App
                     // Save to the data store                    
                     await ClientDataStore.SaveSalesRecordAsync(SalesService, DbTableNames.SalesService);
 
+                    // Update Sales finance deal view model
+                    ViewModelSalesFinance.SalesFinanceDeal.ServiceContract = SalesService.Retail;
                 }
 
                 // Check if plan was selected
@@ -266,6 +268,9 @@ namespace EZDMS.App
 
                     // Save to the data store                    
                     await ClientDataStore.SaveSalesRecordAsync(SalesMaintenance, DbTableNames.SalesMaintenance);
+
+                    // Update Sales finance deal view model
+                    ViewModelSalesFinance.SalesFinanceDeal.Maintenance = SalesMaintenance.Retail;
 
                 }
 
@@ -293,6 +298,9 @@ namespace EZDMS.App
                     // Save to the data store                    
                     await ClientDataStore.SaveSalesRecordAsync(SalesWarranty, DbTableNames.SalesWarranty);
 
+                    // Update Sales finance deal view model
+                    ViewModelSalesFinance.SalesFinanceDeal.Warranty = SalesWarranty.Retail;
+
                 }
 
                 // Check if plan was selected
@@ -318,6 +326,9 @@ namespace EZDMS.App
 
                     // Save to the data store                    
                     await ClientDataStore.SaveSalesRecordAsync(SalesGap, DbTableNames.SalesGap);
+
+                    // Update Sales finance deal view model
+                    ViewModelSalesFinance.SalesFinanceDeal.Gap = SalesGap.Retail;
 
                 }
 
