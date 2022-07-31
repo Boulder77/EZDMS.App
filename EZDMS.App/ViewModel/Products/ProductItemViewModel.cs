@@ -71,8 +71,9 @@ namespace EZDMS.App
                 // Update value
                 mSelectedPlan = value;
 
-                // Update the view model
-                UpdateValuesFromDataModel(mSelectedPlan);
+                if (value != null)
+                    // Update the view model
+                    UpdateValuesFromDataModel(mSelectedPlan);
 
             }
 
@@ -91,8 +92,9 @@ namespace EZDMS.App
                 // Update value
                 mSelectedProvider = value;
 
-                // Update the view model
-                UpdateValuesOfFilteredPlans(mSelectedProvider.Number);
+                if (value != null)
+                    // Update the view model
+                    UpdateValuesOfFilteredPlans(mSelectedProvider.Number);
 
             }
 
@@ -102,16 +104,6 @@ namespace EZDMS.App
         /// The product type
         /// <summary>
         public TextInputViewModel Type { get; set; }              
-
-        /// <summary>
-        /// The product provider
-        /// <summary>
-        public TextInputViewModel Provider { get; set; }
-
-        /// <summary>
-        /// The product plan
-        /// <summary>
-        public TextInputViewModel Plan { get; set; }
 
         /// <summary>
         /// The product contract number
@@ -192,6 +184,15 @@ namespace EZDMS.App
 
         #endregion
 
+        #region Public Commands
+
+        /// <summary>
+        /// The command to clear the users data from the view model
+        /// </summary>
+        public ICommand ClearUserDataCommand { get; set; }
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -199,6 +200,8 @@ namespace EZDMS.App
         /// <summary>
         public ProductItemViewModel()
         {
+
+            ClearUserDataCommand = new RelayCommand(ClearUserData);
 
         }
 
@@ -225,6 +228,23 @@ namespace EZDMS.App
         {
             FilteredPlans = new ObservableCollection<CoveragePlanDataModel>(
                 Plans.Where(item => item.ProviderNumber == providerNumber));
+
+        }
+
+        public void ClearUserData()
+        {
+            // Clear all view models containing the users info
+            SelectedProvider =null;
+            SelectedPlan = null;
+            Retail = 0;
+            Cost.Amount = 0;
+            ContractNumber.Text = "";
+            Term.Text = "";
+            Miles.Text = "";
+            Deductible.Amount = 0;
+            InPayment = false;
+            Taxable = false;
+            IsDisappearingDeductible = false;
 
         }
 

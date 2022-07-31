@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:EZDMS.App"
              mc:Ignorable="d" 
              Height="900"
-             Width="850"
+             Width="950"
              d:DataContext="{x:Static local:ProductSalesDesignModel.Instance}"
-             d:DesignHeight="900" d:DesignWidth="850">
+             d:DesignHeight="900" d:DesignWidth="920">
     
     <Border Background="{StaticResource BackgroundVeryLightBrush}"
             

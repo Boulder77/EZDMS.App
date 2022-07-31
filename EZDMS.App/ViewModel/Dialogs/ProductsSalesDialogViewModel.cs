@@ -217,12 +217,14 @@ namespace EZDMS.App
         {
             await RunCommandAsync(() => Saving, async () =>
             {
-                // Check if plan was selected
-                if (Service.SelectedPlan !=null)
-                {
-                    // Get the service record
-                    SalesService = await ClientDataStore.GetSalesServiceAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
 
+                // Get the service record
+                SalesService = await ClientDataStore.GetSalesServiceAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+
+                // Check if plan was selected
+                if (Service.SelectedPlan !=null || SalesService != null)
+                {
+                
                     // Check if record exists
                     if (SalesService == null)
                     {
@@ -245,12 +247,14 @@ namespace EZDMS.App
                     ViewModelSalesFinance.SalesFinanceDeal.ServiceContract = SalesService.Retail;
                 }
 
-                // Check if plan was selected
-                if (Maintenance.SelectedPlan != null)
-                {
-                    // Get the stored record
-                    SalesMaintenance = await ClientDataStore.GetSalesMaintenanceAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+                // Get the stored record
+                SalesMaintenance = await ClientDataStore.GetSalesMaintenanceAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
 
+
+                // Check if plan was selected
+                if (Maintenance.SelectedPlan != null || SalesMaintenance !=null)
+                {
+                
                     // Check if record exists
                     if (SalesMaintenance == null)
                     {
@@ -274,12 +278,13 @@ namespace EZDMS.App
 
                 }
 
-                // Check if plan was selected
-                if (Warranty.SelectedPlan != null)
-                {
-                    // Get the stored  record
-                    SalesWarranty = await ClientDataStore.GetSalesWarrantyAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+                // Get the stored  record
+                SalesWarranty = await ClientDataStore.GetSalesWarrantyAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
 
+                // Check if plan was selected
+                if (Warranty.SelectedPlan != null || SalesWarranty != null)
+                {
+                    
                     // Check if record exists
                     if (SalesWarranty == null)
                     {
@@ -303,12 +308,13 @@ namespace EZDMS.App
 
                 }
 
-                // Check if plan was selected
-                if (Gap.SelectedPlan != null)
-                {
-                    // Get the stored record
-                    SalesGap = await ClientDataStore.GetSalesGapAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+                // Get the stored record
+                SalesGap = await ClientDataStore.GetSalesGapAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
 
+                // Check if plan was selected
+                if (Gap.SelectedPlan != null || SalesGap != null)
+                {
+                    
                     // Check if record exists
                     if (SalesGap == null)
                     {
@@ -425,37 +431,41 @@ namespace EZDMS.App
         private void UpdateMaintenanceDM()
         {
             
-            SalesMaintenance.Plan = Maintenance.SelectedPlan.Name;
-            SalesMaintenance.PlanID = Maintenance.SelectedPlan.ID;
+            SalesMaintenance.Plan = Maintenance.SelectedPlan?.Name;
+            SalesMaintenance.PlanID = Maintenance.SelectedPlan == null ? 0 : Maintenance.SelectedPlan.ID;
             SalesMaintenance.InPayment = Maintenance.InPayment;
-            SalesMaintenance.Cost = Maintenance.Cost.Amount == 0 ? Maintenance.SelectedPlan.Cost : Maintenance.Cost.Amount;
-            SalesMaintenance.Retail = Maintenance.Retail == 0 ? Maintenance.SelectedPlan.Retail : Maintenance.Retail;
+            SalesMaintenance.Cost = Maintenance.Cost.Amount;
+            SalesMaintenance.Retail = Maintenance.Retail;
             SalesMaintenance.Profit = SalesMaintenance.Retail - SalesMaintenance.Cost;
-            SalesMaintenance.Deductible = Maintenance.Deductible.Amount == 0 ? Maintenance.SelectedPlan.Deductible : Maintenance.Deductible.Amount;
+            SalesMaintenance.Deductible = Maintenance.Deductible.Amount;
             SalesMaintenance.IsDisappearingDeductible = Maintenance.IsDisappearingDeductible;
-            SalesMaintenance.ProviderNumber = Maintenance.SelectedPlan.ProviderNumber;
-            SalesMaintenance.ProviderName = Maintenance.SelectedPlan.ProviderName;
-            SalesMaintenance.Term = Maintenance.Term.Text == null ? Maintenance.SelectedPlan.Term : Convert.ToInt32(Maintenance.Term.Text);
-            SalesMaintenance.Miles = Maintenance.Miles.Text == null ? Maintenance.SelectedPlan.Miles : Convert.ToInt32(Maintenance.Miles.Text);
+            SalesMaintenance.ProviderNumber = Maintenance.SelectedPlan?.ProviderNumber;
+            SalesMaintenance.ProviderName = Maintenance.SelectedPlan?.ProviderName;
+            int.TryParse(Maintenance.Term.Text, out var result);
+            SalesMaintenance.Term = result;
+            int.TryParse(Maintenance.Miles.Text, out result);
+            SalesMaintenance.Miles = result;
             SalesMaintenance.DealerNumber = Maintenance.SelectedProvider?.DealerNumber;
 
         }
 
         private void UpdateServiceDM()
         {
-
-            SalesService.Plan = Service.SelectedPlan.Name;            
-            SalesService.PlanID = Service.SelectedPlan.ID;
+            
+            SalesService.Plan = Service.SelectedPlan?.Name;
+            SalesService.PlanID = Service.SelectedPlan == null ? 0 : Service.SelectedPlan.ID;
             SalesService.InPayment = Service.InPayment;
-            SalesService.Cost = Service.Cost.Amount == 0 ? Service.SelectedPlan.Cost : Service.Cost.Amount;
-            SalesService.Retail = Service.Retail == 0 ? Service.SelectedPlan.Retail : Service.Retail;
+            SalesService.Cost = Service.Cost.Amount;
+            SalesService.Retail = Service.Retail;
             SalesService.Profit = SalesService.Retail - SalesService.Cost;
-            SalesService.Deductible = Service.Deductible.Amount == 0 ? Service.SelectedPlan.Deductible : Service.Deductible.Amount;
+            SalesService.Deductible = Service.Deductible.Amount;
             SalesService.IsDisappearingDeductible = Service.IsDisappearingDeductible;
-            SalesService.ProviderNumber = Service.SelectedPlan.ProviderNumber;
-            SalesService.ProviderName = Service.SelectedPlan.ProviderName;
-            SalesService.Term = Service.Term.Text== null ? Service.SelectedPlan.Term : Convert.ToInt32(Service.Term.Text);
-            SalesService.Miles = Service.Miles.Text == null ? Service.SelectedPlan.Miles : Convert.ToInt32(Service.Miles.Text);
+            SalesService.ProviderNumber = Service.SelectedPlan?.ProviderNumber;
+            SalesService.ProviderName = Service.SelectedPlan?.ProviderName;
+            int.TryParse(Service.Term.Text, out var result);
+            SalesService.Term = result;
+            int.TryParse(Service.Miles.Text, out result);
+            SalesService.Miles = result;            
             SalesService.DealerNumber = Service.SelectedProvider?.DealerNumber;
 
         }
@@ -463,18 +473,20 @@ namespace EZDMS.App
         private void UpdateWarrantyDM()
         {
 
-            SalesWarranty.Plan = Warranty.SelectedPlan.Name;
-            SalesWarranty.PlanID = Warranty.SelectedPlan.ID;
+            SalesWarranty.Plan = Warranty.SelectedPlan?.Name;
+            SalesWarranty.PlanID = Warranty.SelectedPlan == null ? 0 : Warranty.SelectedPlan.ID;
             SalesWarranty.InPayment = Warranty.InPayment;
-            SalesWarranty.Cost = Warranty.Cost.Amount == 0 ? Warranty.SelectedPlan.Cost : Warranty.Cost.Amount;
-            SalesWarranty.Retail = Warranty.Retail == 0 ? Warranty.SelectedPlan.Retail : Warranty.Retail;
+            SalesWarranty.Cost = Warranty.Cost.Amount;
+            SalesWarranty.Retail = Warranty.Retail;
             SalesWarranty.Profit = SalesWarranty.Retail - SalesWarranty.Cost;
-            SalesWarranty.Deductible = Warranty.Deductible.Amount == 0 ? Warranty.SelectedPlan.Deductible : Warranty.Deductible.Amount;
+            SalesWarranty.Deductible = Warranty.Deductible.Amount;
             SalesWarranty.IsDisappearingDeductible = Warranty.IsDisappearingDeductible;
-            SalesWarranty.ProviderNumber = Warranty.SelectedPlan.ProviderNumber;
-            SalesWarranty.ProviderName = Warranty.SelectedPlan.ProviderName;
-            SalesWarranty.Term = Warranty.Term.Text == null ? Warranty.SelectedPlan.Term : Convert.ToInt32(Warranty.Term.Text);
-            SalesWarranty.Miles = Warranty.Miles.Text == null ? Warranty.SelectedPlan.Miles : Convert.ToInt32(Warranty.Miles.Text);
+            SalesWarranty.ProviderNumber = Warranty.SelectedPlan?.ProviderNumber;
+            SalesWarranty.ProviderName = Warranty.SelectedPlan?.ProviderName;
+            int.TryParse(Warranty.Term.Text, out var result);
+            SalesWarranty.Term = result;
+            int.TryParse(Warranty.Miles.Text, out result);
+            SalesWarranty.Miles = result;
             SalesWarranty.DealerNumber = Warranty.SelectedProvider?.DealerNumber;
 
         }
@@ -482,14 +494,14 @@ namespace EZDMS.App
         private void UpdateGapDM()
         {
 
-            SalesGap.Plan = Gap.SelectedPlan.Name;
-            SalesGap.PlanID = Gap.SelectedPlan.ID;
+            SalesGap.Plan = Gap.SelectedPlan?.Name;
+            SalesGap.PlanID = Gap.SelectedPlan == null ? 0 : Gap.SelectedPlan.ID;
             SalesGap.InPayment = Gap.InPayment;
-            SalesGap.Cost = Gap.Cost.Amount == 0 ? Gap.SelectedPlan.Cost : Gap.Cost.Amount;
-            SalesGap.Retail = Gap.Retail == 0 ? Gap.SelectedPlan.Retail : Gap.Retail;
+            SalesGap.Cost = Gap.Cost.Amount;
+            SalesGap.Retail = Gap.Retail;
             SalesGap.Profit = SalesGap.Retail - SalesGap.Cost;
-            SalesGap.ProviderNumber = Gap.SelectedPlan.ProviderNumber;
-            SalesGap.ProviderName = Gap.SelectedPlan.ProviderName;
+            SalesGap.ProviderNumber = Gap.SelectedPlan?.ProviderNumber;
+            SalesGap.ProviderName = Gap.SelectedPlan?.ProviderName;
             SalesGap.DealerNumber = Gap.SelectedProvider?.DealerNumber;
 
         }

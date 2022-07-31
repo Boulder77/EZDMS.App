@@ -26,9 +26,7 @@ namespace EZDMS.App
             Service = new ProductItemViewModel
 
             {
-                Type = new TextInputViewModel { Label = "Product", Text = "Service", Editable = false },
-                Provider = new TextInputViewModel { Label = "Provider", Text = "GMPP" },
-                Plan = new TextInputViewModel { Label = "Plan", Text = "VALUE GUARD" },
+                Type = new TextInputViewModel { Label = "Product", Text = "Service", Editable = false },              
                 Retail = 2165.00m,
                 Cost = new DecimalInputViewModel { Label = "Cost", Amount = 1120.00m, Editable = true },
                 Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 100.00m, Editable = true },
@@ -43,9 +41,7 @@ namespace EZDMS.App
             Warranty = new ProductItemViewModel
 
             {
-                Type = new TextInputViewModel { Label = "Product", Text = "Warranty", Editable = false },
-                Provider = new TextInputViewModel { Label = "Provider", Text = "WilliamW" },
-                Plan = new TextInputViewModel { Label = "Plan", Text = "WilliamW" },
+                Type = new TextInputViewModel { Label = "Product", Text = "Warranty", Editable = false },               
                 Retail = 400.00m,
                 Cost = new DecimalInputViewModel { Label = "Cost", Amount = 200.00m, Editable = true },
                 Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 200.00m, Editable = true },
@@ -62,9 +58,7 @@ namespace EZDMS.App
             Warranty = new ProductItemViewModel
 
             {
-                Type = new TextInputViewModel { Label = "Product", Text = "Warranty", Editable = false },
-                Provider = new TextInputViewModel { Label = "Provider", Text = "WilliamW" },
-                Plan = new TextInputViewModel { Label = "Plan", Text = "WilliamW" },
+                Type = new TextInputViewModel { Label = "Product", Text = "Warranty", Editable = false },               
                 Retail = 400.00m,
                 Cost = new DecimalInputViewModel { Label = "Cost", Amount = 200.00m, Editable = true },
                 Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 200.00m, Editable = true },
@@ -80,8 +74,6 @@ namespace EZDMS.App
 
             {
                 Type = new TextInputViewModel { Label = "Product", Text = "Maintenance", Editable = false },
-                Provider = new TextInputViewModel { Label = "Provider", Text = "Sheldon214" },
-                Plan = new TextInputViewModel { Label = "Plan", Text = "Sheldon214" },
                 Retail = 350.00m,
                 Cost = new DecimalInputViewModel { Label = "Cost", Amount = 150.00m, Editable = true },
                 Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 0m, Editable = true },
@@ -97,8 +89,6 @@ namespace EZDMS.App
 
             {
                 Type = new TextInputViewModel { Label = "Product", Text = "Gap", Editable = false},
-                Provider = new TextInputViewModel { Label = "Provider", Text = "Easy Care" },
-                Plan = new TextInputViewModel { Label = "Plan", Text = "GAP" },
                 Retail = 895.00m,
                 Cost = new DecimalInputViewModel { Label = "Cost", Amount = 350.00m, Editable = true },                
                 ContractNumber = new TextInputViewModel { Label = "Contract No", Text = "GP#444" },

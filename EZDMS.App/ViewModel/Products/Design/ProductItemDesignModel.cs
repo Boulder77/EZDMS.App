@@ -24,9 +24,7 @@ namespace EZDMS.App
 
         {
             
-            Type = new TextInputViewModel { Label = "Product", Text = "Service", Editable = false };
-            Provider = new TextInputViewModel { Label = "Provider", Text = "GMPP" };
-            Plan = new TextInputViewModel { Label = "Plan", Text = "VALUE GUARD" };            
+            Type = new TextInputViewModel { Label = "Product", Text = "Service", Editable = false };                  
             Retail = 2165.00m;
             Cost = new DecimalInputViewModel { Label = "Cost", Amount = 1120.00m, Editable = true };
             Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = 100.00m, Editable = true };
