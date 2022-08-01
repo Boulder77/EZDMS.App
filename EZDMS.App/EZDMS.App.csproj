@@ -158,6 +158,9 @@
     <Compile Include="Controls\Products\GapItemControl.cs">
       <DependentUpon>GapItemControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Products\FrontAddItemControl.xaml.cs">
+      <DependentUpon>FrontAddItemControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\DialogVehicleSelect.cs">
       <DependentUpon>DialogVehicleSelect.xaml</DependentUpon>
     </Compile>
@@ -273,7 +276,9 @@
     <Compile Include="ViewModel\Dialogs\CustomerSelectDialogViewModel.cs" />
     <Compile Include="ViewModel\Input\Design\TextInputDesignModel.cs" />
     <Compile Include="ViewModel\Input\TextInputViewModel.cs" />
+    <Compile Include="ViewModel\Products\Design\ProductItemDesignModel - Copy.cs" />
     <Compile Include="ViewModel\Products\Design\ProductItemDesignModel.cs" />
+    <Compile Include="ViewModel\Products\FrontAddItemViewModel.cs" />
     <Compile Include="ViewModel\Products\ProductItemViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\ProductsSalesDialogViewModel.cs" />
     <Compile Include="ViewModel\Sales\Design\TruthInLendingDisclosureDesignModel.cs" />
@@ -438,6 +443,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Products\GapItemControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Products\FrontAddItemControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

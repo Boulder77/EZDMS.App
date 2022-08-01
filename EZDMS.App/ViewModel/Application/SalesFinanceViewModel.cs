@@ -101,8 +101,8 @@ namespace EZDMS.App
                 if (value != null)
                     // Reload customer card view model
                     UpdateValuesOfCustomerCard(value);
-                UpdateValuesOfCustomerBasicInfo(value);
-                UpdateValuesOfCustomerAddress(value);
+                    UpdateValuesOfCustomerBasicInfo(value);
+                    UpdateValuesOfCustomerAddress(value);
             }
 
         }

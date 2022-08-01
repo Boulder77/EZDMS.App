@@ -67,6 +67,6 @@
     <system:String x:Key="FontAwesomeSortDownIcon">&#xf107;</system:String>
     <system:String x:Key="FontAwesomeSortUpIcon">&#xf106;</system:String>
     <system:String x:Key="FontAwesomeTrashCanIcon">&#xf1f8;</system:String>
-    
+    <system:String x:Key="FontAwesomePlusIcon">&#xf067;</system:String>
     
 </ResourceDictionary>
