@@ -26,22 +26,22 @@ namespace EZDMS.App
         /// <summary>
         /// The selected front add
         /// </summary>
-        private object mSelectedAdd;
+        private FrontAddsDataModel mSelectedAdd;
 
         /// <summary>
         /// The list of all active front adds
         /// </summary>
-        protected ObservableCollection<object> mFrontAdds;
+        protected ObservableCollection<FrontAddsDataModel> mFrontAdds;
 
         #endregion
-
 
         #region Public Properties
 
 
-        public ObservableCollection<object> FrontAdds
+        public ObservableCollection<FrontAddsDataModel> FrontAdds
         {
             get => mFrontAdds;
+            
             set
             {
                 // Make sure list has changed
@@ -52,14 +52,14 @@ namespace EZDMS.App
                 mFrontAdds = value;
 
                 // Update filtered list to match
-                FilteredAdds = new ObservableCollection<object>(mFrontAdds);
+                FilteredAdds = new ObservableCollection<FrontAddsDataModel>(mFrontAdds);
             }
         }
 
 
-        public ObservableCollection<object> FilteredAdds { get; set; }
+        public ObservableCollection<FrontAddsDataModel> FilteredAdds { get; set; }
 
-        public object SelectedAdd
+        public FrontAddsDataModel SelectedAdd
         {
             get => mSelectedAdd;
 
@@ -152,16 +152,16 @@ namespace EZDMS.App
 
         #endregion
 
-        private void UpdateValuesFromDataModel(object coveragePlan)
+        private void UpdateValuesFromDataModel(FrontAddsDataModel frontAdd)
         {
-            if (coveragePlan == null)
+            if (frontAdd == null)
                 return;
              
-            //Retail = coveragePlan.Retail;
-            //Cost.Amount = coveragePlan.Cost;
+            Retail = frontAdd.Retail;
+            Cost = frontAdd.Cost;
            
-            //Taxable = coveragePlan.IsTaxable;
-            //InPayment = coveragePlan.DefaultInPayment;          
+            Taxable = (bool)frontAdd.IsTaxable;
+            InPayment = (bool)frontAdd.InPayment;          
 
         }
               

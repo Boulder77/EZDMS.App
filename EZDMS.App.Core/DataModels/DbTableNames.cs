@@ -59,5 +59,11 @@
         /// The SalesWarranty table
         /// <summary>
         SalesWarranty = 10,
+
+
+        /// <summary>
+        /// The FrontAdds table
+        /// <summary>
+        FrontAdds = 11,
     }
 }

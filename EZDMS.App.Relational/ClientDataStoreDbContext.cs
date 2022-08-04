@@ -65,6 +65,11 @@ namespace EZDMS.App.Relational
         /// <summary>
         public DbSet<SalesWarrantyDataModel> SalesWarranty { get; set; }
 
+        /// <summary>
+        /// The FrontAdds table
+        /// <summary>
+        public DbSet<FrontAddsDataModel> FrontAdds { get; set; }
+
 
         #endregion
 
@@ -115,17 +120,21 @@ namespace EZDMS.App.Relational
 
             modelBuilder.Entity<SalesWarrantyDataModel>().HasKey(a => a.DealNumber);
 
+            modelBuilder.Entity<FrontAddsDataModel>().HasKey(a => a.Number);
+
 
             // TODO: Set up limits
             //modelBuilder.Entity<LoginCredentialsDataModel>().Property(a => a.FirstName).HasMaxLength(50);
 
             // Setup computed columns
-            modelBuilder.Entity<VehicleInventoryDataModel>().Property(p => p.StockNumber).HasComputedColumnSql("[PreFixID]+right('0000'+CONVERT([nvarchar](4),[ID]),(4)))");
+            modelBuilder.Entity<VehicleInventoryDataModel>().Property(p => p.StockNumber).HasComputedColumnSql("[PreFixID]+right('0000'+CONVERT([nvarchar](4),[ID]),(4))");
 
-            modelBuilder.Entity<CustomerDataModel>().Property(p => p.Number).HasComputedColumnSql("[PreFixID]+right('0000000'+CONVERT([nvarchar](7),[Id]),(7)))");
+            modelBuilder.Entity<CustomerDataModel>().Property(p => p.Number).HasComputedColumnSql("[PreFixID]+right('0000000'+CONVERT([nvarchar](7),[Id]),(7))");
 
-            modelBuilder.Entity<CoverageProviderDataModel>().Property(p => p.Number).HasComputedColumnSql("[PreFixID]+right('000'+CONVERT([nvarchar](3),[Id]),(3)))");
-                        
+            modelBuilder.Entity<CoverageProviderDataModel>().Property(p => p.Number).HasComputedColumnSql("[PreFixID]+right('000'+CONVERT([nvarchar](3),[Id]),(3))");
+
+            modelBuilder.Entity<FrontAddsDataModel>().Property(p => p.Id).HasComputedColumnSql("[PreFixID]+right('100'+CONVERT([nvarchar](4),[Number]),(4))");
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

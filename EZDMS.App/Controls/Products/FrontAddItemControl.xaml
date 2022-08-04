@@ -30,6 +30,7 @@
                     
                 <ComboBox  ItemsSource="{Binding FilteredAdds}"                   
                            SelectedItem="{Binding SelectedAdd}"
+                           Background="{StaticResource BackgroundVeryLightBrush}"                           
                            IsSynchronizedWithCurrentItem="True"
                            DisplayMemberPath="Name"                    
                            HorizontalContentAlignment="Stretch"
@@ -37,7 +38,7 @@
                            FontFamily="{StaticResource LatoRegular}"
                            />
 
-                <!-- Delete Button -->
+                <!-- Add Button -->
                 <Button Grid.Column="1"
                         Margin="3"
                     HorizontalAlignment="Stretch"
@@ -51,19 +52,21 @@
             
                 
                 <!-- Retail -->
-                <TextBox Grid.Column="1" 
+                <TextBox Grid.Column="1"
+                     Margin="5"    
                      Text="{Binding Retail}"
                      HorizontalContentAlignment="Right"
-                     Background="Transparent"
+                     Background="{StaticResource BackgroundVeryLightBrush}"
                      Grid.Row="1"
                      FontSize="{StaticResource FontSizeRegular}"                     
                      />
 
             <!-- Cost -->
-            <TextBox Grid.Column="2" 
+            <TextBox Grid.Column="2"
+                     Margin="5"    
                      Text="{Binding Cost}"
                      HorizontalContentAlignment="Right"
-                     Background="Transparent"
+                     Background="{StaticResource BackgroundVeryLightBrush}"
                      Grid.Row="1"
                      FontSize="{StaticResource FontSizeRegular}"
                     

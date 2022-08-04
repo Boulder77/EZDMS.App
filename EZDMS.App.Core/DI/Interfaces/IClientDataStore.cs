@@ -154,5 +154,10 @@ namespace EZDMS.App.Core
         /// <returns>SalesGapDataModel</returns>
         Task<SalesGapDataModel> GetSalesGapAsync(int dealNumber);
 
+        /// <summary>
+        /// Returns all records in front adds table
+        /// </summary>
+        Task<List<FrontAddsDataModel>> GetFrontAddsAsync();
+
     }
 }
