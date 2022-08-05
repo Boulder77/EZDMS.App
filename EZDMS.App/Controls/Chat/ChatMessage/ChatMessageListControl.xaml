@@ -6,9 +6,10 @@
              xmlns:local="clr-namespace:EZDMS.App"
              xmlns:core="clr-namespace:EZDMS.App.Core;assembly=EZDMS.App.Core"
              mc:Ignorable="d" 
+             d:DataContext="{x:Static local:ChatMessageListDesignModel.Instance}"
              d:DesignHeight="600" d:DesignWidth="300">
 
-    <Grid d:DataContext="{x:Static local:ChatMessageListDesignModel.Instance}"
+    <Grid 
           VerticalAlignment="Bottom">
         <ScrollViewer VerticalScrollBarVisibility="Auto"
                       local:ScrollToBottomOnLoadProperty.Value="True"

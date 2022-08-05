@@ -155,11 +155,17 @@
     <Compile Include="Controls\PageHost.xaml.cs">
       <DependentUpon>PageHost.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Products\FrontAdd\FrontAddItemListControl.cs">
+      <DependentUpon>FrontAddItemListControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Products\GapItemControl.cs">
       <DependentUpon>GapItemControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Products\FrontAddItemControl.xaml.cs">
+    <Compile Include="Controls\Products\FrontAdd\FrontAddItemControl.xaml.cs">
       <DependentUpon>FrontAddItemControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DialogFrontBackAdds.xaml.cs">
+      <DependentUpon>DialogFrontBackAdds.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\DialogVehicleSelect.cs">
       <DependentUpon>DialogVehicleSelect.xaml</DependentUpon>
@@ -276,7 +282,7 @@
     <Compile Include="ViewModel\Dialogs\CustomerSelectDialogViewModel.cs" />
     <Compile Include="ViewModel\Input\Design\TextInputDesignModel.cs" />
     <Compile Include="ViewModel\Input\TextInputViewModel.cs" />
-    <Compile Include="ViewModel\Products\Design\ProductItemDesignModel - Copy.cs" />
+    <Compile Include="ViewModel\Products\Design\FrontAddItemDesignModel.cs" />
     <Compile Include="ViewModel\Products\Design\ProductItemDesignModel.cs" />
     <Compile Include="ViewModel\Products\FrontAddItemViewModel.cs" />
     <Compile Include="ViewModel\Products\ProductItemViewModel.cs" />
@@ -442,11 +448,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Products\FrontAdd\FrontAddItemListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Products\GapItemControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Products\FrontAddItemControl.xaml">
+    <Page Include="Controls\Products\FrontAdd\FrontAddItemControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\DialogFrontBackAdds.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -1,0 +1,106 @@
+﻿<local:BaseDialogUserControl x:Class="EZDMS.App.DialogFrontBackAdds"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EZDMS.App"
+             mc:Ignorable="d" 
+             Height="900"
+             Width="950"             
+             d:DesignHeight="900" d:DesignWidth="920">
+    
+    <Border Background="{StaticResource BackgroundVeryLightBrush}"
+            >
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Panel.ZIndex="1" VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch" 
+                        Grid.RowSpan="2" 
+                        Background="Transparent"                     
+                        Visibility="{Binding AddsLoading, 
+                        Converter={local:BooleanToVisiblityGoneConverter}, FallbackValue=Collapsed}"
+                        >
+
+                <TextBlock Text="Loading"
+                       Foreground="{StaticResource WordVeryLightBlueBrush}"
+                       FontFamily="{StaticResource LatoBold}"
+                       FontSize="{StaticResource FontSizeXXLarge}"
+                       HorizontalAlignment="Center"
+                       />
+
+                <Border Padding="100"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                     >
+
+                    <TextBlock 
+                    Foreground="{StaticResource WordBlueBrush}"
+                    FontSize="200"                  
+                    Style="{StaticResource SpinningText}" />
+                </Border>
+
+            </StackPanel>
+
+            <Border BorderThickness="1"
+                    BorderBrush="{StaticResource ForegroundVeryDarkBrush}"
+                    CornerRadius="2"
+                    Visibility="{Binding AddsLoading, 
+                                        Converter={local:BooleanToVisiblityConverter}}"
+                    >
+                
+                
+                
+                
+
+
+
+
+
+            </Border>
+
+
+
+
+
+            <StackPanel Grid.Row="6"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        >
+
+                <Button Margin="5"  
+                            Background="{StaticResource ForegroundLightBrush}"
+                            BorderThickness="1"
+                            BorderBrush="{StaticResource WordBlueBrush}"
+                            Foreground="{StaticResource WordBlueBrush}"
+                            FontSize="{StaticResource FontSizeRegular}"
+                            Command="{Binding CloseCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:BaseDialogUserControl}}}"
+                            Content="Cancel"
+                            />
+
+                <Button Margin="5"  
+                            Background="{StaticResource WordOrangeBrush}"
+                            Command="{Binding SaveCommand}"
+                            local:IsBusyProperty.Value="{Binding Saving}"
+                            IsEnabled="{Binding ProductsLoading, Converter={local:BooleanInvertConverter}}"
+                            Foreground="{StaticResource ForegroundLightBrush}"
+                            FontSize="{StaticResource FontSizeRegular}"
+                            Content="Save and Close"
+                            />
+
+            </StackPanel>
+
+        </Grid>
+
+    </Border>
+    </local:BaseDialogUserControl>

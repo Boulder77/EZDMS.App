@@ -1,4 +1,9 @@
-﻿
+﻿using EZDMS.App.Core;
+using System;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using static EZDMS.App.DI;
+
 namespace EZDMS.App
 {
     /// <summary>
@@ -23,8 +28,8 @@ namespace EZDMS.App
         public FrontAddItemDesignModel()
 
         {
-            
-                     
+
+            SelectedAdd = new FrontAddsDataModel { Name = "Bedliner- Drop In" };
             Retail = 999.00m;
             Cost = 650.00m;            
             InPayment = true;            
