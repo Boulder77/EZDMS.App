@@ -155,7 +155,7 @@
     <Compile Include="Controls\PageHost.xaml.cs">
       <DependentUpon>PageHost.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Products\FrontAdd\FrontAddItemListControl.cs">
+    <Compile Include="Controls\Products\FrontAdd\FrontAddListControl.cs">
       <DependentUpon>FrontAddItemListControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Products\GapItemControl.cs">

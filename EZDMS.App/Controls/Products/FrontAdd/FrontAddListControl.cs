@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace EZDMS.App
 {
     /// <summary>
-    /// Interaction logic for FrontAddItemListControl.xaml
+    /// Interaction logic for FrontAddListControl.xaml
     /// </summary>
-    public partial class FrontAddItemListControl : UserControl
+    public partial class FrontAddListControl : UserControl
     {
-        public FrontAddItemListControl()
+        public FrontAddListControl()
         {
             InitializeComponent();
         }
