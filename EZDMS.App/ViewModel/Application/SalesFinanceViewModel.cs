@@ -430,7 +430,28 @@ namespace EZDMS.App
 
 
         }
-        
+
+        public async Task<bool> ShowFrontBackAddsAsync()
+        {
+
+            return await RunCommandAsync(() => DialogWindowLoading, async () =>
+            {
+
+                // Lock this command to ignore any other requests while processing
+                await UI.ShowAdds(new FrontBackAddsDialogViewModel
+                {
+                    Title = "Adds",
+
+                });
+
+                // Update view model
+
+                //await UpdateFinanceAsync();
+                return true;
+            });
+
+        }
+
         public async Task UpdateSalesDealItemAsync(object mDataModel, string mType = null)
         {
            
@@ -513,7 +534,8 @@ namespace EZDMS.App
                 { 
                     Label = "Front Options", 
                     Amount = salesFinance.TotalFrontAdds, 
-                    Editable = true 
+                    Editable = true,
+                    DialogAction = ShowFrontBackAddsAsync
 
                 },
                     
@@ -535,7 +557,9 @@ namespace EZDMS.App
                 { 
                     Label = "Back Options",
                     Amount = salesFinance.TotalBackAdds,
-                    Editable = true 
+                    Editable = true,
+                    DialogAction = ShowFrontBackAddsAsync
+
                 },
                     
                 Service = new DecimalInputViewModel 

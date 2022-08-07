@@ -36,6 +36,13 @@ namespace EZDMS.App
         /// <returns></returns>
         Task ShowVehicles(VehicleSelectDialogViewModel viewModel);
 
+        /// <summary>
+        /// Displays a customer select window to the user
+        /// </summary>
+        /// <param name="viewModel">The view model</param>
+        /// <returns></returns>
+        Task ShowAdds(FrontBackAddsDialogViewModel viewModel);
+
 
     }
 

@@ -12,10 +12,10 @@
     <Border Background="{StaticResource BackgroundVeryLightBrush}"
             >
 
-        <Grid>
+        <Grid >
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -24,53 +24,26 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <StackPanel Panel.ZIndex="1" VerticalAlignment="Stretch"
-                        HorizontalAlignment="Stretch" 
-                        Grid.RowSpan="2" 
-                        Background="Transparent"                     
-                        Visibility="{Binding AddsLoading, 
-                        Converter={local:BooleanToVisiblityGoneConverter}, FallbackValue=Collapsed}"
-                        >
-
-                <TextBlock Text="Loading"
-                       Foreground="{StaticResource WordVeryLightBlueBrush}"
-                       FontFamily="{StaticResource LatoBold}"
-                       FontSize="{StaticResource FontSizeXXLarge}"
-                       HorizontalAlignment="Center"
+            
+            <TextBlock Text="Front Options"
+                       FontSize="{StaticResource FontSizeXXXLarge}"
                        />
 
-                <Border Padding="100"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                     >
+            <local:FrontAddListControl 
+                    Grid.Row="1"
+                    />
 
-                    <TextBlock 
-                    Foreground="{StaticResource WordBlueBrush}"
-                    FontSize="200"                  
-                    Style="{StaticResource SpinningText}" />
-                </Border>
+            <local:NumericalDisplayVertControl
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"                           
+                           Grid.Row="2" 
+                           DataContext="{Binding TotalFrontAdds}"
+                        />
 
-            </StackPanel>
-
-            <Border BorderThickness="1"
-                    BorderBrush="{StaticResource ForegroundVeryDarkBrush}"
-                    CornerRadius="2"
-                    Visibility="{Binding AddsLoading, 
-                                        Converter={local:BooleanToVisiblityConverter}}"
-                    >
-                
-                
-                
-                
-
-
-
-
-
-            </Border>
-
-
-
+            <TextBlock Text="Back Options"
+                   Grid.Row="3"
+                       FontSize="{StaticResource FontSizeXXXLarge}"
+                       />
 
 
             <StackPanel Grid.Row="6"

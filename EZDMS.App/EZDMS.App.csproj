@@ -156,7 +156,7 @@
       <DependentUpon>PageHost.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Products\FrontAdd\FrontAddListControl.cs">
-      <DependentUpon>FrontAddItemListControl.xaml</DependentUpon>
+      <DependentUpon>FrontAddListControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Products\GapItemControl.cs">
       <DependentUpon>GapItemControl.xaml</DependentUpon>
@@ -277,13 +277,16 @@
     <Compile Include="ViewModel\Customer\Design\CustomerAddressDesignModel.cs" />
     <Compile Include="ViewModel\Customer\Design\CustomerDesignModel.cs" />
     <Compile Include="ViewModel\Customer\CustomersListViewModel.cs" />
+    <Compile Include="ViewModel\Dialogs\FrontBackAddsDialogViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\VehicleSelectDialogViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\Design\ProductSalesDesignModel.cs" />
     <Compile Include="ViewModel\Dialogs\CustomerSelectDialogViewModel.cs" />
     <Compile Include="ViewModel\Input\Design\TextInputDesignModel.cs" />
     <Compile Include="ViewModel\Input\TextInputViewModel.cs" />
+    <Compile Include="ViewModel\Products\Design\FrontAddListDesignModel.cs" />
     <Compile Include="ViewModel\Products\Design\FrontAddItemDesignModel.cs" />
     <Compile Include="ViewModel\Products\Design\ProductItemDesignModel.cs" />
+    <Compile Include="ViewModel\Products\FrontAddListViewModel.cs" />
     <Compile Include="ViewModel\Products\FrontAddItemViewModel.cs" />
     <Compile Include="ViewModel\Products\ProductItemViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\ProductsSalesDialogViewModel.cs" />
@@ -448,7 +451,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Products\FrontAdd\FrontAddItemListControl.xaml">
+    <Page Include="Controls\Products\FrontAdd\FrontAddListControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
