@@ -16,33 +16,28 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             
             <TextBlock Text="Front Options"
-                       FontSize="{StaticResource FontSizeXXXLarge}"
+                       FontSize="{StaticResource FontSizeXXLarge}"
                        />
 
             <local:FrontAddListControl 
                     Grid.Row="1"
                     />
 
-            <local:NumericalDisplayVertControl
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"                           
-                           Grid.Row="2" 
-                           DataContext="{Binding TotalFrontAdds}"
-                        />
+            
 
             <TextBlock Text="Back Options"
                    Grid.Row="3"
-                       FontSize="{StaticResource FontSizeXXXLarge}"
+                       FontSize="{StaticResource FontSizeXXLarge}"
                        />
 
 

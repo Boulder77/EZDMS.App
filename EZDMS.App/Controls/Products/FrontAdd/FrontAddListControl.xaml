@@ -8,6 +8,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="950">
     <Grid >
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+
+        </Grid.RowDefinitions>
+        
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <ItemsControl ItemsSource="{Binding Items}">
                 <ItemsControl.ItemTemplate>
@@ -17,5 +24,22 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
+
+        <StackPanel Grid.Row="1" 
+                    Orientation="Vertical"
+                    HorizontalAlignment="Center">
+
+            <TextBlock Text="Total Front Adds"                    
+                       FontSize="{StaticResource FontSizeLarge}"
+                       FontFamily="{StaticResource LatoRegular}"
+                       />
+
+            <TextBlock FontSize="{StaticResource FontSizeXXLarge}"
+                       FontFamily="{StaticResource LatoRegular}"
+                       Text="{Binding Total, Converter={local:DecimalToDisplayMoneyConverter}}"
+                        />
+            
+        </StackPanel>
+
     </Grid>
 </UserControl>

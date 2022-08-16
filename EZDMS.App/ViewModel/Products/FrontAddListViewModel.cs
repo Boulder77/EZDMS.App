@@ -12,5 +12,10 @@ namespace EZDMS.App
         /// The chat list items for the list
         /// </summary>
         public List<FrontAddItemViewModel> Items { get; set; }
+
+        /// <summary>
+        /// The total retail of all front adds 
+        /// </summary>
+        public decimal Total { get; set; }
     }
 }

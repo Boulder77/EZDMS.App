@@ -17,31 +17,18 @@ namespace EZDMS.App
     /// <summary>
     public class FrontBackAddsDialogViewModel:BaseDialogViewModel
     {
-
-        #region Private Members
-
-       
-               
-
-        #endregion
-
+        
         #region Public Properties
             
         /// <summary>
         /// The sales maintenance data model
         /// </summary>
         public FrontAddListViewModel FrontAdds { get; set; }
-        
-        /// <summary>
-        /// The text for the total front adds 
-        /// </summary>
-        public DecimalInputViewModel TotalFrontAdds { get; set; }
 
         /// <summary>
         /// The text for the total back adds 
         /// </summary>
         public decimal TotalBackAdds { get; set; }
-
 
         /// <summary>
         /// Indicates if there is a save action
@@ -95,13 +82,7 @@ namespace EZDMS.App
             await RunCommandAsync(() => AddsLoading, async () =>
             {
                 FrontAdds = FrontAddListDesignModel.Instance;
-                TotalFrontAdds = new DecimalInputViewModel
-                {
-                    Label = "Total Front Adds",
-
-                    Amount = 1123.00m
-
-                };
+               
 
                 
 

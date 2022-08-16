@@ -1,5 +1,6 @@
 ﻿using EZDMS.App.Core;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EZDMS.App
 {
@@ -46,6 +47,8 @@ namespace EZDMS.App
                     },
 
             };
+
+            Total = Items.Sum(item => item.Retail);
         }
         #endregion
     }

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:EZDMS.App"
              mc:Ignorable="d" 
              
-             d:DesignHeight="80" d:DesignWidth="910">   
+             d:DesignHeight="60" d:DesignWidth="910">   
 
                         <Border x:Name="background"  Background="{StaticResource WordVeryVeryLightBlueBrush}"
                     CornerRadius="5">
@@ -34,7 +34,7 @@
                            IsSynchronizedWithCurrentItem="True"
                            DisplayMemberPath="Name"                    
                            HorizontalContentAlignment="Stretch"
-                           Margin="5,8,5,8"
+                           Margin="5,15"
                            FontFamily="{StaticResource LatoRegular}"
                            />
 
