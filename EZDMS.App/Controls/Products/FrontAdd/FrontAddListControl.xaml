@@ -36,6 +36,7 @@
 
             <TextBlock FontSize="{StaticResource FontSizeXXLarge}"
                        FontFamily="{StaticResource LatoRegular}"
+                       HorizontalAlignment="Right"
                        Text="{Binding Total, Converter={local:DecimalToDisplayMoneyConverter}}"
                         />
             
