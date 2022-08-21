@@ -1,5 +1,6 @@
 ﻿using EZDMS.App.Core;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace EZDMS.App
@@ -26,7 +27,7 @@ namespace EZDMS.App
         /// </summary>
         public FrontAddListDesignModel()
         {
-            Items = new List<FrontAddItemViewModel>
+            Items = new ObservableCollection<FrontAddItemViewModel>
             {
                  new FrontAddItemViewModel
                     {

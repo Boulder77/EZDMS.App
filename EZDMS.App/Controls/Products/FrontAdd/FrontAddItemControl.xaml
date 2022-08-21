@@ -15,80 +15,104 @@
            <Grid x:Name="container" Background="Transparent">
            <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="150" />
                 <ColumnDefinition Width="150" />
                 <ColumnDefinition Width="80" />
                 <ColumnDefinition Width="80" />
-                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="140" />
             </Grid.ColumnDefinitions>
 
-            <Grid >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="80" />
-                </Grid.ColumnDefinitions>
+                
+                
                     
-                <ComboBox  ItemsSource="{Binding FilteredAdds}"                   
+                    <ComboBox  ItemsSource="{Binding FilteredAdds}"                   
                            SelectedItem="{Binding SelectedAdd}"
                            Background="{StaticResource BackgroundVeryLightBrush}"                           
                            IsSynchronizedWithCurrentItem="True"
                            DisplayMemberPath="Name"                    
-                           HorizontalContentAlignment="Stretch"
-                           Margin="5,15"
+                           
+                           VerticalAlignment="Center"
                            FontFamily="{StaticResource LatoRegular}"
                            />
 
-                <!-- Add Button -->
-                <Button Grid.Column="1"
-                    Width="70"
-                    
-                    Command="{Binding ClearUserDataCommand}"
-                    Style="{StaticResource IconGrowButton}"
-                    Foreground="{StaticResource ForegroundDarkBrush}"
-                    Content="{StaticResource FontAwesomePlusIcon}"                        
-                        />
 
-            </Grid>
-            
+            <StackPanel Grid.Column="1"
+                        Margin="15"
+                        >
+
+                <!-- Add Button -->
+                <Button Style="{StaticResource IconGrowButton}"
+                            Command="{Binding ClearUserDataCommand}"
+                            BorderBrush="{StaticResource WordDarkBlueBrush}"
+                            BorderThickness="1"
+                            Width="30"
+                            Height="30"
+                            Content="{StaticResource FontAwesomePlusIcon}"                        
+                            Foreground="{StaticResource WordDarkBlueBrush}"
+                            />
+
+
+
+            </StackPanel>
+               
                 
                 <!-- Retail -->
-                <TextBox Grid.Column="1"
-                     Margin="5,15,5,15"    
-                     Text="{Binding Retail}"
-                     HorizontalContentAlignment="Right"
-                     Background="{StaticResource BackgroundVeryLightBrush}"
-                     Grid.Row="1"
-                     FontSize="{StaticResource FontSizeRegular}"                     
-                     />
+                <TextBox Grid.Column="2"
+                         Margin="5,15,5,15"    
+                         Text="{Binding Retail}"
+                         HorizontalContentAlignment="Right"
+                         Background="{StaticResource BackgroundVeryLightBrush}"
+                         Grid.Row="1"
+                         FontSize="{StaticResource FontSizeRegular}"                     
+                         />
 
             <!-- Cost -->
-            <TextBox Grid.Column="2"
-                     Margin="5,15,5,15"    
-                     Text="{Binding Cost}"
-                     HorizontalContentAlignment="Right"
-                     Background="{StaticResource BackgroundVeryLightBrush}"
-                     Grid.Row="1"
-                     FontSize="{StaticResource FontSizeRegular}"
-                    
-                     />
+                 <TextBox Grid.Column="3"
+                        Margin="5,15,5,15"    
+                        Text="{Binding Cost}"
+                        HorizontalContentAlignment="Right"
+                        Background="{StaticResource BackgroundVeryLightBrush}"
+                        Grid.Row="1"
+                        FontSize="{StaticResource FontSizeRegular}"
+                        />
             
-                <CheckBox Grid.Column="3"
-                      IsChecked="{Binding DefaultInPayment}"  
-                      />
-
                 <CheckBox Grid.Column="4"
                       IsChecked="{Binding DefaultInPayment}"  
                       />
 
-            <!-- Delete Button -->
-            <Button Grid.Column="5"
-                    Width="70"
-                    HorizontalAlignment="Right"
+                <CheckBox Grid.Column="5"
+                      IsChecked="{Binding DefaultInPayment}"  
+                      />
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Grid.Column="6"
+                        Margin="0 0 8 0"
+                    >
+                <!-- Delete Button -->
+                <Button Style="{StaticResource IconGrowButton}" 
+                    Width="40"
                     Command="{Binding ClearUserDataCommand}"
-                    Style="{StaticResource IconGrowButton}"
-                    Foreground="{StaticResource ForegroundDarkBrush}"
+                    Foreground="{StaticResource ForegroundVeryDarkBrush}"
                     Content="{StaticResource FontAwesomeTrashCanIcon}"                        
                         />
+
+                <!-- New Button -->
+                <Button Style="{StaticResource IconGrowButton}" 
+                    Width="40"
+                    Command="{Binding ClearUserDataCommand}"
+                    Foreground="{StaticResource WordBlueBrush}"
+                    Content="{StaticResource FontAwesomePlusIcon}"                        
+                        />
+
+
+
+            </StackPanel>
+               
+               
+            <!--Style="{StaticResource IconGrowButton}"
+                    Height="{Binding MinHeight, RelativeSource={RelativeSource AncestorType=Grid}}"-->
 
 
         </Grid>        
