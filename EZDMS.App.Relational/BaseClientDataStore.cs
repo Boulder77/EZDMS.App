@@ -469,7 +469,7 @@ namespace EZDMS.App.Relational
         }
 
         /// <summary>
-        /// Gets a single sales front adds record from the sales front adds table
+        /// Returns a single front add record from the sales front adds table
         /// </summary>
         /// <param name="dealNumber"></param>
         /// <returns>SalesFrontAddsDataModel</returns>
@@ -479,7 +479,6 @@ namespace EZDMS.App.Relational
             return Task.FromResult(mDbContext.SalesFrontAdds.FirstOrDefault(u => u.DealNumber == dealNumber));
 
         }
-
 
         /// <summary>
         /// Returns all records in front adds table

@@ -23,7 +23,8 @@
                 <ColumnDefinition Width="140" />
             </Grid.ColumnDefinitions>
                     
-                    <ComboBox  ItemsSource="{Binding FilteredAdds}"                   
+                    <ComboBox  ItemsSource="{Binding FilteredAdds}"  
+                               Margin="5,0,0,0"
                            SelectedItem="{Binding SelectedAdd}"
                            Background="{StaticResource BackgroundVeryLightBrush}"                           
                            IsSynchronizedWithCurrentItem="True"

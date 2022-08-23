@@ -162,7 +162,7 @@ namespace EZDMS.App
 
         #endregion
 
-        #region Public Commands
+        #region Command Methods
 
         /// <summary>
         /// Initialize products view models and controls 

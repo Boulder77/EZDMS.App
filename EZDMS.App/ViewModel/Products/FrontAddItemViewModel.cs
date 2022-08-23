@@ -26,56 +26,54 @@ namespace EZDMS.App
         /// <summary>
         /// The selected front add
         /// </summary>
-        private FrontAddsDataModel mSelectedAdd;
+        private FrontAddsDataModel mSelectedItem;
 
         /// <summary>
-        /// The list of all active front adds
+        /// The list of all active front adds in the system
         /// </summary>
-        protected ObservableCollection<FrontAddsDataModel> mFrontAdds;
+        protected ObservableCollection<FrontAddsDataModel> mItems;
 
         #endregion
 
         #region Public Properties
 
 
-        public ObservableCollection<FrontAddsDataModel> FrontAdds
+        public ObservableCollection<FrontAddsDataModel> Items
         {
-            get => mFrontAdds;
+            get => mItems;
             
             set
             {
                 // Make sure list has changed
-                if (mFrontAdds == value)
+                if (mItems == value)
                     return;
 
                 // Update value
-                mFrontAdds = value;
-
-                // Update filtered list to match
-                FilteredAdds = new ObservableCollection<FrontAddsDataModel>(mFrontAdds);
+                mItems = value;
+                               
 
             }
         }
 
 
-        public ObservableCollection<FrontAddsDataModel> FilteredAdds { get; set; }
+       
 
-        public FrontAddsDataModel SelectedAdd
+        public FrontAddsDataModel SelectedItem
         {
-            get => mSelectedAdd;
+            get => mSelectedItem;
 
             set
             {
                 // Make sure list has changed
-                if (mSelectedAdd == value)
+                if (mSelectedItem == value)
                     return;
 
                 // Update value
-                mSelectedAdd = value;
+                mSelectedItem = value;
 
                 if (value != null)
                     // Update the view model
-                    UpdateValuesFromDataModel(mSelectedAdd);
+                    UpdateValuesFromDataModel(mSelectedItem);
 
             }
 

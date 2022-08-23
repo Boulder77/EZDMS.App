@@ -13,6 +13,11 @@ namespace EZDMS.App.Core
         public int DealNumber { get; set; }
 
         /// <summary>
+        /// The front add1 ID of this SalesFrontAdds record
+        /// <summary>
+        public string FrontAdd1ID { get; set; }
+
+        /// <summary>
         /// The front add1 description of this SalesFrontAdds record
         /// <summary>
         public string FrontAdd1Description { get; set; }
@@ -53,6 +58,11 @@ namespace EZDMS.App.Core
         public bool FrontAdd1IsTaxable3 { get; set; }
 
         /// <summary>
+        /// The front add2 ID of this SalesFrontAdds record
+        /// <summary>
+        public string FrontAdd2ID { get; set; }
+
+        /// <summary>
         /// The front add2 description of this SalesFrontAdds record
         /// <summary>
         public string FrontAdd2Description { get; set; }
@@ -91,6 +101,11 @@ namespace EZDMS.App.Core
         /// The front add2 is taxable3 of this SalesFrontAdds record
         /// <summary>
         public bool FrontAdd2IsTaxable3 { get; set; }
+        
+        /// <summary>
+        /// The front add3 ID of this SalesFrontAdds record
+        /// <summary>
+        public string FrontAdd3ID { get; set; }
 
         /// <summary>
         /// The front add3 description of this SalesFrontAdds record
@@ -133,6 +148,11 @@ namespace EZDMS.App.Core
         public bool FrontAdd3IsTaxable3 { get; set; }
 
         /// <summary>
+        /// The front add4 ID of this SalesFrontAdds record
+        /// <summary>
+        public string FrontAdd4ID { get; set; }
+
+        /// <summary>
         /// The front add4 description of this SalesFrontAdds record
         /// <summary>
         public string FrontAdd4Description { get; set; }
@@ -171,6 +191,11 @@ namespace EZDMS.App.Core
         /// The front add4 is taxable3 of this SalesFrontAdds record
         /// <summary>
         public bool FrontAdd4IsTaxable3 { get; set; }
+
+        /// <summary>
+        /// The front add5 ID of this SalesFrontAdds record
+        /// <summary>
+        public string FrontAdd5ID { get; set; }
 
         /// <summary>
         /// The front add5 description of this SalesFrontAdds record
@@ -213,6 +238,11 @@ namespace EZDMS.App.Core
         public bool FrontAdd5IsTaxable3 { get; set; }
 
         /// <summary>
+        /// The front add6 ID of this SalesFrontAdds record
+        /// <summary>
+        public string FrontAdd6ID { get; set; }
+
+        /// <summary>
         /// The front add6 description of this SalesFrontAdds record
         /// <summary>
         public string FrontAdd6Description { get; set; }
@@ -251,6 +281,11 @@ namespace EZDMS.App.Core
         /// The front add6 is taxable3 of this SalesFrontAdds record
         /// <summary>
         public bool FrontAdd6IsTaxable3 { get; set; }
+
+        /// <summary>
+        /// The front add7 ID of this SalesFrontAdds record
+        /// <summary>
+        public string FrontAdd7ID { get; set; }
 
         /// <summary>
         /// The front add7 description of this SalesFrontAdds record
@@ -293,6 +328,11 @@ namespace EZDMS.App.Core
         public bool FrontAdd7IsTaxable3 { get; set; }
 
         /// <summary>
+        /// The front add8 ID of this SalesFrontAdds record
+        /// <summary>
+        public string FrontAdd8ID { get; set; }
+
+        /// <summary>
         /// The front add8 description of this SalesFrontAdds record
         /// <summary>
         public string FrontAdd8Description { get; set; }
@@ -333,6 +373,11 @@ namespace EZDMS.App.Core
         public bool FrontAdd8IsTaxable3 { get; set; }
 
         /// <summary>
+        /// The front add9 ID of this SalesFrontAdds record
+        /// <summary>
+        public string FrontAdd9ID { get; set; }
+
+        /// <summary>
         /// The front add9 description of this SalesFrontAdds record
         /// <summary>
         public string FrontAdd9Description { get; set; }
@@ -371,6 +416,11 @@ namespace EZDMS.App.Core
         /// The front add9 is taxable3 of this SalesFrontAdds record
         /// <summary>
         public bool FrontAdd9IsTaxable3 { get; set; }
+
+        /// <summary>
+        /// The front add10 ID of this SalesFrontAdds record
+        /// <summary>
+        public string FrontAdd10ID { get; set; }
 
         /// <summary>
         /// The front add10 description of this SalesFrontAdds record

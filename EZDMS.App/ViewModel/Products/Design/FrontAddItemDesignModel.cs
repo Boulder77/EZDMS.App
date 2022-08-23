@@ -29,7 +29,7 @@ namespace EZDMS.App
 
         {
 
-            SelectedAdd = new FrontAddsDataModel { Name = "Bedliner- Drop In" };
+            SelectedItem = new FrontAddsDataModel { Name = "Bedliner- Drop In" };
             Retail = 999.00m;
             Cost = 650.00m;            
             InPayment = true;            
