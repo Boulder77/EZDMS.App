@@ -70,6 +70,11 @@ namespace EZDMS.App.Relational
         /// <summary>
         public DbSet<FrontAddsDataModel> FrontAdds { get; set; }
 
+        /// <summary>
+        /// The SalesFrontAdds table
+        /// <summary>
+        public DbSet<SalesFrontAddsDataModel> SalesFrontAdds { get; set; }
+
 
         #endregion
 
@@ -122,6 +127,7 @@ namespace EZDMS.App.Relational
 
             modelBuilder.Entity<FrontAddsDataModel>().HasKey(a => a.Number);
 
+            modelBuilder.Entity<SalesFrontAddsDataModel>().HasKey(a => a.DealNumber);
 
             // TODO: Set up limits
             //modelBuilder.Entity<LoginCredentialsDataModel>().Property(a => a.FirstName).HasMaxLength(50);

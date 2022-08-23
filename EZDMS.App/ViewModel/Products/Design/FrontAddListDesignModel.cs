@@ -27,7 +27,7 @@ namespace EZDMS.App
         /// </summary>
         public FrontAddListDesignModel()
         {
-            Items = new ObservableCollection<FrontAddItemViewModel>
+            FrontAddItems = new ObservableCollection<FrontAddItemViewModel>
             {
                  new FrontAddItemViewModel
                     {
@@ -49,7 +49,7 @@ namespace EZDMS.App
 
             };
 
-            Total = Items.Sum(item => item.Retail);
+            Total = FilteredFrontAddItems.Sum(item => item.Retail);
         }
         #endregion
     }

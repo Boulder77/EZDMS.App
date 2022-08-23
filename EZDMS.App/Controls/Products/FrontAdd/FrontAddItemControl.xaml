@@ -16,15 +16,12 @@
            <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="60" />
-                <ColumnDefinition Width="150" />
+                <ColumnDefinition  Width="150" />
                 <ColumnDefinition Width="150" />
                 <ColumnDefinition Width="80" />
                 <ColumnDefinition Width="80" />
                 <ColumnDefinition Width="140" />
             </Grid.ColumnDefinitions>
-
-                
-                
                     
                     <ComboBox  ItemsSource="{Binding FilteredAdds}"                   
                            SelectedItem="{Binding SelectedAdd}"
@@ -85,28 +82,28 @@
                       IsChecked="{Binding DefaultInPayment}"  
                       />
 
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Center"
+            <StackPanel Orientation="Horizontal"                        
                         Grid.Column="6"
-                        Margin="0 0 8 0"
-                    >
+                        Margin="5"
+                        >
+                
                 <!-- Delete Button -->
                 <Button Style="{StaticResource IconGrowButton}" 
-                    Width="40"
-                    Command="{Binding ClearUserDataCommand}"
-                    Foreground="{StaticResource ForegroundVeryDarkBrush}"
-                    Content="{StaticResource FontAwesomeTrashCanIcon}"                        
+                        Width="40"
+                        Margin="5,0"
+                        Command="{Binding ClearUserDataCommand}"
+                        Foreground="{StaticResource ForegroundVeryDarkBrush}"
+                        Content="{StaticResource FontAwesomeTrashCanIcon}"                        
                         />
 
                 <!-- New Button -->
                 <Button Style="{StaticResource IconGrowButton}" 
-                    Width="40"
-                    Command="{Binding ClearUserDataCommand}"
-                    Foreground="{StaticResource WordBlueBrush}"
-                    Content="{StaticResource FontAwesomePlusIcon}"                        
+                        Width="40"
+                        Margin="5,0"
+                        Command="{Binding ClearUserDataCommand}"
+                        Foreground="{StaticResource WordBlueBrush}"
+                        Content="{StaticResource FontAwesomePlusIcon}"                        
                         />
-
-
 
             </StackPanel>
                

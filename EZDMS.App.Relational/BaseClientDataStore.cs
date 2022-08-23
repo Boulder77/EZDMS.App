@@ -126,6 +126,11 @@ namespace EZDMS.App.Relational
                     mDbContext.FrontAdds.Add(mDataModel as FrontAddsDataModel);
                     break;
 
+                case DbTableNames.SalesFrontAdds:
+                    // Add new FrontAdds entry
+                    mDbContext.SalesFrontAdds.Add(mDataModel as SalesFrontAddsDataModel);
+                    break;
+
                 default:
                     throw new Exception();
                     break;
@@ -212,6 +217,11 @@ namespace EZDMS.App.Relational
                 case DbTableNames.FrontAdds:
 
                     mDbContext.Update(mDataModel as FrontAddsDataModel);
+                    break;
+
+                case DbTableNames.SalesFrontAdds:
+
+                    mDbContext.Update(mDataModel as SalesFrontAddsDataModel);
                     break;
 
                 default:
@@ -365,7 +375,6 @@ namespace EZDMS.App.Relational
         }
 
         #endregion
-
         
         #region Products Methods
 
@@ -456,6 +465,18 @@ namespace EZDMS.App.Relational
         {
             // Gets a single sales record
             return Task.FromResult(mDbContext.SalesGap.FirstOrDefault(u => u.DealNumber == dealNumber));
+
+        }
+
+        /// <summary>
+        /// Gets a single sales front adds record from the sales front adds table
+        /// </summary>
+        /// <param name="dealNumber"></param>
+        /// <returns>SalesFrontAddsDataModel</returns>
+        public Task<SalesFrontAddsDataModel> GetSalesFrontAddsAsync(int dealNumber)
+        {
+            // Gets a single sales record
+            return Task.FromResult(mDbContext.SalesFrontAdds.FirstOrDefault(u => u.DealNumber == dealNumber));
 
         }
 

@@ -65,5 +65,10 @@
         /// The FrontAdds table
         /// <summary>
         FrontAdds = 11,
+
+        /// <summary>
+        /// The SalesFrontAdds table
+        /// <summary>
+        SalesFrontAdds = 12,
     }
 }

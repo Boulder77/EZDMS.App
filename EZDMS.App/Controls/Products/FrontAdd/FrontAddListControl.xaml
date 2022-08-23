@@ -12,11 +12,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
-
         </Grid.RowDefinitions>
         
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <ItemsControl ItemsSource="{Binding Items}">
+            <ItemsControl ItemsSource="{Binding FrontAddItems}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <local:FrontAddItemControl />

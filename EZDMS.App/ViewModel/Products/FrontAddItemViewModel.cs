@@ -53,6 +53,7 @@ namespace EZDMS.App
 
                 // Update filtered list to match
                 FilteredAdds = new ObservableCollection<FrontAddsDataModel>(mFrontAdds);
+
             }
         }
 

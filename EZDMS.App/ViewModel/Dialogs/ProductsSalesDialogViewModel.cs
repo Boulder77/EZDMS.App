@@ -1,7 +1,6 @@
 ﻿using Dna;
 using EZDMS.App.Core;
 using static EZDMS.App.Core.CoreDI;
-using System.Windows.Input;
 using static EZDMS.App.DI;
 using static Dna.FrameworkDI;
 using System.Collections.Generic;
@@ -9,6 +8,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
+
 
 namespace EZDMS.App
 {
