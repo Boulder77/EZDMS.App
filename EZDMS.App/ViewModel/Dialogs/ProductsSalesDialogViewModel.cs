@@ -546,22 +546,7 @@ namespace EZDMS.App
                 UpdateAction = UpdateTotalRetailAsync,
                 SelectedProvider = new CoverageProviderDataModel(),
                 SelectedPlan = new CoveragePlanDataModel(),
-                //Type = new TextInputViewModel { Label = "Product", Text = "Service", Editable = false },
-                //Retail = SalesService != null ? SalesService.Retail : 0,
-                //Cost = new DecimalInputViewModel { Label = "Cost", Amount = SalesService != null ? SalesService.Cost : 0, Editable = true },
-                //Deductible = new DecimalInputViewModel { Label = "Deductible", Amount = SalesService != null ? SalesService.Deductible : 0, Editable = true },
-                //Term = new TextInputViewModel { Label = "Term", Text = SalesService != null ? SalesService.Term.ToString() : "" },
-                //Miles = new TextInputViewModel { Label = "Mileage", Text = SalesService != null ? SalesService.Miles.ToString() : ""},
-                //ContractNumber = new TextInputViewModel { Label = "Contract No", Text = SalesService != null ? SalesService.ContractNumber : "" },
-                //InPayment = SalesService != null ? SalesService.InPayment : true,
-                //IsDisappearingDeductible = SalesService != null ? SalesService.IsDisappearingDeductible : false,
-                //Taxable = SalesService != null ? SalesService.IsTaxable : false,
-                //Providers = new ObservableCollection<CoverageProviderDataModel>(),
-                //Plans = new ObservableCollection<CoveragePlanDataModel>(
-                //mPlans.Where(item => item.Type.ToLower().Contains("service"))),
-
-                //UpdateAction = UpdateTotalRetailAsync,
-
+                
             };
 
             Warranty = new ProductItemViewModel
