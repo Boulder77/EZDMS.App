@@ -114,6 +114,8 @@ namespace EZDMS.App
 
             AddCommand = new RelayCommand(Add);
 
+           
+
         }
 
         #endregion
@@ -188,9 +190,10 @@ namespace EZDMS.App
                 // Get the deal front adds items
                 var salesFrontAdds = await ClientDataStore.GetSalesFrontAddsAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
 
+                // Check for stored sales front add items
                 if (salesFrontAdds == null)
                 {
-
+                    // Add a blank front add item
                     Add();
                     return;
                 
