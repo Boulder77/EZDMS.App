@@ -136,6 +136,8 @@ namespace EZDMS.App
             var frontadd = new FrontAddItemViewModel
             {
                 Items = new ObservableCollection<FrontAddsDataModel>(FilteredFrontAddList),
+                UpdateAction = UpdateTotalRetailAsync,
+                AddCommand = new RelayCommand(Add),
 
             };
 
@@ -185,7 +187,10 @@ namespace EZDMS.App
                 // Get all the front adds for the list
                 FrontAddList = await ClientDataStore.GetFrontAddsAsync();
 
-                
+                // Ensure the item lists are not null
+                if (FrontAddItems == null)
+                    FrontAddItems = new ObservableCollection<FrontAddItemViewModel>();
+
 
                 // Get the deal front adds items
                 var salesFrontAdds = await ClientDataStore.GetSalesFrontAddsAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
@@ -199,9 +204,7 @@ namespace EZDMS.App
                 
                 }
 
-                // Ensure the item lists are not null
-                if (FrontAddItems == null)
-                    FrontAddItems = new ObservableCollection<FrontAddItemViewModel>();
+               
 
 
 

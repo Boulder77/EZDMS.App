@@ -17,9 +17,9 @@ namespace EZDMS.App
     /// <summary>
     public class FrontBackAddsDialogViewModel:BaseDialogViewModel
     {
-        
+                
         #region Public Properties
-            
+
         /// <summary>
         /// The sales maintenance data model
         /// </summary>
@@ -81,7 +81,7 @@ namespace EZDMS.App
         /// <summary>
         /// Add new front add item to the item list
         /// </summary>
-        public void AddFrontAdd()
+        public async Task AddFrontAddAsync()
         {
 
             // Ensure the item lists are not null
@@ -92,11 +92,16 @@ namespace EZDMS.App
             var frontadd = new FrontAddItemViewModel
             {
                 Items = new ObservableCollection<FrontAddsDataModel>(FrontAdds.FilteredFrontAddList),
-
+                UpdateAction = FrontAdds.UpdateTotalRetailAsync
             };
 
             // Add item to both lists
             FrontAdds.FrontAddItems.Add(frontadd);
+
+            //FrontAdds.Add();
+
+
+            await Task.Delay(1);
 
         }
 
@@ -125,10 +130,13 @@ namespace EZDMS.App
                 {
 
                     FrontAddList = await ClientDataStore.GetFrontAddsAsync(),
+                    FrontAddItems = new ObservableCollection<FrontAddItemViewModel>(),
 
 
+            };
 
-                };
+                //await FrontAdds.LoadAddsAsync();
+
 
 
                 // Get the deal front adds items
@@ -138,16 +146,11 @@ namespace EZDMS.App
                 if (salesFrontAdds == null)
                 {
                     // Add a blank front add item
-                    AddFrontAdd();
+                    await AddFrontAddAsync();
+                    await Task.Delay(1);
                     return;
 
                 }
-
-                // Ensure the item lists are not null
-                if (FrontAdds.FrontAddItems == null)
-                    FrontAdds.FrontAddItems = new ObservableCollection<FrontAddItemViewModel>();
-
-
 
                 if (salesFrontAdds.FrontAdd1Retail > 0)
                 {
@@ -159,7 +162,7 @@ namespace EZDMS.App
                         Cost = salesFrontAdds.FrontAdd1Cost,
                         InPayment = salesFrontAdds.FrontAdd1InPayment,
                         Taxable = salesFrontAdds.FrontAdd1IsTaxable1,
-                        UpdateAction = UpdateTotalFrontAddsRetailAsync
+                        UpdateAction = FrontAdds.UpdateTotalRetailAsync
                     };
 
                     FrontAdds.FrontAddItems.Add(frontAdd);
@@ -177,7 +180,7 @@ namespace EZDMS.App
                         Cost = salesFrontAdds.FrontAdd2Cost,
                         InPayment = salesFrontAdds.FrontAdd2InPayment,
                         Taxable = salesFrontAdds.FrontAdd2IsTaxable1,
-                        UpdateAction = UpdateTotalFrontAddsRetailAsync
+                        UpdateAction = FrontAdds.UpdateTotalRetailAsync
                     };
 
                     FrontAdds.FrontAddItems.Add(frontAdd);
@@ -195,7 +198,7 @@ namespace EZDMS.App
                         Cost = salesFrontAdds.FrontAdd3Cost,
                         InPayment = salesFrontAdds.FrontAdd3InPayment,
                         Taxable = salesFrontAdds.FrontAdd3IsTaxable1,
-                        UpdateAction = UpdateTotalFrontAddsRetailAsync
+                        UpdateAction = FrontAdds.UpdateTotalRetailAsync
                     };
 
                     FrontAdds.FrontAddItems.Add(frontAdd);
@@ -213,7 +216,7 @@ namespace EZDMS.App
                         Cost = salesFrontAdds.FrontAdd4Cost,
                         InPayment = salesFrontAdds.FrontAdd4InPayment,
                         Taxable = salesFrontAdds.FrontAdd4IsTaxable1,
-                        UpdateAction = UpdateTotalFrontAddsRetailAsync
+                        UpdateAction = FrontAdds.UpdateTotalRetailAsync
                     };
 
                     FrontAdds.FrontAddItems.Add(frontAdd);
@@ -231,7 +234,7 @@ namespace EZDMS.App
                         Cost = salesFrontAdds.FrontAdd5Cost,
                         InPayment = salesFrontAdds.FrontAdd5InPayment,
                         Taxable = salesFrontAdds.FrontAdd5IsTaxable1,
-                        UpdateAction = UpdateTotalFrontAddsRetailAsync
+                        UpdateAction = FrontAdds.UpdateTotalRetailAsync
                     };
 
                     FrontAdds.FrontAddItems.Add(frontAdd);
@@ -250,7 +253,7 @@ namespace EZDMS.App
                         Cost = salesFrontAdds.FrontAdd6Cost,
                         InPayment = salesFrontAdds.FrontAdd6InPayment,
                         Taxable = salesFrontAdds.FrontAdd6IsTaxable1,
-                        UpdateAction = UpdateTotalFrontAddsRetailAsync
+                        UpdateAction = FrontAdds.UpdateTotalRetailAsync
                     };
 
                     FrontAdds.FrontAddItems.Add(frontAdd);
@@ -268,7 +271,7 @@ namespace EZDMS.App
                         Cost = salesFrontAdds.FrontAdd7Cost,
                         InPayment = salesFrontAdds.FrontAdd7InPayment,
                         Taxable = salesFrontAdds.FrontAdd7IsTaxable1,
-                        UpdateAction = UpdateTotalFrontAddsRetailAsync
+                        UpdateAction = FrontAdds.UpdateTotalRetailAsync
                     };
 
                     FrontAdds.FrontAddItems.Add(frontAdd);
@@ -286,7 +289,7 @@ namespace EZDMS.App
                         Cost = salesFrontAdds.FrontAdd8Cost,
                         InPayment = salesFrontAdds.FrontAdd8InPayment,
                         Taxable = salesFrontAdds.FrontAdd8IsTaxable1,
-                        UpdateAction = UpdateTotalFrontAddsRetailAsync
+                        UpdateAction = FrontAdds.UpdateTotalRetailAsync
                     };
 
                     FrontAdds.FrontAddItems.Add(frontAdd);
@@ -304,7 +307,7 @@ namespace EZDMS.App
                         Cost = salesFrontAdds.FrontAdd9Cost,
                         InPayment = salesFrontAdds.FrontAdd9InPayment,
                         Taxable = salesFrontAdds.FrontAdd9IsTaxable1,
-                        UpdateAction = UpdateTotalFrontAddsRetailAsync
+                        UpdateAction = FrontAdds.UpdateTotalRetailAsync
                     };
 
                     FrontAdds.FrontAddItems.Add(frontAdd);
@@ -322,7 +325,7 @@ namespace EZDMS.App
                         Cost = salesFrontAdds.FrontAdd10Cost,
                         InPayment = salesFrontAdds.FrontAdd10InPayment,
                         Taxable = salesFrontAdds.FrontAdd10IsTaxable1,
-                        UpdateAction = UpdateTotalFrontAddsRetailAsync
+                        UpdateAction = FrontAdds.UpdateTotalRetailAsync
                     };
 
                     FrontAdds.FrontAddItems.Add(frontAdd);
@@ -335,15 +338,7 @@ namespace EZDMS.App
 
     }
 
-
-
-
-        
-
         #endregion
-
-
-
 
 
     public async Task<bool> UpdateTotalFrontAddsRetailAsync()

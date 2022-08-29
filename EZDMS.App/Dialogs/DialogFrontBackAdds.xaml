@@ -15,33 +15,76 @@
         <Grid >
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
+               
                 <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            
-            <TextBlock Text="Front Options"
+            <StackPanel Panel.ZIndex="1" VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch" 
+                        Grid.RowSpan="4" 
+                        Background="Transparent"                     
+                        Visibility="{Binding AddsLoading, 
+                        Converter={local:BooleanToVisiblityGoneConverter}, FallbackValue=Collapsed}"
+                        >
+
+                <TextBlock Text="Loading"
+                       Foreground="{StaticResource WordVeryLightBlueBrush}"
+                       FontFamily="{StaticResource LatoBold}"
+                       FontSize="{StaticResource FontSizeXXLarge}"
+                       HorizontalAlignment="Center"
+                       />
+
+                <Border Padding="100"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                     >
+
+                    <TextBlock 
+                    Foreground="{StaticResource WordBlueBrush}"
+                    FontSize="200"                  
+                    Style="{StaticResource SpinningText}" />
+                </Border>
+
+            </StackPanel>
+
+            <Grid Visibility="{Binding AddsLoading, 
+                                        Converter={local:BooleanToVisiblityConverter}}">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+
+
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Front Options"
                        FontSize="{StaticResource FontSizeXXLarge}"
                        />
 
-            <local:FrontAddListControl 
+                <local:FrontAddListControl 
                     Grid.Row="1"
+                    DataContext="{Binding FrontAdds}"
                     />
 
-            
 
-            <TextBlock Text="Back Options"
-                   Grid.Row="3"
+
+                <TextBlock Text="Back Options"
+                   Grid.Row="2"
                        FontSize="{StaticResource FontSizeXXLarge}"
                        />
 
 
-            <StackPanel Grid.Row="6"
+
+            </Grid>
+            
+
+           
+
+
+            <StackPanel Grid.Row="1"
                         Orientation="Horizontal"
                         HorizontalAlignment="Right"
                         >

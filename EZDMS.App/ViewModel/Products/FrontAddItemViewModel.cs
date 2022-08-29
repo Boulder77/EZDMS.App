@@ -135,6 +135,12 @@ namespace EZDMS.App
         /// </summary>
         public ICommand ClearUserDataCommand { get; set; }
 
+
+        /// <summary>
+        /// The command to add an item
+        /// </summary>
+        public ICommand AddCommand { get; set; }
+
         #endregion
 
         #region Constructor

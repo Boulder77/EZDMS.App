@@ -11,6 +11,7 @@ namespace EZDMS.App
     /// </summary>
     public class RegisterViewModel : BaseViewModel
     {
+
         #region Public Properties
 
         /// <summary>
