@@ -61,16 +61,10 @@ namespace EZDMS.App
         /// </summary>
         public TruthinLendingDisclosureViewModel()
         {
-            // Create commands
-
-            // Task.Run(GetSalesRecallDealsAsync);
-
+           
         }
 
         #endregion
-
-
-
 
     }
 

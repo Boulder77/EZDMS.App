@@ -76,14 +76,8 @@
                        FontSize="{StaticResource FontSizeXXLarge}"
                        />
 
-
-
             </Grid>
             
-
-           
-
-
             <StackPanel Grid.Row="1"
                         Orientation="Horizontal"
                         HorizontalAlignment="Right"
@@ -103,7 +97,7 @@
                             Background="{StaticResource WordOrangeBrush}"
                             Command="{Binding SaveCommand}"
                             local:IsBusyProperty.Value="{Binding Saving}"
-                            IsEnabled="{Binding ProductsLoading, Converter={local:BooleanInvertConverter}}"
+                            IsEnabled="{Binding AddsLoading, Converter={local:BooleanInvertConverter}}"
                             Foreground="{StaticResource ForegroundLightBrush}"
                             FontSize="{StaticResource FontSizeRegular}"
                             Content="Save and Close"

@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <ItemsControl ItemsSource="{Binding FrontAdds.FrontAddItems}">
+            <ItemsControl ItemsSource="{Binding Items}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <local:FrontAddItemControl />

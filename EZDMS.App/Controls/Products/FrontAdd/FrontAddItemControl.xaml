@@ -41,7 +41,7 @@
 
                 <!-- Add Button -->
                 <Button Style="{StaticResource IconGrowButton}"
-                            Command="{Binding}"
+                            
                             BorderBrush="{StaticResource WordDarkBlueBrush}"
                             BorderThickness="1"
                             Width="30"
@@ -101,7 +101,7 @@
                 <Button Style="{StaticResource IconGrowButton}" 
                         Width="40"
                         Margin="5,0"
-                        Command="{Binding AddCommand}"
+                        Command="{Binding}"
                         Foreground="{StaticResource WordBlueBrush}"
                         Content="{StaticResource FontAwesomePlusIcon}"                        
                         />

@@ -150,8 +150,8 @@ namespace EZDMS.App
         /// <summary>
         public FrontAddItemViewModel()
         {
-
-            ClearUserDataCommand = new RelayCommand(ClearUserData);
+           
+            
 
         }
 
