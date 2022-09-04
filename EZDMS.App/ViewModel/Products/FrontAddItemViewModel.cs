@@ -121,6 +121,11 @@ namespace EZDMS.App
         public bool Working { get; set; }
 
         /// <summary>
+        /// The flag to indicate if the front add is the last item on the list
+        /// <summary>
+        public bool LastItem { get; set; }
+
+        /// <summary>
         /// The action to run when saving the amount.
         /// Returns true if the commit was successful, or false otherwise.
         /// </summary>

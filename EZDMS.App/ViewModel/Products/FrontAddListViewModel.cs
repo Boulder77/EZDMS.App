@@ -1,5 +1,4 @@
-﻿
-using Dna;
+﻿using Dna;
 using EZDMS.App.Core;
 using static EZDMS.App.Core.CoreDI;
 using static EZDMS.App.DI;
@@ -28,7 +27,9 @@ namespace EZDMS.App
         /// <summary>
         /// The front add datamodel list
         /// </summary>
-        protected List<FrontAddsDataModel> mFrontAddList;
+        protected List<FrontAddsDataModel> mAddList;
+
+        
 
         #endregion
 
@@ -51,38 +52,34 @@ namespace EZDMS.App
                 // Update value
                 mItems = value;
 
-                if (value != null)
-                    // Add a new blank front add
-                   LoadAddsAsync();
-
             }
         }
 
         /// <summary>
         /// The front add datamodel list
         /// </summary>
-        public List<FrontAddsDataModel> FrontAddList
+        public List<FrontAddsDataModel> AddList
         {
-            get => mFrontAddList;
+            get => mAddList;
             set
             {
                 // Make sure list has changed
-                if (mFrontAddList == value)
+                if (mAddList == value)
                     return;
 
                 // Update value
-                mFrontAddList = value;
+                mAddList = value;
 
-                if (mFrontAddList != null)
+                if (mAddList != null)
                     // Update filtered list to match
-                    FilteredFrontAddList = new List<FrontAddsDataModel>(mFrontAddList);
+                    FilteredAddList = new List<FrontAddsDataModel>(mAddList);
             }
         }
 
         /// <summary>
         /// The chat thread items for the list that include any search filtering
         /// </summary>
-        public List<FrontAddsDataModel> FilteredFrontAddList { get; set; }
+        public List<FrontAddsDataModel> FilteredAddList { get; set; }
 
 
 
@@ -104,9 +101,7 @@ namespace EZDMS.App
         public FrontAddListViewModel()
         {
 
-
-            
-
+            LoadAddsAsync();
 
         }
 
@@ -127,10 +122,16 @@ namespace EZDMS.App
             // New Front Add
             var frontadd = new FrontAddItemViewModel
             {
-                Items = new ObservableCollection<FrontAddsDataModel>(FilteredFrontAddList),
+                Items = new ObservableCollection<FrontAddsDataModel>(FilteredAddList),
                 UpdateAction = UpdateTotalRetailAsync,
+                AddCommand = new RelayCommand(Add),
+                LastItem = Items.Count >= 9 ? false : true,
                
             };
+
+
+            //Items.Where(c => c.LastItem).ToList().Select(c => { c.LastItem = false; return c; });
+            Items.Where(c => c.LastItem).ToList().SetValue(c => c.LastItem = false);
 
             // Add item to both lists
             Items.Add(frontadd);            
@@ -152,7 +153,7 @@ namespace EZDMS.App
             // New Front Add
             var frontadd = new FrontAddItemViewModel
             {
-                Items = new ObservableCollection<FrontAddsDataModel>(FilteredFrontAddList),
+                Items = new ObservableCollection<FrontAddsDataModel>(FilteredAddList),
 
             };
 
@@ -174,7 +175,7 @@ namespace EZDMS.App
         {
             
             // Get all the front adds for the list
-            FrontAddList = await ClientDataStore.GetFrontAddsAsync();
+            AddList = await ClientDataStore.GetFrontAddsAsync();
                            
             // Get the deal front adds items
             var salesFrontAdds = await ClientDataStore.GetSalesFrontAddsAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
@@ -216,13 +217,17 @@ namespace EZDMS.App
         /// <returns></returns>
        private void LoadSavedAdds(SalesFrontAddsDataModel salesFrontAdds)
         {
+
+            if (Items == null)
+                Items = new ObservableCollection<FrontAddItemViewModel>();
+
            
             if (salesFrontAdds.FrontAdd1Retail > 0)
             {
                 var frontAdd = new FrontAddItemViewModel
                 {
-                    Items = new ObservableCollection<FrontAddsDataModel>(FrontAddList),
-                    SelectedItem = FilteredFrontAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd1ID),
+                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
+                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd1ID),
                     Retail = salesFrontAdds.FrontAdd1Retail,
                     Cost = salesFrontAdds.FrontAdd1Cost,
                     InPayment = salesFrontAdds.FrontAdd1InPayment,
@@ -231,7 +236,7 @@ namespace EZDMS.App
                 };
 
                 Items.Add(frontAdd);
-                FrontAddList.Remove(frontAdd.SelectedItem);
+                AddList.Remove(frontAdd.SelectedItem);
 
             }
 
@@ -239,8 +244,8 @@ namespace EZDMS.App
             {
                 var frontAdd = new FrontAddItemViewModel
                 {
-                    Items = new ObservableCollection<FrontAddsDataModel>(FrontAddList),
-                    SelectedItem = FilteredFrontAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd2ID),
+                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
+                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd2ID),
                     Retail = salesFrontAdds.FrontAdd2Retail,
                     Cost = salesFrontAdds.FrontAdd2Cost,
                     InPayment = salesFrontAdds.FrontAdd2InPayment,
@@ -249,7 +254,7 @@ namespace EZDMS.App
                 };
 
                 Items.Add(frontAdd);
-                FrontAddList.Remove(frontAdd.SelectedItem);
+                AddList.Remove(frontAdd.SelectedItem);
 
             }
 
@@ -257,8 +262,8 @@ namespace EZDMS.App
             {
                 var frontAdd = new FrontAddItemViewModel
                 {
-                    Items = new ObservableCollection<FrontAddsDataModel>(FrontAddList),
-                    SelectedItem = FilteredFrontAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd3ID),
+                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
+                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd3ID),
                     Retail = salesFrontAdds.FrontAdd3Retail,
                     Cost = salesFrontAdds.FrontAdd3Cost,
                     InPayment = salesFrontAdds.FrontAdd3InPayment,
@@ -267,7 +272,7 @@ namespace EZDMS.App
                 };
 
                 Items.Add(frontAdd);
-                FrontAddList.Remove(frontAdd.SelectedItem);
+                AddList.Remove(frontAdd.SelectedItem);
 
             }
 
@@ -275,8 +280,8 @@ namespace EZDMS.App
             {
                 var frontAdd = new FrontAddItemViewModel
                 {
-                    Items = new ObservableCollection<FrontAddsDataModel>(FrontAddList),
-                    SelectedItem = FilteredFrontAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd4ID),
+                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
+                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd4ID),
                     Retail = salesFrontAdds.FrontAdd4Retail,
                     Cost = salesFrontAdds.FrontAdd4Cost,
                     InPayment = salesFrontAdds.FrontAdd4InPayment,
@@ -285,7 +290,7 @@ namespace EZDMS.App
                 };
 
                 Items.Add(frontAdd);
-                FrontAddList.Remove(frontAdd.SelectedItem);
+                AddList.Remove(frontAdd.SelectedItem);
 
             }
 
@@ -293,8 +298,8 @@ namespace EZDMS.App
             {
                 var frontAdd = new FrontAddItemViewModel
                 {
-                    Items = new ObservableCollection<FrontAddsDataModel>(FrontAddList),
-                    SelectedItem = FilteredFrontAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd5ID),
+                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
+                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd5ID),
                     Retail = salesFrontAdds.FrontAdd5Retail,
                     Cost = salesFrontAdds.FrontAdd5Cost,
                     InPayment = salesFrontAdds.FrontAdd5InPayment,
@@ -303,7 +308,7 @@ namespace EZDMS.App
                 };
 
                 Items.Add(frontAdd);
-                FrontAddList.Remove(frontAdd.SelectedItem);
+                AddList.Remove(frontAdd.SelectedItem);
 
             }
 
@@ -312,8 +317,8 @@ namespace EZDMS.App
             {
                 var frontAdd = new FrontAddItemViewModel
                 {
-                    Items = new ObservableCollection<FrontAddsDataModel>(FrontAddList),
-                    SelectedItem = FilteredFrontAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd6ID),
+                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
+                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd6ID),
                     Retail = salesFrontAdds.FrontAdd6Retail,
                     Cost = salesFrontAdds.FrontAdd6Cost,
                     InPayment = salesFrontAdds.FrontAdd6InPayment,
@@ -322,7 +327,7 @@ namespace EZDMS.App
                 };
 
                 Items.Add(frontAdd);
-                FrontAddList.Remove(frontAdd.SelectedItem);
+                AddList.Remove(frontAdd.SelectedItem);
 
             }
 
@@ -330,8 +335,8 @@ namespace EZDMS.App
             {
                 var frontAdd = new FrontAddItemViewModel
                 {
-                    Items = new ObservableCollection<FrontAddsDataModel>(FrontAddList),
-                    SelectedItem = FilteredFrontAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd7ID),
+                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
+                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd7ID),
                     Retail = salesFrontAdds.FrontAdd7Retail,
                     Cost = salesFrontAdds.FrontAdd7Cost,
                     InPayment = salesFrontAdds.FrontAdd7InPayment,
@@ -340,7 +345,7 @@ namespace EZDMS.App
                 };
 
                 Items.Add(frontAdd);
-                FrontAddList.Remove(frontAdd.SelectedItem);
+                AddList.Remove(frontAdd.SelectedItem);
 
             }
 
@@ -348,8 +353,8 @@ namespace EZDMS.App
             {
                 var frontAdd = new FrontAddItemViewModel
                 {
-                    Items = new ObservableCollection<FrontAddsDataModel>(FrontAddList),
-                    SelectedItem = FilteredFrontAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd8ID),
+                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
+                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd8ID),
                     Retail = salesFrontAdds.FrontAdd8Retail,
                     Cost = salesFrontAdds.FrontAdd8Cost,
                     InPayment = salesFrontAdds.FrontAdd8InPayment,
@@ -358,7 +363,7 @@ namespace EZDMS.App
                 };
 
                 Items.Add(frontAdd);
-                FrontAddList.Remove(frontAdd.SelectedItem);
+                AddList.Remove(frontAdd.SelectedItem);
 
             }
 
@@ -366,8 +371,8 @@ namespace EZDMS.App
             {
                 var frontAdd = new FrontAddItemViewModel
                 {
-                    Items = new ObservableCollection<FrontAddsDataModel>(FrontAddList),
-                    SelectedItem = FilteredFrontAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd9ID),
+                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
+                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd9ID),
                     Retail = salesFrontAdds.FrontAdd9Retail,
                     Cost = salesFrontAdds.FrontAdd9Cost,
                     InPayment = salesFrontAdds.FrontAdd9InPayment,
@@ -376,7 +381,7 @@ namespace EZDMS.App
                 };
 
                 Items.Add(frontAdd);
-                FrontAddList.Remove(frontAdd.SelectedItem);
+                AddList.Remove(frontAdd.SelectedItem);
 
             }
 
@@ -384,8 +389,8 @@ namespace EZDMS.App
             {
                 var frontAdd = new FrontAddItemViewModel
                 {
-                    Items = new ObservableCollection<FrontAddsDataModel>(FrontAddList),
-                    SelectedItem = FilteredFrontAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd10ID),
+                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
+                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd10ID),
                     Retail = salesFrontAdds.FrontAdd10Retail,
                     Cost = salesFrontAdds.FrontAdd10Cost,
                     InPayment = salesFrontAdds.FrontAdd10InPayment,
@@ -394,7 +399,7 @@ namespace EZDMS.App
                 };
 
                 Items.Add(frontAdd);
-                FrontAddList.Remove(frontAdd.SelectedItem);
+                AddList.Remove(frontAdd.SelectedItem);
 
             }
                        

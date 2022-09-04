@@ -76,5 +76,24 @@ namespace EZDMS.App.Core
             // Set the property value
             propertyInfo.SetValue(input, value);
         }
+
+        /// <summary>
+        /// Sets a value to a column in a collection
+        /// </summary>
+        /// <typeparam name="T">The type of value to set</typeparam>
+        /// <param name="items">the collection</param>
+        /// <param name="updateMethod"></param>
+        /// <returns>the collection updated</returns>
+        public static IEnumerable<T> SetValue<T>(this IEnumerable<T> items, Action<T>
+         updateMethod)
+        {
+            foreach (var item in items)
+            {
+                updateMethod(item);
+            }
+            return items;
+        }
+
+
     }
 }

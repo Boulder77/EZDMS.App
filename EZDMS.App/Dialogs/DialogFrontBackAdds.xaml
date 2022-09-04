@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:EZDMS.App"
              mc:Ignorable="d" 
              Height="900"
-             Width="950"             
-             d:DesignHeight="900" d:DesignWidth="920">
+             Width="1050"             
+             d:DesignHeight="900" d:DesignWidth="1050">
     
     <Border Background="{StaticResource BackgroundVeryLightBrush}"
             >
@@ -56,20 +56,18 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
-
-
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="Front Options"
+                           
                        FontSize="{StaticResource FontSizeXXLarge}"
                        />
 
-                <local:FrontAddListControl 
-                    Grid.Row="1"
-                    DataContext="{Binding FrontAdds}"
-                    />
-
-
+                <local:FrontAddListControl
+                        Padding="5,10,5,5"
+                        Grid.Row="1"
+                        DataContext="{Binding FrontAdds}"
+                        />
 
                 <TextBlock Text="Back Options"
                    Grid.Row="2"

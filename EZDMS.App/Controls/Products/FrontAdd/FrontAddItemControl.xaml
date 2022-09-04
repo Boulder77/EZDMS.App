@@ -13,6 +13,7 @@
 
 
            <Grid x:Name="container" Background="Transparent">
+               
            <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="60" />
@@ -22,8 +23,24 @@
                 <ColumnDefinition Width="80" />
                 <ColumnDefinition Width="140" />
             </Grid.ColumnDefinitions>
-                    
-                    <ComboBox  ItemsSource="{Binding Items}"  
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <TextBlock Text="Name"
+                       VerticalAlignment="Center"
+                       FontFamily="{StaticResource LatoRegular}"
+                       FontSize="{StaticResource FontSizeRegular}"
+                   />
+
+
+
+            <ComboBox  ItemsSource="{Binding Items}"  
+                               Grid.Row="1"
                                Margin="5,0,0,0"
                            SelectedItem="{Binding SelectedItem}"
                            Background="{StaticResource BackgroundVeryLightBrush}"                           
@@ -33,11 +50,15 @@
                            VerticalAlignment="Center"
                            FontFamily="{StaticResource LatoRegular}"
                            />
-
+           
 
             <StackPanel Grid.Column="1"
+                        Grid.Row="1"
                         Margin="15"
                         >
+                
+                
+                
 
                 <!-- Add Button -->
                 <Button Style="{StaticResource IconGrowButton}"
@@ -55,8 +76,22 @@
             </StackPanel>
                
                 
+               
+               
+               
                 <!-- Retail -->
-                <TextBox Grid.Column="2"
+
+            <TextBlock Text="Retail"
+                       VerticalAlignment="Center"
+                       Grid.Column="2"
+                       FontFamily="{StaticResource LatoRegular}"
+                       FontSize="{StaticResource FontSizeRegular}"
+                   />
+
+
+
+            <TextBox Grid.Column="2"
+                         
                          Margin="5,15,5,15"    
                          Text="{Binding Retail}"
                          HorizontalContentAlignment="Right"
@@ -66,7 +101,15 @@
                          />
 
             <!-- Cost -->
-                 <TextBox Grid.Column="3"
+            <TextBlock Text="Cost"
+                       VerticalAlignment="Center"
+                       Grid.Column="3"
+                       FontFamily="{StaticResource LatoRegular}"
+                       FontSize="{StaticResource FontSizeRegular}"
+                   />
+
+
+            <TextBox Grid.Column="3"
                         Margin="5,15,5,15"    
                         Text="{Binding Cost}"
                         HorizontalContentAlignment="Right"
@@ -74,17 +117,39 @@
                         Grid.Row="1"
                         FontSize="{StaticResource FontSizeRegular}"
                         />
-            
-                <CheckBox Grid.Column="4"
-                      IsChecked="{Binding DefaultInPayment}"  
-                      />
+               
+               
+               <!-- Payment-->
+            <TextBlock Text="Payment"
+                       VerticalAlignment="Center"
+                       Grid.Column="4"
+                       FontFamily="{StaticResource LatoRegular}"
+                       FontSize="{StaticResource FontSizeRegular}"
+                   />
 
-                <CheckBox Grid.Column="5"
-                      IsChecked="{Binding DefaultInPayment}"  
+            <CheckBox Grid.Column="4"
+                          Grid.Row="1"
+                      IsChecked="{Binding InPayment}"  
+                      />
+               
+               
+               <!-- Taxable -->
+            <TextBlock Text="Tax 1"
+                       VerticalAlignment="Center"
+                       Grid.Column="5"
+                       FontFamily="{StaticResource LatoRegular}"
+                       FontSize="{StaticResource FontSizeRegular}"
+                   />
+
+
+            <CheckBox Grid.Column="5"
+                          Grid.Row="1"
+                      IsChecked="{Binding Taxable}"  
                       />
 
             <StackPanel Orientation="Horizontal"                        
                         Grid.Column="6"
+                        Grid.Row="1"
                         Margin="5"
                         >
                 
@@ -99,9 +164,10 @@
 
                 <!-- New Button -->
                 <Button Style="{StaticResource IconGrowButton}" 
+                        Visibility="{Binding LastItem, Converter={local:BooleanToVisiblityGoneConverter}}"
                         Width="40"
                         Margin="5,0"
-                        Command="{Binding}"
+                        Command="{Binding AddCommand}"
                         Foreground="{StaticResource WordBlueBrush}"
                         Content="{StaticResource FontAwesomePlusIcon}"                        
                         />
