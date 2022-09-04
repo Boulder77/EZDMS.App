@@ -55,9 +55,6 @@ namespace EZDMS.App
             }
         }
 
-
-       
-
         public FrontAddsDataModel SelectedItem
         {
             get => mSelectedItem;
@@ -156,8 +153,6 @@ namespace EZDMS.App
         public FrontAddItemViewModel()
         {
            
-            
-
         }
 
         #endregion

@@ -95,5 +95,22 @@ namespace EZDMS.App.Core
         }
 
 
-    }
+        //create in a static class
+        public static object GetValObjDy(this object obj, string propertyName)
+        {
+            return obj.GetType().GetProperty(propertyName).GetValue(obj, null);
+        }
+
+        //create in a static class
+        public static void SetValObjDy(this object obj, string propertyName, object value)
+        {
+            obj.GetType().GetProperty(propertyName).SetValue(obj, value);
+        }
+        
+        public static IEnumerable<(T item, int index)> WithIndex<T>(this IEnumerable<T> self)
+           => self.Select((item, index) => (item, index));
+
+        
+
+}
 }

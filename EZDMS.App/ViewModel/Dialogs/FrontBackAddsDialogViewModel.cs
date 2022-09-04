@@ -33,7 +33,7 @@ namespace EZDMS.App
         /// <summary>
         /// Indicates if the dialog has loaded
         /// </summary>
-        public bool AddsLoading { get; set; }
+        public bool Loading { get; set; }
 
         #endregion
 
@@ -59,10 +59,8 @@ namespace EZDMS.App
         public FrontBackAddsDialogViewModel()
         {
             // Create commands
-            //SaveCommand = new RelayCommand(async () => await SaveProductsAsync());
-
-            
-                
+            SaveCommand = new RelayCommand(async () => await SaveSalesAddsAsync());
+ 
             Task.Run(LoadSalesAddsAsync);
         }
 
@@ -76,7 +74,7 @@ namespace EZDMS.App
         /// <returns></returns>
         public async Task LoadSalesAddsAsync()
         {
-            await RunCommandAsync(() => AddsLoading, async () =>
+            await RunCommandAsync(() => Loading, async () =>
             {
 
                 // Load the front adds
@@ -88,38 +86,28 @@ namespace EZDMS.App
             });
 
 
-    }
+        }
+
+
+        /// <summary>
+        /// Initialize products view models and controls 
+        /// </summary>
+        /// <returns></returns>
+        public async Task SaveSalesAddsAsync()
+        {
+            await RunCommandAsync(() => Saving, async () =>
+            {
+
+                await FrontAdds.SaveAddsAsync();
+
+            });
+
+
+        }
+
+
 
         #endregion
-
-
-
-
-
-
-        //public async Task<bool> UpdateTotalFrontAddsRetailAsync()
-        //{
-
-        //    UpdateTotalFrontAddsRetail();
-
-        //    // Lock this command to ignore any other requests while processing
-        //    await Task.Delay(1);
-        //    return true;
-
-        //}
-
-
-
-        //    /// <summary>
-        //    /// Update the total retail price
-        //    /// </summary>
-        //    private void UpdateTotalFrontAddsRetail()
-        //    {
-
-        //        TotalFrontAdds = FrontAdds.Items.Sum(item => item.Retail);
-        //    }
-
-       
 
     }
 }

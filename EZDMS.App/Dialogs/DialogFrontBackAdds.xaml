@@ -24,7 +24,7 @@
                         HorizontalAlignment="Stretch" 
                         Grid.RowSpan="4" 
                         Background="Transparent"                     
-                        Visibility="{Binding AddsLoading, 
+                        Visibility="{Binding Loading, 
                         Converter={local:BooleanToVisiblityGoneConverter}, FallbackValue=Collapsed}"
                         >
 
@@ -48,7 +48,7 @@
 
             </StackPanel>
 
-            <Grid Visibility="{Binding AddsLoading, 
+            <Grid Visibility="{Binding Loading, 
                                         Converter={local:BooleanToVisiblityConverter}}">
 
                 <Grid.RowDefinitions>
@@ -95,7 +95,7 @@
                             Background="{StaticResource WordOrangeBrush}"
                             Command="{Binding SaveCommand}"
                             local:IsBusyProperty.Value="{Binding Saving}"
-                            IsEnabled="{Binding AddsLoading, Converter={local:BooleanInvertConverter}}"
+                            IsEnabled="{Binding Loading, Converter={local:BooleanInvertConverter}}"
                             Foreground="{StaticResource ForegroundLightBrush}"
                             FontSize="{StaticResource FontSizeRegular}"
                             Content="Save and Close"

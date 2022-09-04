@@ -72,14 +72,14 @@ namespace EZDMS.App
 
                 if (mAddList != null)
                     // Update filtered list to match
-                    FilteredAddList = new List<FrontAddsDataModel>(mAddList);
+                    CurrentAddList = new List<FrontAddsDataModel>(mAddList);
             }
         }
 
         /// <summary>
         /// The chat thread items for the list that include any search filtering
         /// </summary>
-        public List<FrontAddsDataModel> FilteredAddList { get; set; }
+        public List<FrontAddsDataModel> CurrentAddList { get; set; }
 
 
 
@@ -92,6 +92,12 @@ namespace EZDMS.App
         /// The flag indicating that the items are loading
         /// </summary>
         public bool Loading { get; set; }
+
+
+        /// <summary>
+        /// The flag indicating that the items are saving
+        /// </summary>
+        public bool Saving { get; set; }
 
 
         #endregion
@@ -122,7 +128,7 @@ namespace EZDMS.App
             // New Front Add
             var frontadd = new FrontAddItemViewModel
             {
-                Items = new ObservableCollection<FrontAddsDataModel>(FilteredAddList),
+                Items = new ObservableCollection<FrontAddsDataModel>(CurrentAddList),
                 UpdateAction = UpdateTotalRetailAsync,
                 AddCommand = new RelayCommand(Add),
                 LastItem = Items.Count >= 9 ? false : true,
@@ -153,7 +159,7 @@ namespace EZDMS.App
             // New Front Add
             var frontadd = new FrontAddItemViewModel
             {
-                Items = new ObservableCollection<FrontAddsDataModel>(FilteredAddList),
+                Items = new ObservableCollection<FrontAddsDataModel>(CurrentAddList),
 
             };
 
@@ -180,6 +186,7 @@ namespace EZDMS.App
             // Get the deal front adds items
             var salesFrontAdds = await ClientDataStore.GetSalesFrontAddsAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
 
+            // 
             if (salesFrontAdds == null)
                 Add();
             else
@@ -188,6 +195,40 @@ namespace EZDMS.App
            
             
         }
+
+        /// <summary>
+        /// Initialize products view models and controls 
+        /// </summary>
+        /// <returns></returns>
+        public async Task<bool> SaveAddsAsync()
+        {
+
+            // Store the result of a commit call
+            var result = default(bool);
+
+           return result = await RunCommandAsync(() => Saving, async () =>
+            {
+
+                // Get the deal front adds items
+                var salesAdds = await ClientDataStore.GetSalesFrontAddsAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+
+                var newSalesAdds = CreateSalesFrontAdds(Items.ToList());
+
+                // Update the data store
+                if (salesAdds == null)
+                    await ClientDataStore.AddNewSalesRecordAsync(newSalesAdds, DbTableNames.SalesFrontAdds);
+                else
+                    await ClientDataStore.SaveSalesRecordAsync(newSalesAdds, DbTableNames.SalesFrontAdds);
+
+                return true;
+            
+            });
+
+           
+            
+        }
+
+
 
         public async Task<bool> UpdateTotalRetailAsync()
         {
@@ -215,198 +256,89 @@ namespace EZDMS.App
         /// </summary>
         /// <param name="salesFrontAdds"></param>
         /// <returns></returns>
-       private void LoadSavedAdds(SalesFrontAddsDataModel salesFrontAdds)
+       private void LoadSavedAdds(SalesFrontAddsDataModel salesAdds)
         {
 
             if (Items == null)
                 Items = new ObservableCollection<FrontAddItemViewModel>();
 
-           
-            if (salesFrontAdds.FrontAdd1Retail > 0)
+
+            var i = 0;
+            var done = false;
+
+
+            do
             {
-                var frontAdd = new FrontAddItemViewModel
+                i++;
+                if (salesAdds.GetValObjDy($"FrontAdd{i.ToString()}ID") != null)
                 {
-                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
-                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd1ID),
-                    Retail = salesFrontAdds.FrontAdd1Retail,
-                    Cost = salesFrontAdds.FrontAdd1Cost,
-                    InPayment = salesFrontAdds.FrontAdd1InPayment,
-                    Taxable = salesFrontAdds.FrontAdd1IsTaxable1,
-                    UpdateAction = UpdateTotalRetailAsync
-                };
+                    var add = new FrontAddItemViewModel
+                    {
+                        Items = new ObservableCollection<FrontAddsDataModel>(AddList),
+                        SelectedItem = CurrentAddList.FirstOrDefault(item => item.Id == salesAdds.GetValObjDy($"FrontAdd{i.ToString()}ID").ToString()),
 
-                Items.Add(frontAdd);
-                AddList.Remove(frontAdd.SelectedItem);
+                        Retail = (decimal)salesAdds.GetValObjDy($"FrontAdd{i.ToString()}Retail"),
+                        Cost = (decimal)salesAdds.GetValObjDy($"FrontAdd{i.ToString()}Cost"),
+                        InPayment = (bool)salesAdds.GetValObjDy($"FrontAdd{i.ToString()}InPayment"),
+                        Taxable = (bool)salesAdds.GetValObjDy($"FrontAdd{i.ToString()}InPayment"),
+                        UpdateAction = UpdateTotalRetailAsync
+                    };
+                    Items.Add(add);
+                    CurrentAddList.Remove(add.SelectedItem);
+                }
+                else
+                    done = true;
 
-            }
+               
 
-            if (salesFrontAdds.FrontAdd2Retail > 0)
-            {
-                var frontAdd = new FrontAddItemViewModel
-                {
-                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
-                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd2ID),
-                    Retail = salesFrontAdds.FrontAdd2Retail,
-                    Cost = salesFrontAdds.FrontAdd2Cost,
-                    InPayment = salesFrontAdds.FrontAdd2InPayment,
-                    Taxable = salesFrontAdds.FrontAdd2IsTaxable1,
-                    UpdateAction = UpdateTotalRetailAsync
-                };
-
-                Items.Add(frontAdd);
-                AddList.Remove(frontAdd.SelectedItem);
-
-            }
-
-            if (salesFrontAdds.FrontAdd3Retail > 0)
-            {
-                var frontAdd = new FrontAddItemViewModel
-                {
-                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
-                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd3ID),
-                    Retail = salesFrontAdds.FrontAdd3Retail,
-                    Cost = salesFrontAdds.FrontAdd3Cost,
-                    InPayment = salesFrontAdds.FrontAdd3InPayment,
-                    Taxable = salesFrontAdds.FrontAdd3IsTaxable1,
-                    UpdateAction = UpdateTotalRetailAsync
-                };
-
-                Items.Add(frontAdd);
-                AddList.Remove(frontAdd.SelectedItem);
-
-            }
-
-            if (salesFrontAdds.FrontAdd4Retail > 0)
-            {
-                var frontAdd = new FrontAddItemViewModel
-                {
-                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
-                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd4ID),
-                    Retail = salesFrontAdds.FrontAdd4Retail,
-                    Cost = salesFrontAdds.FrontAdd4Cost,
-                    InPayment = salesFrontAdds.FrontAdd4InPayment,
-                    Taxable = salesFrontAdds.FrontAdd4IsTaxable1,
-                    UpdateAction = UpdateTotalRetailAsync
-                };
-
-                Items.Add(frontAdd);
-                AddList.Remove(frontAdd.SelectedItem);
-
-            }
-
-            if (salesFrontAdds.FrontAdd5Retail > 0)
-            {
-                var frontAdd = new FrontAddItemViewModel
-                {
-                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
-                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd5ID),
-                    Retail = salesFrontAdds.FrontAdd5Retail,
-                    Cost = salesFrontAdds.FrontAdd5Cost,
-                    InPayment = salesFrontAdds.FrontAdd5InPayment,
-                    Taxable = salesFrontAdds.FrontAdd5IsTaxable1,
-                    UpdateAction = UpdateTotalRetailAsync
-                };
-
-                Items.Add(frontAdd);
-                AddList.Remove(frontAdd.SelectedItem);
-
-            }
+            } while (done == false);
 
 
-            if (salesFrontAdds.FrontAdd6Retail > 0)
-            {
-                var frontAdd = new FrontAddItemViewModel
-                {
-                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
-                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd6ID),
-                    Retail = salesFrontAdds.FrontAdd6Retail,
-                    Cost = salesFrontAdds.FrontAdd6Cost,
-                    InPayment = salesFrontAdds.FrontAdd6InPayment,
-                    Taxable = salesFrontAdds.FrontAdd6IsTaxable1,
-                    UpdateAction = UpdateTotalRetailAsync
-                };
-
-                Items.Add(frontAdd);
-                AddList.Remove(frontAdd.SelectedItem);
-
-            }
-
-            if (salesFrontAdds.FrontAdd7Retail > 0)
-            {
-                var frontAdd = new FrontAddItemViewModel
-                {
-                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
-                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd7ID),
-                    Retail = salesFrontAdds.FrontAdd7Retail,
-                    Cost = salesFrontAdds.FrontAdd7Cost,
-                    InPayment = salesFrontAdds.FrontAdd7InPayment,
-                    Taxable = salesFrontAdds.FrontAdd7IsTaxable1,
-                    UpdateAction = UpdateTotalRetailAsync
-                };
-
-                Items.Add(frontAdd);
-                AddList.Remove(frontAdd.SelectedItem);
-
-            }
-
-            if (salesFrontAdds.FrontAdd8Retail > 0)
-            {
-                var frontAdd = new FrontAddItemViewModel
-                {
-                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
-                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd8ID),
-                    Retail = salesFrontAdds.FrontAdd8Retail,
-                    Cost = salesFrontAdds.FrontAdd8Cost,
-                    InPayment = salesFrontAdds.FrontAdd8InPayment,
-                    Taxable = salesFrontAdds.FrontAdd8IsTaxable1,
-                    UpdateAction = UpdateTotalRetailAsync
-                };
-
-                Items.Add(frontAdd);
-                AddList.Remove(frontAdd.SelectedItem);
-
-            }
-
-            if (salesFrontAdds.FrontAdd9Retail > 0)
-            {
-                var frontAdd = new FrontAddItemViewModel
-                {
-                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
-                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd9ID),
-                    Retail = salesFrontAdds.FrontAdd9Retail,
-                    Cost = salesFrontAdds.FrontAdd9Cost,
-                    InPayment = salesFrontAdds.FrontAdd9InPayment,
-                    Taxable = salesFrontAdds.FrontAdd9IsTaxable1,
-                    UpdateAction = UpdateTotalRetailAsync
-                };
-
-                Items.Add(frontAdd);
-                AddList.Remove(frontAdd.SelectedItem);
-
-            }
-
-            if (salesFrontAdds.FrontAdd10Retail > 0)
-            {
-                var frontAdd = new FrontAddItemViewModel
-                {
-                    Items = new ObservableCollection<FrontAddsDataModel>(AddList),
-                    SelectedItem = FilteredAddList.FirstOrDefault(item => item.Id == salesFrontAdds.FrontAdd10ID),
-                    Retail = salesFrontAdds.FrontAdd10Retail,
-                    Cost = salesFrontAdds.FrontAdd10Cost,
-                    InPayment = salesFrontAdds.FrontAdd10InPayment,
-                    Taxable = salesFrontAdds.FrontAdd10IsTaxable1,
-                    UpdateAction = UpdateTotalRetailAsync
-                };
-
-                Items.Add(frontAdd);
-                AddList.Remove(frontAdd.SelectedItem);
-
-            }
-                       
         }
+                       
+        
+
+        /// <summary>
+        /// Create a sales front add data model
+        /// </summary>
+        /// <param name="adds"></param>
+        /// <returns>SalesFrontAddsDataModel</returns>
+        private SalesFrontAddsDataModel CreateSalesFrontAdds(List<FrontAddItemViewModel> adds)
+        {
+
+            // check null
+            if (adds == null)
+                return null;
+
+            var salesFrontAdds = new SalesFrontAddsDataModel
+            {
+                DealNumber = ViewModelSalesFinance.SalesFinanceDeal.DealNumber,
+
+            };
+
+            var i = 1;
+            foreach (var add in adds)
+            {
+                
+                salesFrontAdds.SetValObjDy($"FrontAdd{i.ToString()}ID", add.SelectedItem.Id);
+                salesFrontAdds.SetValObjDy($"FrontAdd{i.ToString()}Description", add?.SelectedItem.Name);
+                salesFrontAdds.SetValObjDy($"FrontAdd{i.ToString()}Retail", add.Retail);
+                salesFrontAdds.SetValObjDy($"FrontAdd{i.ToString()}Cost", add.Cost);
+                salesFrontAdds.SetValObjDy($"FrontAdd{i.ToString()}InPayment", add.InPayment);
+                salesFrontAdds.SetValObjDy($"FrontAdd{i.ToString()}IsTaxable1", add.Taxable);
+
+                i++;
+
+            }
+
+            return salesFrontAdds;
+                        
+         }
+
+    }
 
 
         #endregion
 
-    }
+   
 }
