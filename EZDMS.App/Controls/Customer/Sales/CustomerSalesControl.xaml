@@ -49,7 +49,7 @@
                         Padding="8"
                         IsDefault="True"
                         Focusable="False"
-                        Command="{Binding SendCommand}"
+                        Command="{Binding}"
                         BorderBrush="{StaticResource WordLightBlueBrush}"
                         BorderThickness="1"
                         Background="{StaticResource WordTransparentBlueBrush}"

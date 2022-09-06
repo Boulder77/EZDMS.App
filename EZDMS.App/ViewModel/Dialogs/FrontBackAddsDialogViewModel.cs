@@ -88,7 +88,6 @@ namespace EZDMS.App
 
         }
 
-
         /// <summary>
         /// Initialize products view models and controls 
         /// </summary>
@@ -102,6 +101,11 @@ namespace EZDMS.App
 
             });
 
+            // Update sales finance view model
+            ViewModelSalesFinance.SalesFinanceDeal.TotalFrontAdds = FrontAdds.Total;
+
+            // Close the dialog
+            CloseAction();
 
         }
 

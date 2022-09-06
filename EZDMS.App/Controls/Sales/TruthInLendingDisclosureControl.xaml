@@ -36,7 +36,7 @@
                         HorizontalAlignment="Stretch"
                         Margin="0,20,0,0">
 
-                <local:NumericalDisplayHorizControl Background="{StaticResource WordVeryVeryLightBlueBrush}" DataContext="{Binding Payments}" />
+                <local:NumericalDisplayHorizControl Background="{StaticResource WordVeryVeryLightBlueBrush}" DataContext="{Binding Payment}" />
                 <local:NumericalDisplayHorizControl DataContext="{Binding FinalPayment}" />
                 <local:NumericalDisplayHorizControl Background="{StaticResource WordVeryVeryLightBlueBrush}" DataContext="{Binding FinanceCharge}" />
                 <local:NumericalDisplayHorizControl DataContext="{Binding TotalOfPayments}" />

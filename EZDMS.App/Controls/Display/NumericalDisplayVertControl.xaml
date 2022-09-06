@@ -39,7 +39,7 @@
                     <TextBlock Grid.Column="1" Text="{Binding Amount, Converter={local:DecimalToDisplayMoneyConverter}}"                                             
                                HorizontalAlignment="Right"
                                FontSize="{StaticResource FontSizeLarge}"
-                               ToolTip="{Binding OriginalAmount}"
+                               ToolTip="{Binding Amount}"
                        />
                 </StackPanel>
                 

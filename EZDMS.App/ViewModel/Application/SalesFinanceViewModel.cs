@@ -364,7 +364,6 @@ namespace EZDMS.App
                 });
 
                 // Update view model
-
                 await UpdateFinanceAsync();
                 return true;            
             });
@@ -445,8 +444,9 @@ namespace EZDMS.App
                 });
 
                 // Update view model
+                await UpdateFinanceAsync();
 
-                //await UpdateFinanceAsync();
+                // return success
                 return true;
             });
 
@@ -728,7 +728,7 @@ namespace EZDMS.App
 
                 Payment = new DecimalInputViewModel
                 {
-                    Label = $"{salesFinance.NumberOfPayments} Payments of {salesFinance.Payment}",
+                    Label = $"{salesFinance.NumberOfPayments} Payments of ",
                     Amount = salesFinance.Payment
                 },
 

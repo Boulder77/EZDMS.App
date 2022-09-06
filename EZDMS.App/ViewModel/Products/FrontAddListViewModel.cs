@@ -186,14 +186,12 @@ namespace EZDMS.App
             // Get the deal front adds items
             var salesFrontAdds = await ClientDataStore.GetSalesFrontAddsAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
 
-            // 
+            // Load adds to items collection
             if (salesFrontAdds == null)
                 Add();
             else
                 LoadSavedAdds(salesFrontAdds);
 
-           
-            
         }
 
         /// <summary>
@@ -281,7 +279,8 @@ namespace EZDMS.App
                         Cost = (decimal)salesAdds.GetValObjDy($"FrontAdd{i.ToString()}Cost"),
                         InPayment = (bool)salesAdds.GetValObjDy($"FrontAdd{i.ToString()}InPayment"),
                         Taxable = (bool)salesAdds.GetValObjDy($"FrontAdd{i.ToString()}InPayment"),
-                        UpdateAction = UpdateTotalRetailAsync
+                        UpdateAction = UpdateTotalRetailAsync,
+                        AddCommand = new RelayCommand(Add),
                     };
                     Items.Add(add);
                     CurrentAddList.Remove(add.SelectedItem);
@@ -293,6 +292,12 @@ namespace EZDMS.App
 
             } while (done == false);
 
+            // Set last item flag
+            if (Items.Count <10)           
+                Items.Last().LastItem=true;
+
+            // Update the total
+            UpdateTotalRetail();
 
         }
                        
@@ -316,10 +321,13 @@ namespace EZDMS.App
 
             };
 
-            var i = 1;
+            // Loop thru the sales adds and update datamodel
+            var i = 0;
             foreach (var add in adds)
             {
                 
+                i++;
+
                 salesFrontAdds.SetValObjDy($"FrontAdd{i.ToString()}ID", add.SelectedItem.Id);
                 salesFrontAdds.SetValObjDy($"FrontAdd{i.ToString()}Description", add?.SelectedItem.Name);
                 salesFrontAdds.SetValObjDy($"FrontAdd{i.ToString()}Retail", add.Retail);
@@ -327,7 +335,7 @@ namespace EZDMS.App
                 salesFrontAdds.SetValObjDy($"FrontAdd{i.ToString()}InPayment", add.InPayment);
                 salesFrontAdds.SetValObjDy($"FrontAdd{i.ToString()}IsTaxable1", add.Taxable);
 
-                i++;
+               
 
             }
 
