@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using System.Threading.Tasks;
+using Prism.Commands;
 
 namespace EZDMS.App
 {
@@ -28,6 +29,9 @@ namespace EZDMS.App
         /// The front add datamodel list
         /// </summary>
         protected List<FrontAddsDataModel> mAddList;
+
+
+        private FrontAddItemViewModel mSelectedItem;
 
         
 
@@ -81,6 +85,26 @@ namespace EZDMS.App
         /// </summary>
         public List<FrontAddsDataModel> CurrentAddList { get; set; }
 
+        /// <summary>
+        /// The selected front add from the list
+        /// </summary>
+        public FrontAddItemViewModel SelectedItem
+        {
+
+            get => mSelectedItem;
+
+            set
+            {
+                // Make sure list has changed
+                if (mSelectedItem == value)
+                    return;
+
+                if (value != null)
+                // Update value
+                    mSelectedItem = value;
+
+            }
+        }
 
 
         /// <summary>
@@ -102,10 +126,31 @@ namespace EZDMS.App
 
         #endregion
 
+
+        public DelegateCommand<object> DeleteCommand { get; set; }
+
+
+
         #region Constructor
 
         public FrontAddListViewModel()
         {
+            DeleteCommand = new DelegateCommand<object>(argument =>
+            {
+                var item = argument as FrontAddItemViewModel;
+
+                CurrentAddList.Remove(item.SelectedItem);
+
+                Items.Remove(item);
+
+                // Set last item flag
+                if (Items.Count < 10)
+                    Items.Last().LastItem = true;
+
+                // Update the total
+                UpdateTotalRetail();
+
+            });
 
             LoadAddsAsync();
 
@@ -131,6 +176,8 @@ namespace EZDMS.App
                 Items = new ObservableCollection<FrontAddsDataModel>(CurrentAddList),
                 UpdateAction = UpdateTotalRetailAsync,
                 AddCommand = new RelayCommand(Add),
+                DeleteCommand = DeleteCommand,
+               
                 LastItem = Items.Count >= 9 ? false : true,
                
             };
@@ -149,23 +196,15 @@ namespace EZDMS.App
         /// </summary>
         public void Delete()
         {
+                        
 
-            // Ensure the item lists are not null
-            if (Items == null)
-                Items = new ObservableCollection<FrontAddItemViewModel>();
+            // Set last item flag
+            if (Items.Count < 10)
+                Items.Last().LastItem = true;
 
-           
+            // Update the total
+            UpdateTotalRetail();
 
-            // New Front Add
-            var frontadd = new FrontAddItemViewModel
-            {
-                Items = new ObservableCollection<FrontAddsDataModel>(CurrentAddList),
-
-            };
-
-            // Add item to both lists
-            Items.Add(frontadd);
-           
         }
 
         #endregion
@@ -191,6 +230,8 @@ namespace EZDMS.App
                 Add();
             else
                 LoadSavedAdds(salesFrontAdds);
+
+            await Task.Delay(1);
 
         }
 
@@ -281,6 +322,9 @@ namespace EZDMS.App
                         Taxable = (bool)salesAdds.GetValObjDy($"FrontAdd{i.ToString()}InPayment"),
                         UpdateAction = UpdateTotalRetailAsync,
                         AddCommand = new RelayCommand(Add),
+                        
+
+
                     };
                     Items.Add(add);
                     CurrentAddList.Remove(add.SelectedItem);

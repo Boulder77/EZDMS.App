@@ -27,6 +27,14 @@ namespace EZDMS.App
             InitializeComponent();
         }
 
-       
+        public static readonly DependencyProperty CommandProperty = DependencyProperty.Register("Command", typeof(ICommand), typeof(FrontAddItemControl));
+
+        public ICommand Command
+        {
+            get => (ICommand)GetValue(CommandProperty);
+            set => SetValue(CommandProperty, value);
+        }
+
+
     }
 }

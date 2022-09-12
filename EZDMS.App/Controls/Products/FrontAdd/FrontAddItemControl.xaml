@@ -6,13 +6,17 @@
              xmlns:local="clr-namespace:EZDMS.App"
              mc:Ignorable="d" 
              
-             d:DesignHeight="60" d:DesignWidth="910">   
+             d:DesignHeight="80" d:DesignWidth="910">
 
-                        <Border x:Name="background"  Background="{StaticResource WordVeryVeryLightBlueBrush}"
+    
+        
+        
+
+    <Border x:Name="background"  Background="Transparent"
                     CornerRadius="5">
 
 
-           <Grid x:Name="container" Background="Transparent">
+           <Grid x:Name="container" >
                
            <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -153,11 +157,14 @@
                         Margin="5"
                         >
                 
+                
+                
                 <!-- Delete Button -->
                 <Button Style="{StaticResource IconGrowButton}" 
                         Width="40"
                         Margin="5,0"
-                        Command="{Binding ClearUserDataCommand}"
+                        Command="{Binding Path=DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                        CommandParameter="{Binding }"
                         Foreground="{StaticResource ForegroundVeryDarkBrush}"
                         Content="{StaticResource FontAwesomeTrashCanIcon}"                        
                         />

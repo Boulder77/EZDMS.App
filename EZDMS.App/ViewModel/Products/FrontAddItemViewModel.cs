@@ -1,5 +1,6 @@
 ﻿using Dna;
 using EZDMS.App.Core;
+using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -132,16 +133,12 @@ namespace EZDMS.App
 
         #region Public Commands
 
-        /// <summary>
-        /// The command to clear the users data from the view model
-        /// </summary>
-        public ICommand ClearUserDataCommand { get; set; }
-
-
-        /// <summary>
+       
         /// The command to add an item
         /// </summary>
         public ICommand AddCommand { get; set; }
+
+        public DelegateCommand<object> DeleteCommand { get; set; }
 
         #endregion
 
@@ -153,6 +150,8 @@ namespace EZDMS.App
         public FrontAddItemViewModel()
         {
            
+
+
         }
 
         #endregion
@@ -169,26 +168,7 @@ namespace EZDMS.App
             InPayment = (bool)frontAdd.InPayment;          
 
         }
-              
-
-        public void ClearUserData()
-        {
-            //// Clear all view models containing the users info
-            //SelectedProvider =null;
-            //SelectedPlan = null;
-            //Retail = 0;
-            //Cost.Amount = 0;
-            //ContractNumber.Text = "";
-            //Term.Text = "";
-            //Miles.Text = "";
-            //Deductible.Amount = 0;
-            //InPayment = false;
-            //Taxable = false;
-            //IsDisappearingDeductible = false;
-
-        }
-
-
+                      
         private void Update()
         {
             // Store the result of a commit call
