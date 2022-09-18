@@ -139,7 +139,7 @@ namespace EZDMS.App
             {
                 var item = argument as FrontAddItemViewModel;
 
-                CurrentAddList.Remove(item.SelectedItem);
+                CurrentAddList.Add(item.SelectedItem);
 
                 Items.Remove(item);
 

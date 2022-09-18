@@ -83,6 +83,11 @@ namespace EZDMS.App
                     //Items = new ObservableCollection<FrontAddItemViewModel>(),
 
                 };
+
+
+
+
+                await Task.Delay(1);
                 
             });
 
