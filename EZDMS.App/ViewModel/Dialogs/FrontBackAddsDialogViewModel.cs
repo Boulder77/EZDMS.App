@@ -23,7 +23,7 @@ namespace EZDMS.App
         /// <summary>
         /// The sales maintenance data model
         /// </summary>
-        public FrontAddListViewModel FrontAdds { get; set; }
+        public FrontAddItemListViewModel FrontAdds { get; set; }
                
         /// <summary>
         /// Indicates if there is a save action
@@ -78,7 +78,7 @@ namespace EZDMS.App
             {
 
                 // Load the front adds
-                FrontAdds = new FrontAddListViewModel
+                FrontAdds = new FrontAddItemListViewModel
                 {
                     //Items = new ObservableCollection<FrontAddItemViewModel>(),
 

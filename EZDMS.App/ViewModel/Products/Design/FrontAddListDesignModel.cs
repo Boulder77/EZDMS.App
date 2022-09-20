@@ -6,9 +6,9 @@ using System.Linq;
 namespace EZDMS.App
 {
     /// <summary>
-    /// The design-time data for a <see cref="FrontAddListViewModel"/>
+    /// The design-time data for a <see cref="FrontAddItemListViewModel"/>
     /// </summary>
-    public class FrontAddListDesignModel : FrontAddListViewModel
+    public class FrontAddListDesignModel : FrontAddItemListViewModel
     {
 
         #region Singleton

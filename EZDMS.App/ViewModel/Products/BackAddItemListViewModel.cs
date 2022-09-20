@@ -15,7 +15,7 @@ namespace EZDMS.App
     /// <summary>
     /// The view model for the overview front add list
     /// <summary>
-    public class FrontAddListViewModel : BaseViewModel
+    public class BackAddItemListViewModel : BaseViewModel
     {
 
         #region Protected Members
@@ -133,7 +133,7 @@ namespace EZDMS.App
 
         #region Constructor
 
-        public FrontAddListViewModel()
+        public BackAddItemListViewModel()
         {
             DeleteCommand = new DelegateCommand<object>(argument =>
             {
