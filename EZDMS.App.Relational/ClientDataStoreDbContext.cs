@@ -68,7 +68,7 @@ namespace EZDMS.App.Relational
         /// <summary>
         /// The FrontAdds table
         /// <summary>
-        public DbSet<FrontAddsDataModel> FrontAdds { get; set; }
+        public DbSet<FrontAddsDataModel> SystemFrontAdds { get; set; }
 
         /// <summary>
         /// The SalesFrontAdds table

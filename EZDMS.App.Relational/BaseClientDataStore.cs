@@ -121,9 +121,9 @@ namespace EZDMS.App.Relational
                     mDbContext.SalesWarranty.Add(mDataModel as SalesWarrantyDataModel);
                     break;
 
-                case DbTableNames.FrontAdds:
+                case DbTableNames.SystemFrontAdds:
                     // Add new FrontAdds entry
-                    mDbContext.FrontAdds.Add(mDataModel as FrontAddsDataModel);
+                    mDbContext.SystemFrontAdds.Add(mDataModel as FrontAddsDataModel);
                     break;
 
                 case DbTableNames.SalesFrontAdds:
@@ -214,7 +214,7 @@ namespace EZDMS.App.Relational
                     mDbContext.Update(mDataModel as SalesWarrantyDataModel);
                     break;
 
-                case DbTableNames.FrontAdds:
+                case DbTableNames.SystemFrontAdds:
 
                     mDbContext.Update(mDataModel as FrontAddsDataModel);
                     break;
@@ -486,7 +486,7 @@ namespace EZDMS.App.Relational
         public Task<List<FrontAddsDataModel>> GetFrontAddsAsync()
         {
             // Gets all the sales                      
-            return Task.FromResult(mDbContext.FrontAdds.Where(e => e.IsActive == true).ToList());
+            return Task.FromResult(mDbContext.SystemFrontAdds.Where(e => e.IsActive == true).ToList());
         }
 
         #endregion

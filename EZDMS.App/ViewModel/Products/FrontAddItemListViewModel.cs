@@ -126,10 +126,7 @@ namespace EZDMS.App
 
         #endregion
 
-
         public DelegateCommand<object> DeleteCommand { get; set; }
-
-
 
         #region Constructor
 
@@ -190,22 +187,7 @@ namespace EZDMS.App
             Items.Add(frontadd);            
 
         }
-
-        /// <summary>
-        /// Add new front add item to the item list
-        /// </summary>
-        public void Delete()
-        {
-                        
-
-            // Set last item flag
-            if (Items.Count < 10)
-                Items.Last().LastItem = true;
-
-            // Update the total
-            UpdateTotalRetail();
-
-        }
+              
 
         #endregion
 
