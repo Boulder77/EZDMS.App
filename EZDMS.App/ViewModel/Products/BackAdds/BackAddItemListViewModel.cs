@@ -13,7 +13,7 @@ using Prism.Commands;
 namespace EZDMS.App
 {
     /// <summary>
-    /// The view model for the overview front add list
+    /// The view model for the overview back add list
     /// <summary>
     public class BackAddItemListViewModel : BaseViewModel
     {
@@ -23,15 +23,15 @@ namespace EZDMS.App
         /// <summary>
         /// The front add items for the list
         /// </summary>
-        protected ObservableCollection<FrontAddItemViewModel> mItems;
+        protected ObservableCollection<BackAddItemViewModel> mItems;
 
         /// <summary>
         /// The front add datamodel list
         /// </summary>
-        protected List<SystemFrontAddsDataModel> mAddList;
+        protected List<SystemBackAddsDataModel> mAddList;
 
 
-        private FrontAddItemViewModel mSelectedItem;
+        private BackAddItemViewModel mSelectedItem;
 
         
 
@@ -42,7 +42,7 @@ namespace EZDMS.App
         /// <summary>
         /// The front add items list
         /// </summary>
-        public ObservableCollection<FrontAddItemViewModel> Items
+        public ObservableCollection<BackAddItemViewModel> Items
         {
 
             get => mItems;
@@ -62,7 +62,7 @@ namespace EZDMS.App
         /// <summary>
         /// The front add datamodel list
         /// </summary>
-        public List<SystemFrontAddsDataModel> AddList
+        public List<SystemBackAddsDataModel> AddList
         {
             get => mAddList;
             set
@@ -76,19 +76,19 @@ namespace EZDMS.App
 
                 if (mAddList != null)
                     // Update filtered list to match
-                    CurrentAddList = new List<SystemFrontAddsDataModel>(mAddList);
+                    CurrentAddList = new List<SystemBackAddsDataModel>(mAddList);
             }
         }
 
         /// <summary>
         /// The chat thread items for the list that include any search filtering
         /// </summary>
-        public List<SystemFrontAddsDataModel> CurrentAddList { get; set; }
+        public List<SystemBackAddsDataModel> CurrentAddList { get; set; }
 
         /// <summary>
         /// The selected front add from the list
         /// </summary>
-        public FrontAddItemViewModel SelectedItem
+        public BackAddItemViewModel SelectedItem
         {
 
             get => mSelectedItem;
@@ -137,7 +137,7 @@ namespace EZDMS.App
         {
             DeleteCommand = new DelegateCommand<object>(argument =>
             {
-                var item = argument as FrontAddItemViewModel;
+                var item = argument as BackAddItemViewModel;
 
                 CurrentAddList.Add(item.SelectedItem);
 
@@ -168,12 +168,12 @@ namespace EZDMS.App
 
             // Check to make sure list is not null
             if (Items == null)
-                Items = new ObservableCollection<FrontAddItemViewModel>();
+                Items = new ObservableCollection<BackAddItemViewModel>();
 
             // New Front Add
-            var frontadd = new FrontAddItemViewModel
+            var frontadd = new BackAddItemViewModel
             {
-                Items = new ObservableCollection<SystemFrontAddsDataModel>(CurrentAddList),
+                Items = new ObservableCollection<SystemBackAddsDataModel>(CurrentAddList),
                 UpdateAction = UpdateTotalRetailAsync,
                 AddCommand = new RelayCommand(Add),
                 DeleteCommand = DeleteCommand,
@@ -299,7 +299,7 @@ namespace EZDMS.App
         {
 
             if (Items == null)
-                Items = new ObservableCollection<FrontAddItemViewModel>();
+                Items = new ObservableCollection<BackAddItemViewModel>();
 
 
             var i = 0;
