@@ -62,9 +62,9 @@
 
 
         /// <summary>
-        /// The FrontAdds table
+        /// The System FrontAdds table
         /// <summary>
-        FrontAdds = 11,
+        SystemFrontAdds = 11,
 
         /// <summary>
         /// The SalesFrontAdds table

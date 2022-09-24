@@ -68,7 +68,7 @@ namespace EZDMS.App.Relational
         /// <summary>
         /// The FrontAdds table
         /// <summary>
-        public DbSet<SystemFrontAddsDataModel> FrontAdds { get; set; }
+        public DbSet<FrontAddsDataModel> SystemFrontAdds { get; set; }
 
         /// <summary>
         /// The SalesFrontAdds table
@@ -125,7 +125,7 @@ namespace EZDMS.App.Relational
 
             modelBuilder.Entity<SalesWarrantyDataModel>().HasKey(a => a.DealNumber);
 
-            modelBuilder.Entity<SystemFrontAddsDataModel>().HasKey(a => a.Number);
+            modelBuilder.Entity<FrontAddsDataModel>().HasKey(a => a.Number);
 
             modelBuilder.Entity<SalesFrontAddsDataModel>().HasKey(a => a.DealNumber);
 
@@ -139,7 +139,7 @@ namespace EZDMS.App.Relational
 
             modelBuilder.Entity<CoverageProviderDataModel>().Property(p => p.Number).HasComputedColumnSql("[PreFixID]+right('000'+CONVERT([nvarchar](3),[Id]),(3))");
 
-            modelBuilder.Entity<SystemFrontAddsDataModel>().Property(p => p.Id).HasComputedColumnSql("[PreFixID]+right('100'+CONVERT([nvarchar](4),[Number]),(4))");
+            modelBuilder.Entity<FrontAddsDataModel>().Property(p => p.Id).HasComputedColumnSql("[PreFixID]+right('100'+CONVERT([nvarchar](4),[Number]),(4))");
 
         }
 
