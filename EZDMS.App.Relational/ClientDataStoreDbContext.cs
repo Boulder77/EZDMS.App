@@ -68,12 +68,22 @@ namespace EZDMS.App.Relational
         /// <summary>
         /// The FrontAdds table
         /// <summary>
-        public DbSet<FrontAddsDataModel> SystemFrontAdds { get; set; }
+        public DbSet<SystemFrontAddsDataModel> SystemFrontAdds { get; set; }
 
         /// <summary>
         /// The SalesFrontAdds table
         /// <summary>
         public DbSet<SalesFrontAddsDataModel> SalesFrontAdds { get; set; }
+
+        /// <summary>
+        /// The FrontAdds table
+        /// <summary>
+        public DbSet<SystemBackAddsDataModel> SystemBackAdds { get; set; }
+
+        /// <summary>
+        /// The SalesFrontAdds table
+        /// <summary>
+        public DbSet<SalesBackAddsDataModel> SalesBackAdds { get; set; }
 
 
         #endregion
@@ -125,9 +135,13 @@ namespace EZDMS.App.Relational
 
             modelBuilder.Entity<SalesWarrantyDataModel>().HasKey(a => a.DealNumber);
 
-            modelBuilder.Entity<FrontAddsDataModel>().HasKey(a => a.Number);
+            modelBuilder.Entity<SystemFrontAddsDataModel>().HasKey(a => a.Number);
 
             modelBuilder.Entity<SalesFrontAddsDataModel>().HasKey(a => a.DealNumber);
+
+            modelBuilder.Entity<SystemBackAddsDataModel>().HasKey(a => a.Number);
+
+            modelBuilder.Entity<SalesBackAddsDataModel>().HasKey(a => a.DealNumber);
 
             // TODO: Set up limits
             //modelBuilder.Entity<LoginCredentialsDataModel>().Property(a => a.FirstName).HasMaxLength(50);
@@ -139,7 +153,7 @@ namespace EZDMS.App.Relational
 
             modelBuilder.Entity<CoverageProviderDataModel>().Property(p => p.Number).HasComputedColumnSql("[PreFixID]+right('000'+CONVERT([nvarchar](3),[Id]),(3))");
 
-            modelBuilder.Entity<FrontAddsDataModel>().Property(p => p.Id).HasComputedColumnSql("[PreFixID]+right('100'+CONVERT([nvarchar](4),[Number]),(4))");
+            modelBuilder.Entity<SystemFrontAddsDataModel>().Property(p => p.Id).HasComputedColumnSql("[PreFixID]+right('100'+CONVERT([nvarchar](4),[Number]),(4))");
 
         }
 

@@ -74,6 +74,12 @@
                        FontSize="{StaticResource FontSizeXXLarge}"
                        />
 
+                <local:BackAddItemListControl
+                        Padding="5,10,5,5"
+                        Grid.Row="3"
+                        DataContext="{Binding BackAdds}"
+                        />
+
             </Grid>
             
             <StackPanel Grid.Row="1"

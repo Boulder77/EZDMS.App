@@ -220,7 +220,7 @@ namespace EZDMS.App
         {
             
             // Get all the front adds for the list
-            AddList = await ClientDataStore.GetFrontAddsAsync();
+            AddList = await ClientDataStore.GetSystemFrontAddsAsync();
                            
             // Get the deal front adds items
             var salesFrontAdds = await ClientDataStore.GetSalesFrontAddsAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);

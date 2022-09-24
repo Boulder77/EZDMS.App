@@ -24,7 +24,12 @@ namespace EZDMS.App
         /// The sales maintenance data model
         /// </summary>
         public FrontAddItemListViewModel FrontAdds { get; set; }
-               
+
+        /// <summary>
+        /// The sales maintenance data model
+        /// </summary>
+        public BackAddItemListViewModel BackAdds { get; set; }
+
         /// <summary>
         /// Indicates if there is a save action
         /// </summary>
@@ -84,13 +89,16 @@ namespace EZDMS.App
 
                 };
 
+                // Load the back adds
+                BackAdds = new BackAddItemListViewModel
+                {
+                    //Items = new ObservableCollection<FrontAddItemViewModel>(),
 
-
+                };
 
                 await Task.Delay(1);
                 
             });
-
 
         }
 
@@ -102,13 +110,17 @@ namespace EZDMS.App
         {
             await RunCommandAsync(() => Saving, async () =>
             {
-
+                // Save the deal front and back adds
                 await FrontAdds.SaveAddsAsync();
+
+                await BackAdds.SaveAddsAsync();
 
             });
 
             // Update sales finance view model
             ViewModelSalesFinance.SalesFinanceDeal.TotalFrontAdds = FrontAdds.Total;
+
+            ViewModelSalesFinance.SalesFinanceDeal.TotalBackAdds = BackAdds.Total;
 
             // Close the dialog
             CloseAction();

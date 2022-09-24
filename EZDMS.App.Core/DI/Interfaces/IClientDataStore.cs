@@ -157,12 +157,22 @@ namespace EZDMS.App.Core
         /// <summary>
         /// Returns all records in front adds table
         /// </summary>
-        Task<List<SystemFrontAddsDataModel>> GetFrontAddsAsync();
+        Task<List<SystemFrontAddsDataModel>> GetSystemFrontAddsAsync();
 
         /// <summary>
         /// Returns a single front add record from the sales front adds table
         /// </summary>
         Task<SalesFrontAddsDataModel> GetSalesFrontAddsAsync(int dealNumber);
+
+        /// <summary>
+        /// Returns all records in back adds table
+        /// </summary>
+        Task<List<SystemBackAddsDataModel>> GetSystemBackAddsAsync();
+
+        /// <summary>
+        /// Returns a single back add record from the sales front adds table
+        /// </summary>
+        Task<SalesBackAddsDataModel> GetSalesBackAddsAsync(int dealNumber);
 
     }
 }

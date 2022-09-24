@@ -123,12 +123,23 @@ namespace EZDMS.App.Relational
 
                 case DbTableNames.SystemFrontAdds:
                     // Add new FrontAdds entry
-                    mDbContext.SystemFrontAdds.Add(mDataModel as FrontAddsDataModel);
+                    mDbContext.SystemFrontAdds.Add(mDataModel as SystemFrontAddsDataModel);
                     break;
 
                 case DbTableNames.SalesFrontAdds:
                     // Add new FrontAdds entry
                     mDbContext.SalesFrontAdds.Add(mDataModel as SalesFrontAddsDataModel);
+                    break;
+
+
+                case DbTableNames.SystemBackAdds:
+                    // Add new FrontAdds entry
+                    mDbContext.SystemBackAdds.Add(mDataModel as SystemBackAddsDataModel);
+                    break;
+
+                case DbTableNames.SalesBackAdds:
+                    // Add new FrontAdds entry
+                    mDbContext.SalesBackAdds.Add(mDataModel as SalesBackAddsDataModel);
                     break;
 
                 default:
@@ -216,12 +227,22 @@ namespace EZDMS.App.Relational
 
                 case DbTableNames.SystemFrontAdds:
 
-                    mDbContext.Update(mDataModel as FrontAddsDataModel);
+                    mDbContext.Update(mDataModel as SystemFrontAddsDataModel);
                     break;
 
                 case DbTableNames.SalesFrontAdds:
 
                     mDbContext.Update(mDataModel as SalesFrontAddsDataModel);
+                    break;
+
+                case DbTableNames.SystemBackAdds:
+
+                    mDbContext.Update(mDataModel as SystemBackAddsDataModel);
+                    break;
+
+                case DbTableNames.SalesBackAdds:
+
+                    mDbContext.Update(mDataModel as SalesBackAddsDataModel);
                     break;
 
                 default:
@@ -483,10 +504,31 @@ namespace EZDMS.App.Relational
         /// <summary>
         /// Returns all records in front adds table
         /// </summary>
-        public Task<List<FrontAddsDataModel>> GetFrontAddsAsync()
+        public Task<List<SystemFrontAddsDataModel>> GetSystemFrontAddsAsync()
         {
             // Gets all the sales                      
             return Task.FromResult(mDbContext.SystemFrontAdds.Where(e => e.IsActive == true).ToList());
+        }
+
+        /// <summary>
+        /// Returns a single back add record from the sales front adds table
+        /// </summary>
+        /// <param name="dealNumber"></param>
+        /// <returns>SalesBackAddsDataModel</returns>
+        public Task<SalesBackAddsDataModel> GetSalesBackAddsAsync(int dealNumber)
+        {
+            // Gets a single sales record
+            return Task.FromResult(mDbContext.SalesBackAdds.FirstOrDefault(u => u.DealNumber == dealNumber));
+
+        }
+
+        /// <summary>
+        /// Returns all records in back adds table
+        /// </summary>
+        public Task<List<SystemBackAddsDataModel>> GetSystemBackAddsAsync()
+        {
+            // Gets all the sales                      
+            return Task.FromResult(mDbContext.SystemBackAdds.Where(e => e.IsActive == true).ToList());
         }
 
         #endregion

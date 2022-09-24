@@ -70,5 +70,15 @@
         /// The SalesFrontAdds table
         /// <summary>
         SalesFrontAdds = 12,
+
+        /// <summary>
+        /// The System FrontAdds table
+        /// <summary>
+        SystemBackAdds = 13,
+
+        /// <summary>
+        /// The SalesFrontAdds table
+        /// <summary>
+        SalesBackAdds = 14,
     }
 }
