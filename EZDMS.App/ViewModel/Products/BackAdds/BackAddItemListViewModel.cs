@@ -220,16 +220,16 @@ namespace EZDMS.App
         {
             
             // Get all the front adds for the list
-            AddList = await ClientDataStore.GetSystemFrontAddsAsync();
+            AddList = await ClientDataStore.GetSystemBackAddsAsync();
                            
             // Get the deal front adds items
-            var salesFrontAdds = await ClientDataStore.GetSalesFrontAddsAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+            var salesBackAdds = await ClientDataStore.GetSalesBackAddsAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
 
             // Load adds to items collection
-            if (salesFrontAdds == null)
+            if (salesBackAdds == null)
                 Add();
             else
-                LoadSavedAdds(salesFrontAdds);
+                LoadSavedAdds(salesBackAdds);
 
             await Task.Delay(1);
 
@@ -251,13 +251,13 @@ namespace EZDMS.App
                 // Get the deal front adds items
                 var salesAdds = await ClientDataStore.GetSalesFrontAddsAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
 
-                var newSalesAdds = CreateSalesFrontAdds(Items.ToList());
+                var newSalesAdds = CreateSalesBackAdds(Items.ToList());
 
                 // Update the data store
                 if (salesAdds == null)
-                    await ClientDataStore.AddNewSalesRecordAsync(newSalesAdds, DbTableNames.SalesFrontAdds);
+                    await ClientDataStore.AddNewSalesRecordAsync(newSalesAdds, DbTableNames.SalesBackAdds);
                 else
-                    await ClientDataStore.SaveSalesRecordAsync(newSalesAdds, DbTableNames.SalesFrontAdds);
+                    await ClientDataStore.SaveSalesRecordAsync(newSalesAdds, DbTableNames.SalesBackAdds);
 
                 return true;
             
@@ -293,9 +293,9 @@ namespace EZDMS.App
         /// <summary>
         /// Returns a list of a saved front add items
         /// </summary>
-        /// <param name="salesFrontAdds"></param>
+        /// <param name="salesBackAdds"></param>
         /// <returns></returns>
-       private void LoadSavedAdds(SalesFrontAddsDataModel salesAdds)
+       private void LoadSavedAdds(SalesBackAddsDataModel salesAdds)
         {
 
             if (Items == null)
@@ -309,12 +309,12 @@ namespace EZDMS.App
             do
             {
                 i++;
-                if (salesAdds.GetValObjDy($"FrontAdd{i.ToString()}ID") != null)
+                if (salesAdds.GetValObjDy($"BackAdd{i.ToString()}ID") != null)
                 {
-                    var add = new FrontAddItemViewModel
+                    var add = new BackAddItemViewModel
                     {
-                        Items = new ObservableCollection<SystemFrontAddsDataModel>(AddList),
-                        SelectedItem = CurrentAddList.FirstOrDefault(item => item.Id == salesAdds.GetValObjDy($"FrontAdd{i.ToString()}ID").ToString()),
+                        Items = new ObservableCollection<SystemBackAddsDataModel>(AddList),
+                        SelectedItem = CurrentAddList.FirstOrDefault(item => item.Id == salesAdds.GetValObjDy($"BackAdd{i.ToString()}ID").ToString()),
 
                         Retail = (decimal)salesAdds.GetValObjDy($"FrontAdd{i.ToString()}Retail"),
                         Cost = (decimal)salesAdds.GetValObjDy($"FrontAdd{i.ToString()}Cost"),
@@ -348,18 +348,18 @@ namespace EZDMS.App
         
 
         /// <summary>
-        /// Create a sales front add data model
+        /// Create a sales back add data model
         /// </summary>
         /// <param name="adds"></param>
-        /// <returns>SalesFrontAddsDataModel</returns>
-        private SalesFrontAddsDataModel CreateSalesFrontAdds(List<FrontAddItemViewModel> adds)
+        /// <returns>SalesBackAddsDataModel</returns>
+        private SalesBackAddsDataModel CreateSalesBackAdds(List<BackAddItemViewModel> adds)
         {
 
             // check null
             if (adds == null)
                 return null;
 
-            var salesFrontAdds = new SalesFrontAddsDataModel
+            var salesBackAdds = new SalesBackAddsDataModel
             {
                 DealNumber = ViewModelSalesFinance.SalesFinanceDeal.DealNumber,
 
@@ -372,18 +372,18 @@ namespace EZDMS.App
                 
                 i++;
 
-                salesFrontAdds.SetValObjDy($"FrontAdd{i.ToString()}ID", add.SelectedItem.Id);
-                salesFrontAdds.SetValObjDy($"FrontAdd{i.ToString()}Description", add?.SelectedItem.Name);
-                salesFrontAdds.SetValObjDy($"FrontAdd{i.ToString()}Retail", add.Retail);
-                salesFrontAdds.SetValObjDy($"FrontAdd{i.ToString()}Cost", add.Cost);
-                salesFrontAdds.SetValObjDy($"FrontAdd{i.ToString()}InPayment", add.InPayment);
-                salesFrontAdds.SetValObjDy($"FrontAdd{i.ToString()}IsTaxable1", add.Taxable);
+                salesBackAdds.SetValObjDy($"FrontAdd{i.ToString()}ID", add.SelectedItem.Id);
+                salesBackAdds.SetValObjDy($"FrontAdd{i.ToString()}Description", add?.SelectedItem.Name);
+                salesBackAdds.SetValObjDy($"FrontAdd{i.ToString()}Retail", add.Retail);
+                salesBackAdds.SetValObjDy($"FrontAdd{i.ToString()}Cost", add.Cost);
+                salesBackAdds.SetValObjDy($"FrontAdd{i.ToString()}InPayment", add.InPayment);
+                salesBackAdds.SetValObjDy($"FrontAdd{i.ToString()}IsTaxable1", add.Taxable);
 
                
 
             }
 
-            return salesFrontAdds;
+            return salesBackAdds;
                         
          }
 
