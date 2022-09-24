@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EZDMS.App.Core
 {
-    public class FrontAddsDataModel
+    public class SystemBackAddsDataModel
     {
 
         /// <summary>
@@ -36,6 +36,11 @@ namespace EZDMS.App.Core
         /// The is active of this FrontAdds record
         /// <summary>
         public bool IsActive { get; set; }
+
+        /// <summary>
+        /// The type of this FrontAdds record
+        /// <summary>
+        public string Type { get; set; }
 
         /// <summary>
         /// The name of this FrontAdds record

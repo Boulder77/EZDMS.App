@@ -125,29 +125,33 @@
                
                <!-- Payment-->
             <TextBlock Text="Payment"
-                       VerticalAlignment="Center"
                        Grid.Column="4"
+                       VerticalAlignment="Center"                       
                        FontFamily="{StaticResource LatoRegular}"
                        FontSize="{StaticResource FontSizeRegular}"
                    />
 
             <CheckBox Grid.Column="4"
-                          Grid.Row="1"
+                      Grid.Row="1"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center"                     
                       IsChecked="{Binding InPayment}"  
                       />
                
                
                <!-- Taxable -->
             <TextBlock Text="Tax 1"
-                       VerticalAlignment="Center"
                        Grid.Column="5"
+                       VerticalAlignment="Center"                       
                        FontFamily="{StaticResource LatoRegular}"
                        FontSize="{StaticResource FontSizeRegular}"
                    />
 
 
             <CheckBox Grid.Column="5"
-                          Grid.Row="1"
+                      Grid.Row="1"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
                       IsChecked="{Binding Taxable}"  
                       />
 

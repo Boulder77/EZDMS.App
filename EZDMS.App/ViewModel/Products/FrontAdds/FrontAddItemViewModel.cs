@@ -14,7 +14,7 @@ namespace EZDMS.App
     /// <summary>
     /// The view model for the product item control
     /// <summary>
-    public class BackAddItemViewModel : BaseViewModel
+    public class FrontAddItemViewModel : BaseViewModel
     {
 
         #region Private Members
@@ -27,19 +27,19 @@ namespace EZDMS.App
         /// <summary>
         /// The selected front add
         /// </summary>
-        private FrontAddsDataModel mSelectedItem;
+        private SystemFrontAddsDataModel mSelectedItem;
 
         /// <summary>
         /// The list of all active front adds in the system
         /// </summary>
-        protected ObservableCollection<FrontAddsDataModel> mItems;
+        protected ObservableCollection<SystemFrontAddsDataModel> mItems;
 
         #endregion
 
         #region Public Properties
 
 
-        public ObservableCollection<FrontAddsDataModel> Items
+        public ObservableCollection<SystemFrontAddsDataModel> Items
         {
             get => mItems;
             
@@ -56,7 +56,7 @@ namespace EZDMS.App
             }
         }
 
-        public FrontAddsDataModel SelectedItem
+        public SystemFrontAddsDataModel SelectedItem
         {
             get => mSelectedItem;
 
@@ -147,7 +147,7 @@ namespace EZDMS.App
         /// <summary>
         /// Default constructor
         /// <summary>
-        public BackAddItemViewModel()
+        public FrontAddItemViewModel()
         {
            
 
@@ -156,7 +156,7 @@ namespace EZDMS.App
 
         #endregion
 
-        private void UpdateValuesFromDataModel(FrontAddsDataModel frontAdd)
+        private void UpdateValuesFromDataModel(SystemFrontAddsDataModel frontAdd)
         {
             if (frontAdd == null)
                 return;

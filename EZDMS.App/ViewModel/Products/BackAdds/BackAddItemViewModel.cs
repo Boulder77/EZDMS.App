@@ -14,7 +14,7 @@ namespace EZDMS.App
     /// <summary>
     /// The view model for the product item control
     /// <summary>
-    public class FrontAddItemViewModel : BaseViewModel
+    public class BackAddItemViewModel : BaseViewModel
     {
 
         #region Private Members
@@ -27,19 +27,24 @@ namespace EZDMS.App
         /// <summary>
         /// The selected front add
         /// </summary>
-        private FrontAddsDataModel mSelectedItem;
+        private SystemBackAddsDataModel mSelectedItem;
 
         /// <summary>
         /// The list of all active front adds in the system
         /// </summary>
-        protected ObservableCollection<FrontAddsDataModel> mItems;
+        protected ObservableCollection<SystemBackAddsDataModel> mItems;
 
         #endregion
 
         #region Public Properties
 
+        /// <summary>
+        /// The types of back adds
+        /// </summary>
+        public ObservableCollection<string> Types { get; set; }
 
-        public ObservableCollection<FrontAddsDataModel> Items
+
+        public ObservableCollection<SystemBackAddsDataModel> Items
         {
             get => mItems;
             
@@ -56,7 +61,7 @@ namespace EZDMS.App
             }
         }
 
-        public FrontAddsDataModel SelectedItem
+        public SystemBackAddsDataModel SelectedItem
         {
             get => mSelectedItem;
 
@@ -147,7 +152,7 @@ namespace EZDMS.App
         /// <summary>
         /// Default constructor
         /// <summary>
-        public FrontAddItemViewModel()
+        public BackAddItemViewModel()
         {
            
 
@@ -156,16 +161,16 @@ namespace EZDMS.App
 
         #endregion
 
-        private void UpdateValuesFromDataModel(FrontAddsDataModel frontAdd)
+        private void UpdateValuesFromDataModel(SystemBackAddsDataModel backAdd)
         {
-            if (frontAdd == null)
+            if (backAdd == null)
                 return;
              
-            Retail = frontAdd.Retail;
-            Cost = frontAdd.Cost;
+            Retail = backAdd.Retail;
+            Cost = backAdd.Cost;
            
-            Taxable = (bool)frontAdd.IsTaxable;
-            InPayment = (bool)frontAdd.InPayment;          
+            Taxable = (bool)backAdd.IsTaxable;
+            InPayment = (bool)backAdd.InPayment;          
 
         }
                       

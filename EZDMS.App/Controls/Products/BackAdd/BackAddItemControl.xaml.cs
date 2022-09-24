@@ -27,7 +27,19 @@ namespace EZDMS.App
             InitializeComponent();
         }
 
-       
+        private void CbTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Update view model
+            if (DataContext is BackAddItemViewModel viewModel)
+            {
+                viewModel.Items = new ObservableCollection<SystemBackAddsDataModel>(
+                viewModel.Items.Where(item => item.Type == (string)CbTypes.SelectedValue));
+
+            }
+
+        }
+
+
 
 
     }

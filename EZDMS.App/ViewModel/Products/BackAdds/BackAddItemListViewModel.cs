@@ -28,7 +28,7 @@ namespace EZDMS.App
         /// <summary>
         /// The front add datamodel list
         /// </summary>
-        protected List<FrontAddsDataModel> mAddList;
+        protected List<SystemFrontAddsDataModel> mAddList;
 
 
         private FrontAddItemViewModel mSelectedItem;
@@ -62,7 +62,7 @@ namespace EZDMS.App
         /// <summary>
         /// The front add datamodel list
         /// </summary>
-        public List<FrontAddsDataModel> AddList
+        public List<SystemFrontAddsDataModel> AddList
         {
             get => mAddList;
             set
@@ -76,14 +76,14 @@ namespace EZDMS.App
 
                 if (mAddList != null)
                     // Update filtered list to match
-                    CurrentAddList = new List<FrontAddsDataModel>(mAddList);
+                    CurrentAddList = new List<SystemFrontAddsDataModel>(mAddList);
             }
         }
 
         /// <summary>
         /// The chat thread items for the list that include any search filtering
         /// </summary>
-        public List<FrontAddsDataModel> CurrentAddList { get; set; }
+        public List<SystemFrontAddsDataModel> CurrentAddList { get; set; }
 
         /// <summary>
         /// The selected front add from the list
@@ -173,7 +173,7 @@ namespace EZDMS.App
             // New Front Add
             var frontadd = new FrontAddItemViewModel
             {
-                Items = new ObservableCollection<FrontAddsDataModel>(CurrentAddList),
+                Items = new ObservableCollection<SystemFrontAddsDataModel>(CurrentAddList),
                 UpdateAction = UpdateTotalRetailAsync,
                 AddCommand = new RelayCommand(Add),
                 DeleteCommand = DeleteCommand,
@@ -313,7 +313,7 @@ namespace EZDMS.App
                 {
                     var add = new FrontAddItemViewModel
                     {
-                        Items = new ObservableCollection<FrontAddsDataModel>(AddList),
+                        Items = new ObservableCollection<SystemFrontAddsDataModel>(AddList),
                         SelectedItem = CurrentAddList.FirstOrDefault(item => item.Id == salesAdds.GetValObjDy($"FrontAdd{i.ToString()}ID").ToString()),
 
                         Retail = (decimal)salesAdds.GetValObjDy($"FrontAdd{i.ToString()}Retail"),

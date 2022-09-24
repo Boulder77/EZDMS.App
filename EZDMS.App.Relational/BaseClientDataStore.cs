@@ -123,7 +123,7 @@ namespace EZDMS.App.Relational
 
                 case DbTableNames.FrontAdds:
                     // Add new FrontAdds entry
-                    mDbContext.FrontAdds.Add(mDataModel as FrontAddsDataModel);
+                    mDbContext.FrontAdds.Add(mDataModel as SystemFrontAddsDataModel);
                     break;
 
                 case DbTableNames.SalesFrontAdds:
@@ -216,7 +216,7 @@ namespace EZDMS.App.Relational
 
                 case DbTableNames.FrontAdds:
 
-                    mDbContext.Update(mDataModel as FrontAddsDataModel);
+                    mDbContext.Update(mDataModel as SystemFrontAddsDataModel);
                     break;
 
                 case DbTableNames.SalesFrontAdds:
@@ -483,7 +483,7 @@ namespace EZDMS.App.Relational
         /// <summary>
         /// Returns all records in front adds table
         /// </summary>
-        public Task<List<FrontAddsDataModel>> GetFrontAddsAsync()
+        public Task<List<SystemFrontAddsDataModel>> GetFrontAddsAsync()
         {
             // Gets all the sales                      
             return Task.FromResult(mDbContext.FrontAdds.Where(e => e.IsActive == true).ToList());

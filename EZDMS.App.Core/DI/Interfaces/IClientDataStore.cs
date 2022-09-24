@@ -157,7 +157,7 @@ namespace EZDMS.App.Core
         /// <summary>
         /// Returns all records in front adds table
         /// </summary>
-        Task<List<FrontAddsDataModel>> GetFrontAddsAsync();
+        Task<List<SystemFrontAddsDataModel>> GetFrontAddsAsync();
 
         /// <summary>
         /// Returns a single front add record from the sales front adds table

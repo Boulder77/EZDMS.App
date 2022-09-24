@@ -43,17 +43,15 @@
 
 
 
-            <ComboBox  ItemsSource="{Binding Types}"  
-                               Grid.Row="1"
-                               Margin="5,0,0,0"
-                           SelectedItem="{Binding SelectedItem}"
-                           Background="{StaticResource BackgroundVeryLightBrush}"                           
-                           IsSynchronizedWithCurrentItem="True"
-                           DisplayMemberPath="Name"                    
-                           
-                           VerticalAlignment="Center"
-                           FontFamily="{StaticResource LatoRegular}"
-                           />
+            <ComboBox x:Name="CbTypes"
+                       ItemsSource="{Binding Types}"
+                       Grid.Row="1"
+                       Margin="5,0,0,0"                       
+                       Background="{StaticResource BackgroundVeryLightBrush}"                           
+                       IsSynchronizedWithCurrentItem="True"                                         
+                       VerticalAlignment="Center"
+                       FontFamily="{StaticResource LatoRegular}"
+                       />
 
             <TextBlock Text="Name"
                        Grid.Column="1"
@@ -130,22 +128,24 @@
                    />
 
             <CheckBox Grid.Column="4"
-                          Grid.Row="1"
+                      Grid.Row="1"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center"                      
                       IsChecked="{Binding InPayment}"  
-                      />
-               
+                      />               
                
                <!-- Taxable -->
             <TextBlock Text="Tax 1"
-                       VerticalAlignment="Center"
                        Grid.Column="5"
+                       VerticalAlignment="Center"                       
                        FontFamily="{StaticResource LatoRegular}"
                        FontSize="{StaticResource FontSizeRegular}"
-                   />
-
+                       />
 
             <CheckBox Grid.Column="5"
-                          Grid.Row="1"
+                      Grid.Row="1"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center"                     
                       IsChecked="{Binding Taxable}"  
                       />
 
@@ -154,9 +154,7 @@
                         Grid.Row="1"
                         Margin="5"
                         >
-                
-                
-                
+                                              
                 <!-- Delete Button -->
                 <Button Style="{StaticResource IconGrowButton}" 
                         Width="40"

@@ -289,13 +289,13 @@
     <Compile Include="ViewModel\Dialogs\CustomerSelectDialogViewModel.cs" />
     <Compile Include="ViewModel\Input\Design\TextInputDesignModel.cs" />
     <Compile Include="ViewModel\Input\TextInputViewModel.cs" />
-    <Compile Include="ViewModel\Products\Design\FrontAddListDesignModel.cs" />
-    <Compile Include="ViewModel\Products\Design\FrontAddItemDesignModel.cs" />
-    <Compile Include="ViewModel\Products\Design\ProductItemDesignModel.cs" />
-    <Compile Include="ViewModel\Products\BackAddItemViewModel.cs" />
-    <Compile Include="ViewModel\Products\BackAddItemListViewModel.cs" />
-    <Compile Include="ViewModel\Products\FrontAddItemListViewModel.cs" />
-    <Compile Include="ViewModel\Products\FrontAddItemViewModel.cs" />
+    <Compile Include="ViewModel\Products\1Design\FrontAddListDesignModel.cs" />
+    <Compile Include="ViewModel\Products\1Design\FrontAddItemDesignModel.cs" />
+    <Compile Include="ViewModel\Products\1Design\ProductItemDesignModel.cs" />
+    <Compile Include="ViewModel\Products\BackAdds\BackAddItemViewModel.cs" />
+    <Compile Include="ViewModel\Products\BackAdds\BackAddItemListViewModel.cs" />
+    <Compile Include="ViewModel\Products\FrontAdds\FrontAddItemListViewModel.cs" />
+    <Compile Include="ViewModel\Products\FrontAdds\FrontAddItemViewModel.cs" />
     <Compile Include="ViewModel\Products\ProductItemViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\ProductsSalesDialogViewModel.cs" />
     <Compile Include="ViewModel\Sales\Design\TruthInLendingDisclosureDesignModel.cs" />
@@ -723,8 +723,6 @@
   <ItemGroup>
     <Resource Include="Images\Samples\AnayProfile.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\Products\FrontAdds\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
