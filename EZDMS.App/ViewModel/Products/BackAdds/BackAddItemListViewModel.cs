@@ -161,7 +161,7 @@ namespace EZDMS.App
         #region Command Methods
 
         /// <summary>
-        /// Add new front add item to the item list
+        /// Add new back add item to the item list
         /// </summary>
         public void Add()
         {
@@ -170,8 +170,8 @@ namespace EZDMS.App
             if (Items == null)
                 Items = new ObservableCollection<BackAddItemViewModel>();
 
-            // New Front Add
-            var frontadd = new BackAddItemViewModel
+            // New Back Add
+            var backAdd = new BackAddItemViewModel
             {
                 Items = new ObservableCollection<SystemBackAddsDataModel>(CurrentAddList),
                 UpdateAction = UpdateTotalRetailAsync,
@@ -187,12 +187,12 @@ namespace EZDMS.App
             Items.Where(c => c.LastItem).ToList().SetValue(c => c.LastItem = false);
 
             // Add item to both lists
-            Items.Add(frontadd);            
+            Items.Add(backAdd);            
 
         }
 
         /// <summary>
-        /// Add new front add item to the item list
+        /// Delete new front add item to the item list
         /// </summary>
         public void Delete()
         {
@@ -316,10 +316,10 @@ namespace EZDMS.App
                         Items = new ObservableCollection<SystemBackAddsDataModel>(AddList),
                         SelectedItem = CurrentAddList.FirstOrDefault(item => item.Id == salesAdds.GetValObjDy($"BackAdd{i.ToString()}ID").ToString()),
 
-                        Retail = (decimal)salesAdds.GetValObjDy($"FrontAdd{i.ToString()}Retail"),
-                        Cost = (decimal)salesAdds.GetValObjDy($"FrontAdd{i.ToString()}Cost"),
-                        InPayment = (bool)salesAdds.GetValObjDy($"FrontAdd{i.ToString()}InPayment"),
-                        Taxable = (bool)salesAdds.GetValObjDy($"FrontAdd{i.ToString()}InPayment"),
+                        Retail = (decimal)salesAdds.GetValObjDy($"BackAdd{i.ToString()}Retail"),
+                        Cost = (decimal)salesAdds.GetValObjDy($"BackAdd{i.ToString()}Cost"),
+                        InPayment = (bool)salesAdds.GetValObjDy($"BackAdd{i.ToString()}InPayment"),
+                        Taxable = (bool)salesAdds.GetValObjDy($"BackAdd{i.ToString()}InPayment"),
                         UpdateAction = UpdateTotalRetailAsync,
                         AddCommand = new RelayCommand(Add),
                         
@@ -372,14 +372,12 @@ namespace EZDMS.App
                 
                 i++;
 
-                salesBackAdds.SetValObjDy($"FrontAdd{i.ToString()}ID", add.SelectedItem.Id);
-                salesBackAdds.SetValObjDy($"FrontAdd{i.ToString()}Description", add?.SelectedItem.Name);
-                salesBackAdds.SetValObjDy($"FrontAdd{i.ToString()}Retail", add.Retail);
-                salesBackAdds.SetValObjDy($"FrontAdd{i.ToString()}Cost", add.Cost);
-                salesBackAdds.SetValObjDy($"FrontAdd{i.ToString()}InPayment", add.InPayment);
-                salesBackAdds.SetValObjDy($"FrontAdd{i.ToString()}IsTaxable1", add.Taxable);
-
-               
+                salesBackAdds.SetValObjDy($"BackAdd{i.ToString()}ID", add.SelectedItem.Id);
+                salesBackAdds.SetValObjDy($"BackAdd{i.ToString()}Description", add?.SelectedItem.Name);
+                salesBackAdds.SetValObjDy($"BackAdd{i.ToString()}Retail", add.Retail);
+                salesBackAdds.SetValObjDy($"BackAdd{i.ToString()}Cost", add.Cost);
+                salesBackAdds.SetValObjDy($"BackAdd{i.ToString()}InPayment", add.InPayment);
+                salesBackAdds.SetValObjDy($"BackAdd{i.ToString()}IsTaxable1", add.Taxable);
 
             }
 
