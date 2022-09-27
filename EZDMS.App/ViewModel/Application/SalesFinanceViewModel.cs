@@ -11,6 +11,7 @@ using System.Text;
 using static Dna.FrameworkDI;
 using System.Linq.Expressions;
 using System.Diagnostics;
+using System.ComponentModel.DataAnnotations;
 
 namespace EZDMS.App
 {
@@ -493,6 +494,11 @@ namespace EZDMS.App
 
         }
 
+
+
+
+
+
         #endregion
 
         #region Private Helper Methods
@@ -519,8 +525,39 @@ namespace EZDMS.App
                     - salesFinance.TotalRebates
                     - salesFinance.TotalNetAllowance
                     - salesFinance.TotalCashDown;
+
+            switch (salesFinance.CalculationMethod)
+            {
+                
+                case "Federal":
+                    var rateCalc = (salesFinance.APR/100)/12;
+                    var moPct = TotalAmount * rateCalc;
+                    var termCalc = Math.Pow((double)(1 - (1 + rateCalc)),-salesFinance.Term);
+                    var payment = Math.Round((moPct / (decimal)termCalc), 2, MidpointRounding.AwayFromZero);
+                    var principal = TotalAmount / salesFinance.Term;
+                    var interest = payment - principal;
+                    var financeCharge = (payment * salesFinance.Term) - TotalAmount;
+
+                    SalesFinanceDeal.Payment = payment;
+                    SalesFinanceDeal.FinanceCharge = financeCharge;
+
+                    break;
+
+                // Simple Interest
+                default:
+                                        
+                    SalesFinanceDeal.FinanceCharge = (TotalAmount * (SalesFinanceDeal.APR / 100)) * (SalesFinanceDeal.Term / 12);
+                    SalesFinanceDeal.Payment = (TotalAmount + SalesFinanceDeal.FinanceCharge)/ SalesFinanceDeal.Term;
+
+                    break;
+
+
+            }
+
+            SalesFinanceDeal.AmountFinanced = TotalAmount;
                         
-            DeskingTotals = new SalesDeskingTotalsViewModel
+
+        DeskingTotals = new SalesDeskingTotalsViewModel
             {
 
                 SellingPrice = new DecimalInputViewModel 
@@ -1193,6 +1230,12 @@ namespace EZDMS.App
             //SaleVehicle.
 
         }
+
+
+
+
+
+
 
         /// <summary>
         /// Updates a specific value from the client data store for the user profile details

@@ -238,5 +238,10 @@ namespace EZDMS.App.Core
         /// </summary>
         public string BankName { get; set;}
 
+        /// <summary>
+        /// The calculation method associated with this sales record
+        /// </summary>
+        public string CalculationMethod { get; set; }
+
     }
 }
