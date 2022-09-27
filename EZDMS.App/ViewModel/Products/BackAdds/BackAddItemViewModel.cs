@@ -30,7 +30,7 @@ namespace EZDMS.App
         private SystemBackAddsDataModel mSelectedItem;
 
         /// <summary>
-        /// The list of all active front adds in the system
+        /// The list of all active back adds in the system
         /// </summary>
         protected ObservableCollection<SystemBackAddsDataModel> mItems;
 
@@ -39,10 +39,9 @@ namespace EZDMS.App
         #region Public Properties
 
         /// <summary>
-        /// The types of back adds
+        /// The list US States/Providences
         /// </summary>
-        public ObservableCollection<string> Types { get; set; }
-
+        public IEnumerable<BackAddType> Types => Enum.GetValues(typeof(BackAddType)).Cast<BackAddType>();
 
         public ObservableCollection<SystemBackAddsDataModel> Items
         {
