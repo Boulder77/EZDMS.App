@@ -26,17 +26,6 @@ namespace EZDMS.App
         {
             InitializeComponent();
         }
-
-        private void CbProviders_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // Update view model
-            if (DataContext is ProductItemViewModel viewModel)
-            {
-                viewModel.Plans = new ObservableCollection<CoveragePlanDataModel>(
-                viewModel.Plans.Where(item => item.ProviderNumber == (string)cbProviders.SelectedValue));
-
-            }
-
-        }
+       
     }
 }

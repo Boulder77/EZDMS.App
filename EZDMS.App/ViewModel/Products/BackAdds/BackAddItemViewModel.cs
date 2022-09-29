@@ -5,8 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Numerics;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Interop;
 using static EZDMS.App.DI;
 
 namespace EZDMS.App
@@ -27,55 +30,103 @@ namespace EZDMS.App
         /// <summary>
         /// The selected front add
         /// </summary>
-        private SystemBackAddsDataModel mSelectedItem;
+        private SystemBackAddsDataModel mSelectedAdd;
 
         /// <summary>
         /// The list of all active back adds in the system
         /// </summary>
-        protected ObservableCollection<SystemBackAddsDataModel> mItems;
+        protected ObservableCollection<SystemBackAddsDataModel> mBackAdds;
+
+        /// <summary>
+        /// The list of all active back adds in the system
+        /// </summary>
+        protected ObservableCollection<string> mTypes;
+
+        /// <summary>
+        /// The selected back add type
+        /// </summary>
+        private string mSelectedType;
 
         #endregion
 
         #region Public Properties
 
         /// <summary>
-        /// The list US States/Providences
+        /// The list of back add types
         /// </summary>
-        public IEnumerable<BackAddType> Types => Enum.GetValues(typeof(BackAddType)).Cast<BackAddType>();
-
-        public ObservableCollection<SystemBackAddsDataModel> Items
+        public ObservableCollection<string> Types
         {
-            get => mItems;
+            get => mTypes;
+
+            set
+            {
+                // Make sure list has changed
+                if (mTypes == value)
+                    return;
+
+                // Update value
+                mTypes = value;                               
+            }
+        }
+
+        public string SelectedType
+        {
+            get => mSelectedType;
+
+            set
+            {
+                // Make sure list has changed
+                if (mSelectedType == value)
+                    return;
+
+                // Update value
+                mSelectedType = value;
+
+                if (value != null)
+                    // Update the filtered back add list
+                    UpdateValuesOfFilteredAdds(value);
+
+            }
+
+        }
+
+        public ObservableCollection<SystemBackAddsDataModel> BackAdds
+        {
+            get => mBackAdds;
             
             set
             {
                 // Make sure list has changed
-                if (mItems == value)
+                if (mBackAdds == value)
                     return;
 
                 // Update value
-                mItems = value;
-                               
+                mBackAdds = value;
 
+                if (value != null)
+                    FilteredAdds = new ObservableCollection<SystemBackAddsDataModel>(value);
+                
             }
         }
 
-        public SystemBackAddsDataModel SelectedItem
+        public ObservableCollection<SystemBackAddsDataModel> FilteredAdds { get; set; }
+
+        public SystemBackAddsDataModel SelectedAdd
         {
-            get => mSelectedItem;
+            get => mSelectedAdd;
 
             set
             {
                 // Make sure list has changed
-                if (mSelectedItem == value)
+                if (mSelectedAdd == value)
                     return;
 
                 // Update value
-                mSelectedItem = value;
+                mSelectedAdd = value;
 
                 if (value != null)
                     // Update the view model
-                    UpdateValuesFromDataModel(mSelectedItem);
+                    UpdateValuesFromDataModel(mSelectedAdd);
 
             }
 
@@ -172,7 +223,15 @@ namespace EZDMS.App
             InPayment = (bool)backAdd.InPayment;          
 
         }
-                      
+
+        private void UpdateValuesOfFilteredAdds(string type)
+        {
+            
+            FilteredAdds = new ObservableCollection<SystemBackAddsDataModel>(
+                BackAdds.Where(item => item.Type == type));
+
+        }
+
         private void Update()
         {
             // Store the result of a commit call
@@ -202,9 +261,5 @@ namespace EZDMS.App
                 }
             });
         }
-
-
-
-
     }
 }

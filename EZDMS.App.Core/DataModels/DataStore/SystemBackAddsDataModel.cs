@@ -10,12 +10,7 @@ namespace EZDMS.App.Core
         /// <summary>
         /// The number of this FrontAdds record
         /// <summary>
-        public int Number { get; set; }
-
-        /// <summary>
-        /// The prefix i d of this FrontAdds record
-        /// <summary>
-        public string PrefixID { get; set; }
+        public int Number { get; set; }        
 
         /// <summary>
         /// The id of this FrontAdds record

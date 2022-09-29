@@ -42,14 +42,14 @@
 
                 <!---->
                 <StackPanel>
-                    <ComboBox x:Name="cbProviders"  ItemsSource="{Binding Providers}"
-                           DisplayMemberPath="Name"                                                       
-                           SelectedValuePath="Number"
-                           SelectedItem="{Binding SelectedProvider}"
-                           IsSynchronizedWithCurrentItem="True"
-                           Margin="5,10,5,0"
-                           HorizontalContentAlignment="Center"
-                           FontFamily="{StaticResource LatoRegular}"
+                    <ComboBox ItemsSource="{Binding Providers}"
+                              DisplayMemberPath="Name"                                                       
+                              SelectedValuePath="Number"
+                              SelectedItem="{Binding SelectedProvider}"
+                              IsSynchronizedWithCurrentItem="True"
+                              Margin="5,10,5,0"
+                              HorizontalContentAlignment="Center"
+                              FontFamily="{StaticResource LatoRegular}"
                               />
 
                     <!--IsSynchronizedWithCurrentItem="True" 

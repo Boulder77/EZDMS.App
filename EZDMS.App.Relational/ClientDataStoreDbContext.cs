@@ -155,6 +155,8 @@ namespace EZDMS.App.Relational
 
             modelBuilder.Entity<SystemFrontAddsDataModel>().Property(p => p.Id).HasComputedColumnSql("[PreFixID]+right('100'+CONVERT([nvarchar](4),[Number]),(4))");
 
+            modelBuilder.Entity<SystemBackAddsDataModel>().Property(p => p.Id).HasComputedColumnSql("'BA'+right('100'+CONVERT([nvarchar](4),[Number]),(4))");
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

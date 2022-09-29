@@ -31,7 +31,7 @@ namespace EZDMS.App
             {
                  new BackAddItemViewModel
                     {
-                        SelectedItem = new SystemBackAddsDataModel { Name = "Bedliner- Drop In" },
+                        SelectedAdd = new SystemBackAddsDataModel { Name = "Bedliner- Drop In" },
                         Retail = 999.00m,
                         Cost = 650.00m,
                         InPayment = true,
@@ -40,7 +40,7 @@ namespace EZDMS.App
 
                  new BackAddItemViewModel
                     {
-                        SelectedItem = new SystemBackAddsDataModel { Name = "Step bar" },
+                        SelectedAdd = new SystemBackAddsDataModel { Name = "Step bar" },
                         Retail = 259.00m,
                         Cost = 120.00m,
                         InPayment = true,

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Windows.Input;
 using System.Threading.Tasks;
 using Prism.Commands;
+using Newtonsoft.Json.Linq;
 
 namespace EZDMS.App
 {
@@ -139,12 +140,12 @@ namespace EZDMS.App
             {
                 var item = argument as BackAddItemViewModel;
 
-                CurrentAddList.Add(item.SelectedItem);
+                CurrentAddList.Add(item.SelectedAdd);
 
                 Items.Remove(item);
 
                 // Set last item flag
-                if (Items.Count < 10)
+                if (Items.Count < 10 && Items.Count > 0)
                     Items.Last().LastItem = true;
 
                 // Update the total
@@ -170,10 +171,15 @@ namespace EZDMS.App
             if (Items == null)
                 Items = new ObservableCollection<BackAddItemViewModel>();
 
+            //var types = AddList.Select(e => e.Type).Distinct().ToList();
+
             // New Back Add
             var backAdd = new BackAddItemViewModel
             {
-                Items = new ObservableCollection<SystemBackAddsDataModel>(CurrentAddList),
+                BackAdds = new ObservableCollection<SystemBackAddsDataModel>(CurrentAddList),
+                  
+                // Set back add type list                
+                Types = new ObservableCollection<string>(AddList.Select(e => e.Type).Distinct().ToList()),
                 UpdateAction = UpdateTotalRetailAsync,
                 AddCommand = new RelayCommand(Add),
                 DeleteCommand = DeleteCommand,
@@ -249,7 +255,7 @@ namespace EZDMS.App
             {
 
                 // Get the deal front adds items
-                var salesAdds = await ClientDataStore.GetSalesFrontAddsAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+                var salesAdds = await ClientDataStore.GetSalesBackAddsAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
 
                 var newSalesAdds = CreateSalesBackAdds(Items.ToList());
 
@@ -263,11 +269,7 @@ namespace EZDMS.App
             
             });
 
-           
-            
         }
-
-
 
         public async Task<bool> UpdateTotalRetailAsync()
         {
@@ -313,21 +315,20 @@ namespace EZDMS.App
                 {
                     var add = new BackAddItemViewModel
                     {
-                        Items = new ObservableCollection<SystemBackAddsDataModel>(AddList),
-                        SelectedItem = CurrentAddList.FirstOrDefault(item => item.Id == salesAdds.GetValObjDy($"BackAdd{i.ToString()}ID").ToString()),
-
+                        BackAdds = new ObservableCollection<SystemBackAddsDataModel>(AddList),
+                        SelectedAdd = CurrentAddList.FirstOrDefault(item => item.Id == salesAdds.GetValObjDy($"BackAdd{i.ToString()}ID").ToString()),
+                        Types = new ObservableCollection<string>(AddList.Select(e => e.Type).Distinct().ToList()),
+                        SelectedType = CurrentAddList.FirstOrDefault(item => item.Id == salesAdds.GetValObjDy($"BackAdd{i.ToString()}ID").ToString()).Type,
                         Retail = (decimal)salesAdds.GetValObjDy($"BackAdd{i.ToString()}Retail"),
                         Cost = (decimal)salesAdds.GetValObjDy($"BackAdd{i.ToString()}Cost"),
                         InPayment = (bool)salesAdds.GetValObjDy($"BackAdd{i.ToString()}InPayment"),
                         Taxable = (bool)salesAdds.GetValObjDy($"BackAdd{i.ToString()}InPayment"),
                         UpdateAction = UpdateTotalRetailAsync,
-                        AddCommand = new RelayCommand(Add),
-                        
-
-
+                        AddCommand = new RelayCommand(Add),                       
                     };
+
                     Items.Add(add);
-                    CurrentAddList.Remove(add.SelectedItem);
+                    CurrentAddList.Remove(add.SelectedAdd);
                 }
                 else
                     done = true;
@@ -372,8 +373,8 @@ namespace EZDMS.App
                 
                 i++;
 
-                salesBackAdds.SetValObjDy($"BackAdd{i.ToString()}ID", add.SelectedItem.Id);
-                salesBackAdds.SetValObjDy($"BackAdd{i.ToString()}Description", add?.SelectedItem.Name);
+                salesBackAdds.SetValObjDy($"BackAdd{i.ToString()}ID", add.SelectedAdd.Id);
+                salesBackAdds.SetValObjDy($"BackAdd{i.ToString()}Description", add?.SelectedAdd.Name);
                 salesBackAdds.SetValObjDy($"BackAdd{i.ToString()}Retail", add.Retail);
                 salesBackAdds.SetValObjDy($"BackAdd{i.ToString()}Cost", add.Cost);
                 salesBackAdds.SetValObjDy($"BackAdd{i.ToString()}InPayment", add.InPayment);

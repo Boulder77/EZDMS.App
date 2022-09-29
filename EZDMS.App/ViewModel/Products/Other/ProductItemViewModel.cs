@@ -29,10 +29,7 @@ namespace EZDMS.App
         /// </summary>
         protected ObservableCollection<CoveragePlanDataModel> mPlans;
 
-
-
         #endregion
-
 
         #region Public Properties
 

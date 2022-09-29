@@ -4,13 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EZDMS.App"
-             mc:Ignorable="d" 
-             
+             mc:Ignorable="d"              
              d:DesignHeight="80" d:DesignWidth="910">
-
-    
-        
-        
 
     <Border x:Name="background"  Background="Transparent"
                     CornerRadius="5">
@@ -43,41 +38,33 @@
 
 
 
-            <ComboBox x:Name="CbTypes"
-                       ItemsSource="{Binding Types}"
-                       Grid.Row="1"
-                       Margin="5,0,0,0"                       
-                       Background="{StaticResource BackgroundVeryLightBrush}"                           
-                       IsSynchronizedWithCurrentItem="True"                                         
-                       VerticalAlignment="Center"
-                       FontFamily="{StaticResource LatoRegular}"
-                       />
+            <ComboBox ItemsSource="{Binding Types}"
+                      SelectedItem="{Binding SelectedType}"
+                      Grid.Row="1"
+                      Margin="5,0,0,0"                       
+                      Background="{StaticResource BackgroundVeryLightBrush}"                       
+                      VerticalAlignment="Center"
+                      FontFamily="{StaticResource LatoRegular}"
+                      />
 
             <TextBlock Text="Name"
                        Grid.Column="1"
                        VerticalAlignment="Center"
                        FontFamily="{StaticResource LatoRegular}"
                        FontSize="{StaticResource FontSizeRegular}"
-                   />
+                       />
 
-
-
-            <ComboBox  ItemsSource="{Binding Items}"  
-                           Grid.Column="1"
-                           Grid.Row="1" 
-                           Margin="5,0,0,0"
-                           SelectedItem="{Binding SelectedItem}"
-                           Background="{StaticResource BackgroundVeryLightBrush}"                           
-                           IsSynchronizedWithCurrentItem="True"
-                           DisplayMemberPath="Name"                    
-                           
-                           VerticalAlignment="Center"
-                           FontFamily="{StaticResource LatoRegular}"
-                           />
-
-
-
-
+            <ComboBox  ItemsSource="{Binding FilteredAdds}"  
+                       Grid.Column="1"
+                       Grid.Row="1" 
+                       Margin="5,0,0,0"
+                       SelectedItem="{Binding SelectedAdd}"
+                       Background="{StaticResource BackgroundVeryLightBrush}"                           
+                       IsSynchronizedWithCurrentItem="True"
+                       DisplayMemberPath="Name"  
+                       VerticalAlignment="Center"
+                       FontFamily="{StaticResource LatoRegular}"
+                       />
 
             <!-- Retail -->
 
