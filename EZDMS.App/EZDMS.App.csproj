@@ -702,7 +702,7 @@
       <Version>1.0.7.19</Version>
     </PackageReference>
     <PackageReference Include="Fody">
-      <Version>6.6.3</Version>
+      <Version>6.6.4</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
@@ -719,7 +719,7 @@
       <Version>8.1.97</Version>
     </PackageReference>
     <PackageReference Include="PropertyChanged.Fody">
-      <Version>3.4.1</Version>
+      <Version>4.1.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
