@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Eventing.Reader;
 using System.Globalization;
 using System.Windows;
 
@@ -11,17 +12,19 @@ namespace EZDMS.App
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+                      
             // Get the number passed in
             var _decimal = (decimal)value;
                         
-            // return as string to money field
-            
+            // return as string to money field            
             return (_decimal).ToString("#,###.00");
+            
         }
 
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
+
         }
     }
 }
