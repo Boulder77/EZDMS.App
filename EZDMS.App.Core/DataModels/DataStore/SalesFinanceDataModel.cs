@@ -6,7 +6,20 @@ namespace EZDMS.App.Core
     /// The data model for the sales deal to recall
     /// </summary>
     public class SalesFinanceDataModel
-    {    
+    {
+
+        #region Private members
+
+        /// <summary>
+        /// The calculation method for the sales record
+        /// </summary>
+        private string mCalculationMethod = "Simple Interest";
+
+        #endregion
+
+        #region Public Properties
+
+
         /// <summary>
         /// The deal number for the sales record
         /// </summary>
@@ -236,12 +249,25 @@ namespace EZDMS.App.Core
         /// <summary>
         /// The bank name associated with this sales record
         /// </summary>
-        public string BankName { get; set;}
+        public string BankName { get; set; }
 
         /// <summary>
         /// The calculation method associated with this sales record
         /// </summary>
-        public string CalculationMethod { get; set; }
+        public string CalculationMethod
+        {
+            get => mCalculationMethod;
+            set
+            {
+                if (mCalculationMethod == value)
+                    return;
+
+                mCalculationMethod = value;
+
+            }
+        }
+
+        #endregion
 
     }
 }
