@@ -166,11 +166,11 @@ namespace EZDMS.App
             if (!(salesDeal is SalesDealsItemDataModel))
                 return;
 
-            ViewModelSalesFinance.SalesDealsItem = (SalesDealsItemDataModel)salesDeal;
-            ViewModelSalesFinance.SalesFinanceDeal = await ClientDataStore.GetSalesFinanceDealAsync(mDealNumber);
+            ViewModelSalesFinance.SalesDealsItem = (SalesDealsItemDataModel)salesDeal;            
             ViewModelSalesFinance.Customer = await ClientDataStore.GetCustomerAsync(ViewModelSalesFinance.SalesDealsItem?.BuyerNumber);
             ViewModelSalesFinance.SecondCustomer = await ClientDataStore.GetCustomerAsync(ViewModelSalesFinance.SalesDealsItem?.CoBuyerNumber);
             ViewModelSalesFinance.SaleVehicle = await ClientDataStore.GetVehicleInventoryAsync(ViewModelSalesFinance.SalesDealsItem?.StockNumber);
+            ViewModelSalesFinance.SalesFinanceDeal = await ClientDataStore.GetSalesFinanceDealAsync(mDealNumber);
 
             // Go to sales desking page
             ViewModelApplication.GoToPage(ApplicationPage.SalesFinance, ViewModelSalesFinance);

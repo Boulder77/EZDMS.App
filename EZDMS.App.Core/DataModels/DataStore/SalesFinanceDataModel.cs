@@ -15,6 +15,11 @@ namespace EZDMS.App.Core
         /// </summary>
         private string mCalculationMethod = "Simple Interest";
 
+        /// <summary>
+        /// The default value for finance term
+        /// </summary>
+        private int mTerm = 48;
+
         #endregion
 
         #region Public Properties
@@ -54,12 +59,7 @@ namespace EZDMS.App.Core
         /// The effective APR for this sales record
         /// </summary>
         public decimal EffectiveAPR { get; set; }
-
-        /// <summary>
-        /// The term in months for this sales record
-        /// </summary>
-        public int Term { get; set; }
-
+         
         /// <summary>
         /// The finance charge for this sales record
         /// </summary>
@@ -265,6 +265,23 @@ namespace EZDMS.App.Core
                 mCalculationMethod = value;
 
             }
+        }
+
+        /// <summary>
+        /// The term in months for this sales record
+        /// </summary>
+        public int Term
+        { 
+            
+            get=> mTerm;
+
+            set
+            {
+                if (mTerm == value)
+                    return;
+
+                mTerm = value;
+             }
         }
 
         #endregion

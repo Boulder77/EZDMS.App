@@ -90,77 +90,63 @@ namespace EZDMS.App
         /// </summary>
         public SalesSummaryViewModel()
         {
-            //// Create the APR
-            //APR = new TextInputViewModel
-            //{
-            //    Label="APR",
-            //    Text="0.00"
+            // Create the APR
+            APR = new TextInputViewModel
+            {
+                Label = "APR",
+                Text = "0.00"
 
-            //};
+            };
 
-            //// Create the APR
-            //EffectiveAPR = new TextInputViewModel
-            //{
-            //    Label = "Effective APR",
-            //    Text = "0.00"
+            // Create the APR
+            EffectiveAPR = new TextInputViewModel
+            {
+                Label = "Effective APR",
+                Text = "0.00"
 
-            //};
+            };
 
-            //// Create the trade difference
-            //TradeDifference = new TextInputViewModel
-            //{
-            //    Label = "Trade Difference",
-            //    Text = "0.00"
+            // Create the trade difference
+            TradeDifference = new TextInputViewModel
+            {
+                Label = "Trade Difference",
+                Text = "0.00"
 
-            //};
+            };
 
-            //// Create the term
-            //Term = new TextInputViewModel
-            //{
-            //    Label = "Term",
-            //    Text="48"
+            // Create the term
+            Term = new TextInputViewModel
+            {
+                Label = "Term",
+                Text = "48"
 
-            //};
+            };
 
-            //// Create the purchase date
-            //PurchaseDate = new DateSelectionViewModel
-            //{
-            //    Label = "Purchase Date",
-            //    Date = DateTime.Today
-            //};
+            // Create the purchase date
+            PurchaseDate = new DateSelectionViewModel
+            {
+                Label = "Purchase Date",
+                Date = DateTime.Today
+            };
 
-            //// Create the days to first payment
-            //DaysToFirstPayment = new TextInputViewModel
-            //{
-            //    Label = "Days To First Payment",
-            //    Text = "30"
-            //};
+            // Create the days to first payment
+            DaysToFirstPayment = new TextInputViewModel
+            {
+                Label = "Days To First Payment",
+                Text = "30"
+            };
 
-            //// Create the payment date
-            //PaymentDate = new DateSelectionViewModel
-            //{
-            //    Label = "Payment Date",
-            //    Date = DateTime.Today.AddMonths(30)
-            //};
-
-
-
-
-
-
-
-
-
-
-
+            // Create the payment date
+            PaymentDate = new DateSelectionViewModel
+            {
+                Label = "Payment Date",
+                Date = DateTime.Today.AddMonths(30)
+            };
 
         }
 
         #endregion
-
-
-
-
+     
     }
 
 }

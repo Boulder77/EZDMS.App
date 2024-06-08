@@ -29,7 +29,7 @@
                     <TextBlock Text="Loading"
                        Foreground="{StaticResource WordVeryLightBlueBrush}"
                        FontFamily="{StaticResource LatoBold}"
-                       FontSize="{StaticResource FontSizeXXLarge}"
+                       FontSize="{StaBticResource FontSizeXXLarge}"
                        HorizontalAlignment="Center"
                        />
 

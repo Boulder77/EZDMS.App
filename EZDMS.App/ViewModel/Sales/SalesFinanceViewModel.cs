@@ -324,12 +324,17 @@ namespace EZDMS.App
             // Lock this command to ignore any other requests while processing
             await RunCommandAsync(() => SalesFinancePageLoading, async () => {
 
+                
+
                 await Task.Delay(1);
                 UpdateValuesOfDeskingTotals(SalesFinanceDeal);
                 UpdateValuesOfSalesSummary(SalesFinanceDeal);
                 UpdateValuesOfTruthinLending(SalesFinanceDeal);
-                                
+
                 //UpdateValuesOfSalesDealCard(SalesDealsItem);
+
+                
+
                 return Task.CompletedTask;
             });
 
@@ -340,13 +345,17 @@ namespace EZDMS.App
             // Lock this command to ignore any other requests while processing
             await RunCommandAsync(() => SalesFinancePageLoading, async () => {
 
-                await ClientDataStore.SaveSalesRecordAsync(SalesFinanceDeal, DbTableNames.SalesFinance);
+                // Update data model
+                await Task.Run(UpdateSalesFinanceDM);
+                                
                 UpdateValuesOfDeskingTotals(SalesFinanceDeal);
                 UpdateValuesOfSalesSummary(SalesFinanceDeal);
                 UpdateValuesOfTruthinLending(SalesFinanceDeal);
 
+                await ClientDataStore.SaveSalesRecordAsync(SalesFinanceDeal, DbTableNames.SalesFinance);
+
                 //UpdateValuesOfSalesDealCard(SalesDealsItem);
-                
+
             });
 
         }
@@ -411,6 +420,11 @@ namespace EZDMS.App
             {
                 // Update data model
                 await Task.Run(UpdateVehicleDM);
+
+                // Update sales finance view model
+
+                await UpdateFinanceAsync();
+
 
                 // Save to datastore
                 await ClientDataStore.SaveSalesRecordAsync(SaleVehicle, DbTableNames.VehicleInventory);
@@ -506,7 +520,8 @@ namespace EZDMS.App
         private void UpdateValuesOfDeskingTotals(SalesFinanceDataModel salesFinance)
         {
             if (salesFinance == null)
-                return;
+                return;                    
+
 
             // The amount to bind for the subtotal NumericalEntryViewModel
             var SubTotalAmount = salesFinance.SellingPrice
@@ -695,7 +710,7 @@ namespace EZDMS.App
                 APR = new TextInputViewModel
                 {
                     Label = "APR",
-                    Text = salesFinance.APR.ToString("#.00")
+                    Text = salesFinance.APR.ToString("#0.00")
                 },
 
                 // Create the APR
@@ -703,7 +718,7 @@ namespace EZDMS.App
 
                 {
                     Label = "Effective APR",
-                    Text = salesFinance.EffectiveAPR.ToString("#.00")
+                    Text = salesFinance.EffectiveAPR.ToString("#0.00")
 
                 },
 
@@ -1049,7 +1064,8 @@ namespace EZDMS.App
                 ExteriorColor = new TextInputViewModel { Label = "Exterior Color", Text = Vehicle?.Color },
                 InteriorColor = new TextInputViewModel { Label = "Interior Color", Text = Vehicle?.InteriorColor },
                 Class = new TextInputViewModel { Label = "Class", Text = Vehicle?.Class },
-                Odometer = new TextInputViewModel { Label = "Odometer", Text = $"{Vehicle?.Odometer} miles" },
+                //Odometer = new TextInputViewModel { Label = "Odometer", Text = $"{Vehicle?.Odometer} miles" },
+                Odometer = new TextInputViewModel { Label = "Odometer", Text = Vehicle?.Odometer.ToString() },
                 OdometerStatus = new TextInputViewModel { Label = "Odometer Status", Text = Vehicle?.OdometerStatus },
                 HasFactoryWarranty = (bool)Vehicle?.HasFactoryWarranty               
             };
@@ -1228,6 +1244,19 @@ namespace EZDMS.App
             SaleVehicle.DealerPackPercentage = VehiclePricing.DealerPackPercentage.Amount;
             
             //SaleVehicle.
+
+        }
+
+        private void UpdateSalesFinanceDM()
+        {
+
+            // Update salesFinance view model
+
+
+            SalesFinanceDeal.SellingPrice = SaleVehicle.ListPrice;
+            SalesFinanceDeal.Term = Convert.ToInt32(SalesSummary.Term.Text);
+            SalesFinanceDeal.APR = Convert.ToDecimal(SalesSummary.APR.Text);
+
 
         }
 
