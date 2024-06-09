@@ -14,6 +14,13 @@ namespace EZDMS.App
     /// </summary>
     public class SalesSummaryViewModel : BaseViewModel
     {
+
+        /// <summary>
+        /// The number of days to first payment
+        /// </summary>
+        private int mDaysToFirstPayment = 30;
+
+
         
         #region Public Properties
        
@@ -74,13 +81,12 @@ namespace EZDMS.App
         /// The number of days to the first payment of the sale
         /// </summary>
         public TextInputViewModel DaysToFirstPayment { get; set; }
-
+                       
         /// <summary>
         /// The payment date of the sale
         /// </summary>
         public DateSelectionViewModel PaymentDate { get; set; }
-
-        
+                
         #endregion
 
         #region Constructor

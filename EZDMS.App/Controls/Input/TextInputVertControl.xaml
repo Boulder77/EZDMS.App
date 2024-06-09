@@ -27,7 +27,7 @@
             <!-- Label -->
             <TextBlock Text="{Binding Label}"
                        Name="Label"
-                       Margin="15 12"
+                       Margin="15 8"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        FontFamily="{StaticResource LatoRegular}"
@@ -40,7 +40,7 @@
                      Grid.Row="1"
                      FontSize="{StaticResource FontSizeRegular}"
                      Padding="2"
-                     Margin="10 10 15 8"
+                     Margin="10 8 10 8"
                      />
                   
         </Grid>
