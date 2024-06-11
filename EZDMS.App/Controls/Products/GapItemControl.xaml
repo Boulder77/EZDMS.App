@@ -99,7 +99,7 @@
                      />
 
             </StackPanel>
-            <local:NumericalInputVertControl Grid.Column="4" DataContext="{Binding Cost}"/>
+            <local:DecimalInputVertControl Grid.Column="4" DataContext="{Binding Cost}"/>
             <StackPanel Grid.Column="5" Margin="8">
                 <Label Content="Payment"/>
                 <CheckBox Grid.Column="5"

@@ -38,33 +38,33 @@
 
             <StackPanel  Grid.Row="1" >
 
-                <local:NumericalInputVertControl DataContext="{Binding MSRP}" />
-                <local:NumericalInputVertControl DataContext="{Binding DealerPack}" />
-                <local:NumericalInputVertControl DataContext="{Binding ACV}" />
+                <local:DecimalInputVertControl DataContext="{Binding MSRP}" />
+                <local:DecimalInputVertControl DataContext="{Binding DealerPack}" />
+                <local:DecimalInputVertControl DataContext="{Binding ACV}" />
 
             </StackPanel>
 
             <StackPanel Grid.Row="1" Grid.Column="1" >
 
-                <local:NumericalInputVertControl DataContext="{Binding ListPrice}" />
-                <local:NumericalInputVertControl DataContext="{Binding DealerPackPercentage}" />
-                <local:NumericalInputVertControl DataContext="{Binding BuyerFee}" />
+                <local:DecimalInputVertControl DataContext="{Binding ListPrice}" />
+                <local:DecimalInputVertControl DataContext="{Binding DealerPackPercentage}" />
+                <local:DecimalInputVertControl DataContext="{Binding BuyerFee}" />
                 
 
             </StackPanel>
 
             <StackPanel  Grid.Row="1" Grid.Column="2" >
 
-                <local:NumericalInputVertControl DataContext="{Binding InternetPrice}" />
-                <local:NumericalInputVertControl DataContext="{Binding Reconditioning}" />
-                <local:NumericalInputVertControl DataContext="{Binding Advertising}" />
+                <local:DecimalInputVertControl DataContext="{Binding InternetPrice}" />
+                <local:DecimalInputVertControl DataContext="{Binding Reconditioning}" />
+                <local:DecimalInputVertControl DataContext="{Binding Advertising}" />
 
             </StackPanel>
             <StackPanel  Grid.Row="1" Grid.Column="3" >
 
-                <local:NumericalInputVertControl DataContext="{Binding InvoicePrice}" />
-                <local:NumericalInputVertControl DataContext="{Binding Holdback}" />
-                <local:NumericalInputVertControl DataContext="{Binding AccountingCost}" />
+                <local:DecimalInputVertControl DataContext="{Binding InvoicePrice}" />
+                <local:DecimalInputVertControl DataContext="{Binding Holdback}" />
+                <local:DecimalInputVertControl DataContext="{Binding AccountingCost}" />
 
             </StackPanel>
 

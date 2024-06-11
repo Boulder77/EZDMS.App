@@ -8,7 +8,7 @@ namespace EZDMS.App
     /// <summary>
     /// Interaction logic for NumericalInputHorizControl.xaml
     /// </summary>
-    public partial class NumericalInputHorizControl : UserControl
+    public partial class DecimalInputHorizControl : UserControl
     {
         #region Dependency Properties
 
@@ -23,7 +23,7 @@ namespace EZDMS.App
 
         // Using a DependencyProperty as the backing store for LabelWidth.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LabelWidthProperty =
-            DependencyProperty.Register("LabelWidth", typeof(GridLength), typeof(NumericalInputHorizControl), new PropertyMetadata(GridLength.Auto, LabelWidthChangedCallback));
+            DependencyProperty.Register("LabelWidth", typeof(GridLength), typeof(DecimalInputHorizControl), new PropertyMetadata(GridLength.Auto, LabelWidthChangedCallback));
 
         #endregion
 
@@ -32,7 +32,7 @@ namespace EZDMS.App
         /// <summary>
         /// Default constructor
         /// </summary>
-        public NumericalInputHorizControl()
+        public DecimalInputHorizControl()
         {
             InitializeComponent();
         }
@@ -51,7 +51,7 @@ namespace EZDMS.App
             try
             {
                 // Set the column definition width to the new value
-                (d as NumericalInputHorizControl).LabelColumnDefinition.Width = (GridLength)e.NewValue;
+                (d as DecimalInputHorizControl).LabelColumnDefinition.Width = (GridLength)e.NewValue;
             }
 
 // Making ex available for developer on break
@@ -62,7 +62,7 @@ namespace EZDMS.App
                 // Make developer aware of potential issue
                 Debugger.Break();
 
-                (d as NumericalInputHorizControl).LabelColumnDefinition.Width = GridLength.Auto;
+                (d as DecimalInputHorizControl).LabelColumnDefinition.Width = GridLength.Auto;
             }
         }
 

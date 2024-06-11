@@ -1,7 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace EZDMS.App
 {
@@ -54,7 +65,7 @@ namespace EZDMS.App
                 (d as NumericalInputVertControl).LabelColumnDefinition.Width = (GridLength)e.NewValue;
             }
 
-// Making ex available for developer on break
+            // Making ex available for developer on break
 #pragma warning disable CS0168
             catch (Exception ex)
 #pragma warning restore CS0168

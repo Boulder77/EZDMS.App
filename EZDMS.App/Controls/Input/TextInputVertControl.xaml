@@ -36,6 +36,7 @@
             <!-- Content -->
             <TextBox Text="{Binding Text}"
                      IsEnabled="{Binding Editable}"
+                     local:FocusAndSelectProperty.Value ="{Binding Editable}"
                      Background="Transparent"
                      Grid.Row="1"
                      FontSize="{StaticResource FontSizeRegular}"

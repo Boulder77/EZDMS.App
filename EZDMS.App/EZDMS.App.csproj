@@ -128,14 +128,17 @@
     <Compile Include="Controls\Input\ComboBoxSelectionControl.xaml.cs">
       <DependentUpon>ComboBoxSelectionControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Input\NumericalInputVertControl.cs">
+    <Compile Include="Controls\Input\DecimalInputVertControl.cs">
+      <DependentUpon>DecimalInputVertControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Input\NumericalInputVertControl.xaml.cs">
       <DependentUpon>NumericalInputVertControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Input\PasswordEntryControl.xaml.cs">
       <DependentUpon>PasswordEntryControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Input\NumericalInputHorizControl.cs">
-      <DependentUpon>NumericalInputHorizControl.xaml</DependentUpon>
+    <Compile Include="Controls\Input\DecimalInputHorizControl.cs">
+      <DependentUpon>DecimalInputHorizControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Input\TextInputVertControl.cs">
       <DependentUpon>TextInputVertControl.xaml</DependentUpon>
@@ -287,6 +290,8 @@
     <Compile Include="ViewModel\Dialogs\VehicleSelectDialogViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\Design\ProductSalesDesignModel.cs" />
     <Compile Include="ViewModel\Dialogs\CustomerSelectDialogViewModel.cs" />
+    <Compile Include="ViewModel\Input\Design\NumericalInputDesignModel.cs" />
+    <Compile Include="ViewModel\Input\NumericalInputViewModel.cs" />
     <Compile Include="ViewModel\Input\Design\TextInputDesignModel.cs" />
     <Compile Include="ViewModel\Input\TextInputViewModel.cs" />
     <Compile Include="ViewModel\Products\BackAdds\Design\BackAddItemDesignModel.cs" />
@@ -425,15 +430,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Input\NumericalInputVertControl.xaml">
+    <Page Include="Controls\Input\DecimalInputVertControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Input\NumericalInputVertControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Input\PasswordEntryControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Input\NumericalInputHorizControl.xaml">
+    <Page Include="Controls\Input\DecimalInputHorizControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -43,14 +43,14 @@
                     Background="{StaticResource BackgroundVeryLightBrush}"
                     >
             
-            <local:NumericalInputHorizControl DataContext="{Binding SellingPrice}"/>
-            <local:NumericalInputHorizControl DataContext="{Binding FrontOptions}"/>
-            <local:NumericalInputHorizControl DataContext="{Binding Taxes}"/>
-            <local:NumericalInputHorizControl DataContext="{Binding Fees}"/>
-            <local:NumericalInputHorizControl DataContext="{Binding BackOptions}"/>
-            <local:NumericalInputHorizControl DataContext="{Binding Service}"/>
-            <local:NumericalInputHorizControl DataContext="{Binding Gap}"/>
-            <local:NumericalInputHorizControl DataContext="{Binding CreditInsurance}"/>          
+            <local:DecimalInputHorizControl DataContext="{Binding SellingPrice}"/>
+            <local:DecimalInputHorizControl DataContext="{Binding FrontOptions}"/>
+            <local:DecimalInputHorizControl DataContext="{Binding Taxes}"/>
+            <local:DecimalInputHorizControl DataContext="{Binding Fees}"/>
+            <local:DecimalInputHorizControl DataContext="{Binding BackOptions}"/>
+            <local:DecimalInputHorizControl DataContext="{Binding Service}"/>
+            <local:DecimalInputHorizControl DataContext="{Binding Gap}"/>
+            <local:DecimalInputHorizControl DataContext="{Binding CreditInsurance}"/>          
             
         </StackPanel>
 
@@ -73,10 +73,10 @@
                     Background="{StaticResource BackgroundVeryLightBrush}"
                     >
 
-            <local:NumericalInputHorizControl DataContext="{Binding Cash}"/>
-            <local:NumericalInputHorizControl DataContext="{Binding Rebates}"/>
-            <local:NumericalInputHorizControl DataContext="{Binding TradeAllowance}"/>
-            <local:NumericalInputHorizControl DataContext="{Binding TradePayoff}"/>            
+            <local:DecimalInputHorizControl DataContext="{Binding Cash}"/>
+            <local:DecimalInputHorizControl DataContext="{Binding Rebates}"/>
+            <local:DecimalInputHorizControl DataContext="{Binding TradeAllowance}"/>
+            <local:DecimalInputHorizControl DataContext="{Binding TradePayoff}"/>            
 
         </StackPanel>
 
