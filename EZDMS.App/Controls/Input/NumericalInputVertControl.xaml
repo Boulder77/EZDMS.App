@@ -70,7 +70,7 @@
 
             <!-- Edit Content -->
             <TextBox Text="{Binding Number}"
-                   Background="Transparent"
+                   Background="Transparent"                   
                    Grid.Row="1"
                    FontSize="{StaticResource FontSizeRegular}"
                    Padding="2"

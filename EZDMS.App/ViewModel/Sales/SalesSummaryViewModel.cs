@@ -15,15 +15,31 @@ namespace EZDMS.App
     public class SalesSummaryViewModel : BaseViewModel
     {
 
+
         /// <summary>
-        /// The number of days to first payment
+        /// The term of the sale
         /// </summary>
-        private int mDaysToFirstPayment = 30;
+        private NumericalInputViewModel mTerm;
+
+        /// <summary>
+        /// The APR of the sale
+        /// </summary>
+        private DecimalInputViewModel mAPR;
+
+        /// <summary>
+        /// The effective APR of the sale
+        /// </summary>
+        private DecimalInputViewModel mEffectiveAPR;
+
+        /// <summary>
+        /// The number of days to the first payment of the sale
+        /// </summary>
+        private NumericalInputViewModel mDaysToFirstPayment;
 
 
-        
+
         #region Public Properties
-       
+
         /// <summary>
         /// The sale type of the sale deal
         /// </summary>
@@ -48,12 +64,12 @@ namespace EZDMS.App
         /// <summary>
         /// The APR of the sale
         /// </summary>
-        public TextInputViewModel APR { get; set; }
+        public DecimalInputViewModel APR { get; set; }
 
         /// <summary>
         /// The effective APR of the sale
         /// </summary>
-        public TextInputViewModel EffectiveAPR { get; set; }
+        public DecimalInputViewModel EffectiveAPR { get; set; }
 
         /// <summary>
         /// The trade difference of the sale
@@ -63,7 +79,7 @@ namespace EZDMS.App
         /// <summary>
         /// The term of the sale
         /// </summary>
-        public TextInputViewModel Term { get; set; }
+        public NumericalInputViewModel Term { get; set; }
 
         /// <summary>
         /// The payment schedule type of the sale
@@ -80,7 +96,7 @@ namespace EZDMS.App
         /// <summary>
         /// The number of days to the first payment of the sale
         /// </summary>
-        public TextInputViewModel DaysToFirstPayment { get; set; }
+        public NumericalInputViewModel DaysToFirstPayment { get; set; }
                        
         /// <summary>
         /// The payment date of the sale
@@ -97,15 +113,15 @@ namespace EZDMS.App
         public SalesSummaryViewModel()
         {
             // Create the APR
-            APR = new TextInputViewModel
+            APR = new DecimalInputViewModel
             {
                 Label = "APR",
-                Text = "0.00"
+                Amount = 8.00
 
             };
 
             // Create the APR
-            EffectiveAPR = new TextInputViewModel
+            EffectiveAPR = new NumericalInputViewModel
             {
                 Label = "Effective APR",
                 Text = "0.00"
@@ -121,7 +137,7 @@ namespace EZDMS.App
             };
 
             // Create the term
-            Term = new TextInputViewModel
+            Term = new NumericalInputViewModel
             {
                 Label = "Term",
                 Text = "48"
@@ -136,7 +152,7 @@ namespace EZDMS.App
             };
 
             // Create the days to first payment
-            DaysToFirstPayment = new TextInputViewModel
+            DaysToFirstPayment = new NumericalInputViewModel
             {
                 Label = "Days To First Payment",
                 Text = "30"
