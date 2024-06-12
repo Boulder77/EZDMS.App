@@ -33,6 +33,16 @@ namespace EZDMS.App
 
         protected VehicleInventoryDataModel mSaleVehicle;
 
+        private int mDefaultTerm = 48;
+
+        private int mDefaultDaysToPayment = 30;
+
+        private decimal mDefaultAPR = 800;
+
+        private decimal mDefaultEffictiveAPR = 800;
+
+
+
         #endregion
 
         #region Public Properties
@@ -340,10 +350,12 @@ namespace EZDMS.App
 
         }
 
-        public async Task UpdateFinanceAsync()
+        public async Task<bool> UpdateFinanceAsync()
         {
             // Lock this command to ignore any other requests while processing
-            await RunCommandAsync(() => SalesFinancePageLoading, async () => {
+            return await RunCommandAsync(() => SalesFinancePageLoading, async () => 
+            
+            {
 
                 // Update data model
                 await Task.Run(UpdateSalesFinanceDM);
@@ -356,6 +368,7 @@ namespace EZDMS.App
 
                 //UpdateValuesOfSalesDealCard(SalesDealsItem);
 
+                return true;
             });
 
         }
@@ -707,18 +720,19 @@ namespace EZDMS.App
             SalesSummary = new SalesSummaryViewModel
             {
                 // Create the APR
-                APR = new TextInputViewModel
+                APR = new DecimalInputViewModel
                 {
                     Label = "APR",
-                    Text = salesFinance.APR.ToString("#0.00")
+                    Amount = salesFinance.APR                    
+                    
                 },
 
                 // Create the APR
-                EffectiveAPR = new TextInputViewModel
+                EffectiveAPR = new DecimalInputViewModel
 
                 {
                     Label = "Effective APR",
-                    Text = salesFinance.EffectiveAPR.ToString("#0.00")
+                    Amount = salesFinance.EffectiveAPR
 
                 },
 
@@ -732,10 +746,10 @@ namespace EZDMS.App
                 },
 
                 // Create the term
-                Term = new TextInputViewModel
+                Term = new NumericalInputViewModel
                 {
                     Label = "Term",
-                    Text = salesFinance.Term.ToString("###")
+                   Number = salesFinance.Term
 
                 },
 
@@ -747,10 +761,10 @@ namespace EZDMS.App
                 },
 
                 // Create the days to first payment
-                DaysToFirstPayment = new TextInputViewModel
+                DaysToFirstPayment = new NumericalInputViewModel 
                 {
                     Label = "Days To First Payment",
-                    Text = salesFinance.DaysTo1stPayment.ToString("###")
+                    Number = salesFinance.DaysTo1stPayment
                 },
 
                 // Create the payment date
@@ -1254,8 +1268,8 @@ namespace EZDMS.App
 
 
             SalesFinanceDeal.SellingPrice = SaleVehicle.ListPrice;
-            SalesFinanceDeal.Term = Convert.ToInt32(SalesSummary.Term.Text);
-            SalesFinanceDeal.APR = Convert.ToDecimal(SalesSummary.APR.Text);
+            SalesFinanceDeal.Term = Convert.ToInt32(SalesSummary.Term.Number);
+            SalesFinanceDeal.APR = Convert.ToDecimal(SalesSummary.APR.Amount);
 
 
         }

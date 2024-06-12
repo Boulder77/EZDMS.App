@@ -60,11 +60,11 @@
                           SelectedItem="{Binding Lender}"/>                
             </StackPanel>
 
-            <local:TextInputVertControl Grid.Row="2" DataContext="{Binding APR}"/>
-            <local:TextInputVertControl Grid.Row="2" Grid.Column="1" DataContext="{Binding EffectiveAPR}"/>
+            <local:DecimalInputVertControl Grid.Row="2" DataContext="{Binding APR}"/>
+            <local:DecimalInputVertControl Grid.Row="2" Grid.Column="1" DataContext="{Binding EffectiveAPR}"/>
             <local:TextDisplayVertControl Grid.Row="2" Grid.Column="2" DataContext="{Binding TradeDifference}"/>
 
-            <local:TextInputVertControl Grid.Row="3" DataContext="{Binding Term}"/>
+            <local:NumericalInputVertControl Grid.Row="3" DataContext="{Binding Term}"/>
 
             <StackPanel Grid.Row="3" Grid.Column="1"
                         Orientation="Vertical"
@@ -79,7 +79,7 @@
 
             <local:DateSelectionControl Grid.Row="4" Margin="2,0,0,0" DataContext="{Binding PurchaseDate}" />
 
-            <local:TextInputVertControl Grid.Row="4" Grid.Column="1" DataContext="{Binding DaysToFirstPayment}"/>
+            <local:NumericalInputVertControl Grid.Row="4" Grid.Column="1" DataContext="{Binding DaysToFirstPayment}"/>
 
             <local:DateSelectionControl Margin="5,0,0,0" Grid.Row="4" Grid.Column="2" DataContext="{Binding PaymentDate}" />
 

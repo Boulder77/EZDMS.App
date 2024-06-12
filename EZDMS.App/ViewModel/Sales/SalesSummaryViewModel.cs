@@ -64,7 +64,22 @@ namespace EZDMS.App
         /// <summary>
         /// The APR of the sale
         /// </summary>
-        public DecimalInputViewModel APR { get; set; }
+        public DecimalInputViewModel APR {
+            get => mAPR;
+
+            set
+            {
+                // If dataviewmodel has not changed...
+                if (mAPR == value)
+                    // Ignore
+                    return;
+
+                // Set the backing dataviewmodel
+                mAPR = value;
+
+                value?.Save();
+            }
+        }
 
         /// <summary>
         /// The effective APR of the sale
@@ -112,58 +127,58 @@ namespace EZDMS.App
         /// </summary>
         public SalesSummaryViewModel()
         {
-            // Create the APR
-            APR = new DecimalInputViewModel
-            {
-                Label = "APR",
-                Amount = 8.00
+            //// Create the APR
+            //APR = new DecimalInputViewModel
+            //{
+            //    Label = "APR",
+            //    Amount = 8.00
 
-            };
+            //};
 
-            // Create the APR
-            EffectiveAPR = new NumericalInputViewModel
-            {
-                Label = "Effective APR",
-                Text = "0.00"
+            //// Create the APR
+            //EffectiveAPR = new NumericalInputViewModel
+            //{
+            //    Label = "Effective APR",
+            //    Text = "0.00"
 
-            };
+            //};
 
-            // Create the trade difference
-            TradeDifference = new TextInputViewModel
-            {
-                Label = "Trade Difference",
-                Text = "0.00"
+            //// Create the trade difference
+            //TradeDifference = new TextInputViewModel
+            //{
+            //    Label = "Trade Difference",
+            //    Text = "0.00"
 
-            };
+            //};
 
-            // Create the term
-            Term = new NumericalInputViewModel
-            {
-                Label = "Term",
-                Text = "48"
+            //// Create the term
+            //Term = new NumericalInputViewModel
+            //{
+            //    Label = "Term",
+            //    Text = "48"
 
-            };
+            //};
 
-            // Create the purchase date
-            PurchaseDate = new DateSelectionViewModel
-            {
-                Label = "Purchase Date",
-                Date = DateTime.Today
-            };
+            //// Create the purchase date
+            //PurchaseDate = new DateSelectionViewModel
+            //{
+            //    Label = "Purchase Date",
+            //    Date = DateTime.Today
+            //};
 
-            // Create the days to first payment
-            DaysToFirstPayment = new NumericalInputViewModel
-            {
-                Label = "Days To First Payment",
-                Text = "30"
-            };
+            //// Create the days to first payment
+            //DaysToFirstPayment = new NumericalInputViewModel
+            //{
+            //    Label = "Days To First Payment",
+            //    Text = "30"
+            //};
 
-            // Create the payment date
-            PaymentDate = new DateSelectionViewModel
-            {
-                Label = "Payment Date",
-                Date = DateTime.Today.AddMonths(30)
-            };
+            //// Create the payment date
+            //PaymentDate = new DateSelectionViewModel
+            //{
+            //    Label = "Payment Date",
+            //    Date = DateTime.Today.AddMonths(30)
+            //};
 
         }
 
