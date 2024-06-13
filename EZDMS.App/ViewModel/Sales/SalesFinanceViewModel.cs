@@ -583,7 +583,8 @@ namespace EZDMS.App
             }
 
             SalesFinanceDeal.AmountFinanced = TotalAmount;
-                        
+            SalesFinanceDeal.NumberOfPayments = salesFinance.Term;
+
 
         DeskingTotals = new SalesDeskingTotalsViewModel
             {
@@ -1278,6 +1279,10 @@ namespace EZDMS.App
             SalesFinanceDeal.SellingPrice = SaleVehicle.ListPrice;
             SalesFinanceDeal.Term = Convert.ToInt32(SalesSummary.Term.Number);
             SalesFinanceDeal.APR = Convert.ToDecimal(SalesSummary.APR.Amount);
+            SalesFinanceDeal.MSRP = SaleVehicle.MSRP;
+            SalesFinanceDeal.BasePrice = SaleVehicle.InventoryPrice;
+
+
 
 
         }
