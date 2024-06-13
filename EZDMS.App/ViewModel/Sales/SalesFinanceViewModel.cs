@@ -39,7 +39,7 @@ namespace EZDMS.App
 
         private decimal mDefaultAPR = 800;
 
-        private decimal mDefaultEffictiveAPR = 800;
+        private decimal mDefaultEffectiveAPR = 800;
 
 
 
@@ -723,7 +723,9 @@ namespace EZDMS.App
                 APR = new DecimalInputViewModel
                 {
                     Label = "APR",
-                    Amount = salesFinance.APR                    
+                    Amount = salesFinance.APR,
+                    CommitAction = UpdateFinanceAsync,
+                    Editable = true
                     
                 },
 
@@ -732,7 +734,9 @@ namespace EZDMS.App
 
                 {
                     Label = "Effective APR",
-                    Amount = salesFinance.EffectiveAPR
+                    Amount = salesFinance.EffectiveAPR,
+                    CommitAction = UpdateFinanceAsync,
+                    Editable = true
 
                 },
 
@@ -749,7 +753,9 @@ namespace EZDMS.App
                 Term = new NumericalInputViewModel
                 {
                     Label = "Term",
-                   Number = salesFinance.Term
+                    Number = salesFinance.Term,
+                    CommitAction = UpdateFinanceAsync,
+                    Editable = true
 
                 },
 
@@ -764,7 +770,9 @@ namespace EZDMS.App
                 DaysToFirstPayment = new NumericalInputViewModel 
                 {
                     Label = "Days To First Payment",
-                    Number = salesFinance.DaysTo1stPayment
+                    Number = salesFinance.DaysTo1stPayment,
+                    CommitAction = UpdateFinanceAsync,
+                    Editable = true
                 },
 
                 // Create the payment date
