@@ -12,7 +12,16 @@ namespace EZDMS.App
         public SalesSummaryDetails()
         {
             InitializeComponent();
-                        
+
+            //// Set data context to settings view model
+
+            //// If we are in design mode...
+            //if (DesignerProperties.GetIsInDesignMode(this))
+            //    // Create new instance of settings view model
+            //    DataContext = new SalesSummaryViewModel();
+            //else
+            //    DataContext = ViewModelSalesFinance.SalesSummary;
+
         }
     }
 }

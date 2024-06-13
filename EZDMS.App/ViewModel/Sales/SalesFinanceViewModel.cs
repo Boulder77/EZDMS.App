@@ -41,6 +41,8 @@ namespace EZDMS.App
 
         private decimal mDefaultEffectiveAPR = 800;
 
+        private SalesSummaryViewModel mSalesSummary;
+
 
 
         #endregion

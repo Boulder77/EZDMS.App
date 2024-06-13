@@ -14,30 +14,7 @@ namespace EZDMS.App
     /// </summary>
     public class SalesSummaryViewModel : BaseViewModel
     {
-
-
-        /// <summary>
-        /// The term of the sale
-        /// </summary>
-        private NumericalInputViewModel mTerm;
-
-        /// <summary>
-        /// The APR of the sale
-        /// </summary>
-        private DecimalInputViewModel mAPR;
-
-        /// <summary>
-        /// The effective APR of the sale
-        /// </summary>
-        private DecimalInputViewModel mEffectiveAPR;
-
-        /// <summary>
-        /// The number of days to the first payment of the sale
-        /// </summary>
-        private NumericalInputViewModel mDaysToFirstPayment;
-
-
-
+        
         #region Public Properties
 
         /// <summary>
@@ -64,22 +41,7 @@ namespace EZDMS.App
         /// <summary>
         /// The APR of the sale
         /// </summary>
-        public DecimalInputViewModel APR {
-            get => mAPR;
-
-            set
-            {
-                // If dataviewmodel has not changed...
-                if (mAPR == value)
-                    // Ignore
-                    return;
-
-                // Set the backing dataviewmodel
-                mAPR = value;
-
-                value?.Save();
-            }
-        }
+        public DecimalInputViewModel APR {get; set;}
 
         /// <summary>
         /// The effective APR of the sale
