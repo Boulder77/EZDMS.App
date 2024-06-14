@@ -274,45 +274,46 @@ namespace EZDMS.App
             // Lock this command to ignore any other requests while processing
             await RunCommandAsync(() => SettingsLoading, async () =>
             {
-                // Store single transcient instance of client data store
-                var scopedClientDataStore = ClientDataStore;
+                //// Store single transcient instance of client data store
+                //var scopedClientDataStore = ClientDataStore;
 
-                // Update values from local cache
-                await UpdateValuesFromLocalStoreAsync(scopedClientDataStore);
+                //// Update values from local cache
+                //await UpdateValuesFromLocalStoreAsync(scopedClientDataStore);
 
-                // Get the user token
-                var token = (await scopedClientDataStore.GetLoginCredentialsAsync())?.Token;
+                //// Get the user token
+                //var token = (await scopedClientDataStore.GetLoginCredentialsAsync())?.Token;
 
-                // If we don't have a token (so we are not logged in...)
-                if (string.IsNullOrEmpty(token))
-                    // Then do nothing more
-                    return;
+                //// If we don't have a token (so we are not logged in...)
+                //if (string.IsNullOrEmpty(token))
+                //    // Then do nothing more
+                //    return;
 
-                // Load user profile details form server
-                var result = await WebRequests.PostAsync<ApiResponse<UserProfileDetailsApiModel>>(
-                    // Set URL
-                    RouteHelpers.GetAbsoluteRoute(ApiRoutes.GetUserProfile),
-                    // Pass in user Token
-                    bearerToken: token);
+                //// Load user profile details form server
+                //var result = await WebRequests.PostAsync<ApiResponse<UserProfileDetailsApiModel>>(
+                //    // Set URL
+                //    RouteHelpers.GetAbsoluteRoute(ApiRoutes.GetUserProfile),
+                //    // Pass in user Token
+                //    bearerToken: token);
 
-                // If the response has an error...
-                if (await result.HandleErrorIfFailedAsync("Load User Details Failed"))
-                    // We are done
-                    return;
+                //// If the response has an error...
+                //if (await result.HandleErrorIfFailedAsync("Load User Details Failed"))
+                //    // We are done
+                //    return;
 
-                // TODO: Should we check if the values are different before saving?
+                //// TODO: Should we check if the values are different before saving?
 
-                // Create data model from the response
-                var dataModel = result.ServerResponse.Response.ToLoginCredentialsDataModel();
+                //// Create data model from the response
+                //var dataModel = result.ServerResponse.Response.ToLoginCredentialsDataModel();
 
-                // Re-add our known token
-                dataModel.Token = token;
+                //// Re-add our known token
+                //dataModel.Token = token;
 
-                // Save the new information in the data store
-                await scopedClientDataStore.SaveLoginCredentialsAsync(dataModel);
+                //// Save the new information in the data store
+                //await scopedClientDataStore.SaveLoginCredentialsAsync(dataModel);
 
-                // Update values from local cache
-                await UpdateValuesFromLocalStoreAsync(scopedClientDataStore);
+                //// Update values from local cache
+                //await UpdateValuesFromLocalStoreAsync(scopedClientDataStore);
+                await Task.CompletedTask;
             });
         }
 

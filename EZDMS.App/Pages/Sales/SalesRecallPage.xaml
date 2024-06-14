@@ -10,8 +10,8 @@
       Width="1070"
       d:DesignHeight="450" d:DesignWidth="800"
       >
-
-    <Grid Background="{StaticResource BackgroundLightBrush}" >
+    <Border CornerRadius="10" Margin="3" Background="{StaticResource WordVeryLightBlueBrush}">
+    <Grid>
         <Grid.RowDefinitions>
 
             <!-- Title bar -->
@@ -25,12 +25,14 @@
         <Grid.ColumnDefinitions>
 
             <!-- Title bar -->
-            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="10" />
 
             <!-- Title bar -->
             <ColumnDefinition Width="*" />
+                <!-- Title bar -->
+            <ColumnDefinition Width="10" />
 
-        </Grid.ColumnDefinitions>
+            </Grid.ColumnDefinitions>
 
         <Border Grid.Column="1"
                 CornerRadius="10"
@@ -196,4 +198,5 @@
 
     
     </Grid>
+    </Border>
 </local:BasePage>

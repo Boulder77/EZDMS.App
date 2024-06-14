@@ -169,7 +169,7 @@
             </Grid.Background>
 
             <!-- Settings page -->
-            <local:SalesSummaryDetails Grid.ColumnSpan="2"
+            <local:SettingsControl Grid.ColumnSpan="2"
                                    Panel.ZIndex="9"
                                    local:AnimateSlideInFromBottomMarginProperty.Value="{Binding ApplicationViewModel.SettingsMenuVisible, Source={x:Static local:ViewModelLocator.Instance}}"
                                    />
@@ -193,7 +193,7 @@
             <!-- Side Menu -->
             <local:MainSideMenuControl 
                 DataContext="{Binding ApplicationViewModel, Source={x:Static local:ViewModelLocator.Instance}}"
-                Width="200" 
+                Width="Auto" 
                 local:AnimateSlideInFromLeftProperty.Value="{Binding SideMenuVisible}"                
                 />
 

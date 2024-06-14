@@ -57,9 +57,9 @@ namespace EZDMS.App
                 mSettingsMenuVisible = value;
 
                 // If the settings menu is now visible...
-                if (value)
+                //if (value)
                     // Reload settings
-                    TaskManager.RunAndForget(ViewModelSettings.LoadAsync);
+                    //TaskManager.RunAndForget(ViewModelSettings.LoadAsync);
         
             }
         }

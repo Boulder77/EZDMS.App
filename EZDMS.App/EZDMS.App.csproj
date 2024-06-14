@@ -734,6 +734,14 @@
   <ItemGroup>
     <Resource Include="Images\Samples\AnayProfile.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Samples\silver-car.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Samples\Whitecar.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Samples\whitecar.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,6 +12,7 @@ using static Dna.FrameworkDI;
 using System.Linq.Expressions;
 using System.Diagnostics;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore.Query.Expressions;
 
 namespace EZDMS.App
 {
@@ -48,6 +49,7 @@ namespace EZDMS.App
         /// </summary>
         public SalesFinanceDataModel SalesFinanceDeal {
             get => mSalesFinanceDeal;
+            
             set
             {
                 // If datamodel has not changed...
@@ -61,7 +63,6 @@ namespace EZDMS.App
                 if (value != null)
                     // Reload sales deal view model
                     TaskManager.RunAndForget(LoadAsync);
-
             }
 
         }
@@ -209,7 +210,7 @@ namespace EZDMS.App
                     if (value.APR != mSalesSummary.APR | value.Term != mSalesSummary.Term | value.EffectiveAPR != mSalesSummary.EffectiveAPR | value.DaysToFirstPayment != mSalesSummary.DaysToFirstPayment)
                     {
 
-                        UpdateFinanceAsync();
+                        var _result = UpdateFinanceAsync();
                     }
                 }
                 // Set the backing datamodel
@@ -572,11 +573,6 @@ namespace EZDMS.App
 
         }
 
-
-
-
-
-
         #endregion
 
         #region Private Helper Methods
@@ -587,10 +583,10 @@ namespace EZDMS.App
                 return;                    
 
 
+
             // The amount to bind for the subtotal NumericalEntryViewModel
             var SubTotalAmount = salesFinance.SellingPrice
-                                + salesFinance.TotalFrontAdds
-                                + salesFinance.TotalTaxes
+                                + salesFinance.TotalFrontAdds                               
                                 + salesFinance.TotalOfficialFees
                                 + salesFinance.TotalBackAdds
                                 + salesFinance.ServiceContract
@@ -604,6 +600,13 @@ namespace EZDMS.App
                     - salesFinance.TotalRebates
                     - salesFinance.TotalNetAllowance
                     - salesFinance.TotalCashDown;
+            
+            var TotalTaxes = (TotalAmount * 9) / 100;
+
+            SubTotalAmount += TotalTaxes;
+
+            salesFinance.TotalTaxes = TotalTaxes;
+
 
             switch (salesFinance.CalculationMethod)
             {
@@ -628,6 +631,7 @@ namespace EZDMS.App
                     SalesFinanceDeal.FinanceCharge = (TotalAmount * (SalesFinanceDeal.APR / 100)) * (SalesFinanceDeal.Term / 12);
                     SalesFinanceDeal.Payment = (TotalAmount + SalesFinanceDeal.FinanceCharge)/ SalesFinanceDeal.Term;
 
+
                     break;
 
 
@@ -635,6 +639,8 @@ namespace EZDMS.App
 
             SalesFinanceDeal.AmountFinanced = TotalAmount;
             SalesFinanceDeal.NumberOfPayments = salesFinance.Term;
+            SalesFinanceDeal.TotalOfPayments = SalesFinanceDeal.AmountFinanced + SalesFinanceDeal.FinanceCharge;
+            SalesFinanceDeal.TotalSalePrice = SalesFinanceDeal.TotalOfPayments + SalesFinanceDeal.TotalDown;
 
 
         DeskingTotals = new SalesDeskingTotalsViewModel
@@ -858,7 +864,7 @@ namespace EZDMS.App
                 FinalPayment = new DecimalInputViewModel
                 {
                     Label = "Final Payment",
-                    Amount = salesFinance.LastPayment
+                    Amount = salesFinance.Payment
                 },
 
                 FinanceCharge = new DecimalInputViewModel
@@ -1331,10 +1337,10 @@ namespace EZDMS.App
             SalesFinanceDeal.MSRP = SaleVehicle.MSRP;
             SalesFinanceDeal.BasePrice = SaleVehicle.InventoryPrice;
             SalesFinanceDeal.AmountFinanced = DeskingTotals.Total.Amount;
-            SalesFinanceDeal.FinanceCharge = TruthinLending.FinanceCharge.Amount;
-            SalesFinanceDeal.TotalOfPayments = TruthinLending.TotalOfPayments.Amount;
-            SalesFinanceDeal.Payment = TruthinLending.Payment.Amount;
-            SalesFinanceDeal.LastPayment = TruthinLending.FinalPayment.Amount;
+            //SalesFinanceDeal.FinanceCharge = TruthinLending.FinanceCharge.Amount;
+            //SalesFinanceDeal.TotalOfPayments = TruthinLending.TotalOfPayments.Amount;
+            //SalesFinanceDeal.Payment = TruthinLending.Payment.Amount;
+            //SalesFinanceDeal.LastPayment = TruthinLending.FinalPayment.Amount;
             //SalesFinanceDeal.TotalBackAdds = DeskingTotals.BackOptions.Amount;
             //SalesFinanceDeal.TotalFrontAdds = DeskingTotals.FrontOptions.Amount;
             //SalesFinanceDeal.Maintenance = 0;
@@ -1354,6 +1360,7 @@ namespace EZDMS.App
             SalesFinanceDeal.TotalCashDown = DeskingTotals.Cash.Amount;
             SalesFinanceDeal.TotalRebates = DeskingTotals.Rebates.Amount;
             SalesFinanceDeal.TotalAllowance = DeskingTotals.TradeAllowance.Amount;
+            SalesFinanceDeal.TotalDown = SalesFinanceDeal.TotalCashDown + SalesFinanceDeal.TotalRebates + SalesFinanceDeal.TotalAllowance;
 
 
         }
