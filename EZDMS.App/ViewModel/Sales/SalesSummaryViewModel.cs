@@ -36,7 +36,7 @@ namespace EZDMS.App
         /// <summary>
         /// The current lender of the sale
         /// </summary>
-        public string Lender { get; set; }
+        public string Lender { get; set; } = "CCU";
 
         /// <summary>
         /// The APR of the sale

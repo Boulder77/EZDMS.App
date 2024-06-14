@@ -782,9 +782,11 @@ namespace EZDMS.App
                 APR = new DecimalInputViewModel
                 {
                     Label = "APR",
-                    Amount = salesFinance.APR,
+                    Amount = salesFinance.APR == 0 ? 800: salesFinance.APR,
                     Editable = true
-                    
+
+
+
                 },
 
                 // Create the APR
@@ -792,7 +794,7 @@ namespace EZDMS.App
 
                 {
                     Label = "Effective APR",
-                    Amount = salesFinance.EffectiveAPR,
+                    Amount = salesFinance.EffectiveAPR == 0 ? 800 : salesFinance.EffectiveAPR,
                     Editable = true
 
                 },
@@ -810,7 +812,7 @@ namespace EZDMS.App
                 Term = new NumericalInputViewModel
                 {
                     Label = "Term",
-                    Number = salesFinance.Term,                   
+                    Number = salesFinance.Term == 0 ? 48 : salesFinance.Term,                   
                     Editable = true
 
                 },
@@ -819,14 +821,14 @@ namespace EZDMS.App
                 PurchaseDate = new DateSelectionViewModel
                 {
                     Label = "Purchase Date",
-                    Date = salesFinance.DealDate
+                    Date = salesFinance.DealDate == DateTime.MinValue ? DateTime.Today : salesFinance.DealDate
                 },
 
                 // Create the days to first payment
                 DaysToFirstPayment = new NumericalInputViewModel 
                 {
                     Label = "Days To First Payment",
-                    Number = salesFinance.DaysTo1stPayment,
+                    Number = salesFinance.DaysTo1stPayment == 0 ? 30 : salesFinance.DaysTo1stPayment,
                     Editable = true
                 },
 
@@ -834,11 +836,11 @@ namespace EZDMS.App
                 PaymentDate = new DateSelectionViewModel
                 {
                     Label = "Payment Date",
-                    Date = salesFinance.FirstPaymentDate
+                    Date = salesFinance.FirstPaymentDate == DateTime.MinValue ? DateTime.Today.AddDays(30) : salesFinance.FirstPaymentDate
                 },
 
                 // Create the lender name
-                Lender = salesFinance.BankName
+                Lender = "CCU"
                 
 
             };
