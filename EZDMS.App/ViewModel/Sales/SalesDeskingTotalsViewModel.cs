@@ -13,7 +13,7 @@ namespace EZDMS.App
     /// </summary>
     public class SalesDeskingTotalsViewModel : BaseViewModel
     {
-
+        
         #region Public Properties        
 
         /// <summary>

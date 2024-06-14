@@ -32,16 +32,10 @@ namespace EZDMS.App
         protected CustomerDataModel mSecondCustomer;
 
         protected VehicleInventoryDataModel mSaleVehicle;
-
-        private int mDefaultTerm = 48;
-
-        private int mDefaultDaysToPayment = 30;
-
-        private decimal mDefaultAPR = 800;
-
-        private decimal mDefaultEffectiveAPR = 800;
-
+        
         private SalesSummaryViewModel mSalesSummary;
+
+        private SalesDeskingTotalsViewModel mDeskingTotals;
 
 
 
@@ -196,7 +190,34 @@ namespace EZDMS.App
         /// <summary>
         /// The view model for the sales summary control
         /// </summary>
-        public SalesSummaryViewModel SalesSummary { get; set; }
+        public SalesSummaryViewModel SalesSummary { 
+            
+            get=> mSalesSummary; 
+
+            set
+            {
+
+                // If datamodel has not changed...
+                if (mSalesSummary == value)
+                    // Ignore
+                    return;
+
+
+
+                if (mSalesSummary != null & value != null)
+                {
+                    if (value.APR != mSalesSummary.APR | value.Term != mSalesSummary.Term | value.EffectiveAPR != mSalesSummary.EffectiveAPR | value.DaysToFirstPayment != mSalesSummary.DaysToFirstPayment)
+                    {
+
+                        UpdateFinanceAsync();
+                    }
+                }
+                // Set the backing datamodel
+                mSalesSummary = value;
+
+            }
+        
+        }
 
         /// <summary>
         /// The view model for the truth in lending disclosure control
@@ -206,7 +227,35 @@ namespace EZDMS.App
         /// <summary>
         /// The view model for the desking totals control
         /// </summary>
-        public SalesDeskingTotalsViewModel DeskingTotals { get; set; }        
+        public SalesDeskingTotalsViewModel DeskingTotals
+        {
+
+            get => mDeskingTotals;
+
+            set
+            {
+
+                // If datamodel has not changed...
+                if (mDeskingTotals == value)
+                    // Ignore
+                    return;
+
+
+
+                //if (mDeskingTotals != null & value != null)
+                //{
+                //    if (value.Cash != mDeskingTotals.Cash | value.Rebates != mDeskingTotals.Rebates | value.TradeAllowance != mDeskingTotals.TradeAllowance)
+                //    {
+
+                //    UpdateFinanceAsync();
+                //    }
+                //}
+                //// Set the backing datamodel
+                mDeskingTotals = value;
+
+            }
+
+        }
 
         /// <summary>
         /// The view model for the sales deal card control
@@ -355,22 +404,22 @@ namespace EZDMS.App
         public async Task<bool> UpdateFinanceAsync()
         {
             // Lock this command to ignore any other requests while processing
-            return await RunCommandAsync(() => SalesFinancePageLoading, async () => 
-            
+            return await RunCommandAsync(() => SavingInfo, async () =>  
             {
 
                 // Update data model
                 await Task.Run(UpdateSalesFinanceDM);
-                                
+                
+                // Update view models
                 UpdateValuesOfDeskingTotals(SalesFinanceDeal);
                 UpdateValuesOfSalesSummary(SalesFinanceDeal);
                 UpdateValuesOfTruthinLending(SalesFinanceDeal);
 
+                // Save to db and return result
                 await ClientDataStore.SaveSalesRecordAsync(SalesFinanceDeal, DbTableNames.SalesFinance);
 
-                //UpdateValuesOfSalesDealCard(SalesDealsItem);
-
                 return true;
+
             });
 
         }
@@ -664,7 +713,8 @@ namespace EZDMS.App
                 { 
                     Label = "Cash", 
                     Amount = salesFinance.TotalCashDown, 
-                    Editable = true 
+                    Editable = true,
+                    CommitAction = UpdateFinanceAsync
                 },
                   
                 Rebates = new DecimalInputViewModel 
@@ -727,7 +777,6 @@ namespace EZDMS.App
                 {
                     Label = "APR",
                     Amount = salesFinance.APR,
-                    CommitAction = UpdateFinanceAsync,
                     Editable = true
                     
                 },
@@ -738,7 +787,6 @@ namespace EZDMS.App
                 {
                     Label = "Effective APR",
                     Amount = salesFinance.EffectiveAPR,
-                    CommitAction = UpdateFinanceAsync,
                     Editable = true
 
                 },
@@ -756,8 +804,7 @@ namespace EZDMS.App
                 Term = new NumericalInputViewModel
                 {
                     Label = "Term",
-                    Number = salesFinance.Term,
-                    CommitAction = UpdateFinanceAsync,
+                    Number = salesFinance.Term,                   
                     Editable = true
 
                 },
@@ -774,7 +821,6 @@ namespace EZDMS.App
                 {
                     Label = "Days To First Payment",
                     Number = salesFinance.DaysTo1stPayment,
-                    CommitAction = UpdateFinanceAsync,
                     Editable = true
                 },
 
@@ -1279,12 +1325,35 @@ namespace EZDMS.App
 
 
             SalesFinanceDeal.SellingPrice = SaleVehicle.ListPrice;
-            SalesFinanceDeal.Term = Convert.ToInt32(SalesSummary.Term.Number);
-            SalesFinanceDeal.APR = Convert.ToDecimal(SalesSummary.APR.Amount);
+            SalesFinanceDeal.Term = SalesSummary.Term.Number;
+            SalesFinanceDeal.APR = SalesSummary.APR.Amount;
+            SalesFinanceDeal.EffectiveAPR = SalesSummary.EffectiveAPR.Amount;
             SalesFinanceDeal.MSRP = SaleVehicle.MSRP;
             SalesFinanceDeal.BasePrice = SaleVehicle.InventoryPrice;
-
-
+            SalesFinanceDeal.AmountFinanced = DeskingTotals.Total.Amount;
+            SalesFinanceDeal.FinanceCharge = TruthinLending.FinanceCharge.Amount;
+            SalesFinanceDeal.TotalOfPayments = TruthinLending.TotalOfPayments.Amount;
+            SalesFinanceDeal.Payment = TruthinLending.Payment.Amount;
+            SalesFinanceDeal.LastPayment = TruthinLending.FinalPayment.Amount;
+            //SalesFinanceDeal.TotalBackAdds = DeskingTotals.BackOptions.Amount;
+            //SalesFinanceDeal.TotalFrontAdds = DeskingTotals.FrontOptions.Amount;
+            //SalesFinanceDeal.Maintenance = 0;
+            //SalesFinanceDeal.TotalTaxes =  DeskingTotals.Taxes.Amount;
+            SalesFinanceDeal.DaysTo1stPayment = SalesSummary.DaysToFirstPayment.Number;
+            SalesFinanceDeal.Status = "Working";
+            SalesFinanceDeal.DealDate = SalesSummary.PurchaseDate.Date;
+            SalesFinanceDeal.FirstPaymentDate = SalesFinanceDeal.DealDate.Date.AddDays(SalesFinanceDeal.DaysTo1stPayment);
+            SalesFinanceDeal.LastPaymentDate = SalesSummary.PaymentDate.Date.AddMonths(SalesSummary.Term.Number-1);
+            SalesFinanceDeal.NumberOfPayments = SalesSummary.Term.Number;
+            SalesFinanceDeal.PaymentType = Convert.ToString(SalesSummary.SelectedPaymentType);
+            SalesFinanceDeal.SaleType = Convert.ToString(SalesSummary.SelectedSaleType);
+            //SalesFinanceDeal.TotalOfficialFees = DeskingTotals.Fees.Amount;
+            //SalesFinanceDeal.ServiceContract = DeskingTotals.Service.Amount;
+            //SalesFinanceDeal.Gap = DeskingTotals.Gap.Amount;
+            //SalesFinanceDeal.LAHInsurance = DeskingTotals.CreditInsurance.Amount;
+            SalesFinanceDeal.TotalCashDown = DeskingTotals.Cash.Amount;
+            SalesFinanceDeal.TotalRebates = DeskingTotals.Rebates.Amount;
+            SalesFinanceDeal.TotalAllowance = DeskingTotals.TradeAllowance.Amount;
 
 
         }

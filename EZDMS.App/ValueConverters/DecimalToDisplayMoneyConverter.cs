@@ -23,7 +23,11 @@ namespace EZDMS.App
 
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            // Get the number passed in
+            var _decimal = value;
+
+            // return as string to money field            
+            return (_decimal);
 
         }
     }
