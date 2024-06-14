@@ -782,7 +782,7 @@ namespace EZDMS.App
                 APR = new DecimalInputViewModel
                 {
                     Label = "APR",
-                    Amount = salesFinance.APR == 0 ? 800: salesFinance.APR,
+                    Amount = salesFinance.APR == 0 ? Convert.ToDecimal(8.00): Convert.ToDecimal(salesFinance.APR),
                     Editable = true
 
 
@@ -794,7 +794,7 @@ namespace EZDMS.App
 
                 {
                     Label = "Effective APR",
-                    Amount = salesFinance.EffectiveAPR == 0 ? 800 : salesFinance.EffectiveAPR,
+                    Amount = salesFinance.EffectiveAPR == 0 ? Convert.ToDecimal(8.00) : Convert.ToDecimal(salesFinance.EffectiveAPR),
                     Editable = true
 
                 },
@@ -1159,7 +1159,7 @@ namespace EZDMS.App
             {
                 MSRP = new DecimalInputViewModel { Label = "MSRP", Amount = Vehicle.MSRP },
                 InventoryPrice = new DecimalInputViewModel { Label = "Inventory Price", Amount = Vehicle.InventoryPrice },
-                ListPrice = new DecimalInputViewModel { Label = "List Price", Amount = Vehicle.ListPrice },
+                ListPrice = new DecimalInputViewModel { Label = "List Price", Amount = Vehicle.ListPrice == 0 ? Vehicle.MSRP : Vehicle.ListPrice },
                 InternetPrice = new DecimalInputViewModel { Label = "Internet Price", Amount = Vehicle.InternetPrice },
                 AccountingCost = new DecimalInputViewModel { Label = "Accounting Cost", Amount = Vehicle.AccountingCost },
                 ACV = new DecimalInputViewModel { Label = "ACV", Amount = Vehicle.ACV },

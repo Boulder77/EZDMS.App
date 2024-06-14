@@ -9,7 +9,7 @@
              d:DesignHeight="210" d:DesignWidth="800">
 
     <Border 
-            Background="{StaticResource BackgroundVeryLightBrush}"                    
+            Background="{StaticResource WordVeryVeryLightBlueBrush}"                    
             Margin="5"
             CornerRadius="5"
             >
