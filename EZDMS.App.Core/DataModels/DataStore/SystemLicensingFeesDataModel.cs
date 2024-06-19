@@ -8,6 +8,16 @@ namespace EZDMS.App.Core
     {
 
         /// <summary>
+        /// The ID of this SystemLicensingFees record
+        /// <summary>
+        public int ID { get; set; }
+
+        /// <summary>
+        /// The Store ID of this SystemLicensingFees record
+        /// <summary>
+        public string StoreID { get; set; }
+
+        /// <summary>
         /// The license fee of this SystemLicensingFees record
         /// <summary>
         public decimal LicenseFee { get; set; }

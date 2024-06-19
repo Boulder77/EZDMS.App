@@ -105,6 +105,16 @@ namespace EZDMS.App.Relational
         /// <summary>
         public DbSet<SystemLocalFeesDataModel> SystemLocalFees { get; set; }
 
+        /// <summary>
+        /// The sales local fees table
+        /// <summary>
+        public DbSet<SalesBankFeesDataModel> SalesBankFees { get; set; }
+
+        /// <summary>
+        /// The system local fees table
+        /// <summary>
+        public DbSet<SystemBankFeesDataModel> SystemBankFees { get; set; }
+
 
         #endregion
 
@@ -165,11 +175,15 @@ namespace EZDMS.App.Relational
 
             modelBuilder.Entity<SalesLicensingFeesDataModel>().HasKey(a => a.DealNumber);
 
-            modelBuilder.Entity<SystemLicensingFeesDataModel>();
+            modelBuilder.Entity<SystemLicensingFeesDataModel>().HasKey(a => a.ID); 
 
             modelBuilder.Entity<SalesLocalFeesDataModel>().HasKey(a => a.DealNumber);
 
-            modelBuilder.Entity<SystemLocalFeesDataModel>();
+            modelBuilder.Entity<SystemLocalFeesDataModel>().HasKey(a => a.ID);
+
+            modelBuilder.Entity<SalesBankFeesDataModel>().HasKey(a => a.DealNumber);
+
+            modelBuilder.Entity<SystemBankFeesDataModel>().HasKey(a => a.ID);
 
 
             // TODO: Set up limits

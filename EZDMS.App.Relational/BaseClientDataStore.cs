@@ -162,6 +162,16 @@ namespace EZDMS.App.Relational
                     mDbContext.SystemLocalFees.Add(mDataModel as SystemLocalFeesDataModel);
                     break;
 
+                case DbTableNames.SalesBankFees:
+                    // Add new sales local fee entry
+                    mDbContext.SalesBankFees.Add(mDataModel as SalesBankFeesDataModel);
+                    break;
+
+                case DbTableNames.SystemBankFees:
+                    // Add new system lical entry
+                    mDbContext.SystemBankFees.Add(mDataModel as SystemBankFeesDataModel);
+                    break;
+
                 default:
                     throw new Exception();
                     break;
@@ -283,6 +293,16 @@ namespace EZDMS.App.Relational
                 case DbTableNames.SystemLocalFees:
 
                     mDbContext.Update(mDataModel as SystemLocalFeesDataModel);
+                    break;
+
+                case DbTableNames.SalesBankFees:
+
+                    mDbContext.Update(mDataModel as SalesBankFeesDataModel);
+                    break;
+
+                case DbTableNames.SystemBankFees:
+
+                    mDbContext.Update(mDataModel as SystemBankFeesDataModel);
                     break;
 
                 default:
@@ -587,10 +607,10 @@ namespace EZDMS.App.Relational
         /// Returns a single system licensing fees record
         /// </summary>        
         /// <returns>SystemLicensingFeesDataModel</returns>
-        public Task<SystemLicensingFeesDataModel> GetSystemLicensingAsync()
+        public Task<SystemLicensingFeesDataModel> GetSystemLicensingAsync(string storeid)
         {
             // Gets a the system licensing record
-            return Task.FromResult(mDbContext.SystemLicensing.FirstOrDefault());
+            return Task.FromResult(mDbContext.SystemLicensing.FirstOrDefault(u => u.StoreID == storeid));
 
         }
 
@@ -610,10 +630,33 @@ namespace EZDMS.App.Relational
         /// Returns a single system Local Fees record
         /// </summary>        
         /// <returns>SystemLocalFeesDataModel</returns>
-        public Task<SystemLocalFeesDataModel> GetSystemLocalFeesAsync()
+        public Task<SystemLocalFeesDataModel> GetSystemLocalFeesAsync(string storeid)
         {
             // Gets a the system licensing record
-            return Task.FromResult(mDbContext.SystemLocalFees.FirstOrDefault());
+            return Task.FromResult(mDbContext.SystemLocalFees.FirstOrDefault(u => u.StoreID == storeid));
+
+        }
+
+        /// <summary>
+        /// Returns a single sales Bank fees record
+        /// </summary>
+        /// <param name="dealNumber"></param>
+        /// <returns>SalesBankFeesDataModel</returns>
+        public Task<SalesBankFeesDataModel> GetSalesBankFeesAsync(int dealNumber)
+        {
+            // Gets a single sales record
+            return Task.FromResult(mDbContext.SalesBankFees.FirstOrDefault(u => u.DealNumber == dealNumber));
+
+        }
+
+        /// <summary>
+        /// Returns a single system Bank Fees record
+        /// </summary>        
+        /// <returns>SystemBankFeesDataModel</returns>
+        public Task<SystemBankFeesDataModel> GetSystemBankFeesAsync(string storeid)
+        {
+            // Gets a the system licensing record
+            return Task.FromResult(mDbContext.SystemBankFees.FirstOrDefault(u => u.StoreID == storeid));
 
         }
 

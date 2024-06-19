@@ -5,7 +5,7 @@ namespace EZDMS.App
     /// <summary>
     /// The design-time data for a <see cref="SalesLicensingViewModel"/>
     /// <summary>
-    public class SalesLicensingFeesDesignModel : SalesLicensingViewModel
+    public class SalesLicensingDesignModel : SalesLicensingViewModel
     {
 
         #region Singleton
@@ -13,7 +13,7 @@ namespace EZDMS.App
         /// <summary>
         /// A single instance of the design model
         /// <summary>
-        public static SalesLicensingFeesDesignModel Instance => new SalesLicensingFeesDesignModel();
+        public static SalesLicensingDesignModel Instance => new SalesLicensingDesignModel();
 
         #endregion
 
@@ -22,7 +22,7 @@ namespace EZDMS.App
         /// <summary>
         /// Default constructor
         /// <summary>
-        public SalesLicensingFeesDesignModel()
+        public SalesLicensingDesignModel()
         {
             FeesInPayment = true;           
 
@@ -40,7 +40,9 @@ namespace EZDMS.App
 
             NotaryFee = new DecimalInputViewModel { Label = "Notary", Amount = 1400 };
 
-            FilingFee = new DecimalInputViewModel { Label = "Filing", Amount = 5000 };            
+            FilingFee = new DecimalInputViewModel { Label = "Filing", Amount = 5000 };
+
+            Total = new DecimalInputViewModel { Label = "Total", Amount = 49964 };
 
 
         }

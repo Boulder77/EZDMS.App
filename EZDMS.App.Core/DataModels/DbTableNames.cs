@@ -101,5 +101,15 @@
         /// <summary>
         SystemLocalFees = 18,
 
+        /// <summary>
+        /// The Sales Bank Fees table
+        /// <summary>
+        SalesBankFees = 19,
+
+        /// <summary>
+        /// The System Bank Fees table
+        /// <summary>
+        SystemBankFees = 20,
+
     }
 }

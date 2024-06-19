@@ -219,7 +219,7 @@ namespace EZDMS.App
         /// <summary>
         /// The SalesLocalFees local fee1 name
         /// <summary>
-        public TextEntryViewModel LocalFee1Name { get; set; }
+        public string LocalFee1Name { get; set; }
 
         /// <summary>
         /// The SalesLocalFees local fee1
@@ -239,7 +239,7 @@ namespace EZDMS.App
         /// <summary>
         /// The SalesLocalFees local fee2 name
         /// <summary>
-        public TextEntryViewModel LocalFee2Name { get; set; }
+        public string LocalFee2Name { get; set; }
 
         /// <summary>
         /// The SalesLocalFees local fee2
@@ -259,7 +259,7 @@ namespace EZDMS.App
         /// <summary>
         /// The SalesLocalFees local fee3 name
         /// <summary>
-        public TextEntryViewModel LocalFee3Name { get; set; }
+        public string LocalFee3Name { get; set; }
 
         /// <summary>
         /// The SalesLocalFees local fee3
@@ -279,7 +279,7 @@ namespace EZDMS.App
         /// <summary>
         /// The SalesLocalFees local fee4 name
         /// <summary>
-        public TextEntryViewModel LocalFee4Name { get; set; }
+        public string LocalFee4Name { get; set; }
 
         /// <summary>
         /// The SalesLocalFees local fee4
@@ -299,7 +299,7 @@ namespace EZDMS.App
         /// <summary>
         /// The SalesLocalFees local fee5 name
         /// <summary>
-        public TextEntryViewModel LocalFee5Name { get; set; }
+        public string LocalFee5Name { get; set; }
 
         /// <summary>
         /// The SalesLocalFees local fee5
@@ -319,7 +319,7 @@ namespace EZDMS.App
         /// <summary>
         /// The SalesLocalFees local fee6 name
         /// <summary>
-        public TextEntryViewModel LocalFee6Name { get; set; }
+        public string LocalFee6Name { get; set; }
 
         /// <summary>
         /// The SalesLocalFees local fee6
@@ -339,7 +339,7 @@ namespace EZDMS.App
         /// <summary>
         /// The SalesLocalFees local fee7 name
         /// <summary>
-        public TextEntryViewModel LocalFee7Name { get; set; }
+        public string LocalFee7Name { get; set; }
 
         /// <summary>
         /// The SalesLocalFees local fee7
@@ -359,7 +359,7 @@ namespace EZDMS.App
         /// <summary>
         /// The SalesLocalFees local fee8 name
         /// <summary>
-        public TextEntryViewModel LocalFee8Name { get; set; }
+        public string LocalFee8Name { get; set; }
 
         /// <summary>
         /// The SalesLocalFees local fee8
@@ -379,7 +379,7 @@ namespace EZDMS.App
         /// <summary>
         /// The SalesLocalFees local fee9 name
         /// <summary>
-        public TextEntryViewModel LocalFee9Name { get; set; }
+        public string LocalFee9Name { get; set; }
 
         /// <summary>
         /// The SalesLocalFees local fee9
@@ -399,7 +399,7 @@ namespace EZDMS.App
         /// <summary>
         /// The SalesLocalFees local fee10 name
         /// <summary>
-        public TextEntryViewModel LocalFee10Name { get; set; }
+        public string LocalFee10Name { get; set; }
 
         /// <summary>
         /// The SalesLocalFees local fee10
@@ -415,6 +415,12 @@ namespace EZDMS.App
         /// The SalesLocalFees local fee10 taxable
         /// <summary>
         public bool LocalFee10Taxable { get; set; }
+
+        /// <summary>
+        /// The total local fees
+        /// </summary>
+        public DecimalInputViewModel Total { get; set; }
+
 
         #endregion
 

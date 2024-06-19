@@ -17,11 +17,6 @@ namespace EZDMS.App
         #region Public Properties
 
         /// <summary>
-        /// The SalesLicensingFees deal number
-        /// <summary>
-        public NumericalInputViewModel DealNumber { get; set; }
-
-        /// <summary>
         /// The SalesLicensingFees fees in payment
         /// <summary>
         public bool FeesInPayment { get; set; }
@@ -69,18 +64,7 @@ namespace EZDMS.App
         /// <summary>
         /// The total retail of all licensing fees
         /// </summary>
-        public decimal Total { get; set; }
-
-        /// <summary>
-        /// The flag indicating that the items are loading
-        /// </summary>
-        public bool Loading { get; set; }
-
-
-        /// <summary>
-        /// The flag indicating that the items are saving
-        /// </summary>
-        public bool Saving { get; set; }
+        public DecimalInputViewModel Total { get; set; }
 
         #endregion
 

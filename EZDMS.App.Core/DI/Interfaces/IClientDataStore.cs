@@ -183,7 +183,7 @@ namespace EZDMS.App.Core
         /// Gets the system licensing fees info
         /// </summary>
         /// <returns>Returns the system licensing fees record if they exist, or null if none exist</returns>
-        Task<SystemLicensingFeesDataModel> GetSystemLicensingAsync();
+        Task<SystemLicensingFeesDataModel> GetSystemLicensingAsync(string storeID);
 
         /// <summary>
         /// Returns a single sales local fees record
@@ -194,7 +194,7 @@ namespace EZDMS.App.Core
         /// Gets the system local fees info
         /// </summary>
         /// <returns>Returns the system locaL fees record if they exist, or null if none exist</returns>
-        Task<SystemLocalFeesDataModel> GetSystemLocalFeesAsync();
+        Task<SystemLocalFeesDataModel> GetSystemLocalFeesAsync(string storeID);
 
 
     }

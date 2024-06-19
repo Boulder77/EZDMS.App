@@ -8,6 +8,16 @@ namespace EZDMS.App.Core
     {
 
         /// <summary>
+        /// The ID of this SystemLocalFees record
+        /// <summary>
+        public int ID { get; set; }
+
+        /// <summary>
+        /// The Store ID of this SystemLocalFees record
+        /// <summary>
+        public string StoreID { get; set; }
+
+        /// <summary>
         /// The documentation fee of this SystemLocalFees record
         /// <summary>
         public decimal DocumentationFee { get; set; }
