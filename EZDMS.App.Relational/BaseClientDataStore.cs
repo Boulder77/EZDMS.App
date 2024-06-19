@@ -142,6 +142,26 @@ namespace EZDMS.App.Relational
                     mDbContext.SalesBackAdds.Add(mDataModel as SalesBackAddsDataModel);
                     break;
 
+                case DbTableNames.SalesLicensing:
+                    // Add new sales licensing fees entry
+                    mDbContext.SalesBackAdds.Add(mDataModel as SalesBackAddsDataModel);
+                    break;
+
+                case DbTableNames.SystemLicensing:
+                    // Add new system licensing entry
+                    mDbContext.SystemLicensing.Add(mDataModel as SystemLicensingFeesDataModel);
+                    break;
+
+                case DbTableNames.SalesLocalFees:
+                    // Add new sales local fee entry
+                    mDbContext.SalesLocalFees.Add(mDataModel as SalesLocalFeesDataModel);
+                    break;
+
+                case DbTableNames.SystemLocalFees:
+                    // Add new system lical entry
+                    mDbContext.SystemLocalFees.Add(mDataModel as SystemLocalFeesDataModel);
+                    break;
+
                 default:
                     throw new Exception();
                     break;
@@ -243,6 +263,26 @@ namespace EZDMS.App.Relational
                 case DbTableNames.SalesBackAdds:
 
                     mDbContext.Update(mDataModel as SalesBackAddsDataModel);
+                    break;
+
+                case DbTableNames.SalesLicensing:
+
+                    mDbContext.Update(mDataModel as SalesLicensingFeesDataModel);
+                    break;
+
+                case DbTableNames.SystemLicensing:
+
+                    mDbContext.Update(mDataModel as SystemLicensingFeesDataModel);
+                    break;
+
+                case DbTableNames.SalesLocalFees:
+
+                    mDbContext.Update(mDataModel as SalesLocalFeesDataModel);
+                    break;
+
+                case DbTableNames.SystemLocalFees:
+
+                    mDbContext.Update(mDataModel as SystemLocalFeesDataModel);
                     break;
 
                 default:
@@ -530,6 +570,53 @@ namespace EZDMS.App.Relational
             // Gets all the sales                      
             return Task.FromResult(mDbContext.SystemBackAdds.Where(e => e.IsActive == true).ToList());
         }
+
+        /// <summary>
+        /// Returns a single sales licensing fees record
+        /// </summary>
+        /// <param name="dealNumber"></param>
+        /// <returns>SalesLicensingFeesDataModel</returns>
+        public Task<SalesLicensingFeesDataModel> GetSalesLicensingAsync(int dealNumber)
+        {
+            // Gets a single sales record
+            return Task.FromResult(mDbContext.SalesLicensing.FirstOrDefault(u => u.DealNumber == dealNumber));
+
+        }
+
+        /// <summary>
+        /// Returns a single system licensing fees record
+        /// </summary>        
+        /// <returns>SystemLicensingFeesDataModel</returns>
+        public Task<SystemLicensingFeesDataModel> GetSystemLicensingAsync()
+        {
+            // Gets a the system licensing record
+            return Task.FromResult(mDbContext.SystemLicensing.FirstOrDefault());
+
+        }
+
+        /// <summary>
+        /// Returns a single sales local fees record
+        /// </summary>
+        /// <param name="dealNumber"></param>
+        /// <returns>SalesLocalFeesDataModel</returns>
+        public Task<SalesLocalFeesDataModel> GetSalesLocalFeesAsync(int dealNumber)
+        {
+            // Gets a single sales record
+            return Task.FromResult(mDbContext.SalesLocalFees.FirstOrDefault(u => u.DealNumber == dealNumber));
+
+        }
+
+        /// <summary>
+        /// Returns a single system Local Fees record
+        /// </summary>        
+        /// <returns>SystemLocalFeesDataModel</returns>
+        public Task<SystemLocalFeesDataModel> GetSystemLocalFeesAsync()
+        {
+            // Gets a the system licensing record
+            return Task.FromResult(mDbContext.SystemLocalFees.FirstOrDefault());
+
+        }
+
 
         #endregion
 

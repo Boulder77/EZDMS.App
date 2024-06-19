@@ -81,9 +81,29 @@ namespace EZDMS.App.Relational
         public DbSet<SystemBackAddsDataModel> SystemBackAdds { get; set; }
 
         /// <summary>
-        /// The SalesFrontAdds table
+        /// The SalesBackAdds table
         /// <summary>
         public DbSet<SalesBackAddsDataModel> SalesBackAdds { get; set; }
+
+        /// <summary>
+        /// The sales licensing fees table
+        /// <summary>
+        public DbSet<SalesLicensingFeesDataModel> SalesLicensing { get; set; }
+
+        /// <summary>
+        /// The system licensing fees table
+        /// <summary>
+        public DbSet<SystemLicensingFeesDataModel> SystemLicensing { get; set; }
+
+        /// <summary>
+        /// The sales local fees table
+        /// <summary>
+        public DbSet<SalesLocalFeesDataModel> SalesLocalFees { get; set; }
+
+        /// <summary>
+        /// The system local fees table
+        /// <summary>
+        public DbSet<SystemLocalFeesDataModel> SystemLocalFees { get; set; }
 
 
         #endregion
@@ -142,6 +162,15 @@ namespace EZDMS.App.Relational
             modelBuilder.Entity<SystemBackAddsDataModel>().HasKey(a => a.Number);
 
             modelBuilder.Entity<SalesBackAddsDataModel>().HasKey(a => a.DealNumber);
+
+            modelBuilder.Entity<SalesLicensingFeesDataModel>().HasKey(a => a.DealNumber);
+
+            modelBuilder.Entity<SystemLicensingFeesDataModel>();
+
+            modelBuilder.Entity<SalesLocalFeesDataModel>().HasKey(a => a.DealNumber);
+
+            modelBuilder.Entity<SystemLocalFeesDataModel>();
+
 
             // TODO: Set up limits
             //modelBuilder.Entity<LoginCredentialsDataModel>().Property(a => a.FirstName).HasMaxLength(50);

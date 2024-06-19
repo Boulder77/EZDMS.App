@@ -174,5 +174,28 @@ namespace EZDMS.App.Core
         /// </summary>
         Task<SalesBackAddsDataModel> GetSalesBackAddsAsync(int dealNumber);
 
+        /// <summary>
+        /// Returns a single sales licensing fees record
+        /// </summary>
+        Task<SalesLicensingFeesDataModel> GetSalesLicensingAsync(int dealNumber);
+
+        /// <summary>
+        /// Gets the system licensing fees info
+        /// </summary>
+        /// <returns>Returns the system licensing fees record if they exist, or null if none exist</returns>
+        Task<SystemLicensingFeesDataModel> GetSystemLicensingAsync();
+
+        /// <summary>
+        /// Returns a single sales local fees record
+        /// </summary>
+        Task<SalesLocalFeesDataModel> GetSalesLocalFeesAsync(int dealNumber);
+
+        /// <summary>
+        /// Gets the system local fees info
+        /// </summary>
+        /// <returns>Returns the system locaL fees record if they exist, or null if none exist</returns>
+        Task<SystemLocalFeesDataModel> GetSystemLocalFeesAsync();
+
+
     }
 }

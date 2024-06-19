@@ -290,6 +290,9 @@
     <Compile Include="ViewModel\Dialogs\VehicleSelectDialogViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\Design\ProductSalesDesignModel.cs" />
     <Compile Include="ViewModel\Dialogs\CustomerSelectDialogViewModel.cs" />
+    <Compile Include="ViewModel\Fees\SalesLocalFeesViewModel.cs" />
+    <Compile Include="ViewModel\Fees\SystemLocalFeesViewModel.cs" />
+    <Compile Include="ViewModel\Fees\SystemLicensingViewModel.cs" />
     <Compile Include="ViewModel\Input\Design\NumericalInputDesignModel.cs" />
     <Compile Include="ViewModel\Input\NumericalInputViewModel.cs" />
     <Compile Include="ViewModel\Input\Design\TextInputDesignModel.cs" />
@@ -305,6 +308,7 @@
     <Compile Include="ViewModel\Products\FrontAdds\FrontAddItemViewModel.cs" />
     <Compile Include="ViewModel\Products\Other\ProductItemViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\ProductsSalesDialogViewModel.cs" />
+    <Compile Include="ViewModel\Fees\Design\SalesLicensingFeesDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\TruthInLendingDisclosureDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\SalesSummaryDetailsDesignModel.cs" />
     <Compile Include="ViewModel\Sales\Design\SalesDeskingTotalsDesignModel.cs" />
@@ -312,6 +316,7 @@
     <Compile Include="ViewModel\Sales\Products\SalesMaintenanceViewModel.cs" />
     <Compile Include="ViewModel\Sales\SalesFinanceViewModel.cs" />
     <Compile Include="ViewModel\Sales\Products\SalesGapViewModel.cs" />
+    <Compile Include="ViewModel\Fees\SalesLicensingViewModel.cs" />
     <Compile Include="ViewModel\Sales\TruthinLendingDisclosureViewModel.cs" />
     <Compile Include="ViewModel\Sales\SalesDeskingTotalsViewModel.cs" />
     <Compile Include="ViewModel\Sales\SalesSummaryViewModel.cs" />
@@ -742,6 +747,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Samples\whitecar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\Fees\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

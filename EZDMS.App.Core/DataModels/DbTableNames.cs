@@ -80,5 +80,26 @@
         /// The SalesFrontAdds table
         /// <summary>
         SalesBackAdds = 14,
+
+        /// <summary>
+        /// The Sales Licensing Fees table
+        /// <summary>
+        SalesLicensing = 15,
+
+        /// <summary>
+        /// The System Licensing Fees table
+        /// <summary>
+        SystemLicensing = 16,
+
+        /// <summary>
+        /// The Sales Local Fees table
+        /// <summary>
+        SalesLocalFees = 17,
+
+        /// <summary>
+        /// The System Local Fees table
+        /// <summary>
+        SystemLocalFees = 18,
+
     }
 }
