@@ -185,6 +185,9 @@
     <Compile Include="Dialogs\DialogFrontBackAdds.xaml.cs">
       <DependentUpon>DialogFrontBackAdds.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\DialogTotalFeesSales.cs">
+      <DependentUpon>DialogTotalFeesSales.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\DialogVehicleSelect.cs">
       <DependentUpon>DialogVehicleSelect.xaml</DependentUpon>
     </Compile>
@@ -522,6 +525,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Dialogs\DialogFrontBackAdds.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\DialogTotalFeesSales.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
