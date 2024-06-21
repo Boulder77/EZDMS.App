@@ -17,7 +17,7 @@ namespace EZDMS.App
             var _decimal = (decimal)value;
                         
             // return as string to money field            
-            return (_decimal).ToString("#,###.00");
+            return (_decimal/100).ToString("#,###.00");
             
         }
 

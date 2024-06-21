@@ -23,34 +23,16 @@ namespace EZDMS.App
         /// Default constructor
         /// <summary>
         public SalesLocalFeesDesignModel()
-        {
-           
+        {           
 
-            DocumentationFee = new DecimalInputViewModel { Label = "Document", Amount = 12900};
-            DocumentationFeeInPayment = true;
-
-            TireFee = new DecimalInputViewModel { Label = "Tire", Amount = 1300 };
-            TireFeeInPayment = true;
-
-            InspectionFee = new DecimalInputViewModel { Label = "Inspection", Amount = 6500 };
-            InspectionFeeInPayment = true;
-
-            BatteryFee = new DecimalInputViewModel { Label = "Battery", Amount=1825 };
-            BatteryFeeInPayment = true;
-
-            SmogStateFee = new DecimalInputViewModel { Label = "Smog", Amount = 3500 };
-            SmogStateFeeInPayment = true;
-
-            ElectronicFilingFee = new DecimalInputViewModel { Label = "Electronic Filing", Amount = 6500 };
-            ElectronicFilingFeeInPayment=true;
-
-            LocalFee1Name = "Misc";
-            LocalFee1 = new DecimalInputViewModel { Label = LocalFee1Name, Amount = 1400 };            
-            LocalFee1InPayment = true;
-            
-
+            DocumentationFee = new LocalFeeViewModel { Label = "Document", Amount = 12900, };
+            TireFee = new LocalFeeViewModel { Label = "Tire", Amount = 1300 };
+            InspectionFee = new LocalFeeViewModel { Label = "Inspection", Amount = 6500 };
+            BatteryFee = new LocalFeeViewModel { Label = "Battery", Amount=1825 };
+            SmogStateFee = new LocalFeeViewModel { Label = "Smog", Amount = 3500 };       
+            ElectronicFilingFee = new LocalFeeViewModel { Label = "Electronic Filing", Amount = 6500 };             
+            LocalFee1 = new LocalFeeViewModel { Label = "Misc", Amount = 1400 };        
             Total = new DecimalInputViewModel { Label = "Total", Amount = 49964 };
-
 
         }
 

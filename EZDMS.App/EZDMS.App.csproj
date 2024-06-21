@@ -122,10 +122,13 @@
     <Compile Include="Controls\Display\TextDisplayVertControl.xaml.cs">
       <DependentUpon>TextDisplayVertControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Fees\SalesLicensingControl.xaml.cs">
+    <Compile Include="Controls\Fees\Local\LocalFeeItemControl.cs">
+      <DependentUpon>LocalFeeItemControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Fees\Licensing\SalesLicensingControl.xaml.cs">
       <DependentUpon>SalesLicensingControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Fees\SalesLocalFeesControl.xaml.cs">
+    <Compile Include="Controls\Fees\Local\SalesLocalFeesControl.xaml.cs">
       <DependentUpon>SalesLocalFeesControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Input\DateSelectionControl.cs">
@@ -296,9 +299,11 @@
     <Compile Include="ViewModel\Dialogs\VehicleSelectDialogViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\Design\ProductSalesDesignModel.cs" />
     <Compile Include="ViewModel\Dialogs\CustomerSelectDialogViewModel.cs" />
+    <Compile Include="ViewModel\Fees\Design\LocalFeeDesignModel.cs" />
     <Compile Include="ViewModel\Fees\Design\SalesLocalFeesDesignModel.cs" />
+    <Compile Include="ViewModel\Fees\Local\LocalFeeViewModel.cs" />
     <Compile Include="ViewModel\Fees\SalesBankFeesViewModel.cs" />
-    <Compile Include="ViewModel\Fees\SalesLocalFeesViewModel.cs" />
+    <Compile Include="ViewModel\Fees\Local\SalesLocalFeesViewModel.cs" />
     <Compile Include="ViewModel\Fees\SystemBankFeesViewModel.cs" />
     <Compile Include="ViewModel\Fees\SystemLocalFeesViewModel.cs" />
     <Compile Include="ViewModel\Fees\SystemLicensingViewModel.cs" />
@@ -436,11 +441,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Fees\SalesLicensingControl.xaml">
+    <Page Include="Controls\Fees\Local\LocalFeeItemControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Fees\SalesLocalFeesControl.xaml">
+    <Page Include="Controls\Fees\Licensing\SalesLicensingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Fees\Local\SalesLocalFeesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
