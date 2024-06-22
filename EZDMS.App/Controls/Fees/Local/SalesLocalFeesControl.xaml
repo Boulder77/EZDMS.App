@@ -48,7 +48,7 @@
              Background="{StaticResource BackgroundVeryLightBrush}"
              >
 
-            <local:LocalFeeItemControl DataContext="{Binding DocumentationFee}"/>
+            <local:LocalFeeItemControl DataContext="{Binding DocumentationFee}" Visibility="{Binding Active, Converter={local:BooleanToVisiblityConverter}}"/>
             <local:LocalFeeItemControl DataContext="{Binding TireFee}"/>
             <local:LocalFeeItemControl DataContext="{Binding InspectionFee}"/>
             <local:LocalFeeItemControl DataContext="{Binding BatteryFee}"/>

@@ -23,33 +23,40 @@ namespace EZDMS.App
         #region Public Properties
 
         /// <summary>
-        /// The label to identify what this value is for
+        /// The name of the local fee
         /// </summary>
         public string Label { get; set; }
 
         /// <summary>
-        /// The current saved amount
+        /// The local fee saved amount
         /// </summary>
-        public decimal Amount { get; set; }        
+        public decimal Amount { get; set; }
 
         /// <summary>
-        /// Indicates if the current amount can be edited
+        /// Indicates if the local fee can be edited
         /// </summary>
         public bool Editable { get; set; } = true;
 
         /// <summary>
-        /// Indicates if the current amount is financed
+        /// Indicates if the local fee is financed
         /// </summary>
         public bool InPayment { get; set; }
 
         /// <summary>
-        /// Indicates if the current amount is taxable
+        /// Indicates if the local fee is taxable
         /// </summary>
         public bool Taxable { get; set; }
 
+        /// <summary>
+        /// Indicates if the local fee is active
+        /// </summary>
+        public bool Active { get; set; }
+
+
+
         #endregion
 
-        
+
 
         #region Constructor 
 
