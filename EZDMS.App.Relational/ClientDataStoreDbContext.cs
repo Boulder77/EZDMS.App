@@ -88,12 +88,12 @@ namespace EZDMS.App.Relational
         /// <summary>
         /// The sales licensing fees table
         /// <summary>
-        public DbSet<SalesLicensingFeesDataModel> SalesLicensing { get; set; }
+        public DbSet<SalesLicensingFeesDataModel> SalesLicensingFees { get; set; }
 
         /// <summary>
         /// The system licensing fees table
         /// <summary>
-        public DbSet<SystemLicensingFeesDataModel> SystemLicensing { get; set; }
+        public DbSet<SystemLicensingFeesDataModel> SystemLicensingFees { get; set; }
 
         /// <summary>
         /// The sales local fees table

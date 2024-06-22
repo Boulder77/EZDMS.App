@@ -455,6 +455,7 @@ namespace EZDMS.App
                 await UI.ShowFees(new TotalFeesSalesDialogViewModel
                 {
                     Title = "Fees",
+                    
 
                 });
 

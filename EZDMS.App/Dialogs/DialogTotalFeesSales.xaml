@@ -5,14 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EZDMS.App"
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="800"
-             Height="800"
-             Width="800">
+             d:DesignHeight="600" d:DesignWidth="800"
+             Height="600"
+             Width="900">
 
-    <Grid Background="{StaticResource WordVeryVeryLightBlueBrush}">
+
+    <Border Background="{StaticResource WordVeryVeryLightBlueBrush}">
+    
+        <Grid >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>            
             <ColumnDefinition Width="*"/>
 
         </Grid.ColumnDefinitions>
@@ -24,57 +26,97 @@
 
         </Grid.RowDefinitions>
 
-
-        <Grid Grid.Row="1"
-              Background="{StaticResource BackgroundVeryLightBrush}">
             
-            <Border Margin="15" 
-                    CornerRadius="10" 
-                    BorderBrush="{StaticResource ForegroundMainBrush}"
-                    BorderThickness="1">
+            <StackPanel Panel.ZIndex="1" VerticalAlignment="Stretch"
+                        Grid.RowSpan="2"
+                        Grid.ColumnSpan="2"
+			            HorizontalAlignment="Stretch"                         
+			            Background="Transparent"                     
+			            Visibility="{Binding FeesLoading, 
+			            Converter={local:BooleanToVisiblityGoneConverter}, FallbackValue=Collapsed}"
+			            >
 
-                <local:SalesLicensingControl DataContext="{Binding}"/>
+                <TextBlock Text="Loading"
+			               Foreground="{StaticResource WordVeryLightBlueBrush}"
+			               FontFamily="{StaticResource LatoBold}"
+			               FontSize="{StaticResource FontSizeXXLarge}"
+			               HorizontalAlignment="Center"
+			               />
 
-            </Border>          
-            
-        </Grid>
+                <Border Padding="100"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        >
 
-        <Grid Grid.Row="1" Grid.Column="3"
-      Background="{StaticResource BackgroundVeryLightBrush}">
-
-            <Border Margin="15" 
-            CornerRadius="10" 
-            BorderBrush="{StaticResource ForegroundMainBrush}"
-            BorderThickness="1">
-
-                <local:SalesLocalFeesControl DataContext="{Binding}"/>
-
-            </Border>
-
-        </Grid>
+                    <TextBlock 
+                        Foreground="{StaticResource WordGreenBrush}"
+                        FontSize="200"                  
+                        Style="{StaticResource SpinningText}" />
+                
+                </Border>
 
 
-        <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            </StackPanel>
 
-            <Button Margin="5"  
-             Background="{StaticResource ForegroundLightBrush}"
-             BorderThickness="1"
-             BorderBrush="{StaticResource WordBlueBrush}"
-             Foreground="{StaticResource WordBlueBrush}"
-             FontSize="{StaticResource FontSizeRegular}"
-             Content="Cancel"
-             />
+            <Grid Grid.Row="1" 
+                  Grid.ColumnSpan="2"
+                  Background="{StaticResource WordVeryLightBlueBrush}"
+                  Visibility="{Binding FeesLoading, 
+                                Converter={local:BooleanToVisiblityConverter}}">
 
-            <Button Margin="5"  
-             Background="{StaticResource WordOrangeBrush}"
-             Command="{Binding SaveCommand}"
+                <Grid.ColumnDefinitions>
 
-             Foreground="{StaticResource ForegroundLightBrush}"
-             FontSize="{StaticResource FontSizeRegular}"
-             Content="Save"
-             />
-        </StackPanel>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="*"/>
 
-    </Grid>
-    
-    </local:BaseDialogUserControl>
+                </Grid.ColumnDefinitions>
+
+                <Border Margin="10" 
+                     CornerRadius="5" 
+                     BorderBrush="{StaticResource ForegroundMainBrush}"
+                      BorderThickness="1">
+
+                    <local:SalesLicensingControl DataContext="{Binding SalesLicensing}"/>
+                    
+                </Border>
+
+                <Border Grid.Column="2"
+                        CornerRadius="5" 
+                        Margin="10"
+                        BorderBrush="{StaticResource ForegroundMainBrush}"
+                        BorderThickness="1">
+
+                    <local:SalesLocalFeesControl DataContext="{Binding SalesLocalFees}"/>
+
+                </Border>
+
+            </Grid>
+            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+
+                <Button Margin="5"  
+                    Background="{StaticResource ForegroundLightBrush}"
+                    Command="{Binding CloseCommand}"
+                    BorderThickness="1"
+                    BorderBrush="{StaticResource WordBlueBrush}"
+                    Foreground="{StaticResource WordBlueBrush}"
+                    FontSize="{StaticResource FontSizeRegular}"
+                    Content="Cancel"
+                    />
+
+                <Button Margin="5"  
+                     Background="{StaticResource WordOrangeBrush}"
+                     Command="{Binding SaveCommand}"
+
+                     Foreground="{StaticResource ForegroundLightBrush}"
+                     FontSize="{StaticResource FontSizeRegular}"
+                     Content="Save"
+                     />
+            </StackPanel>
+
+        </Grid>       
+        
+
+    </Border>
+
+</local:BaseDialogUserControl>

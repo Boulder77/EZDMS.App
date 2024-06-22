@@ -80,9 +80,14 @@ namespace EZDMS.App
         public SalesFinanceDataModel SalesDeal { get; set; }
 
         /// <summary>
-        /// Indicates if the settings details are currently being loaded
+        /// Indicates if the deal recall details are currently being loaded
         /// </summary>
         public bool SalesDealRecallPageLoading { get; set; }
+
+        /// <summary>
+        /// Indicates if new records are being created
+        /// </summary>
+        public bool NewRecords { get; set; }
 
         #endregion
 
@@ -136,6 +141,8 @@ namespace EZDMS.App
             // Add a new record to the SalesFinance table
             SalesDeal = await ClientDataStore.CreateSalesFinanceDeal();
 
+            await CreateDefaultFeesAsync(SalesDeal.DealNumber);
+
             // Create new instance of sales desking view model
             ViewModelSalesFinance.SalesFinanceDeal = SalesDeal;
 
@@ -181,7 +188,143 @@ namespace EZDMS.App
 
         #region Private Helpers
 
+        private async Task CreateDefaultFeesAsync(int dealNumber)
+        {
+            if (dealNumber == 0)
+                return;
+
+            await RunCommandAsync(() => NewRecords, async () =>
+            {
+                
+                // Create new licensing record from default licensing info
+                
+                // Get default system licensing info
+                var systemLicensing = await ClientDataStore.GetSystemLicensingAsync("STORE01");
+
+
+                var newSalesLicensing = new SalesLicensingFeesDataModel
+                {
+                    DealNumber = dealNumber,
+                    FeesInPayment = systemLicensing.LicenseFeeInPayment,
+                    LicenseFee = systemLicensing.LicenseFee,
+                    RegistrationFee = systemLicensing.RegistrationFee,
+                    TitleFee = systemLicensing.TitleFee,
+                    FilingFee = systemLicensing.FilingFee,
+                    TempTagFee = systemLicensing.TempTagFee,
+                    PlateFee = systemLicensing.PlateFee,
+                    NotaryFee = systemLicensing.NotaryFee,
+                    TransferFee = systemLicensing.TransferFee,
+                };
+                // Add licensing record to datastore
+                await ClientDataStore.AddNewSalesRecordAsync(newSalesLicensing, DbTableNames.SalesLicensing);
+                
+                // Create new local fees records from default local fees info
+
+                // Get default local fees info
+                var systemLocalFees = await ClientDataStore.GetSystemLocalFeesAsync("STORE01");
+
+                    // create new local fees dm
+                    var newSalesLocalFees = new SalesLocalFeesDataModel
+                    {
+                        DealNumber = dealNumber,
+                        DocumentationFee = systemLocalFees.DocumentationFee,
+                        DocumentationFeeInPayment = systemLocalFees.DocumentationFeeInPayment,
+                        DocumentationFeeTaxable = systemLocalFees.DocumentationFeeTaxable,
+                        TireFee = systemLocalFees.TireFee,
+                        TireFeeInPayment = systemLocalFees.TireFeeInPayment,
+                        TireFeeTaxable = systemLocalFees.TireFeeTaxable,
+                        InspectionFee = systemLocalFees.InspectionFee,
+                        InspectionFeeInPayment = systemLocalFees.InspectionFeeInPayment,
+                        InspectionFeeTaxable = systemLocalFees.InspectionFeeTaxable,
+                        MessengerFee = systemLocalFees.MessengerFee,
+                        MessengerFeeInPayment = systemLocalFees.MessengerFeeInPayment,
+                        MessengerFeeTaxable = systemLocalFees.MessengerFeeTaxable,
+                        BatteryFee = systemLocalFees.BatteryFee,
+                        BatteryFeeInPayment = systemLocalFees.BatteryFeeInPayment,
+                        BatteryFeeTaxable = systemLocalFees.BatteryFeeTaxable,
+                        SmogToSellerFee = systemLocalFees.SmogToSellerFee,
+                        SmogToSellerFeeInPayment = systemLocalFees.SmogToSellerFeeInPayment,
+                        SmogToSellerFeeTaxable = systemLocalFees.SmogToSellerFeeTaxable,
+                        DocStampsFee = systemLocalFees.DocStampsFee,
+                        DocStampsFeeInPayment = systemLocalFees.DocStampsFeeInPayment,
+                        DocStampsFeeTaxable = systemLocalFees.DocStampsFeeTaxable,
+                        EVChargingFee = systemLocalFees.EVChargingFee,
+                        EVChargingFeeInPayment = systemLocalFees.EVChargingFeeInPayment,
+                        EVChargingFeeTaxable = systemLocalFees.EVChargingFeeTaxable,
+                        StateInspectionFee = systemLocalFees.StateInspectionFee,
+                        StateInspectionFeeInPayment = systemLocalFees.StateInspectionFeeInPayment,
+                        StateInspectionFeeTaxable = systemLocalFees.StateInspectionFeeTaxable,
+                        SmogStateFee = systemLocalFees.SmogStateFee,
+                        SmogStateFeeInPayment = systemLocalFees.SmogStateFeeInPayment,
+                        SmogStateFeeTaxable = systemLocalFees.SmogStateFeeTaxable,
+                        SmogAbatementFee = systemLocalFees.SmogAbatementFee,
+                        SmogAbatementFeeInPayment = systemLocalFees.SmogAbatementFeeInPayment,
+                        SmogAbatementFeeTaxable = systemLocalFees.SmogAbatementFeeTaxable,
+                        EmissionsFee = systemLocalFees.EmissionsFee,
+                        EmissionsFeeInPayment = systemLocalFees.EmissionsFeeInPayment,
+                        EmissionsFeeTaxable = systemLocalFees.EmissionsFeeTaxable,
+                        ElectronicFilingFee = systemLocalFees.ElectronicFilingFee,
+                        ElectronicFilingFeeInPayment = systemLocalFees.ElectronicFilingFeeInPayment,
+                        ElectronicFilingFeeTaxable = systemLocalFees.ElectronicFilingFeeTaxable,
+                        LocalFee1Name = systemLocalFees.LocalFee1Name,
+                        LocalFee1 = systemLocalFees.LocalFee1,
+                        LocalFee1InPayment = systemLocalFees.LocalFee1InPayment,
+                        LocalFee1Taxable = systemLocalFees.LocalFee1Taxable,
+                        LocalFee2Name = systemLocalFees.LocalFee2Name,
+                        LocalFee2 = systemLocalFees.LocalFee2,
+                        LocalFee2InPayment = systemLocalFees.LocalFee2InPayment,
+                        LocalFee2Taxable = systemLocalFees.LocalFee2Taxable,
+                        LocalFee3Name = systemLocalFees.LocalFee3Name,
+                        LocalFee3 = systemLocalFees.LocalFee3,
+                        LocalFee3InPayment = systemLocalFees.LocalFee3InPayment,
+                        LocalFee3Taxable = systemLocalFees.LocalFee3Taxable,
+                        LocalFee4Name = systemLocalFees.LocalFee4Name,
+                        LocalFee4 = systemLocalFees.LocalFee4,
+                        LocalFee4InPayment = systemLocalFees.LocalFee4InPayment,
+                        LocalFee4Taxable = systemLocalFees.LocalFee4Taxable,
+                        LocalFee5Name = systemLocalFees.LocalFee5Name,
+                        LocalFee5 = systemLocalFees.LocalFee5,
+                        LocalFee5InPayment = systemLocalFees.LocalFee5InPayment,
+                        LocalFee5Taxable = systemLocalFees.LocalFee5Taxable,
+                        LocalFee6Name = systemLocalFees.LocalFee6Name,
+                        LocalFee6 = systemLocalFees.LocalFee6,
+                        LocalFee6InPayment = systemLocalFees.LocalFee6InPayment,
+                        LocalFee6Taxable = systemLocalFees.LocalFee6Taxable,
+                        LocalFee7Name = systemLocalFees.LocalFee7Name,
+                        LocalFee7 = systemLocalFees.LocalFee7,
+                        LocalFee7InPayment = systemLocalFees.LocalFee7InPayment,
+                        LocalFee7Taxable = systemLocalFees.LocalFee7Taxable,
+                        LocalFee8Name = systemLocalFees.LocalFee8Name,
+                        LocalFee8 = systemLocalFees.LocalFee8,
+                        LocalFee8InPayment = systemLocalFees.LocalFee8InPayment,
+                        LocalFee8Taxable = systemLocalFees.LocalFee8Taxable,
+                        LocalFee9Name = systemLocalFees.LocalFee9Name,
+                        LocalFee9 = systemLocalFees.LocalFee9,
+                        LocalFee9InPayment = systemLocalFees.LocalFee9InPayment,
+                        LocalFee9Taxable = systemLocalFees.LocalFee9Taxable,
+                        LocalFee10Name = systemLocalFees.LocalFee10Name,
+                        LocalFee10 = systemLocalFees.LocalFee10,
+                        LocalFee10InPayment = systemLocalFees.LocalFee10InPayment,
+                        LocalFee10Taxable = systemLocalFees.LocalFee10Taxable,
+
+                    };
+
+
+                // Add licensing record to datastore
+                await ClientDataStore.AddNewSalesRecordAsync(newSalesLocalFees, DbTableNames.SalesLocalFees);               
+
+
+            });
+
+
+        }
+
         #endregion
+
+
+
+
+
 
     }
 

@@ -265,7 +265,7 @@ namespace EZDMS.App.Core
         /// <summary>
         /// The smog state taxable of this SystemLocalFees record
         /// <summary>
-        public bool SmogStateTaxable { get; set; }
+        public bool SmogStateFeeTaxable { get; set; }
 
         /// <summary>
         /// The smog abatement fee of this SystemLocalFees record

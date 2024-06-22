@@ -144,12 +144,12 @@ namespace EZDMS.App.Relational
 
                 case DbTableNames.SalesLicensing:
                     // Add new sales licensing fees entry
-                    mDbContext.SalesBackAdds.Add(mDataModel as SalesBackAddsDataModel);
+                    mDbContext.SalesLicensingFees.Add(mDataModel as SalesLicensingFeesDataModel);
                     break;
 
                 case DbTableNames.SystemLicensing:
                     // Add new system licensing entry
-                    mDbContext.SystemLicensing.Add(mDataModel as SystemLicensingFeesDataModel);
+                    mDbContext.SystemLicensingFees.Add(mDataModel as SystemLicensingFeesDataModel);
                     break;
 
                 case DbTableNames.SalesLocalFees:
@@ -605,7 +605,7 @@ namespace EZDMS.App.Relational
         public Task<SalesLicensingFeesDataModel> GetSalesLicensingAsync(int dealNumber)
         {
             // Gets a single sales record
-            return Task.FromResult(mDbContext.SalesLicensing.FirstOrDefault(u => u.DealNumber == dealNumber));
+            return Task.FromResult(mDbContext.SalesLicensingFees.FirstOrDefault(u => u.DealNumber == dealNumber));
 
         }
 
@@ -616,7 +616,7 @@ namespace EZDMS.App.Relational
         public Task<SystemLicensingFeesDataModel> GetSystemLicensingAsync(string storeid)
         {
             // Gets a the system licensing record
-            return Task.FromResult(mDbContext.SystemLicensing.FirstOrDefault(u => u.StoreID == storeid));
+            return Task.FromResult(mDbContext.SystemLicensingFees.FirstOrDefault(u => u.StoreID == storeid));
 
         }
 
