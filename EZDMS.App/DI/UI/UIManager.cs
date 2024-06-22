@@ -157,5 +157,34 @@ namespace EZDMS.App
             return tcs.Task;
         }
 
+        /// <summary>
+        /// Show the fees dialog window
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <returns></returns>
+        public Task ShowFees(TotalFeesSalesDialogViewModel viewModel)
+        {
+            // Create a task completion source
+            var tcs = new TaskCompletionSource<bool>();
+
+            // Run on UI thread
+            Application.Current.Dispatcher.Invoke(async () =>
+            {
+                try
+                {
+                    // Show the dialog box
+                    await new DialogTotalFeesSales().ShowDialog(viewModel);
+                }
+                finally
+                {
+                    // Flag we are done
+                    tcs.SetResult(true);
+                }
+            });
+
+            // Return the task once complete
+            return tcs.Task;
+        }
+
     }
 }

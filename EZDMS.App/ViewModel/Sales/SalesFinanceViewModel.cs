@@ -38,7 +38,7 @@ namespace EZDMS.App
 
         private SalesDeskingTotalsViewModel mDeskingTotals;
 
-
+        
 
         #endregion
 
@@ -445,6 +445,27 @@ namespace EZDMS.App
             
         }
 
+        public async Task<bool> ShowFeesDialogAsync()
+        {
+
+            return await RunCommandAsync(() => DialogWindowLoading, async () =>
+            {
+
+                // Lock this command to ignore any other requests while processing
+                await UI.ShowFees(new TotalFeesSalesDialogViewModel
+                {
+                    Title = "Fees",
+
+                });
+
+                // Update view model
+                await UpdateFinanceAsync();
+                return true;
+            });
+
+        }
+
+
         /// <summary>
         /// Update the customer datamodel then save to the data store
         /// </summary>
@@ -673,7 +694,8 @@ namespace EZDMS.App
                 { 
                     Label = "Fees",
                     Amount = (salesFinance.TotalOfficialFees + salesFinance.TotalDealerFees),
-                    Editable = true
+                    Editable = true,
+                    DialogAction = ShowFeesDialogAsync
                 },
                   
                 BackOptions = new DecimalInputViewModel 

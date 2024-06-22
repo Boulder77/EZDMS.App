@@ -595,7 +595,13 @@ namespace EZDMS.App.Relational
         /// Returns a single sales licensing fees record
         /// </summary>
         /// <param name="dealNumber"></param>
-        /// <returns>SalesLicensingFeesDataModel</returns>
+        /// <returns>SalesLicensingFeesDataModel</returns>       
+
+        #endregion
+
+        #region Fees Methods
+
+
         public Task<SalesLicensingFeesDataModel> GetSalesLicensingAsync(int dealNumber)
         {
             // Gets a single sales record
@@ -659,6 +665,7 @@ namespace EZDMS.App.Relational
             return Task.FromResult(mDbContext.SystemBankFees.FirstOrDefault(u => u.StoreID == storeid));
 
         }
+
 
 
         #endregion

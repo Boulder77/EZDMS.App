@@ -39,7 +39,7 @@ namespace EZDMS.App
                 // Go to chat page
                 //ApplicationPage.Chat : 
                 // Otherwise, go to login page
-                ApplicationPage.Login);
+                ApplicationPage.SalesRecall);
 
             // Show the main window
             Current.MainWindow = new MainWindow();
@@ -79,7 +79,7 @@ namespace EZDMS.App
             // Create a new endpoint watcher
             var httpWatcher = new HttpEndpointChecker(
                 // Checking fasetto.chat
-                Configuration["FasettoWordServer:HostUrl"],
+                Configuration["HostUrl"],
                 // Every 20 seconds
                 interval: 20000,
                 // Pass in the DI logger

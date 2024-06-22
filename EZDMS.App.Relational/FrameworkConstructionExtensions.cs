@@ -20,7 +20,8 @@ namespace EZDMS.App.Relational
             construction.Services.AddDbContext<ClientDataStoreDbContext>(options =>
             {
                 // Setup connection string
-                options.UseSqlServer(construction.Configuration.GetConnectionString("ClientDataStoreConnection"));
+                //options.UseSqlServer(construction.Configuration.GetConnectionString("ClientDataStoreConnection"));
+                options.UseSqlServer("Data Source=207.246.248.238,4120;Initial Catalog=984147_ezdms_app;User ID=984147_test_admin_620ems;Password=r7V1Nt71kqvPpcf9JBVbblOwR;");
             }, contextLifetime: ServiceLifetime.Transient);
 
             // Add client data store for easy access/use of the backing data store

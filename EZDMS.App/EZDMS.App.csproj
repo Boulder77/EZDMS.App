@@ -17,6 +17,31 @@
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>ftp://ftp.proquotes.net/ClickOnce/External/CDK/EZDMS/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>true</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://www.proquotes.net/cdkapps/ClickOnce/External/CDK/EZDMS/</InstallUrl>
+    <SupportUrl>http://www.proquotes.net</SupportUrl>
+    <ProductName>EZDMS</ProductName>
+    <PublisherName>ProQuotes</PublisherName>
+    <SuiteName>EZDMS</SuiteName>
+    <MinimumRequiredVersion>1.1.1.5</MinimumRequiredVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationVersion>1.1.1.5</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -42,6 +67,25 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>7C0740A0282A5109053FBF025E76EEE1F00F3082</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>EZDMS.App_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Windows.Shell, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -299,6 +343,7 @@
     <Compile Include="ViewModel\Customer\Design\CustomerDesignModel.cs" />
     <Compile Include="ViewModel\Customer\CustomersListViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\FrontBackAddsDialogViewModel.cs" />
+    <Compile Include="ViewModel\Dialogs\TotalFeesSalesDialogViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\VehicleSelectDialogViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\Design\ProductSalesDesignModel.cs" />
     <Compile Include="ViewModel\Dialogs\CustomerSelectDialogViewModel.cs" />
@@ -711,6 +756,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="EZDMS.App.csproj.vsspell" />
+    <None Include="EZDMS.App_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -781,6 +827,17 @@
   <ItemGroup>
     <Resource Include="Images\Samples\whitecar.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

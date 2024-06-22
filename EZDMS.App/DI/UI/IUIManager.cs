@@ -43,6 +43,13 @@ namespace EZDMS.App
         /// <returns></returns>
         Task ShowAdds(FrontBackAddsDialogViewModel viewModel);
 
+        /// <summary>
+        /// Displays a total fees window for the user
+        /// </summary>
+        /// <param name="viewModel">The view model</param>
+        /// <returns></returns>
+        Task ShowFees(TotalFeesSalesDialogViewModel viewModel);
+
 
     }
 
