@@ -126,35 +126,59 @@ namespace EZDMS.App
         {
             await RunCommandAsync(() => FeesLoading, async () =>
             {
-                
+
                 //// Get the default settings for the licensing fees
                 //SystemLicensing = await ClientDataStore.GetSystemLicensingAsync("STORE01");
 
                 //// Get the default settings for the local fees
                 //SystemLocalFees = await ClientDataStore.GetSystemLocalFeesAsync("STORE01");
 
-                //// Get the current sales licensing fees
-                //CurrentSalesLicensing = await ClientDataStore.GetSalesLicensingAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+                //Get the current sales licensing fees
+                CurrentSalesLicensing = await ClientDataStore.GetSalesLicensingAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
 
-                //// Get the current sales local fees
-                //CurrentSalesLocalFees = await ClientDataStore.GetSalesLocalFeesAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+                // if does not exist
+                if (CurrentSalesLicensing == null)
+
+                // Create from default licensing
+                {
+                    SystemLicensing = await ClientDataStore.GetSystemLicensingAsync("STORE01");
+                    CurrentSalesLicensing = new SalesLicensingFeesDataModel
+                    {
+                        DealNumber = ViewModelSalesFinance.SalesFinanceDeal.DealNumber,
+                        FeesInPayment = SystemLicensing.LicenseFeeInPayment,
+                        LicenseFee = SystemLicensing.LicenseFee,                       
+                        RegistrationFee = SystemLicensing.RegistrationFee,
+                        TitleFee = SystemLicensing.TitleFee,
+                        FilingFee = SystemLicensing.FilingFee,
+                        TempTagFee = SystemLicensing.TempTagFee,
+                        PlateFee = SystemLicensing.PlateFee,
+                        NotaryFee = SystemLicensing.NotaryFee,
+                        TransferFee = SystemLicensing.TransferFee,                        
+                    };
+                }
+
+                // Update licensing VM
+                SetLicensingVM(CurrentSalesLicensing);
+
+                // Get the current sales local fees
+                CurrentSalesLocalFees = await ClientDataStore.GetSalesLocalFeesAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
 
                 //// Get the current sales licensing fees
                 //CurrentSalesLicensing = await ClientDataStore.GetSalesLicensingAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
 
                 // Get the current sales bank fees
                 //CurrentSalesBankFees = await ClientDataStore.GetSalesBankFeesAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
-
+                ;
                 // Update sales licensing vm
 
 
                 //if (CurrentSalesLicensing != null)
-                    // Update service view model
-                    UpdateLicensingVM(CurrentSalesLicensing);
+                // Update service view model
+               
 
                 //if (CurrentSalesLocalFees != null)
                     // Update service view model
-                    UpdateLocalFeesVM(CurrentSalesLocalFees);
+                    SetLocalFeesVM(CurrentSalesLocalFees);
 
 
                 await Task.Delay(1);
@@ -238,31 +262,34 @@ namespace EZDMS.App
         #region Private Helper Methods
 
        
-        private void UpdateLicensingVM(SalesLicensingFeesDataModel salesLicensing)
+        private void SetLicensingVM(SalesLicensingFeesDataModel salesLicensing)
         {
+
+
 
             SalesLicensing = new SalesLicensingViewModel 
             
             {
-            FeesInPayment = true,
+            FeesInPayment = salesLicensing.FeesInPayment,
 
-            LicenseFee = new DecimalInputViewModel { Label = "License", Amount = 3400 },
+            LicenseFee = new DecimalInputViewModel { Label = "License", Amount = salesLicensing.LicenseFee },
+            
+            TitleFee = new DecimalInputViewModel { Label = "Title", Amount = salesLicensing.TitleFee },
 
-            TitleFee = new DecimalInputViewModel { Label = "Title", Amount = 6500 },
+            PlateFee = new DecimalInputViewModel { Label = "Plates", Amount = salesLicensing.PlateFee },
 
-            PlateFee = new DecimalInputViewModel { Label = "Plates", Amount = 6500 },
+            TempTagFee = new DecimalInputViewModel { Label = "Temp Tag", Amount = salesLicensing.TempTagFee },
 
-            TempTagFee = new DecimalInputViewModel { Label = "Temp Tag", Amount = 1325 },
+            RegistrationFee = new DecimalInputViewModel { Label = "Registration", Amount = salesLicensing.RegistrationFee },
 
-            RegistrationFee = new DecimalInputViewModel { Label = "Registration", Amount = 24639 },
+            TransferFee = new DecimalInputViewModel { Label = "Transfer", Amount = salesLicensing.TransferFee },
 
-            TransferFee = new DecimalInputViewModel { Label = "Transfer", Amount = 1200 },
+            NotaryFee = new DecimalInputViewModel { Label = "Notary", Amount = salesLicensing.NotaryFee },
 
-            NotaryFee = new DecimalInputViewModel { Label = "Notary", Amount = 1400 },
+            FilingFee = new DecimalInputViewModel { Label = "Filing", Amount = salesLicensing.FilingFee },
 
-            FilingFee = new DecimalInputViewModel { Label = "Filing", Amount = 5000 },
-
-            Total = new DecimalInputViewModel { Label = "Total", Amount = 49964 },
+            Total = new DecimalInputViewModel { Label = "Total", Amount = salesLicensing.LicenseFee + salesLicensing.TitleFee + salesLicensing.PlateFee
+            + salesLicensing.NotaryFee + salesLicensing.TransferFee + salesLicensing.TempTagFee + salesLicensing.RegistrationFee + salesLicensing.FilingFee },
 
         };
             
@@ -271,7 +298,7 @@ namespace EZDMS.App
         }
 
 
-        private void UpdateLocalFeesVM(SalesLocalFeesDataModel salesLocalFees)
+        private void SetLocalFeesVM(SalesLocalFeesDataModel salesLocalFees)
         {
             SalesLocalFees = new SalesLocalFeesViewModel 
             {
