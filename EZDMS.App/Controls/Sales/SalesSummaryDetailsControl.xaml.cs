@@ -20,7 +20,7 @@ namespace EZDMS.App
             //    // Create new instance of settings view model
             //    DataContext = new SalesSummaryViewModel();
             //else
-            //    DataContext = ViewModelSalesFinance.SalesSummary;
+            DataContext = ViewModelSalesFinance.SalesSummary;
 
         }
     }

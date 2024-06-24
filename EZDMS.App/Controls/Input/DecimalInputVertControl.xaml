@@ -69,7 +69,7 @@
                        />
 
             <!-- Edit Content -->
-            <TextBox Text="{Binding Amount}"
+            <TextBox Text="{Binding Amount, Converter={local:DecimalToDisplayMoneyConverter}}"
                      Background="Transparent"
                      Grid.Row="1"
                      FontSize="{StaticResource FontSizeRegular}"

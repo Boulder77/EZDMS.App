@@ -96,7 +96,7 @@
 
                 <Button Margin="5"  
                     Background="{StaticResource ForegroundLightBrush}"
-                    Command="{Binding CloseCommand}"
+                    Command="{Binding CloseCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:BaseDialogUserControl}}}"
                     BorderThickness="1"
                     BorderBrush="{StaticResource WordBlueBrush}"
                     Foreground="{StaticResource WordBlueBrush}"

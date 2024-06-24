@@ -9,6 +9,9 @@ namespace EZDMS.App
     /// <summary>
     public class DecimalInputViewModel : BaseViewModel
     {
+
+        private decimal mAmount;
+
         #region Public Properties
 
         /// <summary>
@@ -19,7 +22,28 @@ namespace EZDMS.App
         /// <summary>
         /// The current saved amount
         /// </summary>
-        public decimal Amount { get; set; }
+        public decimal Amount 
+        { 
+            get=> mAmount;
+
+            set 
+            {
+                // Make sure list has changed
+                if (mAmount == value)
+                    return;
+
+
+                // Update value
+                mAmount = value;
+
+                // Update view model                                
+                Save();
+
+
+
+            }
+            
+        }
 
         /// <summary>
         /// Indicates if the 

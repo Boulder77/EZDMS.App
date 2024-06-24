@@ -4,17 +4,23 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using static EZDMS.App.DI;
 
 namespace EZDMS.App
 {
+
+
     /// <summary>
     /// The View Model for a Sales Recall screen
     /// </summary>
     public class SalesSummaryViewModel : BaseViewModel
     {
-        
+
+        private DecimalInputViewModel mAPR;
+
+
         #region Public Properties
 
         /// <summary>
@@ -41,7 +47,28 @@ namespace EZDMS.App
         /// <summary>
         /// The APR of the sale
         /// </summary>
-        public DecimalInputViewModel APR {get; set;}
+        public DecimalInputViewModel APR {
+            get => mAPR;
+
+
+            set
+            {
+                // If datamodel has not changed...
+                if (mAPR == value)
+                    // Ignore
+                    return;
+
+
+
+                if (mAPR != null & value != null)
+                {
+                    MessageBox.Show("APR Changed");
+                }
+                // Set the backing datamodel
+                mAPR = value;
+            }
+        
+        }
 
         /// <summary>
         /// The effective APR of the sale

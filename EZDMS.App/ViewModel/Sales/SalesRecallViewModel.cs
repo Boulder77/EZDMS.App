@@ -138,30 +138,34 @@ namespace EZDMS.App
         public async Task CreateNewSalesDealAsync()
         {
 
-            // Add a new record to the SalesFinance table
-            SalesDeal = await ClientDataStore.CreateSalesFinanceDeal();
-
-            await CreateDefaultFeesAsync(SalesDeal.DealNumber);
-
-            // Create new instance of sales desking view model
-            ViewModelSalesFinance.SalesFinanceDeal = SalesDeal;
-
-            // Create new sales search records
-            var salesDealItem = new SalesDealsItemDataModel
+            await RunCommandAsync(() => SalesDealRecallPageLoading, async () =>
             {
-                DealNumber = SalesDeal.DealNumber,
-                CreatedDate = SalesDeal.DealDate,
-                DealDate = SalesDeal.DealDate,
-                LastActivityDate = SalesDeal.DealDate,
-                IsActive=true,
-                IsFinalized=false,
-                Status="Quote",
+                // Add a new record to the SalesFinance table
+                SalesDeal = await ClientDataStore.CreateSalesFinanceDeal();
 
-            };
+                await CreateDefaultFeesAsync(SalesDeal.DealNumber);
 
-            await ClientDataStore.AddNewSalesRecordAsync(salesDealItem, DbTableNames.SalesDealsInfo);
+                // Create new instance of sales desking view model
+                ViewModelSalesFinance.SalesFinanceDeal = SalesDeal;
 
-            ViewModelSalesFinance.SalesDealsItem = salesDealItem;
+                // Create new sales search records
+                var salesDealItem = new SalesDealsItemDataModel
+                {
+                    DealNumber = SalesDeal.DealNumber,
+                    CreatedDate = SalesDeal.DealDate,
+                    DealDate = SalesDeal.DealDate,
+                    LastActivityDate = SalesDeal.DealDate,
+                    IsActive = true,
+                    IsFinalized = false,
+                    Status = "Quote",
+
+                };
+
+                await ClientDataStore.AddNewSalesRecordAsync(salesDealItem, DbTableNames.SalesDealsInfo);
+
+                ViewModelSalesFinance.SalesDealsItem = salesDealItem;
+
+            });
 
             // Go to sales desking page
             ViewModelApplication.GoToPage(ApplicationPage.SalesFinance, ViewModelSalesFinance);

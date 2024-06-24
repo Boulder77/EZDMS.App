@@ -9,6 +9,9 @@ namespace EZDMS.App
     /// <summary>
     public class NumericalInputViewModel : BaseViewModel
     {
+
+        private int mNumber;
+
         #region Public Properties
 
         /// <summary>
@@ -19,7 +22,27 @@ namespace EZDMS.App
         /// <summary>
         /// The current saved number
         /// </summary>
-        public int Number { get; set; }
+        public int Number
+        {
+            get => mNumber;
+
+
+            set
+            {
+
+                // Make sure list has changed
+                if (mNumber == value)
+                    return;
+                              
+                // Update value
+                mNumber = value;
+
+                // Update view model
+                Save();
+
+            }
+
+        }
 
         /// <summary>
         /// Indicates if the 

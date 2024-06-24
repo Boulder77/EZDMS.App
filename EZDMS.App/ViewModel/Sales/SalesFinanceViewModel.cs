@@ -191,9 +191,9 @@ namespace EZDMS.App
         /// <summary>
         /// The view model for the sales summary control
         /// </summary>
-        public SalesSummaryViewModel SalesSummary { 
-            
-            get=> mSalesSummary; 
+        public SalesSummaryViewModel SalesSummary 
+        {
+            get => mSalesSummary;
 
             set
             {
@@ -217,7 +217,7 @@ namespace EZDMS.App
                 mSalesSummary = value;
 
             }
-        
+
         }
 
         /// <summary>
@@ -806,9 +806,8 @@ namespace EZDMS.App
                 {
                     Label = "APR",
                     Amount = salesFinance.APR == 0 ? Convert.ToDecimal(8.00): Convert.ToDecimal(salesFinance.APR),
-                    Editable = true
-
-
+                    Editable = true,
+                    CommitAction= UpdateFinanceAsync
 
                 },
 
@@ -818,7 +817,8 @@ namespace EZDMS.App
                 {
                     Label = "Effective APR",
                     Amount = salesFinance.EffectiveAPR == 0 ? Convert.ToDecimal(8.00) : Convert.ToDecimal(salesFinance.EffectiveAPR),
-                    Editable = true
+                    Editable = true,
+                    CommitAction = UpdateFinanceAsync
 
                 },
 
@@ -836,7 +836,8 @@ namespace EZDMS.App
                 {
                     Label = "Term",
                     Number = salesFinance.Term == 0 ? 48 : salesFinance.Term,                   
-                    Editable = true
+                    Editable = true,
+                    CommitAction = UpdateFinanceAsync
 
                 },
 
