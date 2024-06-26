@@ -2,6 +2,7 @@
 using EZDMS.App.Core;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Management.Instrumentation;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using static EZDMS.App.DI;
@@ -74,8 +75,9 @@ namespace EZDMS.App
         /// Default constructor
         /// <summary>
         public SalesLicensingViewModel()
-        {
 
+        {
+            
         }
 
         #endregion

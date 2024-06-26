@@ -9,6 +9,7 @@ using System.Linq;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Numerics;
 
 
 namespace EZDMS.App
@@ -18,8 +19,7 @@ namespace EZDMS.App
     /// <summary>
     public class TotalFeesSalesDialogViewModel:BaseDialogViewModel
     {
-
-        #region Public Properties
+         #region Public Properties
 
         /// <summary>
         /// The list of all the product providers
@@ -54,8 +54,8 @@ namespace EZDMS.App
         /// <summary>
         /// The view model for the sales licensing control
         /// </summary>
-        public SalesLicensingViewModel SalesLicensing { get; set; }
-
+        public SalesLicensingViewModel SalesLicensing { get; set; }        
+        
         /// <summary>
         /// The view model for the sales local fees control
         /// </summary>
@@ -215,21 +215,21 @@ namespace EZDMS.App
             {
             FeesInPayment = salesLicensing.FeesInPayment,
 
-            LicenseFee = new DecimalInputViewModel { Label = "License", Amount = salesLicensing.LicenseFee },
+            LicenseFee = new DecimalInputViewModel { Label = "License", Amount = salesLicensing.LicenseFee, CommitAction=UpdateTotalRetailAsync },
             
-            TitleFee = new DecimalInputViewModel { Label = "Title", Amount = salesLicensing.TitleFee },
+            TitleFee = new DecimalInputViewModel { Label = "Title", Amount = salesLicensing.TitleFee, CommitAction = UpdateTotalRetailAsync },
 
-            PlateFee = new DecimalInputViewModel { Label = "Plates", Amount = salesLicensing.PlateFee },
+            PlateFee = new DecimalInputViewModel { Label = "Plates", Amount = salesLicensing.PlateFee, CommitAction = UpdateTotalRetailAsync },
 
-            TempTagFee = new DecimalInputViewModel { Label = "Temp Tag", Amount = salesLicensing.TempTagFee },
+            TempTagFee = new DecimalInputViewModel { Label = "Temp Tag", Amount = salesLicensing.TempTagFee, CommitAction = UpdateTotalRetailAsync },
 
-            RegistrationFee = new DecimalInputViewModel { Label = "Registration", Amount = salesLicensing.RegistrationFee },
+            RegistrationFee = new DecimalInputViewModel { Label = "Registration", Amount = salesLicensing.RegistrationFee, CommitAction = UpdateTotalRetailAsync },
 
-            TransferFee = new DecimalInputViewModel { Label = "Transfer", Amount = salesLicensing.TransferFee },
+            TransferFee = new DecimalInputViewModel { Label = "Transfer", Amount = salesLicensing.TransferFee, CommitAction = UpdateTotalRetailAsync },
 
-            NotaryFee = new DecimalInputViewModel { Label = "Notary", Amount = salesLicensing.NotaryFee },
+            NotaryFee = new DecimalInputViewModel { Label = "Notary", Amount = salesLicensing.NotaryFee, CommitAction = UpdateTotalRetailAsync },
 
-            FilingFee = new DecimalInputViewModel { Label = "Filing", Amount = salesLicensing.FilingFee },
+            FilingFee = new DecimalInputViewModel { Label = "Filing", Amount = salesLicensing.FilingFee, CommitAction = UpdateTotalRetailAsync },
 
             Total = new DecimalInputViewModel { Label = "Total", Amount = salesLicensing.LicenseFee + salesLicensing.TitleFee + salesLicensing.PlateFee
             + salesLicensing.NotaryFee + salesLicensing.TransferFee + salesLicensing.TempTagFee + salesLicensing.RegistrationFee + salesLicensing.FilingFee },
