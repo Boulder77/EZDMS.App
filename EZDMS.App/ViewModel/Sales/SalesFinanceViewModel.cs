@@ -425,47 +425,6 @@ namespace EZDMS.App
 
         }
 
-        public async Task<bool> ShowProductsDialogAsync()
-        {
-
-            return await RunCommandAsync(() => DialogWindowLoading, async () =>
-            {
-
-                // Lock this command to ignore any other requests while processing
-                await UI.ShowProducts(new ProductsSalesDialogViewModel
-                {
-                    Title = "Products",
-                   
-                });
-
-                // Update view model
-                await UpdateFinanceAsync();
-                return true;            
-            });
-            
-        }
-
-        public async Task<bool> ShowFeesDialogAsync()
-        {
-
-            return await RunCommandAsync(() => DialogWindowLoading, async () =>
-            {
-
-                // Lock this command to ignore any other requests while processing
-                await UI.ShowFees(new TotalFeesSalesDialogViewModel
-                {
-                    Title = "Fees",
-                    
-
-                });
-
-                // Update view model
-                await UpdateFinanceAsync();
-                return true;
-            });
-
-        }
-
 
         /// <summary>
         /// Update the customer datamodel then save to the data store
@@ -553,6 +512,49 @@ namespace EZDMS.App
             });
 
         }
+
+
+        public async Task<bool> ShowProductsDialogAsync()
+        {
+
+            return await RunCommandAsync(() => DialogWindowLoading, async () =>
+            {
+
+                // Lock this command to ignore any other requests while processing
+                await UI.ShowProducts(new ProductsSalesDialogViewModel
+                {
+                    Title = "Products",
+
+                });
+
+                // Update view model
+                await UpdateFinanceAsync();
+                return true;
+            });
+
+        }
+
+        public async Task<bool> ShowFeesDialogAsync()
+        {
+
+            return await RunCommandAsync(() => DialogWindowLoading, async () =>
+            {
+
+                // Lock this command to ignore any other requests while processing
+                await UI.ShowFees(new TotalFeesSalesDialogViewModel
+                {
+                    Title = "Fees",
+
+
+                });
+
+                // Update view model
+                await UpdateFinanceAsync();
+                return true;
+            });
+
+        }
+
 
         public async Task UpdateSalesDealItemAsync(object mDataModel, string mType = null)
         {
@@ -1390,12 +1392,6 @@ namespace EZDMS.App
 
 
         }
-
-
-
-
-
-
 
         /// <summary>
         /// Updates a specific value from the client data store for the user profile details

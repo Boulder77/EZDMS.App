@@ -149,7 +149,8 @@ namespace EZDMS.App
                 // Set the local fees control view model
                 SetLocalFeesVM(CurrentSalesLocalFees);
 
-                await Task.Delay(1);
+
+                await Task.Run(UpdateTotalRetailAsync);
 
             });
 
@@ -161,54 +162,29 @@ namespace EZDMS.App
             await RunCommandAsync(() => Saving, async () =>
             {
 
-                // Get the current sales licensing fees
-                CurrentSalesLicensing = await ClientDataStore.GetSalesLicensingAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+                // Update the licensing fees dm
+                UpdateLicensingDM();
 
-               
-                    // Check if record exists
-                    if (CurrentSalesLicensing == null)
-                    {
-                    CurrentSalesLicensing = new SalesLicensingFeesDataModel
-                        {
-                            DealNumber = ViewModelSalesFinance.SalesFinanceDeal.DealNumber,
+                // save the sales licensing fees to db store
+                await ClientDataStore.SaveSalesRecordAsync(CurrentSalesLicensing, DbTableNames.SalesLicensing);
 
-                        };
+                // Update the local fees dm
+                UpdateLocalFeesDM();
 
-                        await ClientDataStore.AddNewSalesRecordAsync(CurrentSalesLicensing, DbTableNames.SalesLicensing);
+                // Save the sales local fees to db store
+                await ClientDataStore.SaveSalesRecordAsync(CurrentSalesLocalFees, DbTableNames.SalesLocalFees);
 
-                    }
-                    //// Update data model
-                    //await Task.Run(UpdateServiceDM);
+                // Update the totals
+                await Task.Run(UpdateTotalRetailAsync);
 
-                    //// Save to the data store                    
-                    //await ClientDataStore.SaveSalesRecordAsync(SalesService, DbTableNames.SalesService);
-
-                    //// Update Sales finance deal view model
-                    //ViewModelSalesFinance.SalesFinanceDeal.ServiceContract = SalesService.Retail;
-                
-
-                // Get the stored record
-                CurrentSalesLocalFees = await ClientDataStore.GetSalesLocalFeesAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
-
-
-                // Check if record exists
-                if (CurrentSalesLocalFees == null)
-                {
-                    CurrentSalesLocalFees = new SalesLocalFeesDataModel
-                    {
-                        DealNumber = ViewModelSalesFinance.SalesFinanceDeal.DealNumber,
-
-                    };
-
-                    await ClientDataStore.AddNewSalesRecordAsync(CurrentSalesLocalFees, DbTableNames.SalesLocalFees);
-
-                }
-
-                
+                // Update Sales finance deal view model
+                ViewModelSalesFinance.SalesFinanceDeal.TotalDealerFees = SalesLocalFees.Total.Amount;
+                ViewModelSalesFinance.SalesFinanceDeal.TotalOfficialFees = SalesLicensing.Total.Amount;
 
 
             });
 
+            // exit dialog
             CloseAction();
 
         }
@@ -264,6 +240,117 @@ namespace EZDMS.App
 
         }
 
+        private void UpdateLicensingDM()
+        {
+
+            /// Create new sales licensing fees
+            CurrentSalesLicensing = new SalesLicensingFeesDataModel
+            {
+                DealNumber = ViewModelSalesFinance.SalesFinanceDeal.DealNumber,
+                FeesInPayment = SalesLicensing.FeesInPayment,
+                LicenseFee = SalesLicensing.LicenseFee.Amount,
+                TitleFee = SalesLicensing.TitleFee.Amount,
+                PlateFee = SalesLicensing.PlateFee.Amount,
+                TempTagFee = SalesLicensing.TempTagFee.Amount,
+                RegistrationFee = SalesLicensing.RegistrationFee.Amount,
+                TransferFee = SalesLicensing.TransferFee.Amount,
+                NotaryFee = SalesLicensing.NotaryFee.Amount,
+                FilingFee = SalesLicensing.FilingFee.Amount,
+            };
+
+        }
+
+        private void UpdateLocalFeesDM()
+        {
+
+            /// Create new sales licensing fees
+            CurrentSalesLocalFees = new SalesLocalFeesDataModel
+            {
+               DealNumber = ViewModelSalesFinance.SalesFinanceDeal.DealNumber,
+               DocumentationFeeInPayment = SalesLocalFees.DocumentationFee.InPayment,
+               DocumentationFeeTaxable = SalesLocalFees.DocumentationFee.Taxable,
+               DocumentationFee = SalesLocalFees.DocumentationFee.Amount,
+               TireFeeInPayment = SalesLocalFees.TireFee.InPayment,
+               TireFeeTaxable = SalesLocalFees.TireFee.Taxable,
+               TireFee = SalesLocalFees.TireFee.Amount,
+               InspectionFeeInPayment = SalesLocalFees.InspectionFee.InPayment,
+               InspectionFeeTaxable = SalesLocalFees.InspectionFee.Taxable,
+               InspectionFee = SalesLocalFees.InspectionFee.Amount,
+               MessengerFeeInPayment = SalesLocalFees.MessengerFee.InPayment,
+               MessengerFeeTaxable = SalesLocalFees.MessengerFee.Taxable,
+               MessengerFee = SalesLocalFees.MessengerFee.Amount,
+               BatteryFeeInPayment = SalesLocalFees.BatteryFee.InPayment,
+               BatteryFeeTaxable = SalesLocalFees.BatteryFee.Taxable,
+               BatteryFee = SalesLocalFees.BatteryFee.Amount,
+               SmogAbatementFeeInPayment = SalesLocalFees.SmogAbatementFee.InPayment,
+               SmogAbatementFeeTaxable = SalesLocalFees.SmogAbatementFee.Taxable,
+               SmogAbatementFee = SalesLocalFees.SmogAbatementFee.Amount,
+               SmogStateFeeInPayment = SalesLocalFees.SmogStateFee.InPayment,
+               SmogStateFeeTaxable = SalesLocalFees.SmogStateFee.Taxable,
+               SmogStateFee = SalesLocalFees.SmogStateFee.Amount,
+               SmogToSellerFeeInPayment = SalesLocalFees.SmogToSellerFee.InPayment,
+               SmogToSellerFeeTaxable = SalesLocalFees.SmogToSellerFee.Taxable,
+               SmogToSellerFee = SalesLocalFees.SmogToSellerFee.Amount,
+               DocStampsFeeInPayment = SalesLocalFees.DocStampsFee.InPayment,
+               DocStampsFeeTaxable = SalesLocalFees.DocStampsFee.Taxable,
+               DocStampsFee = SalesLocalFees.DocStampsFee.Amount,
+               ElectronicFilingFeeInPayment = SalesLocalFees.ElectronicFilingFee.InPayment,
+               ElectronicFilingFeeTaxable = SalesLocalFees.ElectronicFilingFee.Taxable,
+               ElectronicFilingFee = SalesLocalFees.ElectronicFilingFee.Amount,
+               EmissionsFeeInPayment = SalesLocalFees.EmissionsFee.InPayment,
+               EmissionsFeeTaxable = SalesLocalFees.EmissionsFee.Taxable,
+               EmissionsFee = SalesLocalFees.EmissionsFee.Amount,
+               EVChargingFeeInPayment = SalesLocalFees.EVChargingFee.InPayment,
+               EVChargingFeeTaxable = SalesLocalFees.EVChargingFee.Taxable,
+               EVChargingFee = SalesLocalFees.EVChargingFee.Amount,
+               StateInspectionFeeInPayment = SalesLocalFees.StateInspectionFee.InPayment,
+               StateInspectionFeeTaxable = SalesLocalFees.StateInspectionFee.Taxable,
+               StateInspectionFee = SalesLocalFees.StateInspectionFee.Amount,
+               LocalFee1Name = SalesLocalFees.LocalFee1.Label,
+               LocalFee1 = SalesLocalFees.LocalFee1.Amount,
+               LocalFee1InPayment = SalesLocalFees.LocalFee1.InPayment,
+               LocalFee1Taxable = SalesLocalFees.LocalFee1.Taxable,
+               LocalFee2Name = SalesLocalFees.LocalFee2.Label,
+               LocalFee2 = SalesLocalFees.LocalFee2.Amount,
+               LocalFee2InPayment = SalesLocalFees.LocalFee2.InPayment,
+               LocalFee2Taxable = SalesLocalFees.LocalFee2.Taxable,
+               LocalFee3Name = SalesLocalFees.LocalFee3.Label,
+               LocalFee3 = SalesLocalFees.LocalFee3.Amount,
+               LocalFee3InPayment = SalesLocalFees.LocalFee3.InPayment,
+               LocalFee3Taxable = SalesLocalFees.LocalFee3.Taxable,
+               LocalFee4Name = SalesLocalFees.LocalFee4.Label,
+               LocalFee4 = SalesLocalFees.LocalFee4.Amount,
+               LocalFee4InPayment = SalesLocalFees.LocalFee4.InPayment,
+               LocalFee4Taxable = SalesLocalFees.LocalFee4.Taxable,
+               LocalFee5Name = SalesLocalFees.LocalFee5.Label,
+               LocalFee5 = SalesLocalFees.LocalFee5.Amount,
+               LocalFee5InPayment = SalesLocalFees.LocalFee5.InPayment,
+               LocalFee5Taxable = SalesLocalFees.LocalFee5.Taxable,
+               LocalFee6Name = SalesLocalFees.LocalFee6.Label,
+               LocalFee6 = SalesLocalFees.LocalFee6.Amount,
+               LocalFee6InPayment = SalesLocalFees.LocalFee6.InPayment,
+               LocalFee6Taxable = SalesLocalFees.LocalFee6.Taxable,
+               LocalFee7Name = SalesLocalFees.LocalFee7.Label,
+               LocalFee7 = SalesLocalFees.LocalFee7.Amount,
+               LocalFee7InPayment = SalesLocalFees.LocalFee7.InPayment,
+               LocalFee7Taxable = SalesLocalFees.LocalFee7.Taxable,
+               LocalFee8Name = SalesLocalFees.LocalFee8.Label,
+               LocalFee8 = SalesLocalFees.LocalFee8.Amount,
+               LocalFee8InPayment = SalesLocalFees.LocalFee8.InPayment,
+               LocalFee8Taxable = SalesLocalFees.LocalFee8.Taxable,
+               LocalFee9Name = SalesLocalFees.LocalFee9.Label,
+               LocalFee9 = SalesLocalFees.LocalFee9.Amount,
+               LocalFee9InPayment = SalesLocalFees.LocalFee9.InPayment,
+               LocalFee9Taxable = SalesLocalFees.LocalFee9.Taxable,
+               LocalFee10Name = SalesLocalFees.LocalFee10.Label,
+               LocalFee10 = SalesLocalFees.LocalFee10.Amount,
+               LocalFee10InPayment = SalesLocalFees.LocalFee10.InPayment,
+               LocalFee10Taxable = SalesLocalFees.LocalFee10.Taxable,
+
+            };
+
+        }
+
 
         private void SetLocalFeesVM(SalesLocalFeesDataModel salesLocalFees)
         {
@@ -294,6 +381,8 @@ namespace EZDMS.App
                 LocalFee8 = new LocalFeeViewModel { Label = salesLocalFees.LocalFee8Name, Amount = salesLocalFees.LocalFee8, InPayment = salesLocalFees.LocalFee8InPayment, Taxable = salesLocalFees.LocalFee8Taxable, Active = SystemLocalFees.LocalFee8Active },
                 LocalFee9 = new LocalFeeViewModel { Label = salesLocalFees.LocalFee9Name, Amount = salesLocalFees.LocalFee9, InPayment = salesLocalFees.LocalFee9InPayment, Taxable = salesLocalFees.LocalFee9Taxable, Active = SystemLocalFees.LocalFee9Active },
                 LocalFee10 = new LocalFeeViewModel { Label = salesLocalFees.LocalFee10Name, Amount = salesLocalFees.LocalFee10, InPayment = salesLocalFees.LocalFee10InPayment, Taxable = salesLocalFees.LocalFee10Taxable, Active = SystemLocalFees.LocalFee10Active },
+                Total = new DecimalInputViewModel {  Label = "TOTAL", Amount = 0}
+
             };
           
 
@@ -304,7 +393,7 @@ namespace EZDMS.App
 
         private void UpdateTotalRetail()
         {
-
+            
             SalesLicensing.Total.Amount = CurrentSalesLicensing.LicenseFee + CurrentSalesLicensing.TitleFee + CurrentSalesLicensing.PlateFee +CurrentSalesLicensing.NotaryFee + CurrentSalesLicensing.TransferFee + CurrentSalesLicensing.TempTagFee + CurrentSalesLicensing.RegistrationFee + CurrentSalesLicensing.FilingFee;
             SalesLocalFees.Total.Amount = CurrentSalesLocalFees.DocumentationFee + CurrentSalesLocalFees.TireFee + CurrentSalesLocalFees.InspectionFee + CurrentSalesLocalFees.MessengerFee + CurrentSalesLocalFees.BatteryFee + CurrentSalesLocalFees.SmogToSellerFee + CurrentSalesLocalFees.DocStampsFee + CurrentSalesLocalFees.EVChargingFee + CurrentSalesLocalFees.StateInspectionFee + CurrentSalesLocalFees.SmogStateFee + CurrentSalesLocalFees.SmogAbatementFee + CurrentSalesLocalFees.EmissionsFee + CurrentSalesLocalFees.ElectronicFilingFee + CurrentSalesLocalFees.LocalFee1 + CurrentSalesLocalFees.LocalFee2 + CurrentSalesLocalFees.LocalFee3 + CurrentSalesLocalFees.LocalFee4 + CurrentSalesLocalFees.LocalFee5 + CurrentSalesLocalFees.LocalFee6 + CurrentSalesLocalFees.LocalFee7 + CurrentSalesLocalFees.LocalFee8 + CurrentSalesLocalFees.LocalFee9 + CurrentSalesLocalFees.LocalFee10;
 

@@ -33,10 +33,10 @@
     <ProductName>EZDMS</ProductName>
     <PublisherName>ProQuotes</PublisherName>
     <SuiteName>EZDMS</SuiteName>
-    <MinimumRequiredVersion>1.2.1.5</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.2.1.7</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.2.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>

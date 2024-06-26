@@ -11,90 +11,90 @@
              d:DesignHeight="900" d:DesignWidth="920">
     
     <Border Background="{StaticResource BackgroundVeryLightBrush}"
-            
-            >
+                        >
 
-        <Grid>
+        <ScrollViewer>
+            <Grid>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
 
-            <StackPanel Panel.ZIndex="1" VerticalAlignment="Stretch"
+                <StackPanel Panel.ZIndex="1" VerticalAlignment="Stretch"
                         HorizontalAlignment="Stretch" 
                         Grid.RowSpan="2" 
                         Background="Transparent"                     
                         Visibility="{Binding ProductsLoading, 
                         Converter={local:BooleanToVisiblityGoneConverter}, FallbackValue=Collapsed}"
                         >
-                
-                <TextBlock Text="Loading"
+
+                    <TextBlock Text="Loading"
                        Foreground="{StaticResource WordVeryLightBlueBrush}"
                        FontFamily="{StaticResource LatoBold}"
                        FontSize="{StaticResource FontSizeXXLarge}"
                        HorizontalAlignment="Center"
                        />
 
-                <Border Padding="100"
+                    <Border Padding="100"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                      >
 
-                    <TextBlock 
+                        <TextBlock 
                     Foreground="{StaticResource WordBlueBrush}"
                     FontSize="200"                  
                     Style="{StaticResource SpinningText}" />
-                </Border>
+                    </Border>
 
-            </StackPanel>
+                </StackPanel>
 
 
-            <Border BorderThickness="1"
+                <Border BorderThickness="1"
                     BorderBrush="{StaticResource ForegroundVeryDarkBrush}"
                     CornerRadius="2"
                     Visibility="{Binding ProductsLoading, 
                                         Converter={local:BooleanToVisiblityConverter}}"
                     >
-                
+
                     <!--Content-->
-                <Grid>
+                    <Grid>
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-                    <Label Content="Coverages" HorizontalAlignment="Center"/>
+                        <Label Content="Coverages" HorizontalAlignment="Center"/>
 
-                    <local:ProductItemControl Grid.Row="1" DataContext="{Binding Service}"/>
-                    <local:ProductItemControl Grid.Row="2" DataContext="{Binding Warranty}"/>
-                    <local:ProductItemControl Grid.Row="3" DataContext="{Binding Maintenance}"/>
-                    <local:GapItemControl Grid.Row="4" DataContext="{Binding Gap}"/>
+                        <local:ProductItemControl Grid.Row="1" DataContext="{Binding Service}"/>
+                        <local:ProductItemControl Grid.Row="2" DataContext="{Binding Warranty}"/>
+                        <local:ProductItemControl Grid.Row="3" DataContext="{Binding Maintenance}"/>
+                        <local:GapItemControl Grid.Row="4" DataContext="{Binding Gap}"/>
 
-                    <local:NumericalDisplayVertControl
+                        <local:NumericalDisplayVertControl
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"                           
                            Grid.Row="5" 
                            DataContext="{Binding TotalRetail}"
                         />
 
-                </Grid>
+                    </Grid>
 
-            </Border>
+                </Border>
 
-            <StackPanel Grid.Row="2"
+                <StackPanel Grid.Row="2"
                         Orientation="Horizontal"
                         HorizontalAlignment="Right"
                         >
 
-                <Button Margin="5"  
+                    <Button Margin="5"  
                             Background="{StaticResource ForegroundLightBrush}"
                             BorderThickness="1"
                             BorderBrush="{StaticResource WordBlueBrush}"
@@ -104,7 +104,7 @@
                             Content="Cancel"
                             />
 
-                <Button Margin="5"  
+                    <Button Margin="5"  
                             Background="{StaticResource WordOrangeBrush}"
                             Command="{Binding SaveCommand}"
                             local:IsBusyProperty.Value="{Binding Saving}"
@@ -114,9 +114,10 @@
                             Content="Save Close"
                             />
 
-            </StackPanel>
+                </StackPanel>
 
-        </Grid>
+            </Grid>
+        </ScrollViewer>
 
     </Border>
     </local:BaseDialogUserControl>
