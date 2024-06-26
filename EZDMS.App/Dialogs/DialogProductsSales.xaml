@@ -5,21 +5,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EZDMS.App"
              mc:Ignorable="d" 
-             Height="900"
-             Width="950"
+             Height="800"
+             Width="980"
              d:DataContext="{x:Static local:ProductSalesDesignModel.Instance}"
-             d:DesignHeight="900" d:DesignWidth="920">
+             d:DesignHeight="700" d:DesignWidth="920">
     
-    <Border Background="{StaticResource BackgroundVeryLightBrush}"
+    <Border Background="{StaticResource WordVeryLightBlueBrush}"
                         >
 
-        <ScrollViewer>
+            
             <Grid>
 
                 <Grid.RowDefinitions>
+                  
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="60" />
                 </Grid.RowDefinitions>
 
 
@@ -51,73 +51,92 @@
 
                 </StackPanel>
 
-
-                <Border BorderThickness="1"
+            <Border BorderThickness="1"
                     BorderBrush="{StaticResource ForegroundVeryDarkBrush}"
                     CornerRadius="2"
                     Visibility="{Binding ProductsLoading, 
-                                        Converter={local:BooleanToVisiblityConverter}}"
-                    >
+                     Converter={local:BooleanToVisiblityConverter}}">
 
-                    <!--Content-->
-                    <Grid>
+                     <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                           VerticalScrollBarVisibility="Auto" >
+                
+         
+          
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="40" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
 
-                        <Label Content="Coverages" HorizontalAlignment="Center"/>
+                        <!--Content-->
+                        <Grid>
 
-                        <local:ProductItemControl Grid.Row="1" DataContext="{Binding Service}"/>
-                        <local:ProductItemControl Grid.Row="2" DataContext="{Binding Warranty}"/>
-                        <local:ProductItemControl Grid.Row="3" DataContext="{Binding Maintenance}"/>
-                        <local:GapItemControl Grid.Row="4" DataContext="{Binding Gap}"/>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
 
-                        <local:NumericalDisplayVertControl
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"                           
-                           Grid.Row="5" 
-                           DataContext="{Binding TotalRetail}"
-                        />
+                            <Label Content="Coverages" HorizontalAlignment="Center"/>
 
-                    </Grid>
+                            <local:ProductItemControl Grid.Row="1" DataContext="{Binding Service}"/>
+                            <local:ProductItemControl Grid.Row="2" DataContext="{Binding Warranty}"/>
+                            <local:ProductItemControl Grid.Row="3" DataContext="{Binding Maintenance}"/>
+                            <local:GapItemControl Grid.Row="4" DataContext="{Binding Gap}"/>
 
-                </Border>
+                            <local:NumericalDisplayVertControl
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"                           
+                 Grid.Row="5" 
+                 DataContext="{Binding TotalRetail}"
+              />
 
-                <StackPanel Grid.Row="2"
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Right"
-                        >
+                        </Grid>
 
-                    <Button Margin="5"  
-                            Background="{StaticResource ForegroundLightBrush}"
-                            BorderThickness="1"
-                            BorderBrush="{StaticResource WordBlueBrush}"
-                            Foreground="{StaticResource WordBlueBrush}"
-                            FontSize="{StaticResource FontSizeRegular}"
-                            Command="{Binding CloseCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:BaseDialogUserControl}}}"
-                            Content="Cancel"
-                            />
+                   
 
-                    <Button Margin="5"  
-                            Background="{StaticResource WordOrangeBrush}"
-                            Command="{Binding SaveCommand}"
-                            local:IsBusyProperty.Value="{Binding Saving}"
-                            IsEnabled="{Binding ProductsLoading, Converter={local:BooleanInvertConverter}}"
-                            Foreground="{StaticResource ForegroundLightBrush}"
-                            FontSize="{StaticResource FontSizeRegular}"
-                            Content="Save Close"
-                            />
+            </ScrollViewer>
 
-                </StackPanel>
+            </Border>
+
+            <StackPanel Grid.Row="1"
+              Orientation="Horizontal"
+              HorizontalAlignment="Right"
+              >
+
+                        <Button Margin="5"  
+                  Background="{StaticResource ForegroundLightBrush}"
+                  BorderThickness="1"
+                  BorderBrush="{StaticResource WordBlueBrush}"
+                  Foreground="{StaticResource WordBlueBrush}"
+                  FontSize="{StaticResource FontSizeRegular}"
+                  Command="{Binding CloseCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:BaseDialogUserControl}}}"
+                  Content="Cancel"
+                  />
+
+                        <Button Margin="5"  
+                  Background="{StaticResource WordOrangeBrush}"
+                  Command="{Binding SaveCommand}"
+                  local:IsBusyProperty.Value="{Binding Saving}"
+                  IsEnabled="{Binding ProductsLoading, Converter={local:BooleanInvertConverter}}"
+                  Foreground="{StaticResource ForegroundLightBrush}"
+                  FontSize="{StaticResource FontSizeRegular}"
+                  Content="Save"
+                  />
+
+                    </StackPanel>
+
+
+               
+
+
+         
+
+
+
+          
 
             </Grid>
-        </ScrollViewer>
+        
 
     </Border>
     </local:BaseDialogUserControl>

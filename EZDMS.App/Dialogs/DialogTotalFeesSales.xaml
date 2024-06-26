@@ -105,13 +105,14 @@
                     />
 
                 <Button Margin="5"  
-                     Background="{StaticResource WordOrangeBrush}"
-                     Command="{Binding SaveCommand}"
-
-                     Foreground="{StaticResource ForegroundLightBrush}"
-                     FontSize="{StaticResource FontSizeRegular}"
-                     Content="Save"
-                     />
+                           Background="{StaticResource WordOrangeBrush}"
+                           Command="{Binding SaveCommand}"
+                           local:IsBusyProperty.Value="{Binding Saving}"
+                           IsEnabled="{Binding FeesLoading, Converter={local:BooleanInvertConverter}}"
+                           Foreground="{StaticResource ForegroundLightBrush}"
+                           FontSize="{StaticResource FontSizeRegular}"
+                           Content="Save"
+/>
             </StackPanel>
 
         </Grid>       
