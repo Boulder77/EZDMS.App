@@ -111,5 +111,14 @@
         /// <summary>
         SystemBankFees = 20,
 
+        /// <summary>
+        /// The Sales taxes table
+        /// <summary>
+        SalesTaxes = 21,
+
+        /// <summary>
+        /// The System taxes table
+        /// <summary>
+        SystemTaxes = 22,
     }
 }

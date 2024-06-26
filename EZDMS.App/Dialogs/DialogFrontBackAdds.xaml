@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EZDMS.App"
              mc:Ignorable="d" 
-             Height="900"
+             Height="750"
              Width="1050"             
              d:DesignHeight="900" d:DesignWidth="1050">
     
@@ -17,7 +17,7 @@
             <Grid.RowDefinitions>
                
                 <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="60" />
             </Grid.RowDefinitions>
 
             <StackPanel Panel.ZIndex="1" VerticalAlignment="Stretch"
@@ -84,7 +84,7 @@
             
             <StackPanel Grid.Row="1"
                         Orientation="Horizontal"
-                        HorizontalAlignment="Right"
+                        HorizontalAlignment="Right"                        
                         >
 
                 <Button Margin="5"  

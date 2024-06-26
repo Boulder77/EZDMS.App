@@ -226,6 +226,9 @@
     <Compile Include="Controls\Products\FrontAdd\FrontAddItemControl.xaml.cs">
       <DependentUpon>FrontAddItemControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Taxes\LocalFeeItemControl.cs">
+      <DependentUpon>TaxItemControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\DialogFrontBackAdds.xaml.cs">
       <DependentUpon>DialogFrontBackAdds.xaml</DependentUpon>
     </Compile>
@@ -391,6 +394,9 @@
     <Compile Include="ViewModel\Input\Design\DecimalInputDesignModel.cs" />
     <Compile Include="ViewModel\Input\TextDisplayViewModel.cs" />
     <Compile Include="ViewModel\Input\DecimalInputViewModel.cs" />
+    <Compile Include="ViewModel\Taxes\Design\SalesTaxesDesignModel.cs" />
+    <Compile Include="ViewModel\Taxes\TaxItemViewModel.cs" />
+    <Compile Include="ViewModel\Taxes\SalesTaxesViewModel.cs" />
     <Compile Include="ViewModel\Vehicle\VehiclesListViewModel.cs" />
     <Compile Include="ViewModel\Vehicle\Design\VehicleDetailsDesignModel.cs" />
     <Compile Include="ViewModel\Vehicle\Design\VehiclePricingDesignModel.cs" />
@@ -566,6 +572,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Products\FrontAdd\FrontAddItemControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Taxes\TaxItemControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

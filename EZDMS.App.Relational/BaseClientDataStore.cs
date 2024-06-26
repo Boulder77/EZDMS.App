@@ -172,6 +172,17 @@ namespace EZDMS.App.Relational
                     mDbContext.SystemBankFees.Add(mDataModel as SystemBankFeesDataModel);
                     break;
 
+                case DbTableNames.SalesTaxes:
+                    // Add new sales local fee entry
+                    mDbContext.SalesTaxes.Add(mDataModel as SalesTaxesDataModel);
+                    break;
+
+                case DbTableNames.SystemTaxes:
+                    // Add new system lical entry
+                    mDbContext.SystemTaxes.Add(mDataModel as SystemTaxesDataModel);
+                    break;
+
+
                 default:
                     throw new Exception();
                     break;
@@ -305,9 +316,19 @@ namespace EZDMS.App.Relational
                     mDbContext.Update(mDataModel as SystemBankFeesDataModel);
                     break;
 
+                case DbTableNames.SalesTaxes:
+
+                    mDbContext.Update(mDataModel as SalesTaxesDataModel);
+                    break;
+
+                case DbTableNames.SystemTaxes:
+
+                    mDbContext.Update(mDataModel as SystemTaxesDataModel);
+                    break;
+
                 default:
                     throw new Exception();
-                    break;
+                    //break;
             }
 
             // Save changes
@@ -666,9 +687,34 @@ namespace EZDMS.App.Relational
 
         }
 
-
-
         #endregion
+
+
+        /// <summary>
+        /// Returns a single sales Bank fees record
+        /// </summary>
+        /// <param name="dealNumber"></param>
+        /// <returns>SalesBankFeesDataModel</returns>
+        public Task<SalesTaxesDataModel> GetSalesTaxesAsync(int dealNumber)
+        {
+            // Gets a single sales record
+            return Task.FromResult(mDbContext.SalesTaxes.FirstOrDefault(u => u.DealNumber == dealNumber));
+
+        }
+
+        /// <summary>
+        /// Returns a single system Bank Fees record
+        /// </summary>        
+        /// <returns>SystemBankFeesDataModel</returns>
+        public Task<SystemTaxesDataModel> GetSystemTaxesAsync(string storeid)
+        {
+            // Gets a the system licensing record
+            return Task.FromResult(mDbContext.SystemTaxes.FirstOrDefault(u => u.StoreID == storeid));
+
+        }
+
+
+
 
         #endregion
     }
