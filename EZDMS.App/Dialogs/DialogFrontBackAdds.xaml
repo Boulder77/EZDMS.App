@@ -9,7 +9,7 @@
              Width="1050"             
              d:DesignHeight="900" d:DesignWidth="1050">
     
-    <Border Background="{StaticResource BackgroundVeryLightBrush}"
+    <Border Background="{StaticResource WordVeryLightBlueBrush}"
             >
 
         <Grid >
@@ -63,22 +63,48 @@
                        FontSize="{StaticResource FontSizeXXLarge}"
                        />
 
-                <local:FrontAddItemListControl
-                        Padding="5,10,5,5"
-                        Grid.Row="1"
-                        DataContext="{Binding FrontAdds}"
-                        />
+
+                <ScrollViewer Grid.Row="1">
+                    <Border Padding="3"
+                            Margin="5"
+                            CornerRadius="5"
+                            BorderThickness="1"
+                            BorderBrush="{StaticResource ForegroundVeryDarkBrush}"
+                            Background="{StaticResource WordVeryVeryLightBlueBrush}">
+
+                        <local:FrontAddItemListControl
+                               Padding="5,10,5,5"                                                
+                                 DataContext="{Binding FrontAdds}"/>
+
+                    </Border>
+                </ScrollViewer>
+                
+               
+                
+                
 
                 <TextBlock Text="Back Options"
                    Grid.Row="2"
                        FontSize="{StaticResource FontSizeXXLarge}"
                        />
 
-                <local:BackAddItemListControl
-                        Padding="5,10,5,5"
-                        Grid.Row="3"
-                        DataContext="{Binding BackAdds}"
-                        />
+
+                <ScrollViewer Grid.Row="3">
+                    <Border 
+                        Padding="3"
+                        Margin="5"
+                        CornerRadius="5"
+                        BorderThickness="1"
+                        BorderBrush="{StaticResource ForegroundVeryDarkBrush}"
+                        Background="{StaticResource WordVeryVeryLightBlueBrush}">
+
+                        <local:BackAddItemListControl
+                           Padding="5,10,5,5"                                                
+                           DataContext="{Binding FrontAdds}"/>
+
+                </Border>
+
+                </ScrollViewer>
 
             </Grid>
             

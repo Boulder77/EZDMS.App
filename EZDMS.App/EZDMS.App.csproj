@@ -229,6 +229,9 @@
     <Compile Include="Dialogs\DialogFrontBackAdds.xaml.cs">
       <DependentUpon>DialogFrontBackAdds.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\DialogTotalTaxesSales.cs">
+      <DependentUpon>DialogTotalTaxesSales.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\DialogTotalFeesSales.cs">
       <DependentUpon>DialogTotalFeesSales.xaml</DependentUpon>
     </Compile>
@@ -573,6 +576,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Dialogs\DialogTotalTaxesSales.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Dialogs\DialogTotalFeesSales.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -838,6 +845,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\Taxes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
