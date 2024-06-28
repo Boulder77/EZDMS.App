@@ -51,8 +51,6 @@ namespace EZDMS.App
 
         #endregion
 
-
-
         #region Constructor 
 
         /// <summary>
@@ -64,7 +62,6 @@ namespace EZDMS.App
         }
 
         #endregion
-
     
     }
 }
