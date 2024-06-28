@@ -362,7 +362,7 @@
     <Compile Include="ViewModel\Fees\SalesBankFeesViewModel.cs" />
     <Compile Include="ViewModel\Fees\Local\SalesLocalFeesViewModel.cs" />
     <Compile Include="ViewModel\Fees\SystemBankFeesViewModel.cs" />
-    <Compile Include="ViewModel\Fees\SystemLocalFeesViewModel.cs" />
+    <Compile Include="ViewModel\Fees\Local\SystemLocalFeesViewModel.cs" />
     <Compile Include="ViewModel\Fees\SystemLicensingViewModel.cs" />
     <Compile Include="ViewModel\Input\Design\NumericalInputDesignModel.cs" />
     <Compile Include="ViewModel\Input\NumericalInputViewModel.cs" />

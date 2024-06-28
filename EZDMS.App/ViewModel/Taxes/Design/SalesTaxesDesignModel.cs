@@ -25,20 +25,12 @@ namespace EZDMS.App
         public SalesTaxesDesignModel()
         {
 
-            TaxesInPayment = true;
-            StateTaxActive = true;
-            StateTaxName = new TextEntryViewModel { Label = "StateTaxName" };
-            StateTaxAmount = new DecimalInputViewModel { Label = "StateTaxAmount", Amount = 0 };
-            StateTaxRate = new DecimalInputViewModel { Label = "StateTaxRate", Amount = 0 };
-            CountyTaxName = new TextEntryViewModel { Label = "CountyTaxName" };
-            CountyTaxAmount = new DecimalInputViewModel { Label = "CountyTaxAmount", Amount = 0 };
-            CountyTaxRate = new DecimalInputViewModel { Label = "CountyTaxRate", Amount = 0 };
-            LocalTaxName = new TextEntryViewModel { Label = "LocalTaxName" };
-            LocalTaxAmount = new DecimalInputViewModel { Label = "LocalTaxAmount", Amount = 0 };
-            LocalTaxRate = new DecimalInputViewModel { Label = "LocalTaxRate", Amount = 0 };
-            OtherTaxName = new TextEntryViewModel { Label = "OtherTaxName" };
-            OtherTaxAmount = new DecimalInputViewModel { Label = "OtherTaxAmount", Amount = 0 };
-            OtherTaxRate = new DecimalInputViewModel { Label = "OtherTaxRate", Amount = 0 };
+           TaxesInPayment = true;
+           StateTax =  new TaxItemViewModel { Name = "State", Base =35000.00m, Rate = 8.25m, Amount = 2887.50m, Active = true };
+           CountyTax = new TaxItemViewModel { Name = "County", Base = 35000.00m, Rate = 2.25m, Amount = 787.50m, Active = true };
+           CityTax = new TaxItemViewModel { Name = "City", Base = 35000.00m, Rate = 1m, Amount = 350.00m, Active = true };
+           OtherTax = new TaxItemViewModel { Name = "Other", Base = 35000.00m, Rate = .5m, Amount = 175.00m, Active = true };
+           Total = new DecimalInputViewModel { Label = "Total", Amount = 4200m };
         }
     
 

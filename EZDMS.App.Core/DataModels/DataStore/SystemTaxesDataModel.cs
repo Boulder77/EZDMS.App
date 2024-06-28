@@ -65,22 +65,22 @@ namespace EZDMS.App.Core
         /// <summary>
         /// The local tax active of this SystemTaxes record
         /// <summary>
-        public bool LocalTaxActive { get; set; }
+        public bool CityTaxActive { get; set; }
 
         /// <summary>
         /// The local tax name of this SystemTaxes record
         /// <summary>
-        public string LocalTaxName { get; set; }
+        public string CityTaxName { get; set; }
 
         /// <summary>
         /// The local tax base of this SystemTaxes record
         /// <summary>
-        public decimal LocalTaxBase { get; set; }
+        public decimal CityTaxBase { get; set; }
 
         /// <summary>
         /// The local tax rate of this SystemTaxes record
         /// <summary>
-        public decimal LocalTaxRate { get; set; }
+        public decimal CityTaxRate { get; set; }
 
         /// <summary>
         /// The other tax active of this SystemTaxes record
