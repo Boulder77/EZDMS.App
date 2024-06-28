@@ -10,19 +10,14 @@
     <Grid Background="{StaticResource BackgroundLightBrush}">
         
         <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
+           
             <RowDefinition Height="30" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="50" />
+            <RowDefinition Height="30" />
             
         </Grid.RowDefinitions>
 
-        
-
-
-        <Label Background="{StaticResource WordVeryVeryLightBlueBrush}" />
-        <Label Content="TAXES" HorizontalContentAlignment="Left"/>
-        <Grid Grid.Row="1">
+        <Grid >
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -39,8 +34,8 @@
 
        
 
-        <StackPanel Grid.Row="2"
-                    Grid.Column="1"
+        <StackPanel Grid.Row="1"
+                    
                     Orientation="Vertical"
                     HorizontalAlignment="Stretch"
                     Background="{StaticResource BackgroundVeryLightBrush}"
@@ -54,12 +49,12 @@
             
         </StackPanel>
 
-        <Label Grid.Row="3"
+        <Label Grid.Row="2"
                
                Background="{StaticResource WordVeryVeryLightBlueBrush}"/>
         
         <local:NumericalDisplayHorizControl
-              Grid.Row="3"
+              Grid.Row="2"
               HorizontalAlignment="Center"
               Padding="40,0,5,0"
               FontFamily="{StaticResource LatoBold}"

@@ -1,5 +1,6 @@
 ﻿using Dna;
 using EZDMS.App.Core;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -144,6 +145,9 @@ namespace EZDMS.App
                 SalesDeal = await ClientDataStore.CreateSalesFinanceDeal();
 
                 await CreateDefaultFeesAsync(SalesDeal.DealNumber);
+
+                await CreateDefaultTaxesAsync(SalesDeal.DealNumber);
+
 
                 // Create new instance of sales desking view model
                 ViewModelSalesFinance.SalesFinanceDeal = SalesDeal;
@@ -318,8 +322,50 @@ namespace EZDMS.App
                 await ClientDataStore.AddNewSalesRecordAsync(newSalesLocalFees, DbTableNames.SalesLocalFees);               
 
 
-            });
+            });       
 
+        }
+
+
+        private async Task CreateDefaultTaxesAsync(int dealNumber)
+        {
+
+            if (dealNumber == 0)
+                return;
+
+            await RunCommandAsync(() => NewRecords, async () =>
+            {
+
+
+                // Get the system tax info
+                var systemTaxes = await ClientDataStore.GetSystemTaxesAsync("STORE01");
+
+                // Exit if no system tax 
+                if (systemTaxes == null)
+                    return;
+
+                var newSalesTax = new SalesTaxesDataModel
+                {
+                    DealNumber = dealNumber,
+                    StateTaxActive = systemTaxes.StateTaxActive,
+                    StateTaxRate = systemTaxes.StateTaxActive == true ? systemTaxes.StateTaxRate : 0,
+                    StateTaxName = systemTaxes.StateTaxName,
+                    CountyTaxActive = systemTaxes.CountyTaxActive,
+                    CountyTaxRate = systemTaxes.CountyTaxActive == true ? systemTaxes.CountyTaxRate : 0,
+                    CountyTaxName = systemTaxes.CountyTaxName,
+                    CityTaxActive = systemTaxes.CountyTaxActive,
+                    CityTaxRate = systemTaxes.CityTaxActive == true ? systemTaxes.CityTaxRate : 0,
+                    CityTaxName = systemTaxes.CityTaxName,
+                    OtherTaxName = systemTaxes.OtherTaxName,
+                    OtherTaxActive = systemTaxes.OtherTaxActive,
+                    OtherTaxRate = systemTaxes.OtherTaxActive == true ? systemTaxes.OtherTaxRate : 0,
+
+                };
+
+                // Save the sales taxes record
+                await ClientDataStore.AddNewSalesRecordAsync(newSalesTax, DbTableNames.SalesTaxes);
+
+            });
 
         }
 

@@ -50,6 +50,13 @@ namespace EZDMS.App
         /// <returns></returns>
         Task ShowFees(TotalFeesSalesDialogViewModel viewModel);
 
+        /// <summary>
+        /// Displays a total taxes window for the user
+        /// </summary>
+        /// <param name="viewModel">The view model</param>
+        /// <returns></returns>
+        Task ShowTaxes(TaxesSalesDialogViewModel viewModel);
+
 
     }
 

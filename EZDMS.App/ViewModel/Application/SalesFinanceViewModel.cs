@@ -32,14 +32,12 @@ namespace EZDMS.App
 
         protected CustomerDataModel mSecondCustomer;
 
-        protected VehicleInventoryDataModel mSaleVehicle;      
+        protected VehicleInventoryDataModel mSaleVehicle;
         
         private SalesSummaryViewModel mSalesSummary;
 
         private SalesDeskingTotalsViewModel mDeskingTotals;
-
         
-
         #endregion
 
         #region Public Properties
@@ -221,11 +219,6 @@ namespace EZDMS.App
         }
 
         /// <summary>
-        /// The data model for the sales tax 
-        /// </summary>
-        public SalesTaxesDataModel SalesTaxes { get; set; }
-
-        /// <summary>
         /// The view model for the truth in lending disclosure control
         /// </summary>
         public TruthinLendingDisclosureViewModel TruthinLending { get; set; }
@@ -380,8 +373,6 @@ namespace EZDMS.App
             ShowProductsDialogCommand = new RelayCommand(async () => await ShowProductsDialogAsync());
 
             SalesDealCard = new SalesDealCardViewModel();
-
-            
         }
 
         #endregion
@@ -393,10 +384,7 @@ namespace EZDMS.App
             // Lock this command to ignore any other requests while processing
             await RunCommandAsync(() => SalesFinancePageLoading, async () => {
 
-                  
-                SalesTaxes = await ClientDataStore.GetSalesTaxesAsync(SalesFinanceDeal.DealNumber);
-
-
+                
 
                 await Task.Delay(1);
                 UpdateValuesOfDeskingTotals(SalesFinanceDeal);
@@ -497,7 +485,7 @@ namespace EZDMS.App
 
 
             });
-            await UpdateFinanceAsync();
+
 
         }
 
@@ -564,28 +552,6 @@ namespace EZDMS.App
             });
 
         }
-
-        public async Task<bool> ShowTaxesDialogAsync()
-        {
-
-            return await RunCommandAsync(() => DialogWindowLoading, async () =>
-            {
-
-                // Lock this command to ignore any other requests while processing
-                await UI.ShowTaxes(new TaxesSalesDialogViewModel
-                {
-                    Title = "Taxes",
-
-
-                });
-
-                // Update view model
-                await UpdateFinanceAsync();
-                return true;
-            });
-
-        }
-
 
 
         public async Task UpdateSalesDealItemAsync(object mDataModel, string mType = null)
@@ -656,16 +622,12 @@ namespace EZDMS.App
                     - salesFinance.TotalRebates
                     - salesFinance.TotalNetAllowance
                     - salesFinance.TotalCashDown;
-
-            // Update the sales taxes DM
-            UpdateSalesTaxesDMAsync(TotalAmount);
-
-
+            
             var TotalTaxes = (TotalAmount * 9) / 100;
 
-            salesFinance.TotalTaxes = SalesTaxes.StateTaxAmount+ SalesTaxes.CountyTaxAmount + SalesTaxes.CityTaxAmount + SalesTaxes.OtherTaxAmount ;
+            SubTotalAmount += TotalTaxes;
 
-            SubTotalAmount += salesFinance.TotalTaxes;            
+            salesFinance.TotalTaxes = TotalTaxes;
 
 
             switch (salesFinance.CalculationMethod)
@@ -710,8 +672,7 @@ namespace EZDMS.App
                 { 
                     Label = "Selling Price",
                     Amount = salesFinance.SellingPrice,
-                    //CommitAction = UpdateFinanceAsync
-
+                   
                 },
                                    
                 FrontOptions = new DecimalInputViewModel 
@@ -727,8 +688,7 @@ namespace EZDMS.App
                 { 
                     Label = "Taxes", 
                     Amount = salesFinance.TotalTaxes,
-                    Editable = true,
-                    DialogAction = ShowTaxesDialogAsync
+                    Editable = true 
                 },
                     
                 Fees = new DecimalInputViewModel 
@@ -1236,7 +1196,7 @@ namespace EZDMS.App
                 InvoicePrice = new DecimalInputViewModel { Label = "Invoice Price", Amount = Vehicle.InvoicePrice },
                 DealerPackPercentage = new DecimalInputViewModel { Label = "Dealer Pack(%)", Amount = Vehicle.InvoicePrice },
                 
-            };            
+            };
 
         }
 
@@ -1385,9 +1345,8 @@ namespace EZDMS.App
             SaleVehicle.BuyerFee = VehiclePricing.BuyerFee.Amount;
             SaleVehicle.InvoicePrice = VehiclePricing.InvoicePrice.Amount;
             SaleVehicle.DealerPackPercentage = VehiclePricing.DealerPackPercentage.Amount;
-
-            //SaleVehicle.
             
+            //SaleVehicle.
 
         }
 
@@ -1432,55 +1391,6 @@ namespace EZDMS.App
 
         }
 
-        private async void UpdateSalesTaxesDMAsync(decimal taxBase)
-        {
-
-            // Get the system tax info
-            var systemTaxes = await ClientDataStore.GetSystemTaxesAsync("STORE01");
-
-            // Exit if no system tax 
-            if (systemTaxes == null)
-                return;
-
-            // Update State Tax amount
-            if (systemTaxes.StateTaxActive == true)
-            {
-
-                SalesTaxes.StateTaxBase = taxBase;
-                SalesTaxes.StateTaxAmount = (taxBase * SalesTaxes.StateTaxRate) / 100;
-
-            }
-
-            // Update County Tax amount
-            if (systemTaxes.CountyTaxActive == true)
-            {
-
-                SalesTaxes.CountyTaxBase = taxBase;
-                SalesTaxes.CountyTaxAmount = (taxBase * SalesTaxes.CountyTaxRate) / 100;
-
-            }
-
-            // Update City Tax amount
-            if (systemTaxes.CityTaxActive == true)
-            {
-
-                SalesTaxes.CityTaxBase = taxBase;
-                SalesTaxes.CityTaxAmount = (taxBase * SalesTaxes.CityTaxRate) / 100;
-            }
-
-            // Update Other Tax amount
-            if (systemTaxes.OtherTaxActive == true)
-            {
-
-                SalesTaxes.OtherTaxBase = taxBase;
-                SalesTaxes.OtherTaxAmount = (taxBase * SalesTaxes.OtherTaxRate) / 100;
-                          
-            }
-
-            // Save the sales taxes record
-            await ClientDataStore.SaveSalesRecordAsync(SalesTaxes, DbTableNames.SalesTaxes);
-
-        }
         /// <summary>
         /// Updates a specific value from the client data store for the user profile details
         /// and attempts to update the server to match those details.

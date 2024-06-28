@@ -186,5 +186,34 @@ namespace EZDMS.App
             return tcs.Task;
         }
 
+        /// <summary>
+        /// Show the taxes dialog window
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <returns></returns>
+        public Task ShowTaxes(TaxesSalesDialogViewModel viewModel)
+        {
+            // Create a task completion source
+            var tcs = new TaskCompletionSource<bool>();
+
+            // Run on UI thread
+            Application.Current.Dispatcher.Invoke(async () =>
+            {
+                try
+                {
+                    // Show the dialog box
+                    await new DialogTotalTaxesSales().ShowDialog(viewModel);
+                }
+                finally
+                {
+                    // Flag we are done
+                    tcs.SetResult(true);
+                }
+            });
+
+            // Return the task once complete
+            return tcs.Task;
+        }
+
     }
 }

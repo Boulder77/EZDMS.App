@@ -54,8 +54,7 @@
         
         <local:NumericalDisplayHorizControl
                Grid.Row="2"               
-               HorizontalAlignment="Center"               
-               
+               HorizontalAlignment="Center"
                DataContext="{Binding Total}"/>
 
         

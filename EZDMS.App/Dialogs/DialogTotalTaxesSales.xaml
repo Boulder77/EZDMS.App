@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:EZDMS.App"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="500"
-             Height="600"
-             Width="900">
+             Height="500"
+             Width="500">
 
 
     <Border Background="{StaticResource WordVeryVeryLightBlueBrush}" CornerRadius="5">
@@ -21,14 +21,67 @@
             <RowDefinition Height="60"/>
 
         </Grid.RowDefinitions>
-            
-            
+
+            <Grid Grid.Row="1" Background="{StaticResource BackgroundLightBrush}">
+
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="30" />
+
+                </Grid.RowDefinitions>
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="120" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Name"
+                           HorizontalContentAlignment="Left" />
+                    <Label Content="Rate"
+                           Grid.Column="1"
+                           HorizontalContentAlignment="Center" />
+                    <Label Content="Amount"
+                           Grid.Column="2"
+                           HorizontalContentAlignment="Center" />
+
+                </Grid>
+
+
+
+
+                <StackPanel Grid.Row="1"
+                            Orientation="Vertical"
+                            HorizontalAlignment="Stretch"
+                            Background="{StaticResource BackgroundVeryLightBrush}">
+
+                    <local:TaxItemControl DataContext="{Binding StateTax}" />
+                    <local:TaxItemControl DataContext="{Binding CountyTax}" />
+                    <local:TaxItemControl DataContext="{Binding CityTax}" />
+                    <local:TaxItemControl DataContext="{Binding OtherTax}" />
+
+
+                </StackPanel>
+
+                <Label Grid.Row="2"
+                       Background="{StaticResource WordVeryVeryLightBlueBrush}" />
+
+                <local:NumericalDisplayHorizControl Grid.Row="2"
+                                                    HorizontalAlignment="Center"
+                                                    Padding="40,0,5,0"
+                                                    FontFamily="{StaticResource LatoBold}"
+                                                    FontSize="{StaticResource FontSizeLarge}"
+                                                    DataContext="{Binding Total}" />
+
+
+
+            </Grid>
 
             <Border Grid.Row="2" Background="{StaticResource ForegroundDarkBrush}" >
-               
-                
-                
-                
                 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
 

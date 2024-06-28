@@ -33,10 +33,10 @@
     <ProductName>EZDMS</ProductName>
     <PublisherName>ProQuotes</PublisherName>
     <SuiteName>EZDMS</SuiteName>
-    <MinimumRequiredVersion>1.2.1.11</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.2.1.13</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>12</ApplicationRevision>
+    <ApplicationRevision>14</ApplicationRevision>
     <ApplicationVersion>1.2.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -352,6 +352,7 @@
     <Compile Include="ViewModel\Customer\Design\CustomerDesignModel.cs" />
     <Compile Include="ViewModel\Customer\CustomersListViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\FrontBackAddsDialogViewModel.cs" />
+    <Compile Include="ViewModel\Dialogs\TaxesSalesDialogViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\TotalFeesSalesDialogViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\VehicleSelectDialogViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\Design\ProductSalesDesignModel.cs" />
