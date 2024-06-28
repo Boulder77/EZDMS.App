@@ -229,6 +229,9 @@
     <Compile Include="Controls\Taxes\LocalFeeItemControl.cs">
       <DependentUpon>TaxItemControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Taxes\SalesTaxesControl.cs">
+      <DependentUpon>SalesTaxesControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\DialogFrontBackAdds.xaml.cs">
       <DependentUpon>DialogFrontBackAdds.xaml</DependentUpon>
     </Compile>
@@ -576,6 +579,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Products\FrontAdd\FrontAddItemControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Taxes\SalesTaxesControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
