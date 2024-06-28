@@ -33,6 +33,11 @@ namespace EZDMS.App
         public decimal Base { get; set; }
 
         /// <summary>
+        /// The tax item rate
+        /// </summary>
+        public decimal Rate { get; set; }
+
+        /// <summary>
         /// The tax item saved amount
         /// </summary>
         public decimal Amount { get; set; }

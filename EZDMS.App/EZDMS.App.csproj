@@ -397,6 +397,7 @@
     <Compile Include="ViewModel\Input\Design\DecimalInputDesignModel.cs" />
     <Compile Include="ViewModel\Input\TextDisplayViewModel.cs" />
     <Compile Include="ViewModel\Input\DecimalInputViewModel.cs" />
+    <Compile Include="ViewModel\Taxes\Design\TaxItemDesignModel.cs" />
     <Compile Include="ViewModel\Taxes\Design\SalesTaxesDesignModel.cs" />
     <Compile Include="ViewModel\Taxes\TaxItemViewModel.cs" />
     <Compile Include="ViewModel\Taxes\SalesTaxesViewModel.cs" />
@@ -856,8 +857,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\Taxes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
