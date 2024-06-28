@@ -25,13 +25,13 @@ namespace EZDMS.App
         public SalesLocalFeesDesignModel()
         {           
 
-            DocumentationFee = new LocalFeeViewModel { Label = "Document", Amount = 12900, };
-            TireFee = new LocalFeeViewModel { Label = "Tire", Amount = 1300 };
-            InspectionFee = new LocalFeeViewModel { Label = "Inspection", Amount = 6500 };
-            BatteryFee = new LocalFeeViewModel { Label = "Battery", Amount=1825 };
-            SmogStateFee = new LocalFeeViewModel { Label = "Smog", Amount = 3500 };       
-            ElectronicFilingFee = new LocalFeeViewModel { Label = "Electronic Filing", Amount = 6500 };             
-            LocalFee1 = new LocalFeeViewModel { Label = "Misc", Amount = 1400 };        
+            DocumentationFee = new LocalFeeViewModel { Label = "Document", Amount = 12900, Active=true};
+            TireFee = new LocalFeeViewModel { Label = "Tire", Amount = 1300, Active = true };
+            InspectionFee = new LocalFeeViewModel { Label = "Inspection", Amount = 6500, Active = true };
+            BatteryFee = new LocalFeeViewModel { Label = "Battery", Amount=1825 , Active = true };
+            SmogStateFee = new LocalFeeViewModel { Label = "Smog", Amount = 3500 , Active = true };       
+            ElectronicFilingFee = new LocalFeeViewModel { Label = "Electronic Filing", Amount = 6500 , Active = true };             
+            LocalFee1 = new LocalFeeViewModel { Label = "Misc", Amount = 1400 , Active = true};        
             Total = new DecimalInputViewModel { Label = "Total", Amount = 49964 };
 
         }
