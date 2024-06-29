@@ -190,7 +190,7 @@ namespace EZDMS.App
         private void SetTaxesVM()
         {
 
-            StateTax = new TaxItemViewModel { Name = SalesTaxes.StateTaxName, Active = SystemTaxes.StateTaxActive, Base = SalesTaxes.StateTaxBase, Rate = SalesTaxes.StateTaxRate  };
+            StateTax = new TaxItemViewModel { Name = SalesTaxes.StateTaxName, Active = SystemTaxes.StateTaxActive, Base = SalesTaxes.StateTaxBase, Rate = SalesTaxes.StateTaxRate,SaveAction=UpdateTaxesAsync };
             CountyTax = new TaxItemViewModel { Name = SalesTaxes.CountyTaxName, Active = SystemTaxes.CountyTaxActive, Base = SalesTaxes.CountyTaxBase, Rate = SalesTaxes.CountyTaxRate };
             CityTax = new TaxItemViewModel { Name = SalesTaxes.CityTaxName, Active = SystemTaxes.CityTaxActive, Base = SalesTaxes.CityTaxBase, Rate = SalesTaxes.CityTaxRate };
             OtherTax = new TaxItemViewModel { Name = SalesTaxes.OtherTaxName, Active = SystemTaxes.OtherTaxActive, Base = SalesTaxes.OtherTaxBase, Rate = SalesTaxes.OtherTaxRate };

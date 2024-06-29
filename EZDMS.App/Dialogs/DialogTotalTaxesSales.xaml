@@ -51,18 +51,15 @@
 
                 </Grid>
 
-
-
-
                 <StackPanel Grid.Row="1"
                             Orientation="Vertical"
                             HorizontalAlignment="Stretch"
                             Background="{StaticResource BackgroundVeryLightBrush}">
 
-                    <local:TaxItemControl DataContext="{Binding StateTax}" />
-                    <local:TaxItemControl DataContext="{Binding CountyTax}" />
-                    <local:TaxItemControl DataContext="{Binding CityTax}" />
-                    <local:TaxItemControl DataContext="{Binding OtherTax}" />
+                    <local:TaxItemControl DataContext="{Binding StateTax, Mode=TwoWay}" />
+                    <local:TaxItemControl DataContext="{Binding CountyTax, Mode=TwoWay}" />
+                    <local:TaxItemControl DataContext="{Binding CityTax, Mode=TwoWay}" />
+                    <local:TaxItemControl DataContext="{Binding OtherTax, Mode=TwoWay}" />
 
 
                 </StackPanel>
