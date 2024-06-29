@@ -190,13 +190,13 @@ namespace EZDMS.App
                 ViewModelSalesFinance.SaleVehicle = await ClientDataStore.GetVehicleInventoryAsync(ViewModelSalesFinance.SalesDealsItem?.StockNumber);
                 ViewModelSalesFinance.SalesFinanceDeal = await ClientDataStore.GetSalesFinanceDealAsync(mDealNumber);
 
-                var salesTaxesDM = await ClientDataStore.GetSalesTaxesAsync(mDealNumber);
-                if (salesTaxesDM == null)
-                {
+                //var salesTaxesDM = await ClientDataStore.GetSalesTaxesAsync(mDealNumber);
+                //if (salesTaxesDM == null)
+                //{
 
-                    await CreateDefaultTaxesAsync(mDealNumber);
+                //    await CreateDefaultTaxesAsync(mDealNumber);
 
-                }
+                //}
 
             });
 

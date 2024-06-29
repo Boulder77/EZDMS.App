@@ -318,6 +318,11 @@ namespace EZDMS.App
         /// </summary>
         public bool SavingInfo { get; set; }
 
+        /// <summary>
+        /// Indicates if there is a mew record save action
+        /// </summary>
+        public bool NewRecords { get; set; }
+
         #endregion
 
         #region Public Commands
@@ -396,6 +401,12 @@ namespace EZDMS.App
                   
                 SalesTaxes = await ClientDataStore.GetSalesTaxesAsync(SalesFinanceDeal.DealNumber);
 
+                if (SalesTaxes == null)
+                {
+                    await CreateDefaultTaxesAsync(SalesFinanceDeal.DealNumber);
+                    SalesTaxes = await ClientDataStore.GetSalesTaxesAsync(SalesFinanceDeal.DealNumber);
+
+                }
 
 
                 await Task.Delay(1);
@@ -632,6 +643,48 @@ namespace EZDMS.App
         #endregion
 
         #region Private Helper Methods
+
+        private async Task CreateDefaultTaxesAsync(int dealNumber)
+        {
+
+            if (dealNumber == 0)
+                return;
+
+            await RunCommandAsync(() => NewRecords, async () =>
+            {
+
+
+                // Get the system tax info
+                var systemTaxes = await ClientDataStore.GetSystemTaxesAsync("STORE01");
+
+                // Exit if no system tax 
+                if (systemTaxes == null)
+                    return;
+
+                var newSalesTax = new SalesTaxesDataModel
+                {
+                    DealNumber = dealNumber,
+                    StateTaxActive = systemTaxes.StateTaxActive,
+                    StateTaxRate = systemTaxes.StateTaxActive == true ? systemTaxes.StateTaxRate : 0,
+                    StateTaxName = systemTaxes.StateTaxName,
+                    CountyTaxActive = systemTaxes.CountyTaxActive,
+                    CountyTaxRate = systemTaxes.CountyTaxActive == true ? systemTaxes.CountyTaxRate : 0,
+                    CountyTaxName = systemTaxes.CountyTaxName,
+                    CityTaxActive = systemTaxes.CountyTaxActive,
+                    CityTaxRate = systemTaxes.CityTaxActive == true ? systemTaxes.CityTaxRate : 0,
+                    CityTaxName = systemTaxes.CityTaxName,
+                    OtherTaxName = systemTaxes.OtherTaxName,
+                    OtherTaxActive = systemTaxes.OtherTaxActive,
+                    OtherTaxRate = systemTaxes.OtherTaxActive == true ? systemTaxes.OtherTaxRate : 0,
+
+                };
+
+                // Save the sales taxes record
+                await ClientDataStore.AddNewSalesRecordAsync(newSalesTax, DbTableNames.SalesTaxes);
+
+            });
+
+        }
 
         private void UpdateValuesOfDeskingTotals(SalesFinanceDataModel salesFinance)
         {
@@ -1394,9 +1447,10 @@ namespace EZDMS.App
         private void UpdateSalesFinanceDM()
         {
 
+            if (SaleVehicle==null) return;
+
+
             // Update salesFinance view model
-
-
             SalesFinanceDeal.SellingPrice = SaleVehicle.ListPrice;
             SalesFinanceDeal.Term = SalesSummary.Term.Number;
             SalesFinanceDeal.APR = SalesSummary.APR.Amount;

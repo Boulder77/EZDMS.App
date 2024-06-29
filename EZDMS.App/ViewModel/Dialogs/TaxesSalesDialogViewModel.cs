@@ -44,24 +44,8 @@ namespace EZDMS.App
         /// <summary>
         /// The state tax view model
         /// <summary>
-        public TaxItemViewModel StateTax
-        {
-            get => mStateTax;
+        public TaxItemViewModel StateTax { get; set; }
 
-            set
-
-            {
-                if (mStateTax == value)
-                    return;
-
-                if (mStateTax != null)
-
-                    CalculateSalesTaxes();
-
-                mStateTax = value;
-
-            }
-        }
         /// <summary>
         /// The county tax view model
         /// <summary>
@@ -158,9 +142,12 @@ namespace EZDMS.App
         public async Task SaveAsync()
         {
             await RunCommandAsync(() => Saving, async () =>
+
             {
-                               
-                // save the sales licensing fees to db store
+
+                await Task.Run(UpdateSalexTaxDM);                               
+                
+                // save the sales taxes to db store
                 await ClientDataStore.SaveSalesRecordAsync(SalesTaxes, DbTableNames.SalesTaxes);               
 
 
@@ -195,6 +182,37 @@ namespace EZDMS.App
             CityTax = new TaxItemViewModel { Name = SalesTaxes.CityTaxName, Active = SystemTaxes.CityTaxActive, Base = SalesTaxes.CityTaxBase, Rate = SalesTaxes.CityTaxRate };
             OtherTax = new TaxItemViewModel { Name = SalesTaxes.OtherTaxName, Active = SystemTaxes.OtherTaxActive, Base = SalesTaxes.OtherTaxBase, Rate = SalesTaxes.OtherTaxRate };
             Total = new DecimalInputViewModel { Label = "Total", Amount = SalesTaxes.OtherTaxAmount + SalesTaxes.StateTaxAmount + SalesTaxes.CountyTaxAmount + SalesTaxes.CityTaxAmount };
+
+        }
+
+        /// <summary>
+        /// Update sales tax data model
+        /// </summary>
+        private void UpdateSalexTaxDM()
+        {
+
+             if (SalesTaxes==null) return;
+
+            SalesTaxes.CityTaxActive = CityTax.Active;
+            SalesTaxes.CityTaxAmount=CityTax.Amount;
+            SalesTaxes.CityTaxBase = CityTax.Base;
+            SalesTaxes.CityTaxName = CityTax.Name;
+            SalesTaxes.CityTaxRate = CityTax.Rate;
+            SalesTaxes.CountyTaxActive = CountyTax.Active;
+            SalesTaxes.CountyTaxAmount = CountyTax.Amount;
+            SalesTaxes.CountyTaxBase = CountyTax.Base;
+            SalesTaxes.CountyTaxName = CountyTax.Name;
+            SalesTaxes.CountyTaxRate = CountyTax.Rate;
+            SalesTaxes.StateTaxActive = StateTax.Active;
+            SalesTaxes.StateTaxAmount = StateTax.Amount;
+            SalesTaxes.StateTaxBase = StateTax.Base;
+            SalesTaxes.StateTaxName = StateTax.Name;
+            SalesTaxes.StateTaxRate = StateTax.Rate;
+            SalesTaxes.OtherTaxActive = OtherTax.Active;
+            SalesTaxes.OtherTaxAmount = OtherTax.Amount;
+            SalesTaxes.OtherTaxBase = OtherTax.Base;
+            SalesTaxes.OtherTaxName = OtherTax.Name;
+            SalesTaxes.OtherTaxRate = OtherTax.Rate;
 
         }
 
@@ -238,6 +256,8 @@ namespace EZDMS.App
             Total.Amount = StateTax.Amount + CityTax.Amount + OtherTax.Amount+ CountyTax.Amount;
 
         }
+
+
 
 
         #endregion
