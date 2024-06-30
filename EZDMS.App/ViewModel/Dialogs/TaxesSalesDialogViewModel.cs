@@ -123,7 +123,7 @@ namespace EZDMS.App
 
 
                 //Get the current sales licensing fees
-                SalesTaxes = await ClientDataStore.GetSalesTaxesAsync(ViewModelSalesFinance.SalesFinanceDeal.DealNumber);
+                SalesTaxes = ViewModelSalesFinance.SalesTaxes;
 
                 // if does not exist
                 if (SalesTaxes == null)

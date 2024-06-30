@@ -73,12 +73,11 @@
                      />
 
             <!-- Edit Content -->
-            <TextBox Text="{Binding Amount, Converter={local:DecimalToDisplayMoneyConverter}}"
+            <TextBlock Text="{Binding Amount, Converter={local:DecimalToDisplayMoneyConverter}}"
                      Grid.Column="2"
-                     HorizontalAlignment="Stretch"
-                     VerticalContentAlignment="Center"
-                     HorizontalContentAlignment="Right"
-                     Background="Transparent"
+                     HorizontalAlignment="Right"
+                     VerticalAlignment="Center"                     
+                     Background="Transparent"                     
                      FontFamily="{StaticResource LatoRegular}"
                      FontSize="{StaticResource FontSizeRegular}"
                      Padding="2"

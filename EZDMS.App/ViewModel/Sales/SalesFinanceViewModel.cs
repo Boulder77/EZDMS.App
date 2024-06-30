@@ -107,10 +107,11 @@ namespace EZDMS.App
                 mCustomer = value;
 
                 if (value != null)
-                    // Reload customer card view model
+                { // Reload customer card view model
                     UpdateValuesOfCustomerCard(value);
                     UpdateValuesOfCustomerBasicInfo(value);
                     UpdateValuesOfCustomerAddress(value);
+                }
             }
 
         }
@@ -534,7 +535,6 @@ namespace EZDMS.App
 
         }
 
-
         public async Task<bool> ShowProductsDialogAsync()
         {
 
@@ -585,8 +585,7 @@ namespace EZDMS.App
                 // Lock this command to ignore any other requests while processing
                 await UI.ShowTaxes(new TaxesSalesDialogViewModel
                 {
-                    Title = "Taxes",
-
+                    Title = "Taxes",                    
 
                 });
 
@@ -1177,6 +1176,9 @@ namespace EZDMS.App
         private void UpdateValuesOfCustomerBasicInfo(CustomerDataModel Buyer)
         {
 
+            if (Buyer == null)
+                return;
+
             // Update Customer basic info VM with values
             CustomerBasicInfo = new CustomerBasicInfoViewModel
 
@@ -1200,6 +1202,9 @@ namespace EZDMS.App
 
         private void UpdateValuesOfCustomerAddress(CustomerDataModel Buyer)
         {
+
+            if (Buyer == null)
+                return;
             // Update Customer address VM with values
             CustomerAddress = new CustomerAddressViewModel
 
@@ -1219,6 +1224,9 @@ namespace EZDMS.App
 
         private void UpdateValuesOfVehicleCard(VehicleInventoryDataModel Vehicle)
         {
+
+            if (Vehicle == null)
+                return;
             // Update vehicle card VM with values
             VehicleCard = new VehicleCardViewModel
 
@@ -1244,6 +1252,8 @@ namespace EZDMS.App
 
         private void UpdateValuesOfVehicleBasicInfo(VehicleInventoryDataModel Vehicle)
         {
+            if (Vehicle == null)
+                return;
             // Update vehicle basic info VM with values
             VehicleBasicInfo = new VehicleBasicInfoViewModel
 
@@ -1270,6 +1280,10 @@ namespace EZDMS.App
 
         private void UpdateValuesOfVehiclePricing(VehicleInventoryDataModel Vehicle)
         {
+
+            if (Vehicle == null)
+                return;
+
             // Update vehicle pricing VM with values
             VehiclePricing = new VehiclePricingViewModel
 
