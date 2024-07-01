@@ -182,6 +182,11 @@ namespace EZDMS.App.Relational
                     mDbContext.SystemTaxes.Add(mDataModel as SystemTaxesDataModel);
                     break;
 
+                case DbTableNames.Trade:
+                    // Add new system lical entry
+                    mDbContext.SystemTaxes.Add(mDataModel as TradeDataModel);
+                    break;
+
 
                 default:
                     throw new Exception();
@@ -689,6 +694,7 @@ namespace EZDMS.App.Relational
 
         #endregion
 
+        #region Sales Taxes Methods
 
         /// <summary>
         /// Returns a single sales Bank fees record
@@ -714,6 +720,19 @@ namespace EZDMS.App.Relational
         }
 
 
+        #endregion
+
+        /// <summary>
+        /// Returns a single trade record
+        /// </summary>
+        /// <param name="dealNumber"></param>
+        /// <returns>TradeDataModel<returns>
+        public Task<TradeDataModel> GetTradeAsync(int dealNumber)
+        {
+            // Gets a single sales record
+            return Task.FromResult(mDbContext.Trade.FirstOrDefault(u => u.DealNumber == dealNumber));
+
+        }
 
 
         #endregion

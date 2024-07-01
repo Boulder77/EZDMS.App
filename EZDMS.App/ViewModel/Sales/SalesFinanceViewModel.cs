@@ -402,12 +402,12 @@ namespace EZDMS.App
                   
                 SalesTaxes = await ClientDataStore.GetSalesTaxesAsync(SalesFinanceDeal.DealNumber);
 
-                if (SalesTaxes == null)
-                {
-                    await CreateDefaultTaxesAsync(SalesFinanceDeal.DealNumber);
-                    SalesTaxes = await ClientDataStore.GetSalesTaxesAsync(SalesFinanceDeal.DealNumber);
+                //if (SalesTaxes == null)
+                //{
+                //    await CreateDefaultTaxesAsync(SalesFinanceDeal.DealNumber);
+                //    SalesTaxes = await ClientDataStore.GetSalesTaxesAsync(SalesFinanceDeal.DealNumber);
 
-                }
+                //}
 
 
                 await Task.Delay(1);

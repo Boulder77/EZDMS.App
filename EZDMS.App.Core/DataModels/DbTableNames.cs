@@ -120,5 +120,10 @@
         /// The System taxes table
         /// <summary>
         SystemTaxes = 22,
+
+        /// <summary>
+        /// The trade table
+        /// <summary>
+        Trade = 23,
     }
 }

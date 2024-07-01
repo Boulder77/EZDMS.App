@@ -125,6 +125,11 @@ namespace EZDMS.App.Relational
         /// <summary>
         public DbSet<SystemTaxesDataModel> SystemTaxes { get; set; }
 
+        /// <summary>
+        /// The trade table
+        /// <summary>
+        public DbSet<TradeDataModel> Trade { get; set; }
+
 
         #endregion
 
@@ -198,6 +203,8 @@ namespace EZDMS.App.Relational
             modelBuilder.Entity<SalesTaxesDataModel>().HasKey(a => a.DealNumber);
 
             modelBuilder.Entity<SystemTaxesDataModel>().HasKey(a => a.ID);
+
+            modelBuilder.Entity<TradeDataModel>().HasKey(a => a.DealNumber);
 
 
             // TODO: Set up limits

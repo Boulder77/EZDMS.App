@@ -27,22 +27,22 @@
 
                         <Button
                             Width="70"
-                            Style="{StaticResource IconButton}"
+                            Style="{StaticResource IconGrowButton}"
                             Content="{StaticResource FontAwesomeSalesIcon}"
                             Command="{Binding OpenSalesRecallCommand}" />
                         <Button 
                             Width="70"
-                            Style="{StaticResource IconButton}" 
+                            Style="{StaticResource IconGrowButton}" 
                             Content="{StaticResource FontAwesomeCustomersIcon}"
                             Command="{Binding OpenCustomersListCommand}" />                        
                         <Button 
                             Width="70"
-                            Style="{StaticResource IconButton}" 
+                            Style="{StaticResource IconGrowButton}" 
                             Content="{StaticResource FontAwesomeVehiclesIcon}"
                             Command="{Binding OpenVehiclesListCommand}" />
                         <Button
                             Width="70"
-                            Style="{StaticResource IconButton}" 
+                            Style="{StaticResource IconGrowButton}" 
                             Content="{StaticResource FontAwesomeReportsIcon}" />
                     </StackPanel>
 
@@ -53,7 +53,7 @@
                                 Foreground="{StaticResource WordDarkBlueBrush}"
                                 Command="{Binding SettingsViewModel.OpenCommand, 
                                      Source={x:Static local:ViewModelLocator.Instance}}"
-                                Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeCogIcon}" />
+                                Style="{StaticResource IconGrowButton}" Content="{StaticResource FontAwesomeCogIcon}" />
 
 
 

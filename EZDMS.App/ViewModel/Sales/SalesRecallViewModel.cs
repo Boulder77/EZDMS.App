@@ -188,15 +188,7 @@ namespace EZDMS.App
                 ViewModelSalesFinance.Customer = await ClientDataStore.GetCustomerAsync(ViewModelSalesFinance.SalesDealsItem?.BuyerNumber);
                 ViewModelSalesFinance.SecondCustomer = await ClientDataStore.GetCustomerAsync(ViewModelSalesFinance.SalesDealsItem?.CoBuyerNumber);
                 ViewModelSalesFinance.SaleVehicle = await ClientDataStore.GetVehicleInventoryAsync(ViewModelSalesFinance.SalesDealsItem?.StockNumber);
-                ViewModelSalesFinance.SalesFinanceDeal = await ClientDataStore.GetSalesFinanceDealAsync(mDealNumber);
-
-                //var salesTaxesDM = await ClientDataStore.GetSalesTaxesAsync(mDealNumber);
-                //if (salesTaxesDM == null)
-                //{
-
-                //    await CreateDefaultTaxesAsync(mDealNumber);
-
-                //}
+                ViewModelSalesFinance.SalesFinanceDeal = await ClientDataStore.GetSalesFinanceDealAsync(mDealNumber);                
 
             });
 

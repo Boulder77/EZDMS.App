@@ -204,6 +204,11 @@ namespace EZDMS.App.Core
         /// </summary>       
         Task<SystemTaxesDataModel> GetSystemTaxesAsync(string storeID);
 
+        /// <summary>
+        /// Gets the system taxes info
+        /// </summary>       
+        Task<TradeDataModel> GetTradeAsync(string storeID);
+
 
     }
 }
