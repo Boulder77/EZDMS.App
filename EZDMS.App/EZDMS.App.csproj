@@ -33,10 +33,10 @@
     <ProductName>EZDMS</ProductName>
     <PublisherName>ProQuotes</PublisherName>
     <SuiteName>EZDMS</SuiteName>
-    <MinimumRequiredVersion>1.2.1.13</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.2.1.14</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>14</ApplicationRevision>
+    <ApplicationRevision>15</ApplicationRevision>
     <ApplicationVersion>1.2.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -232,6 +232,9 @@
     <Compile Include="Controls\Taxes\SalesTaxesControl.cs">
       <DependentUpon>SalesTaxesControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Trade\TradeVehicleInfoControl.cs">
+      <DependentUpon>TradeVehicleInfoControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\DialogFrontBackAdds.xaml.cs">
       <DependentUpon>DialogFrontBackAdds.xaml</DependentUpon>
     </Compile>
@@ -405,6 +408,7 @@
     <Compile Include="ViewModel\Taxes\Design\SalesTaxesDesignModel.cs" />
     <Compile Include="ViewModel\Taxes\TaxItemViewModel.cs" />
     <Compile Include="ViewModel\Taxes\SalesTaxesViewModel.cs" />
+    <Compile Include="ViewModel\Trade\Design\TradeDesignModel.cs" />
     <Compile Include="ViewModel\Trade\TradeViewModel.cs" />
     <Compile Include="ViewModel\Vehicle\VehiclesListViewModel.cs" />
     <Compile Include="ViewModel\Vehicle\Design\VehicleDetailsDesignModel.cs" />
@@ -589,6 +593,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Taxes\TaxItemControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trade\TradeVehicleInfoControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

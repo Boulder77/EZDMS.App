@@ -122,8 +122,8 @@
         SystemTaxes = 22,
 
         /// <summary>
-        /// The trade table
+        /// The trade vehicle table
         /// <summary>
-        Trade = 23,
+        TradeVehicle = 23,
     }
 }

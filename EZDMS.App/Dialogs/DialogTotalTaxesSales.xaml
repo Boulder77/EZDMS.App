@@ -22,6 +22,32 @@
 
         </Grid.RowDefinitions>
 
+            <StackPanel Panel.ZIndex="1"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Grid.RowSpan="2"
+                        Background="Transparent"
+                        Visibility="{Binding Loading, 
+            Converter={local:BooleanToVisiblityGoneConverter}, FallbackValue=Collapsed}">
+
+                <TextBlock Text="Loading"
+                           Foreground="{StaticResource WordVeryLightBlueBrush}"
+                           FontFamily="{StaticResource LatoBold}"
+                           FontSize="{StaticResource FontSizeXXLarge}"
+                           HorizontalAlignment="Center" />
+
+                <Border Padding="100"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                    <TextBlock Foreground="{StaticResource WordBlueBrush}"
+                               FontSize="200"
+                               Style="{StaticResource SpinningText}" />
+                </Border>
+
+            </StackPanel>
+
+
             <Grid Grid.Row="1" Background="{StaticResource BackgroundLightBrush}">
 
                 <Grid.RowDefinitions>

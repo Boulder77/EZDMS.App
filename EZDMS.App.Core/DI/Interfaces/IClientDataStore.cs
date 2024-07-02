@@ -207,7 +207,7 @@ namespace EZDMS.App.Core
         /// <summary>
         /// Gets the system taxes info
         /// </summary>       
-        Task<TradeDataModel> GetTradeAsync(string storeID);
+        Task<TradeVehicleDataModel> GetTradeVehicleAsync(int dealNumber);
 
 
     }

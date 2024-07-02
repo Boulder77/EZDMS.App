@@ -182,9 +182,9 @@ namespace EZDMS.App.Relational
                     mDbContext.SystemTaxes.Add(mDataModel as SystemTaxesDataModel);
                     break;
 
-                case DbTableNames.Trade:
+                case DbTableNames.TradeVehicle:
                     // Add new system lical entry
-                    mDbContext.SystemTaxes.Add(mDataModel as TradeDataModel);
+                    mDbContext.TradeVehicle.Add(mDataModel as TradeVehicleDataModel);
                     break;
 
 
@@ -329,6 +329,11 @@ namespace EZDMS.App.Relational
                 case DbTableNames.SystemTaxes:
 
                     mDbContext.Update(mDataModel as SystemTaxesDataModel);
+                    break;
+
+                case DbTableNames.TradeVehicle:
+
+                    mDbContext.Update(mDataModel as TradeVehicleDataModel);
                     break;
 
                 default:
@@ -727,10 +732,10 @@ namespace EZDMS.App.Relational
         /// </summary>
         /// <param name="dealNumber"></param>
         /// <returns>TradeDataModel<returns>
-        public Task<TradeDataModel> GetTradeAsync(int dealNumber)
+        public Task<TradeVehicleDataModel> GetTradeVehicleAsync(int dealNumber)
         {
             // Gets a single sales record
-            return Task.FromResult(mDbContext.Trade.FirstOrDefault(u => u.DealNumber == dealNumber));
+            return Task.FromResult(mDbContext.TradeVehicle.FirstOrDefault(u => u.DealNumber == dealNumber));
 
         }
 

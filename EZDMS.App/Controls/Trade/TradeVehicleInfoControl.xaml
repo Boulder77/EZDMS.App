@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="EZDMS.App.TradeVehicleInfoControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EZDMS.App"
+             d:DataContext="{x:Static local:VehicleBasicInfoDesignModel.Instance}"
+             mc:Ignorable="d" 
+             d:DesignHeight="320" d:DesignWidth="1000">
+    <Border  Background="{StaticResource BackgroundVeryLightBrush}"                    
+             CornerRadius="4"
+             Margin="5"
+             >
+        
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="0.5" Opacity="0.2" />
+        </Border.Effect>
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Vertical"                        
+                        >
+
+                <local:TextInputVertControl DataContext="{Binding StockNumber}"/>
+                <local:TextInputVertControl DataContext="{Binding Year}"/>
+                <local:TextInputVertControl DataContext="{Binding Body}"/>
+                <local:TextInputVertControl DataContext="{Binding Odometer}"/>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical"
+                        Grid.Column="1"                        
+                        >
+
+                <local:TextInputVertControl DataContext="{Binding VIN}"/>
+                <local:TextInputVertControl DataContext="{Binding Make}"/>
+                <local:TextInputVertControl DataContext="{Binding ExteriorColor}"/>
+                <local:TextInputVertControl DataContext="{Binding OdometerStatus}"/>
+
+            </StackPanel>
+
+            <StackPanel
+                        Orientation="Vertical"
+                        Grid.Column="2"                      
+                        >
+
+                <local:TextInputVertControl DataContext="{Binding Type}"/>
+                <local:TextInputVertControl DataContext="{Binding Model}"/>
+                <local:TextInputVertControl DataContext="{Binding InteriorColor}"/>
+                <CheckBox  Margin="10"
+                           Content="Under Factory Warranty"
+                           HorizontalContentAlignment="Center"
+                           IsChecked="{Binding Path=HasFactoryWarranty, Mode=TwoWay}"
+                           />
+
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical"
+                        Grid.Column="3"                      
+                        >
+
+                <local:TextInputVertControl DataContext="{Binding Status}"/>
+                <local:TextInputVertControl DataContext="{Binding Trim}"/>
+                <local:TextInputVertControl DataContext="{Binding Class}"/>
+
+            </StackPanel>
+
+        </Grid>
+        
+    </Border>
+    
+</UserControl>

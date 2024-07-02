@@ -9,184 +9,199 @@
         #region Public Properties
 
         /// <summary>
-        /// The Trade year
+        /// The trade vehicle stock number
         /// <summary>
-        public NumericalInputViewModel TradeYear { get; set; }
+        public TextInputViewModel StockNumber { get; set; }
 
         /// <summary>
-        /// The Trade make
+        /// The trade vehicle year
         /// <summary>
-        public TextEntryViewModel TradeMake { get; set; }
+        public NumericalInputViewModel Year { get; set; }
 
         /// <summary>
-        /// The Trade model
+        /// The trade vehicle make
         /// <summary>
-        public TextEntryViewModel TradeModel { get; set; }
+        public TextInputViewModel Make { get; set; }
 
         /// <summary>
-        /// The Trade model no
+        /// The trade vehicle model
         /// <summary>
-        public TextEntryViewModel TradeModelNo { get; set; }
+        public TextInputViewModel Model { get; set; }
 
         /// <summary>
-        /// The Trade body type
+        /// The trade vehicle model no
         /// <summary>
-        public TextEntryViewModel TradeBodyType { get; set; }
+        public TextInputViewModel ModelNumber { get; set; }
 
         /// <summary>
-        /// The Trade v i n
+        /// The trade vehicle body type
         /// <summary>
-        public TextEntryViewModel TradeVIN { get; set; }
+        public TextInputViewModel BodyType { get; set; }
 
         /// <summary>
-        /// The Trade mileage
+        /// The trade vehicle class
         /// <summary>
-        public NumericalInputViewModel TradeMileage { get; set; }
+        public TextInputViewModel Class { get; set; }
 
         /// <summary>
-        /// The Trade trim color
+        /// The trade vehicle v i n
         /// <summary>
-        public TextEntryViewModel TradeTrimColor { get; set; }
+        public TextInputViewModel VIN { get; set; }
 
         /// <summary>
-        /// The Trade exterior color
+        /// The trade vehicle mileage
         /// <summary>
-        public TextEntryViewModel TradeExteriorColor { get; set; }
+        public NumericalInputViewModel Odometer { get; set; }
 
         /// <summary>
-        /// The Trade interior color
+        /// The trade vehicle trim color
         /// <summary>
-        public TextEntryViewModel TradeInteriorColor { get; set; }
+        public TextInputViewModel TrimColor { get; set; }
 
         /// <summary>
-        /// The Trade doors
+        /// The trade vehicle trim
         /// <summary>
-        public NumericalInputViewModel TradeDoors { get; set; }
+        public TextInputViewModel Trim { get; set; }
 
         /// <summary>
-        /// The Trade cylinders
+        /// The trade vehicle exterior color
         /// <summary>
-        public NumericalInputViewModel TradeCylinders { get; set; }
+        public TextInputViewModel ExteriorColor { get; set; }
 
         /// <summary>
-        /// The Trade gross allowance
+        /// The trade vehicle interior color
         /// <summary>
-        public DecimalInputViewModel TradeGrossAllowance { get; set; }
+        public TextInputViewModel InteriorColor { get; set; }
 
         /// <summary>
-        /// The Trade payoff
+        /// The trade vehicle doors
         /// <summary>
-        public DecimalInputViewModel TradePayoff { get; set; }
+        public NumericalInputViewModel Doors { get; set; }
 
         /// <summary>
-        /// The Trade a c v
+        /// The trade vehicle cylinders
         /// <summary>
-        public DecimalInputViewModel TradeACV { get; set; }
+        public NumericalInputViewModel Cylinders { get; set; }
 
         /// <summary>
-        /// The Trade inventory price
+        /// The trade vehicle gross allowance
         /// <summary>
-        public DecimalInputViewModel TradeInventoryPrice { get; set; }
+        public DecimalInputViewModel GrossAllowance { get; set; }
 
         /// <summary>
-        /// The Trade net allowance
+        /// The trade vehicle payoff
         /// <summary>
-        public DecimalInputViewModel TradeNetAllowance { get; set; }
+        public DecimalInputViewModel Payoff { get; set; }
 
         /// <summary>
-        /// The Trade engine size
+        /// The trade vehicle a c v
         /// <summary>
-        public TextEntryViewModel TradeEngineSize { get; set; }
+        public DecimalInputViewModel ACV { get; set; }
 
         /// <summary>
-        /// The Trade license no
+        /// The trade vehicle inventory price
         /// <summary>
-        public TextEntryViewModel TradeLicenseNo { get; set; }
+        public DecimalInputViewModel InventoryPrice { get; set; }
 
         /// <summary>
-        /// The Trade license state
+        /// The trade vehicle net allowance
         /// <summary>
-        public TextEntryViewModel TradeLicenseState { get; set; }
+        public DecimalInputViewModel NetAllowance { get; set; }
 
         /// <summary>
-        /// The Trade license exp date
+        /// The trade vehicle engine size
         /// <summary>
-        public DateSelectionViewModel TradeLicenseExpDate { get; set; }
+        public TextInputViewModel EngineSize { get; set; }
 
         /// <summary>
-        /// The Trade transmission
+        /// The trade vehicle license no
         /// <summary>
-        public TextEntryViewModel TradeTransmission { get; set; }
+        public TextInputViewModel LicenseNumber { get; set; }
 
         /// <summary>
-        /// The Trade weight
+        /// The trade vehicle license state
         /// <summary>
-        public TextEntryViewModel TradeWeight { get; set; }
+        public TextInputViewModel LicenseState { get; set; }
 
         /// <summary>
-        /// The Trade fuel type
+        /// The trade vehicle license exp date
         /// <summary>
-        public TextEntryViewModel TradeFuelType { get; set; }
+        public DateSelectionViewModel LicenseExpirationDate { get; set; }
 
         /// <summary>
-        /// The Trade lienholder
+        /// The trade vehicle transmission
         /// <summary>
-        public TextEntryViewModel TradeLienholder { get; set; }
+        public TextInputViewModel Transmission { get; set; }
 
         /// <summary>
-        /// The Trade lien contact
+        /// The trade vehicle weight
         /// <summary>
-        public TextEntryViewModel TradeLienContact { get; set; }
+        public TextInputViewModel Weight { get; set; }
 
         /// <summary>
-        /// The Trade lien address
+        /// The trade vehicle fuel type
         /// <summary>
-        public TextEntryViewModel TradeLienAddress { get; set; }
+        public TextInputViewModel FuelType { get; set; }
 
         /// <summary>
-        /// The Trade lien city
+        /// The trade vehicle lienholder
         /// <summary>
-        public TextEntryViewModel TradeLienCity { get; set; }
+        public TextInputViewModel Lienholder { get; set; }
 
         /// <summary>
-        /// The Trade lien st
+        /// The trade vehicle lien contact
         /// <summary>
-        public TextEntryViewModel TradeLienSt { get; set; }
+        public TextInputViewModel LienContact { get; set; }
 
         /// <summary>
-        /// The Trade lien zip
+        /// The trade vehicle lien address
         /// <summary>
-        public TextEntryViewModel TradeLienZip { get; set; }
+        public TextInputViewModel LienAddress { get; set; }
 
         /// <summary>
-        /// The Trade lien phone
+        /// The trade vehicle lien city
         /// <summary>
-        public TextEntryViewModel TradeLienPhone { get; set; }
+        public TextInputViewModel LienCity { get; set; }
 
         /// <summary>
-        /// The Trade good until
+        /// The trade vehicle lien st
         /// <summary>
-        public DateSelectionViewModel TradeGoodUntil { get; set; }
+        public TextInputViewModel LienSt { get; set; }
 
         /// <summary>
-        /// The Trade daily interest
+        /// The trade vehicle lien zip
         /// <summary>
-        public DecimalInputViewModel TradeDailyInterest { get; set; }
+        public TextInputViewModel LienZip { get; set; }
 
         /// <summary>
-        /// The Trade lien account number
+        /// The trade vehicle lien phone
         /// <summary>
-        public TextEntryViewModel TradeLienAccountNumber { get; set; }
+        public TextInputViewModel LienPhone { get; set; }
 
         /// <summary>
-        /// The Trade status
+        /// The trade vehicle good until
         /// <summary>
-        public TextEntryViewModel TradeStatus { get; set; }
+        public DateSelectionViewModel GoodUntilDate { get; set; }
 
         /// <summary>
-        /// The Trade lease
+        /// The trade vehicle daily interest
         /// <summary>
-        public bool TradeLease { get; set; }
+        public DecimalInputViewModel DailyInterest { get; set; }
+
+        /// <summary>
+        /// The trade vehicle lien account number
+        /// <summary>
+        public TextInputViewModel LienAccountNumber { get; set; }
+
+        /// <summary>
+        /// The trade vehicle status
+        /// <summary>
+        public TextInputViewModel Status { get; set; }
+
+        /// <summary>
+        /// The trade vehicle lease
+        /// <summary>
+        public bool Lease { get; set; }
 
         #endregion
 
