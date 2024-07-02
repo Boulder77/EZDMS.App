@@ -28,7 +28,7 @@ namespace EZDMS.App
         /// <summary>
         /// The current working sales deal number
         /// </summary>
-        public int DealNumber { get; set; }
+        public TextInputViewModel DealNumber { get; set; }
 
         /// <summary>
         /// The current buyer name
@@ -184,6 +184,13 @@ namespace EZDMS.App
             DealDate = new TextInputViewModel
             {
                 Label = "Deal Date",
+                Text = mDefaultText,
+                Editable = false
+            };
+
+            DealNumber = new TextInputViewModel
+            {
+                Label = "Deal Number",
                 Text = mDefaultText,
                 Editable = false
             };

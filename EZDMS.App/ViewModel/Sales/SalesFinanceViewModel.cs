@@ -1018,7 +1018,7 @@ namespace EZDMS.App
             // return if null
             if (salesDeal == null)
                 return;
-
+            SalesDealCard.DealNumber.Text =salesDeal?.DealNumber.ToString();
             SalesDealCard.BuyerName.Text = salesDeal?.BuyerName;
             SalesDealCard.CoBuyerName.Text = salesDeal?.CoBuyerName;
             SalesDealCard.Vehicle.Text = salesDeal?.VehicleInfo;

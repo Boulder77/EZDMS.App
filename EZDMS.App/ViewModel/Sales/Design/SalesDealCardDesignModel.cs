@@ -23,6 +23,7 @@ namespace EZDMS.App
         /// </summary>
         public SalesDealCardDesignModel()
         {
+            DealNumber = new TextInputViewModel { Label = "Deal Number", Text = "22334", Editable = false };
             BuyerName = new TextInputViewModel { Label = "Buyer", Text = "Gomez, Donald", Editable = false };
             CoBuyerName = new TextInputViewModel { Label = "Co-Buyer", Text = "Bell, Betrix", Editable = false };
             Vehicle = new TextInputViewModel { Label = "Vehicle", Text = "P1807 - 2018 Chevrolet Tahoe", Editable = false };

@@ -408,8 +408,8 @@
     <Compile Include="ViewModel\Taxes\Design\SalesTaxesDesignModel.cs" />
     <Compile Include="ViewModel\Taxes\TaxItemViewModel.cs" />
     <Compile Include="ViewModel\Taxes\SalesTaxesViewModel.cs" />
-    <Compile Include="ViewModel\Trade\Design\TradeDesignModel.cs" />
-    <Compile Include="ViewModel\Trade\TradeViewModel.cs" />
+    <Compile Include="ViewModel\Trade\Design\TradeVehicleDesignModel.cs" />
+    <Compile Include="ViewModel\Trade\TradeVehicleViewModel.cs" />
     <Compile Include="ViewModel\Vehicle\VehiclesListViewModel.cs" />
     <Compile Include="ViewModel\Vehicle\Design\VehicleDetailsDesignModel.cs" />
     <Compile Include="ViewModel\Vehicle\Design\VehiclePricingDesignModel.cs" />

@@ -26,8 +26,15 @@
             <local:TextDisplayVertControl Grid.Column="1" DataContext="{Binding CoBuyerName}" />
             <local:TextDisplayVertControl Grid.Column="2" DataContext="{Binding Vehicle}" />
             <local:TextDisplayVertControl Grid.Column="3" DataContext="{Binding Status}" />
+
+            <StackPanel Grid.Row="1"            
+            Orientation="Vertical"
+            >
+
+                <local:TextDisplayVertControl VerticalAlignment="Top" DataContext="{Binding DealType}" />
+                <local:TextDisplayVertControl VerticalAlignment="Top" DataContext="{Binding DealNumber}" />
+            </StackPanel>
             
-            <local:TextDisplayVertControl Grid.Row="1" VerticalAlignment="Top" DataContext="{Binding DealType}" />
             <StackPanel Grid.Row="1"
                         Grid.Column="1"
                         Orientation="Vertical"

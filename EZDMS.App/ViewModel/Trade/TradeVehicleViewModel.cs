@@ -3,7 +3,7 @@
     /// <summary>
     /// The view model for the Trade control
     /// <summary>
-    public class TradeViewModel : BaseViewModel
+    public class TradeVehicleViewModel : BaseViewModel
     {
 
         #region Public Properties
@@ -210,7 +210,7 @@
         /// <summary>
         /// Default constructor
         /// <summary>
-        public TradeViewModel()
+        public TradeVehicleViewModel()
         {
 
         }

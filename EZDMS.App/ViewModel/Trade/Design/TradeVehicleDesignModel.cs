@@ -5,16 +5,16 @@ using EZDMS.App.Core;
 namespace EZDMS.App
 {
     /// <summary>
-    /// The design-time data for a <see cref="TradeViewModel"/>
+    /// The design-time data for a <see cref="TradeVehicleViewModel"/>
     /// </summary>
-    public class TradeDesignModel : TradeViewModel
+    public class TradeVehicleDesignModel : TradeVehicleViewModel
     {
         #region Singleton
 
         /// <summary>
         /// A single instance of the design model
         /// </summary>
-        public static TradeDesignModel Instance => new TradeDesignModel();
+        public static TradeVehicleDesignModel Instance => new TradeVehicleDesignModel();
 
         #endregion
 
@@ -23,7 +23,7 @@ namespace EZDMS.App
         /// <summary>
         /// Default constructor
         /// </summary>
-        public TradeDesignModel()
+        public TradeVehicleDesignModel()
 
         {
             

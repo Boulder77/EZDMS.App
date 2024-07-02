@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EZDMS.App"
-             d:DataContext="{x:Static local:VehicleBasicInfoDesignModel.Instance}"
+             d:DataContext="{x:Static local:TradeVehicleDesignModel.Instance}"
              mc:Ignorable="d" 
              d:DesignHeight="320" d:DesignWidth="1000">
     <Border  Background="{StaticResource BackgroundVeryLightBrush}"                    
@@ -29,7 +29,7 @@
                         >
 
                 <local:TextInputVertControl DataContext="{Binding StockNumber}"/>
-                <local:TextInputVertControl DataContext="{Binding Year}"/>
+                <local:NumericalInputVertControl DataContext="{Binding Year}"/>
                 <local:TextInputVertControl DataContext="{Binding Body}"/>
                 <local:TextInputVertControl DataContext="{Binding Odometer}"/>
 
